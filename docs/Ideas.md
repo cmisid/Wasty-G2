@@ -3,7 +3,7 @@
 ## To do
 
 - Find a good router system
-- Determine how to manage user authentification
+- Determine how to manage user authentification (although none at first is fine)
 - Find a good memoization system
 
 ## React native libraries
@@ -19,7 +19,8 @@ All the following libraries should work for both iOS and Android. More are avail
 - [Tabs](https://github.com/skv-headless/react-native-scrollable-tab-view)
 - [Dropdown input](https://github.com/alinz/react-native-dropdown)
 - [List view](https://github.com/FaridSafi/react-native-gifted-listview)
-- [Image picker](https://github.com/marcshilling/react-native-image-picker)
+- [Photo picker](https://github.com/marcshilling/react-native-image-picker)
+- [Datetime picker](https://github.com/xgfe/react-native-datepicker)
 - [Map](https://github.com/airbnb/react-native-maps)
 
 ### Style
@@ -30,6 +31,7 @@ All the following libraries should work for both iOS and Android. More are avail
 - [Credit card input](https://github.com/sbycrosz/react-native-credit-card-input)
 - [Light box](https://github.com/oblador/react-native-lightbox)
 - [Material Design](https://github.com/react-native-material-design/react-native-material-design)
+- [Vector icons](https://github.com/oblador/react-native-vector-icons)
 
 ### Development
 
