@@ -6,6 +6,11 @@
 - Determine how to manage user authentification (although none at first is fine)
 - Find a good memoization system
 
+## JavaScript libraries
+
+- [date-fns](https://date-fns.org/) for handling datetimes
+- [Lodash](https://lodash.com/) for common operation
+
 ## React native libraries
 
 All the following libraries should work for both iOS and Android. More are available on the [Awesome React Native page](https://github.com/jondot/awesome-react-native).

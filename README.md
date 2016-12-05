@@ -1,4 +1,4 @@
-# Wasty
+# Wasty mobile app
 
 ## Development
 
