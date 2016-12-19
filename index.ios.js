@@ -8,45 +8,81 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  View
+  AsyncStorage, 
+  Text
 } from 'react-native';
 
+import ItemScene from './scenes/ItemScene'
+
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
+
 export default class Wasty extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [
+        {
+          "title": "Canapé cuir",
+          "category": "AMEUBLEMENT",
+          "publish_date": "18/12/2016",
+          "coordinates": {
+            "lat": 48.5712432
+            "lon": -3.1075241999999434
+          }
+        },
+        {
+          "title": "Portes coulissantes",
+          "category": "BOIS ET MATERIAUX",
+          "publish_date": "18/12/2016",
+          "coordinates": {
+            "lat": 48.560811
+            "lon": -3.148260
+          }
+        },
+        {
+          "title": "Frigo",
+          "category": "ELECTROMENAGER",
+          "publish_date": "17/12/2016",
+          "coordinates": {
+            "lat": 48.555107
+            "lon": -3.143054
+          }
+        }
+      ]
+    }
+  }
+
+  addItem(item) {
+    const newItems = this.state.items.concat(item)
+    this.setState({
+      items: newItems
+    })
+    AsyncStorage.setItem('items', JSON.stringify(newItems))
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <ScrollableTabView
+        tabBarActiveTextColor='seagreen'
+        tabBarUnderlineStyle={styles.tabBarUnderline}
+        style={{marginTop: 20}}
+      >
+        <ItemScene
+          tabLabel='ANNONCES'
+          items={this.state.items}
+          addItem={this.addItem.bind(this)}
+        />
+        <Text tabLabel='AUTOUR DE MOI'>Carte</Text>
+      </ScrollableTabView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  tabBarUnderline: {
+    backgroundColor: 'seagreen',
+    padding: 3
   },
 });
 
