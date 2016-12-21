@@ -17,6 +17,8 @@ export default class Wasty extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      initialPosition: 'unknown',
+      lastPosition: 'unknown',
       items: [
         {
           "title": "Canapé cuir",
@@ -46,8 +48,29 @@ export default class Wasty extends Component {
           }
         }
       ]
-    }
+    };
+    this.watchID = null
   }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        var initialPosition = JSON.stringify(position);
+        this.setState({initialPosition});
+      },
+      (error) => alert(JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      var lastPosition = JSON.stringify(position);
+      this.setState({lastPosition});
+    });
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
+
 
   addItem(item) {
     const newItems = this.state.items.concat(item)
@@ -69,6 +92,7 @@ export default class Wasty extends Component {
           items={this.state.items}
           addItem={this.addItem.bind(this)}
         />
+
         <BasketScene
           tabLabel='Panier'
         />
