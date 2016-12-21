@@ -6,6 +6,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
+import MapScene from './scenes/MapScene'
 
 import { colors } from './style'
 import { textStyle } from './style'

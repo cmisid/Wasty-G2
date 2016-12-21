@@ -12,7 +12,6 @@ export default class MapScene extends Component {
     return (
       <View>
         <Text>Affichage de la carte</Text>
-        <Text>Region {this.props.coords.latitude}</Text>
         <MapView
           initialRegion={{
             latitude: 48.57124, 
@@ -27,8 +26,3 @@ export default class MapScene extends Component {
   };
 
 }
-
-
-MapScene.propTypes = {
-  coords: React.PropTypes.object,
-};

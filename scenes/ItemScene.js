@@ -4,6 +4,7 @@ import { ListView, StyleSheet, View } from 'react-native';
 import ActionButton from 'react-native-action-button';
 
 import ItemRow from '../components/ItemRow';
+import ItemCard from '../components/ItemCard';
 import AddItemModal from '../components/AddItemModal';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -16,11 +17,10 @@ export default class ItemScene extends Component {
         <ListView
           style={styles.list}
           dataSource={ds.cloneWithRows(this.props.items)}
-          renderRow={item => <ItemRow title={item.title} category={item.category} publish_date={item.publish_date} />}
+          renderRow={item => <ItemCard title={item.title} category={item.category} publish_date={item.publish_date} />}
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           enableEmptySections={true}
         />
-
 
         <AddItemModal
           ref={'addItemModal'}
