@@ -27,6 +27,8 @@ All the following libraries should work for both iOS and Android. More are avail
 - [Photo picker](https://github.com/marcshilling/react-native-image-picker)
 - [Datetime picker](https://github.com/xgfe/react-native-datepicker)
 - [Map](https://github.com/airbnb/react-native-maps)
+- [Refresher](https://github.com/syrusakbary/react-native-refresher)
+- [Memory efficient list view](https://github.com/sghiassy/react-native-sglistview)
 
 ### Style
 
