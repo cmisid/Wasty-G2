@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import AppText from '../components/AppText'
 
 export default class ItemRow extends Component {
   render() {
     return (
       <View style={styles.item}>
-        <Text>{this.props.title} - {this.props.category} [{this.props.publish_date}]</Text>
+        <AppText>{`${this.props.title} - ${this.props.publish_date}`}</AppText>
       </View>
     )
   }

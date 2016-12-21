@@ -1,3 +1,7 @@
 export const colors = {
-    primary: 'seagreen',
+  primary: 'seagreen'
+}
+
+export const textStyle = {
+  fontFamily: 'Nunito'
 }

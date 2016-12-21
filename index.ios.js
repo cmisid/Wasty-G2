@@ -7,10 +7,12 @@ import {
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
-import { colors } from './style.js'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
+
+import { colors } from './style'
+import { textStyle } from './style'
 
 export default class Wasty extends Component {
 
@@ -61,8 +63,10 @@ export default class Wasty extends Component {
     return (
       <ScrollableTabView
         tabBarActiveTextColor={colors.primary}
+        tabBarPosition='top'
         tabBarUnderlineStyle={styles.tabBarUnderline}
-        style={{marginTop: 20}}
+        tabBarTextStyle={textStyle}
+        style={styles.tabBar}
       >
         <ItemScene
           tabLabel='Annonces'
@@ -81,9 +85,11 @@ export default class Wasty extends Component {
 }
 
 const styles = StyleSheet.create({
+  tabBar: {
+    marginTop: 20
+  },
   tabBarUnderline: {
-    backgroundColor: colors.primary,
-    padding: 3
+    height: 0
   },
 })
 

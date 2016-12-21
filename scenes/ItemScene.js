@@ -9,8 +9,8 @@ import AddItemModal from '../components/AddItemModal';
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 export default class ItemScene extends Component {
-	render() {
-		return (
+  render() {
+    return (
 			<View style={styles.wrapper}>
 
         <ListView
@@ -32,8 +32,8 @@ export default class ItemScene extends Component {
         />
 
       </View>
-		)
-	}
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    paddingTop: 22
   },
   separator: {
     flex: 1,

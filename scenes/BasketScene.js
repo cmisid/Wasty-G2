@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
+
+import AppText from '../components/AppText'
 
 export default class BasketScene extends Component {
-    render() {
-        return (
-            <Text>Basket</Text>
-        )
-    }
+  render() {
+    return (
+      <View>
+        <AppText>Basket</AppText>
+      </View>
+    )
+  }
 }

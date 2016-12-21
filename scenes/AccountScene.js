@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
+import React, { Component } from 'react'
+
+import AppText from '../components/AppText'
 
 export default class AccountScene extends Component {
-    render() {
-        return (
-            <Text>Preferences</Text>
-        )
-    }
+  render() {
+    return (
+      <AppText>Preferences</AppText>
+    )
+  }
 }

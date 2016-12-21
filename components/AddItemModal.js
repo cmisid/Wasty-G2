@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 
 import _ from 'lodash'
 import Button from 'react-native-button'
 import Modal from 'react-native-modalbox'
 
+import AppText from '../components/AppText'
 import { colors } from '../style.js'
 
 export default class AddItemModal extends Component {
@@ -45,7 +46,7 @@ export default class AddItemModal extends Component {
         ref={'modal'}
       >
         <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Ajouter un item</Text>
+          <AppText style={styles.modalTitle}>Ajouter un item</AppText>
           <TextInput
             style={styles.textInput}
             onChangeText={title => this.setState({'title': _.upperFirst(_.toLower(title))})}
