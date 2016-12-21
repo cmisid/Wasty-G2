@@ -9,7 +9,7 @@
 ## JavaScript libraries
 
 - [date-fns](https://date-fns.org/) for handling datetimes
-- [Lodash](https://lodash.com/) for common operation
+- [Lodash](https://lodash.com/) for common operations
 
 ## React native libraries
 
