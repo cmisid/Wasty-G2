@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import {
-  AppRegistry,
-  StyleSheet,
-  AsyncStorage
-} from 'react-native'
+import { AppRegistry, StyleSheet, AsyncStorage } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
