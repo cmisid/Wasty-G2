@@ -21,10 +21,12 @@ export default class ItemScene extends Component {
           enableEmptySections={true}
         />
 
+
         <AddItemModal
           ref={'addItemModal'}
           onConfirm={this.props.addItem}
         />
+
 
         <ActionButton
           buttonColor='seagreen'
