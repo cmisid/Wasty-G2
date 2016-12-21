@@ -13,28 +13,27 @@ export default class ItemScene extends Component {
 		return (
 			<View style={styles.wrapper}>
 
-	        <ListView
-	          style={styles.list}
-	          dataSource={ds.cloneWithRows(this.props.items)}
-	          renderRow={item => <ItemRow title={item.title} category={item.category} publish_date={item.publish_date} />}
-	          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-	          enableEmptySections={true}
-	        />
+        <ListView
+          style={styles.list}
+          dataSource={ds.cloneWithRows(this.props.items)}
+          renderRow={item => <ItemRow title={item.title} category={item.category} publish_date={item.publish_date} />}
+          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+          enableEmptySections={true}
+        />
 
-		    <AddItemModal
-	          ref={'addItemModal'}
-	          onConfirm={this.props.addItem}
-	        />
+        <AddItemModal
+          ref={'addItemModal'}
+          onConfirm={this.props.addItem}
+        />
 
-	        <ActionButton
-	          buttonColor='seagreen'
-	          onPress={() => this.refs.addItemModal.openModal() }
-	        />
+        <ActionButton
+          buttonColor='seagreen'
+          onPress={() => this.refs.addItemModal.openModal() }
+        />
 
-	        </View>
+      </View>
 		)
 	}
-
 }
 
 const styles = StyleSheet.create({
@@ -54,5 +53,6 @@ const styles = StyleSheet.create({
 });
 
 ItemScene.propTypes = {
-  items: React.PropTypes.array,
+  addItem: React.PropTypes.func,
+  items: React.PropTypes.array
 };

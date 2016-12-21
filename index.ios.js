@@ -1,25 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
-  AsyncStorage, 
-  Text
-} from 'react-native';
+  AsyncStorage
+} from 'react-native'
 
+import ScrollableTabView from 'react-native-scrollable-tab-view'
+
+import { colors } from './style.js'
+import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
-
-import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
+import AccountScene from './scenes/AccountScene'
 
 export default class Wasty extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       items: [
         {
@@ -27,7 +23,7 @@ export default class Wasty extends Component {
           "category": "AMEUBLEMENT",
           "publish_date": "18/12/2016",
           "coordinates": {
-            "lat": 48.5712432
+            "lat": 48.5712432,
             "lon": -3.1075241999999434
           }
         },
@@ -36,7 +32,7 @@ export default class Wasty extends Component {
           "category": "BOIS ET MATERIAUX",
           "publish_date": "18/12/2016",
           "coordinates": {
-            "lat": 48.560811
+            "lat": 48.560811,
             "lon": -3.148260
           }
         },
@@ -45,7 +41,7 @@ export default class Wasty extends Component {
           "category": "ELECTROMENAGER",
           "publish_date": "17/12/2016",
           "coordinates": {
-            "lat": 48.555107
+            "lat": 48.555107,
             "lon": -3.143054
           }
         }
@@ -64,26 +60,31 @@ export default class Wasty extends Component {
   render() {
     return (
       <ScrollableTabView
-        tabBarActiveTextColor='seagreen'
+        tabBarActiveTextColor={colors.primary}
         tabBarUnderlineStyle={styles.tabBarUnderline}
         style={{marginTop: 20}}
       >
         <ItemScene
-          tabLabel='ANNONCES'
+          tabLabel='Annonces'
           items={this.state.items}
           addItem={this.addItem.bind(this)}
         />
-        <Text tabLabel='AUTOUR DE MOI'>Carte</Text>
+        <BasketScene
+          tabLabel='Panier'
+        />
+        <AccountScene
+          tabLabel='Compte'
+        />
       </ScrollableTabView>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   tabBarUnderline: {
-    backgroundColor: 'seagreen',
+    backgroundColor: colors.primary,
     padding: 3
   },
-});
+})
 
-AppRegistry.registerComponent('Wasty', () => Wasty);
+AppRegistry.registerComponent('Wasty', () => Wasty)
