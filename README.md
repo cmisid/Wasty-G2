@@ -24,3 +24,5 @@ react-native run-ios
 ```
 
 ### Android
+
+To do.

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import {  ScrollView, StyleSheet, AsyncStorage } from 'react-native'
+import { StyleSheet, AsyncStorage } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
+import { getItems } from './store/api'
 import TabBar from './components/TabBar'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
@@ -14,39 +15,15 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initialPosition: 'unknown',
-      lastPosition: 'unknown',
-      items: [
-        {
-          "title": "Canapé cuir",
-          "category": "AMEUBLEMENT",
-          "publish_date": "18/12/2016",
-          "coordinates": {
-            "lat": 48.5712432,
-            "lon": -3.1075241999999434
-          }
-        },
-        {
-          "title": "Portes coulissantes",
-          "category": "BOIS ET MATERIAUX",
-          "publish_date": "18/12/2016",
-          "coordinates": {
-            "lat": 48.560811,
-            "lon": -3.148260
-          }
-        },
-        {
-          "title": "Frigo",
-          "category": "ELECTROMENAGER",
-          "publish_date": "17/12/2016",
-          "coordinates": {
-            "lat": 48.555107,
-            "lon": -3.143054
-          }
-        }
-      ]
+      initialPosition: null,
+      lastPosition: null,
+      items: []
     };
     this.watchID = null
+  }
+
+  componentWillMount() {
+    this.setState({'items': getItems()});
   }
 
   componentDidMount() {
