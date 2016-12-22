@@ -1,3 +1,9 @@
+<div>
+  <div align="center">
+    <img src="https://docs.google.com/drawings/d/1CgBwaB4JOsYyUhqR1e9pPE5AdyEgIksgAIh_EIVtfsg/pub?w=476&h=230" alt="logo"/>
+  </div>
+<div>
+
 # Wasty mobile app
 
 ## Installation

@@ -1,24 +1,11 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  Image
-} from 'react-native';
- 
-import {
-  Card,
-  CardImage,
-  CardTitle,
-  CardContent,
-  CardAction
-} from 'react-native-card-view';
- 
-import Lightbox from 'react-native-lightbox';
-import Button from 'react-native-button';
- 
-import AppText from '../components/AppText'
-import { colors } from '../style.js'
+import React, {Component} from 'react'
+import { Image, StyleSheet } from 'react-native'
 
+import Button from 'react-native-button'
+import { Card, CardAction, CardContent, CardImage, CardTitle } from 'react-native-card-view'
+import Lightbox from 'react-native-lightbox'
+
+import AppText from '../components/AppText'
 
 export default class ItemCard extends Component {
   render () {
@@ -28,7 +15,7 @@ export default class ItemCard extends Component {
           <AppText>{this.props.title}</AppText>
         </CardTitle>
         <CardImage>
-          <Lightbox 
+          <Lightbox
             navigator={this.props.navigator}
             swipeToDismiss={true}
           >
@@ -53,20 +40,21 @@ export default class ItemCard extends Component {
     );
   }
 }
- 
+
 const styles = StyleSheet.create({
   button: {
     marginRight: 10
   },
   image: {
     flex: 1,
-    width: 300, 
+    width: 300,
     height: 200
   }
 });
 
 ItemCard.propTypes = {
-  title: React.PropTypes.string,
   category: React.PropTypes.string,
-  publish_date: React.PropTypes.string
+  navigator: React.PropTypes.node,
+  publish_date: React.PropTypes.string,
+  title: React.PropTypes.string
 };

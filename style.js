@@ -1,5 +1,7 @@
 export const colors = {
-  primary: 'seagreen'
+  primary: 'seagreen',
+  background: 'lightgray',
+  inactive: 'lightgray'
 }
 
 export const textStyle = {

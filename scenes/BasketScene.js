@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 import AppText from '../components/AppText'
 
 export default class BasketScene extends Component {
@@ -8,6 +10,7 @@ export default class BasketScene extends Component {
     return (
       <View>
         <AppText>Basket</AppText>
+        <Icon name="shopping-basket" size={30} color="#900" />
       </View>
     )
   }

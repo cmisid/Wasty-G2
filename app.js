@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
+import {  ScrollView, StyleSheet, AsyncStorage } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
+import TabBar from './components/TabBar'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
-import MapScene from './scenes/MapScene'
-
 import { colors } from './style'
-import { textStyle } from './style'
 
 export default class App extends Component {
 
@@ -53,14 +51,14 @@ export default class App extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      position => {
         var initialPosition = JSON.stringify(position);
         this.setState({initialPosition});
       },
-      (error) => alert(JSON.stringify(error)),
+      error => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
-    this.watchID = navigator.geolocation.watchPosition((position) => {
+    this.watchID = navigator.geolocation.watchPosition(position => {
       var lastPosition = JSON.stringify(position);
       this.setState({lastPosition});
     });
@@ -69,7 +67,6 @@ export default class App extends Component {
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID);
   }
-
 
   addItem(item) {
     const newItems = this.state.items.concat(item)
@@ -82,23 +79,23 @@ export default class App extends Component {
   render() {
     return (
       <ScrollableTabView
+        initialPage={1}
+        renderTabBar={() => <TabBar />}
+        style={styles.tabBar}
         tabBarActiveTextColor={colors.primary}
         tabBarPosition='top'
         tabBarUnderlineStyle={styles.tabBarUnderline}
-        tabBarTextStyle={textStyle}
-        style={styles.tabBar}
       >
-        <ItemScene
-          tabLabel='Annonces'
-          items={this.state.items}
-          addItem={this.addItem.bind(this)}
-        />
-
         <BasketScene
-          tabLabel='Panier'
+          tabLabel='shopping-basket'
+        />
+        <ItemScene
+          addItem={this.addItem.bind(this)}
+          items={this.state.items}
+          tabLabel='search'
         />
         <AccountScene
-          tabLabel='Compte'
+          tabLabel='user'
         />
       </ScrollableTabView>
     )
@@ -111,5 +108,5 @@ const styles = StyleSheet.create({
   },
   tabBarUnderline: {
     height: 0
-  },
+  }
 })
