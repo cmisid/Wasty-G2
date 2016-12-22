@@ -89,7 +89,7 @@ export default class App extends Component {
             tabLabel='search'
           />
           <AccountScene
-            tabLabel='user'
+            tabLabel='user-circle'
           />
         </ScrollableTabView>
       )
