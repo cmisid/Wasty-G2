@@ -1,5 +1,6 @@
 export const colors = {
   primary: 'seagreen',
+  primaryLight: 'darkseagreen',
   background: 'lightgray',
   inactive: 'lightgray'
 }

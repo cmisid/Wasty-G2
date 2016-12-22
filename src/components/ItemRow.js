@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import AppText from '../components/AppText'
+import AppText from './text/AppText'
 
 export default class ItemRow extends Component {
   render() {

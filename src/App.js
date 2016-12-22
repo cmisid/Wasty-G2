@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
+import { StyleSheet, AsyncStorage, View } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
-import { getItems } from './store/api'
+import Overlay from './components/Overlay'
 import TabBar from './components/TabBar'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
+import { getItems } from './store/api'
 import { colors } from './style'
 
 export default class App extends Component {
@@ -15,8 +16,15 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // Internet connection stuff
+      online: true,
+      serverResponding: true,
+
+      // User location stuff
       initialPosition: null,
       lastPosition: null,
+
+      // Application stuff
       items: []
     };
     this.watchID = null
@@ -54,28 +62,40 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <ScrollableTabView
-        initialPage={1}
-        renderTabBar={() => <TabBar />}
-        style={styles.tabBar}
-        tabBarActiveTextColor={colors.primary}
-        tabBarPosition='top'
-        tabBarUnderlineStyle={styles.tabBarUnderline}
-      >
-        <BasketScene
-          tabLabel='shopping-basket'
-        />
-        <ItemScene
-          addItem={this.addItem.bind(this)}
-          items={this.state.items}
-          tabLabel='search'
-        />
-        <AccountScene
-          tabLabel='user'
-        />
-      </ScrollableTabView>
-    )
+    if (!this.state.online) {
+      return (
+        <Overlay iconLabel='bolt' message='You are offline'></Overlay>
+      )
+    }
+    else if (!this.state.serverResponding) {
+      return (
+        <Overlay iconLabel='server' message='Server is not responding'></Overlay>
+      )
+    }
+    else {
+      return (
+        <ScrollableTabView
+          initialPage={1}
+          renderTabBar={() => <TabBar />}
+          style={styles.tabBar}
+          tabBarActiveTextColor={colors.primary}
+          tabBarPosition='top'
+          tabBarUnderlineStyle={styles.tabBarUnderline}
+        >
+          <BasketScene
+            tabLabel='shopping-basket'
+          />
+          <ItemScene
+            addItem={this.addItem.bind(this)}
+            items={this.state.items}
+            tabLabel='search'
+          />
+          <AccountScene
+            tabLabel='user'
+          />
+        </ScrollableTabView>
+      )
+    }
   }
 }
 

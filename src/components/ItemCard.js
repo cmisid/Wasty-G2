@@ -5,7 +5,7 @@ import Button from 'react-native-button'
 import { Card, CardAction, CardContent, CardImage, CardTitle } from 'react-native-card-view'
 import Lightbox from 'react-native-lightbox'
 
-import AppText from '../components/AppText'
+import AppText from './text/AppText'
 
 export default class ItemCard extends Component {
   render () {
