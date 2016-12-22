@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, View } from 'react-native'
 
 import AppText from './text/AppText'
 
 export default class ItemRow extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.item}>
         <AppText>{`${this.props.title} - ${this.props.publish_date}`}</AppText>
@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: 'white',
     padding: 3
-  },
-});
+  }
+})
 
 ItemRow.propTypes = {
   title: React.PropTypes.string,
   category: React.PropTypes.string,
   publish_date: React.PropTypes.string
-};
+}

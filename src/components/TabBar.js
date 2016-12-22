@@ -7,20 +7,20 @@ import { colors } from '../style'
 
 export default class TabBar extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.tabIcons = []
   }
 
-  render() {
-    return <View style={[styles.tabs, this.props.style, ]}>
+  render () {
+    return <View style={[ styles.tabs, this.props.style ]}>
       {this.props.tabs.map((tab, i) => {
         return <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
           <Icon
             name={tab}
             size={30}
             color={this.props.activeTab === i ? colors.primary : colors.inactive}
-            ref={icon => { this.tabIcons[i] = icon; }}
+            ref={icon => { this.tabIcons[i] = icon }}
           />
         </TouchableOpacity>
       })}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 15,
+    paddingBottom: 15
   },
   tabs: {
     height: 45,
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomColor: 'rgba(0,0,0,0.05)',
-  },
-});
+    borderBottomColor: 'rgba(0,0,0,0.05)'
+  }
+})
 
 TabBar.propTypes = {
   activeTab: React.PropTypes.number,
@@ -53,4 +53,4 @@ TabBar.propTypes = {
   scrollValue: React.PropTypes.object,
   style: React.PropTypes.object,
   tabs: React.PropTypes.array
-};
+}

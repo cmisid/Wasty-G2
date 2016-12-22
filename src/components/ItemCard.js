@@ -17,11 +17,11 @@ export default class ItemCard extends Component {
         <CardImage>
           <Lightbox
             navigator={this.props.navigator}
-            swipeToDismiss={true}
+            swipeToDismiss
           >
             <Image
               style={styles.image}
-              resizeMode="contain"
+              resizeMode='contain'
               source={{uri: 'https://getmdl.io/assets/demos/image_card.jpg'}}
             />
           </Lightbox>
@@ -37,7 +37,7 @@ export default class ItemCard extends Component {
           </Button>
         </CardAction>
       </Card>
-    );
+    )
   }
 }
 
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     width: 300,
     height: 200
   }
-});
+})
 
 ItemCard.propTypes = {
   category: React.PropTypes.string,
   navigator: React.PropTypes.node,
   publish_date: React.PropTypes.string,
   title: React.PropTypes.string
-};
+}

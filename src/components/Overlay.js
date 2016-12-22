@@ -7,7 +7,7 @@ import AppText from './text/AppText'
 import { colors } from '../style'
 
 export default class Overlay extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.containerWrapper}>
         <View style={styles.container}>

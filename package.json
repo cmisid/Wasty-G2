@@ -29,7 +29,8 @@
     "eslint": "^3.12.2",
     "eslint-plugin-react": "^6.8.0",
     "jest": "17.0.3",
-    "react-test-renderer": "15.4.1"
+    "react-test-renderer": "15.4.1",
+    "standard": "^8.6.0"
   },
   "rnpm": {
     "assets": [

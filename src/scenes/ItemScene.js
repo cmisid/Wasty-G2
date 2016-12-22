@@ -10,15 +10,15 @@ import { colors } from '../style'
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
 export default class ItemScene extends Component {
-  render() {
+  render () {
     return (
-			<View style={styles.wrapper}>
+      <View style={styles.wrapper}>
 
         <ListView
           style={styles.list}
           dataSource={ds.cloneWithRows(this.props.items)}
           renderRow={item => <ItemCard title={item.title} category={item.category} publish_date={item.publish_date} />}
-          enableEmptySections={true}
+          enableEmptySections
         />
 
         <AddItemModal
@@ -28,7 +28,7 @@ export default class ItemScene extends Component {
 
         <ActionButton
           buttonColor='seagreen'
-          onPress={() => this.refs.addItemModal.openModal() }
+          onPress={() => this.refs.addItemModal.openModal()}
         />
 
       </View>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, AsyncStorage, View } from 'react-native'
+import { StyleSheet, AsyncStorage } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
@@ -13,7 +13,7 @@ import { colors } from './style'
 
 export default class App extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       // Internet connection stuff
@@ -26,34 +26,34 @@ export default class App extends Component {
 
       // Application stuff
       items: []
-    };
+    }
     this.watchID = null
   }
 
-  componentWillMount() {
-    this.setState({'items': getItems()});
+  componentWillMount () {
+    this.setState({'items': getItems()})
   }
 
-  componentDidMount() {
+  componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       position => {
-        var initialPosition = JSON.stringify(position);
-        this.setState({initialPosition});
+        var initialPosition = JSON.stringify(position)
+        this.setState({initialPosition})
       },
       error => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
+    )
     this.watchID = navigator.geolocation.watchPosition(position => {
-      var lastPosition = JSON.stringify(position);
-      this.setState({lastPosition});
-    });
+      var lastPosition = JSON.stringify(position)
+      this.setState({lastPosition})
+    })
   }
 
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
+  componentWillUnmount () {
+    navigator.geolocation.clearWatch(this.watchID)
   }
 
-  addItem(item) {
+  addItem (item) {
     const newItems = this.state.items.concat(item)
     this.setState({
       items: newItems
@@ -61,18 +61,16 @@ export default class App extends Component {
     AsyncStorage.setItem('items', JSON.stringify(newItems))
   }
 
-  render() {
+  render () {
     if (!this.state.online) {
       return (
-        <Overlay iconLabel='bolt' message='You are offline'></Overlay>
+        <Overlay iconLabel='bolt' message='You are offline' />
       )
-    }
-    else if (!this.state.serverResponding) {
+    } else if (!this.state.serverResponding) {
       return (
-        <Overlay iconLabel='server' message='Server is not responding'></Overlay>
+        <Overlay iconLabel='server' message='Server is not responding' />
       )
-    }
-    else {
+    } else {
       return (
         <ScrollableTabView
           initialPage={1}

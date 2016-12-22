@@ -2,6 +2,11 @@
   <div align="center">
     <img src="https://docs.google.com/drawings/d/1CgBwaB4JOsYyUhqR1e9pPE5AdyEgIksgAIh_EIVtfsg/pub?w=476&h=230" alt="logo"/>
   </div>
+  <div align="center">
+    <a href="http://standardjs.com/">
+      <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard - JavaScript Style Guide" />
+    </a>
+  </div>
 <div>
 
 # Wasty mobile app
@@ -16,6 +21,8 @@ rnmp link assets # Link the assets to each platform
 ```
 
 ## Development
+
+- Our code strictly follows the [Javascript Standard Style](http://standardjs.com/). Plugins for the popular text editors are indicated on the [GitHub page](https://github.com/feross/standard).
 
 ### iOS
 

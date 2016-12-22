@@ -10,36 +10,36 @@ import { colors } from '../style.js'
 
 export default class AddItemModal extends Component {
 
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
       title: null,
       category: null,
       publish_date: null
-    };
+    }
   }
 
-  openModal() {
+  openModal () {
     this.refs.modal.open()
   }
 
-  closeModal() {
+  closeModal () {
     this.refs.modal.close()
   }
 
-  validTitle() {
+  validTitle () {
     return this.state.title !== null && this.state.title !== ''
   }
 
-  validCategory() {
+  validCategory () {
     return this.state.category !== null && this.state.category !== ''
   }
 
-  validDate() {
+  validDate () {
     return this.state.publish_date !== null && this.state.publish_date !== ''
   }
 
-  render() {
+  render () {
     return (
       <Modal
         style={styles.modal}
@@ -54,12 +54,12 @@ export default class AddItemModal extends Component {
           />
           <TextInput
             style={styles.textInput}
-            onChangeText={category => {this.setState({'category': _.upperFirst(_.toLower(category))})}}
+            onChangeText={category => { this.setState({'category': _.upperFirst(_.toLower(category))}) }}
             placeholder='Catégorie'
           />
           <TextInput
             style={styles.textInput}
-            onChangeText={publish_date => {this.setState({'publish_date': publish_date})}}
+            onChangeText={publishDate => { this.setState({'publish_date': publishDate}) }}
             placeholder='Date'
           />
           <Button
@@ -67,7 +67,7 @@ export default class AddItemModal extends Component {
             styleDisabled={{color: '#7e7e7e'}}
             disabled={!this.validTitle() || !this.validCategory() || !this.validDate()}
             containerStyle={styles.confirmButtonContainer}
-            onPress={() => {this.props.onConfirm(this.state); this.closeModal()}}
+            onPress={() => { this.props.onConfirm(this.state); this.closeModal() }}
           >
             Ajouter
           </Button>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 320,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: 5
   },
   modalContainer: {
     width: 200,
