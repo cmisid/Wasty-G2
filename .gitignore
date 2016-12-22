@@ -24,6 +24,7 @@ project.xcworkspace
 
 # Android/IJ
 #
+android/app/build/
 *.iml
 .idea
 .gradle
