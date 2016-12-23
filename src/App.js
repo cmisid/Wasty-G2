@@ -33,18 +33,8 @@ export default class App extends Component {
 
   componentWillMount () {
     // Check user internet connection
-    const self = this
-    function handleFirstConnectivityChange (isConnected) {
-      self.setState({isConnected})
-      NetInfo.isConnected.removeEventListener(
-        'change',
-        handleFirstConnectivityChange
-      )
-    }
-    NetInfo.isConnected.addEventListener(
-      'change',
-      handleFirstConnectivityChange
-    )
+    const setIsConnected = isConnected => this.setState({isConnected})
+    NetInfo.isConnected.addEventListener('change', setIsConnected)
   }
 
   componentDidMount () {
@@ -93,11 +83,17 @@ export default class App extends Component {
   render () {
     if (!this.state.isConnected) {
       return (
-        <Overlay iconLabel='bolt' message='You are offline' />
+        <Overlay
+          iconLabel='bolt'
+          message='Vous êtes hors-ligne'
+        />
       )
     } else if (!this.state.serverResponding) {
       return (
-        <Overlay iconLabel='server' message='Server is not responding' />
+        <Overlay
+          iconLabel='server'
+          message='Le serveur ne répond pas'
+        />
       )
     } else {
       return (
