@@ -23,6 +23,7 @@ rnmp link assets # Link the assets to each platform
 ## Development
 
 - Our code strictly follows the [Javascript Standard Style](http://standardjs.com/). Plugins for the popular text editors are indicated on the [GitHub page](https://github.com/feross/standard).
+- We use [Reactotron](https://github.com/reactotron/reactotron) for debugging.
 
 ### iOS
 

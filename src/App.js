@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
+import { Alert, AsyncStorage, NetInfo, StyleSheet } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
@@ -8,7 +8,7 @@ import TabBar from './components/TabBar'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
-import { getItems } from './store/api'
+import { getAccountSettings, getItems } from './store/api'
 import { colors } from './style'
 
 export default class App extends Component {
@@ -17,7 +17,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       // Internet connection stuff
-      online: true,
+      isConnected: true,
       serverResponding: true,
 
       // User location stuff
@@ -25,44 +25,73 @@ export default class App extends Component {
       lastPosition: null,
 
       // Application stuff
-      items: []
+      items: [],
+      accountSettings: {}
     }
     this.watchID = null
   }
 
   componentWillMount () {
-    this.setState({'items': getItems()})
+    // Check user internet connection
+    const self = this
+    function handleFirstConnectivityChange (isConnected) {
+      self.setState({isConnected})
+      NetInfo.isConnected.removeEventListener(
+        'change',
+        handleFirstConnectivityChange
+      )
+    }
+    NetInfo.isConnected.addEventListener(
+      'change',
+      handleFirstConnectivityChange
+    )
   }
 
   componentDidMount () {
+    // Get user position
     navigator.geolocation.getCurrentPosition(
       position => {
-        var initialPosition = JSON.stringify(position)
+        const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => alert(JSON.stringify(error)),
+      error => Alert.alert(
+        'Erreur de localisation',
+        JSON.stringify(error)
+      ),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )
     this.watchID = navigator.geolocation.watchPosition(position => {
-      var lastPosition = JSON.stringify(position)
+      const lastPosition = JSON.stringify(position)
       this.setState({lastPosition})
     })
+
+    // Load initial state
+    getAccountSettings()
+      .then(accountSettings => { this.setState({accountSettings: JSON.parse(accountSettings)}) })
+      .catch(() => { this.setState({accountSettings: {}}) })
+
+    getItems()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
   }
 
   componentWillUnmount () {
     navigator.geolocation.clearWatch(this.watchID)
   }
 
-  addItem (item) {
-    const newItems = this.state.items.concat(item)
-    this.setState({
-      items: newItems
-    })
-    AsyncStorage.setItem('items', JSON.stringify(newItems))
+  postItem (item) {
+    const items = this.state.items.concat(item)
+    this.setState({items})
+    AsyncStorage.setItem('items', JSON.stringify(items))
+  }
+
+  updateAccountSettings (accountSettings) {
+    this.setState({accountSettings})
+    AsyncStorage.setItem('accountSettings', JSON.stringify(accountSettings))
   }
 
   render () {
-    if (!this.state.online) {
+    if (!this.state.isConnected) {
       return (
         <Overlay iconLabel='bolt' message='You are offline' />
       )
@@ -84,12 +113,14 @@ export default class App extends Component {
             tabLabel='shopping-basket'
           />
           <ItemScene
-            addItem={this.addItem.bind(this)}
             items={this.state.items}
+            postItem={this.postItem.bind(this)}
             tabLabel='search'
           />
           <AccountScene
+            accountSettings={this.state.accountSettings}
             tabLabel='user-circle'
+            updateAccountSettings={this.updateAccountSettings.bind(this)}
           />
         </ScrollableTabView>
       )

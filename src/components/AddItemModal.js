@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 
-import _ from 'lodash'
+import { toLower, upperFirst } from 'lodash'
 import Button from 'react-native-button'
 import Modal from 'react-native-modalbox'
 
@@ -49,12 +49,12 @@ export default class AddItemModal extends Component {
           <AppText style={styles.modalTitle}>Ajouter un item</AppText>
           <TextInput
             style={styles.textInput}
-            onChangeText={title => this.setState({'title': _.upperFirst(_.toLower(title))})}
+            onChangeText={title => this.setState({'title': upperFirst(toLower(title))})}
             placeholder='Titre'
           />
           <TextInput
             style={styles.textInput}
-            onChangeText={category => { this.setState({'category': _.upperFirst(_.toLower(category))}) }}
+            onChangeText={category => { this.setState({'category': upperFirst(toLower(category))}) }}
             placeholder='Catégorie'
           />
           <TextInput

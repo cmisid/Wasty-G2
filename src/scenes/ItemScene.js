@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ListView, StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ItemCard from '../components/ItemCard'
 import AddItemModal from '../components/AddItemModal'
@@ -22,13 +23,14 @@ export default class ItemScene extends Component {
         />
 
         <AddItemModal
-          ref={'addItemModal'}
-          onConfirm={this.props.addItem}
+          onConfirm={this.props.postItem}
+          ref={'postItemModal'}
         />
 
         <ActionButton
-          buttonColor='seagreen'
-          onPress={() => this.refs.addItemModal.openModal()}
+          buttonColor={colors.primary}
+          icon={<Icon color='white' name='plus' size={24} />}
+          onPress={() => this.refs.postItemModal.openModal()}
         />
 
       </View>
@@ -47,6 +49,6 @@ const styles = StyleSheet.create({
 })
 
 ItemScene.propTypes = {
-  addItem: React.PropTypes.func,
+  postItem: React.PropTypes.func,
   items: React.PropTypes.array
 }
