@@ -1,8 +1,9 @@
 export const colors = {
   primary: 'seagreen',
   primaryLight: 'darkseagreen',
-  background: 'lightgray',
-  inactive: 'lightgray'
+  background: 'darkgray',
+  inactive: 'lightgray',
+  link: 'dodgerblue'
 }
 
 export const textStyle = {

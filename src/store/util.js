@@ -1,5 +1,5 @@
-import { merge } from 'lodash'
-import fetch from 'isomorphic-fetch'
+import _, { merge } from 'lodash'
+// import fetch from 'isomorphic-fetch'
 
 /**
  * Wrapper around `fetch` to query a JSON resource.

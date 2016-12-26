@@ -1,41 +1,76 @@
 import React, {Component} from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, View, Text, Linking, Dimensions } from 'react-native'
 
 import Button from 'react-native-button'
-import { Card, CardAction, CardContent, CardImage, CardTitle } from 'react-native-card-view'
 import Lightbox from 'react-native-lightbox'
 
+import { format } from 'date-fns'
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
+import frLocale from 'date-fns/locale/fr'
+
+
 import AppText from './text/AppText'
+import Card from './card/Card'
+import { colors } from '../style'
+
+// Google Maps 
+const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
+
+const toRad = x => x * Math.PI / 180
+
+const haversineDistance = (coordsLat_1, coordsLon_1, coordsLat_2, coordsLon_2) => {
+  const dLat = toRad(coordsLat_2 - coordsLat_1)
+  const dLon = toRad(coordsLon_2 - coordsLon_1)
+
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(coordsLat_1)) * 
+        Math.cos(toRad(coordsLat_2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
+
+  return 12742 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+}
+
+const distanceFmt = dist => dist < 1 ? `${Math.round((dist*1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
 export default class ItemCard extends Component {
+  // TODO: add TouchableOpacity parent 
   render () {
     return (
       <Card>
-        <CardTitle>
-          <AppText>{this.props.title}</AppText>
-        </CardTitle>
-        <CardImage>
-          <Lightbox
-            navigator={this.props.navigator}
-            swipeToDismiss
-          >
-            <Image
-              style={styles.image}
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{marginLeft: 10, marginTop: 5}}>{this.props.title}</Text>
+          <Text style={{marginLeft: 10, marginTop: 5, marginBottom: 5}}>{this.props.category}</Text>
+        </View>
+        <Lightbox
+          navigator={this.props.navigator}
+          swipeToDismiss
+        >
+          <Image
+            style={styles.image}
+            source={{uri: this.props.imgUrl}}
+          />
+        </Lightbox>
+        <View style={styles.publishMetadata}>
+          <Image
+              style={styles.userImage}
               resizeMode='contain'
-              source={{uri: 'https://getmdl.io/assets/demos/image_card.jpg'}}
-            />
-          </Lightbox>
-        </CardImage>
-        <CardContent>
-          <AppText>{`${this.props.category} - ${this.props.publish_date}`}</AppText>
-        </CardContent>
-        <CardAction >
-          <Button
-            style={styles.button}
-            onPress={() => {}}>
-            Consulter
-          </Button>
-        </CardAction>
+              source={{uri: this.props.userImg}}
+          />
+          <View style={{flex: 2, flexDirection: 'column'}}>
+            <Text style={styles.publisher}>{this.props.username}</Text>
+            <Text 
+              style={styles.streetName}
+              onPress={() => Linking.openURL(generateMapLink(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
+            >{`${this.props.streetName}, ${this.props.cityName}`}
+            </Text>
+            <Text style={styles.distance}>
+              {distanceFmt(haversineDistance(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
+            </Text>
+          </View>
+          <Text style={styles.date}>
+            {distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
+          </Text>
+        </View>
       </Card>
     )
   }
@@ -45,16 +80,57 @@ const styles = StyleSheet.create({
   button: {
     marginRight: 10
   },
+  publishMetadata: {
+    flex: 1, 
+    flexDirection: 'row', 
+    alignSelf: 'flex-start', 
+    marginBottom: 5, 
+    marginLeft: 10
+  },
+  publisher: {
+    marginTop: 10,
+    marginLeft: 5,
+  },
+  streetName: {
+    marginLeft: 5,
+    color: colors.link
+  },
   image: {
-    flex: 1,
-    width: 300,
-    height: 200
+    width: Dimensions.get('window').width - 10,
+    height: Dimensions.get('window').height / 2 - 10,
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+  userImage: {
+    marginTop: 10,
+    width: 30, 
+    height: 30, 
+    borderRadius: 13
+  },
+  distance: {
+    fontStyle: 'italic',
+    marginLeft: 5,
+    color: colors.background
+  },
+  date: {
+    marginTop: 10,
+    marginRight: 5,
+    color: colors.background
   }
 })
 
 ItemCard.propTypes = {
   category: React.PropTypes.string,
+  publishDate: React.PropTypes.object,
   navigator: React.PropTypes.node,
-  publish_date: React.PropTypes.string,
-  title: React.PropTypes.string
+  title: React.PropTypes.string,
+  streetName: React.PropTypes.string,
+  cityName: React.PropTypes.string,
+  imgUrl: React.PropTypes.string,
+  itemLat: React.PropTypes.number,
+  itemLon: React.PropTypes.number,
+  userLat: React.PropTypes.number,
+  userLon: React.PropTypes.number,
+  userImg: React.PropTypes.string,
+  username: React.PropTypes.string
 }

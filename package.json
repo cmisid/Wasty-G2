@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "tasks": "grep -rEI 'TODO|FIXME' src/"
   },
   "dependencies": {
+    "date-fns": "^1.21.1",
     "lodash": "^4.17.2",
     "react": "15.4.1",
     "react-native": "0.38.0",
     "react-native-action-button": "^2.0.16",
     "react-native-button": "^1.7.1",
-    "react-native-card-view": "0.0.3",
     "react-native-lightbox": "^0.6.0",
     "react-native-maps": "^0.12.2",
     "react-native-modalbox": "^1.3.8",
