@@ -78,7 +78,9 @@ export default class ItemScene extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.background
+    backgroundColor: colors.background,
+    marginTop: 62,
+    marginBottom: 30
   },
   list: {
     flex: 1

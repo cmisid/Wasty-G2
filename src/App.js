@@ -10,6 +10,7 @@ import CartScene from './scenes/CartScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import NotificationsScene from './scenes/NotificationsScene'
+import { textStyle } from './style'
 
 export default class App extends Component {
 
@@ -63,7 +64,7 @@ export default class App extends Component {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else {
       return (
-        <Router>
+        <Router sceneStyle={styles.sceneStyle} titleStyle={textStyle}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
             <Scene
               title='Notifications'
@@ -109,6 +110,9 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
+  sceneStyle: {
+    flex: 1
+  },
   tabBar: {
     borderTopWidth: 0.5,
     borderColor: '#b7b7b7',
