@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Image, StyleSheet, View, Text, Linking, Dimensions } from 'react-native'
+import { Image, StyleSheet, View, Linking, Dimensions } from 'react-native'
 
 import Lightbox from 'react-native-lightbox'
 

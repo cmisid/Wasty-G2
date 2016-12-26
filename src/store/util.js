@@ -1,4 +1,4 @@
-import _, { merge } from 'lodash'
+import { merge } from 'lodash'
 // import fetch from 'isomorphic-fetch'
 
 /**

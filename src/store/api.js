@@ -27,7 +27,7 @@ export const getItems = () => {
         'img_url': 'https://unsplash.it/300/400/',
         'publish_date': '2016-12-19T00:00:00',
         'publisher': {
-          'publisher_id': 2, 
+          'publisher_id': 2,
           'name': 'Max Halford',
           'email': 'maxhalford25@gmail.com',
           'user_img_url': 'https://avatars2.githubusercontent.com/u/8095957?v=3&s=460.jpg'
@@ -56,10 +56,9 @@ export const getItems = () => {
         },
         'street_name': 'Allée de Barcelone',
         'city_name': 'Toulouse'
-      },
+      }
     ])
   })
 }
-
 
 export const getAccountSettings = () => AsyncStorage.getItem('accountSettings')

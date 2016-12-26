@@ -5,9 +5,11 @@ import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 import Overlay from './components/Overlay'
 import TabBar from './components/TabBar'
+import AccountScene from './scenes/AccountScene'
 import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
-import AccountScene from './scenes/AccountScene'
+import MapScene from './scenes/MapScene'
+import PostedScene from './scenes/PostedScene'
 import { getAccountSettings, getItems } from './store/api'
 import { colors } from './style'
 
@@ -82,31 +84,24 @@ export default class App extends Component {
 
   render () {
     if (!this.state.isConnected) {
-      return (
-        <Overlay
-          iconLabel='bolt'
-          message='Vous êtes hors-ligne'
-        />
-      )
+      return (<Overlay iconLabel='bolt' message='Vous êtes hors-ligne' />)
     } else if (!this.state.serverResponding) {
-      return (
-        <Overlay
-          iconLabel='server'
-          message='Le serveur ne répond pas'
-        />
-      )
+      return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else {
       return (
         <ScrollableTabView
-          initialPage={1}
+          initialPage={4}
           renderTabBar={() => <TabBar />}
           style={styles.tabBar}
           tabBarActiveTextColor={colors.primary}
           tabBarPosition='top'
           tabBarUnderlineStyle={styles.tabBarUnderline}
         >
+          <PostedScene
+            tabLabel='notifications'
+          />
           <BasketScene
-            tabLabel='shopping-basket'
+            tabLabel='shopping-cart'
           />
           <ItemScene
             items={this.state.items}
@@ -114,9 +109,12 @@ export default class App extends Component {
             postItem={this.postItem.bind(this)}
             tabLabel='search'
           />
+          <MapScene
+            tabLabel='map'
+          />
           <AccountScene
             accountSettings={this.state.accountSettings}
-            tabLabel='user-circle'
+            tabLabel='account-circle'
             updateAccountSettings={this.updateAccountSettings.bind(this)}
           />
         </ScrollableTabView>

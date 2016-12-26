@@ -3,11 +3,11 @@ import { View } from 'react-native'
 
 import AppText from '../components/AppText'
 
-export default class BasketScene extends Component {
+export default class PostedScene extends Component {
   render () {
     return (
       <View>
-        <AppText>Basket</AppText>
+        <AppText>Posted</AppText>
       </View>
     )
   }

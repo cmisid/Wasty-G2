@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ListView, StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import parse from 'date-fns/parse'
 
 import ItemCard from '../components/ItemCard'
@@ -44,7 +44,7 @@ export default class ItemScene extends Component {
 
         <ActionButton
           buttonColor={colors.primary}
-          icon={<Icon color='white' name='plus' size={24} />}
+          icon={<Icon color='white' name='add' size={24} />}
           onPress={() => this.refs.postItemModal.openModal()}
         />
 
