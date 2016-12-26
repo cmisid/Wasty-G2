@@ -46,7 +46,7 @@ export default class AddItemModal extends Component {
         ref={'modal'}
       >
         <View style={styles.modalContainer}>
-          <AppText style={styles.modalTitle}>Ajouter un item</AppText>
+          <AppText style={{color: colors.primary}}>Ajouter un item</AppText>
           <TextInput
             style={styles.textInput}
             onChangeText={title => this.setState({'title': upperFirst(toLower(title))})}
@@ -89,9 +89,6 @@ const styles = StyleSheet.create({
     width: 200,
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  modalTitle: {
-    color: colors.primary
   },
   textInput: {
     height: 40,

@@ -9,7 +9,6 @@ import BasketScene from './scenes/BasketScene'
 import ItemScene from './scenes/ItemScene'
 import AccountScene from './scenes/AccountScene'
 import { getAccountSettings, getItems } from './store/api'
-import { mergeObjects } from './store/util'
 import { colors } from './style'
 
 export default class App extends Component {
@@ -64,7 +63,6 @@ export default class App extends Component {
     getItems()
       .then(items => { this.setState({items}) })
       .catch(() => {})
-
   }
 
   componentWillUnmount () {

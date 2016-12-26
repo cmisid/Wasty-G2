@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 
-import { textStyle } from '../../style'
+import { textStyle } from '../style'
 
 export default class AppText extends Component {
   render () {
     return (
-      <Text style={textStyle}>
+      <Text style={[textStyle, this.props.style || {}]}>
         {this.props.children}
       </Text>
     )
@@ -14,5 +14,6 @@ export default class AppText extends Component {
 }
 
 AppText.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  style: React.PropTypes.object
 }

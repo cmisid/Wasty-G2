@@ -19,11 +19,11 @@ export default class ItemScene extends Component {
         <ListView
           style={styles.list}
           dataSource={ds.cloneWithRows(this.props.items)}
-          renderRow={item => <ItemCard 
-            title={item.title} 
-            category={item.category} 
-            streetName={item.street_name} 
-            cityName={item.city_name} 
+          renderRow={item => <ItemCard
+            title={item.title}
+            category={item.category}
+            streetName={item.street_name}
+            cityName={item.city_name}
             imgUrl={item.img_url}
             itemLat={item.coordinates.lat}
             itemLon={item.coordinates.lon}

@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native'
-
+import React, {Component} from 'react'
+import { StyleSheet, View } from 'react-native'
 
 export default class Card extends Component {
-  render() {
+  render () {
     const newStyles = this.props.styles || {}
     return (
       <View style={[styles.container, styles.card, newStyles.card]}>
@@ -20,18 +16,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f5fcff',
     margin: 5
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: 'white',
     borderRadius: 5,
-    shadowColor: "#000000",
+    shadowColor: 'black',
     shadowOpacity: 0.3,
     shadowRadius: 1,
     shadowOffset: {
       height: 1,
-      width: 0.3,
+      width: 0.3
     }
-  },
-});
+  }
+})

@@ -7,6 +7,7 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
 import Card from './card/Card'
+import AppText from './AppText'
 import { colors } from '../style'
 
 // Google Maps
@@ -34,8 +35,8 @@ export default class ItemCard extends Component {
     return (
       <Card>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{marginLeft: 10, marginTop: 5}}>{this.props.title}</Text>
-          <Text style={{marginLeft: 10, marginTop: 5, marginBottom: 5}}>{this.props.category}</Text>
+          <AppText style={{marginLeft: 10, marginTop: 5}}>{this.props.title}</AppText>
+          <AppText style={{marginLeft: 10, marginTop: 5, marginBottom: 5}}>{this.props.category}</AppText>
         </View>
         <Lightbox
           navigator={this.props.navigator}
@@ -53,19 +54,26 @@ export default class ItemCard extends Component {
             source={{uri: this.props.userImg}}
           />
           <View style={{flex: 2, flexDirection: 'column'}}>
-            <Text style={styles.publisher}>{this.props.username}</Text>
-            <Text
-              style={styles.streetName}
-              onPress={() => Linking.openURL(generateMapLink(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
+            <AppText style={StyleSheet.flatten(styles.publisher)}>
+              {this.props.username}
+            </AppText>
+            <AppText
+              style={StyleSheet.flatten(styles.streetName)}
+              onPress={() => Linking.openURL(generateMapLink(
+                this.props.userLat,
+                this.props.userLon,
+                this.props.itemLat,
+                this.props.itemLon
+              ))}
             >{`${this.props.streetName}, ${this.props.cityName}`}
-            </Text>
-            <Text style={styles.distance}>
+            </AppText>
+            <AppText style={StyleSheet.flatten(styles.distance)}>
               {distanceFmt(haversineDistance(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
-            </Text>
+            </AppText>
           </View>
-          <Text style={styles.date}>
+          <AppText style={StyleSheet.flatten(styles.date)}>
             {distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
-          </Text>
+          </AppText>
         </View>
       </Card>
     )
