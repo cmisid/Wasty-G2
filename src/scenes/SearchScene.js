@@ -65,11 +65,13 @@ export default class ItemScene extends Component {
           ref={'postItemModal'}
         />
 
-        <ActionButton
-          buttonColor={colors.primary}
-          icon={<Icon color='white' name='add' size={24} />}
-          onPress={() => this.refs.postItemModal.openModal()}
-        />
+        <View>
+          <ActionButton
+            buttonColor={colors.primary}
+            icon={<Icon color='white' name='add' size={24} />}
+            onPress={() => this.refs.postItemModal.openModal()}
+          />
+        </View>
 
       </View>
     )
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     marginTop: 62,
-    marginBottom: 30
+    marginBottom: 50
   },
   list: {
     flex: 1

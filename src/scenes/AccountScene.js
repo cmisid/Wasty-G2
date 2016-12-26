@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, StyleSheet } from 'react-native'
+import { AsyncStorage, StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -31,7 +31,7 @@ export default class AccountScene extends Component {
 
   render () {
     return (
-      <Container>
+      <View style={{flex: 1, marginBottom: 40}}>
         <AppText>{this.state.accountSettings.name}</AppText>
         <AppText>{this.state.accountSettings.surname}</AppText>
         <ActionButton
@@ -48,7 +48,7 @@ export default class AccountScene extends Component {
             <Icon name='person-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
-      </Container>
+      </View>
     )
   }
 }
