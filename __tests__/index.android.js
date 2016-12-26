@@ -1,12 +1,11 @@
-import 'react-native';
-import React from 'react';
-import Index from '../index.android.js';
+import 'react-native'
+import React from 'react'
+import Overlay from '../src/components/Overlay'
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <Index />
-  );
-});
+    <Overlay iconLabel='bolt' message='Vous êtes hors-ligne' />
+  )
+})
