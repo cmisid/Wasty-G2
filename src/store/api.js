@@ -54,8 +54,8 @@ export const getItems = () => {
         },
         'views': 57,
         'coordinates': {
-          'lat': 48.555107,
-          'lon': -3.143054
+          'lat': 48.571243,
+          'lon': -3.107527
         },
         'street_name': 'Allée de Barcelone',
         'city_name': 'Toulouse'
