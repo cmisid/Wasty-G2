@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import { Alert, AsyncStorage, NetInfo, StyleSheet } from 'react-native'
 
-import ScrollableTabView from 'react-native-scrollable-tab-view'
+import { Scene, Router } from 'react-native-router-flux'
 
 import Overlay from './components/Overlay'
-import TabBar from './components/TabBar'
+import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
-import BasketScene from './scenes/BasketScene'
-import ItemScene from './scenes/ItemScene'
+import CartScene from './scenes/CartScene'
+import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
-import PostedScene from './scenes/PostedScene'
-import { getAccountSettings, getItems } from './store/api'
-import { colors } from './style'
+import NotificationsScene from './scenes/NotificationsScene'
 
 export default class App extends Component {
 
@@ -24,11 +22,7 @@ export default class App extends Component {
 
       // User location stuff
       initialPosition: null,
-      lastPosition: null,
-
-      // Application stuff
-      items: [],
-      accountSettings: {}
+      lastPosition: null
     }
     this.watchID = null
   }
@@ -56,30 +50,10 @@ export default class App extends Component {
       const lastPosition = JSON.stringify(position)
       this.setState({lastPosition})
     })
-
-    // Load initial state
-    getAccountSettings()
-      .then(accountSettings => { this.setState({accountSettings: JSON.parse(accountSettings)}) })
-      .catch(() => { this.setState({accountSettings: {}}) })
-
-    getItems()
-      .then(items => { this.setState({items}) })
-      .catch(() => {})
   }
 
   componentWillUnmount () {
     navigator.geolocation.clearWatch(this.watchID)
-  }
-
-  postItem (item) {
-    const items = this.state.items.concat(item)
-    this.setState({items})
-    AsyncStorage.setItem('items', JSON.stringify(items))
-  }
-
-  updateAccountSettings (accountSettings) {
-    this.setState({accountSettings})
-    AsyncStorage.setItem('accountSettings', JSON.stringify(accountSettings))
   }
 
   render () {
@@ -89,35 +63,41 @@ export default class App extends Component {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else {
       return (
-        <ScrollableTabView
-          initialPage={4}
-          renderTabBar={() => <TabBar />}
-          style={styles.tabBar}
-          tabBarActiveTextColor={colors.primary}
-          tabBarPosition='top'
-          tabBarUnderlineStyle={styles.tabBarUnderline}
-        >
-          <PostedScene
-            tabLabel='notifications'
-          />
-          <BasketScene
-            tabLabel='shopping-cart'
-          />
-          <ItemScene
-            items={this.state.items}
-            geoLocation={{'lat': 48.566140, 'lon': -3.148260}}
-            postItem={this.postItem.bind(this)}
-            tabLabel='search'
-          />
-          <MapScene
-            tabLabel='map'
-          />
-          <AccountScene
-            accountSettings={this.state.accountSettings}
-            tabLabel='account-circle'
-            updateAccountSettings={this.updateAccountSettings.bind(this)}
-          />
-        </ScrollableTabView>
+        <Router {...this.state}>
+          <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
+            <Scene
+              title='Notifications'
+              key='notifications'
+              component={NotificationsScene}
+              icon={TabIcon}
+            />
+            <Scene
+              title='Panier'
+              key='cart'
+              component={CartScene}
+              icon={TabIcon}
+            />
+            <Scene
+              title='Recherche'
+              key='search'
+              component={SearchScene}
+              icon={TabIcon}
+              initial
+            />
+            <Scene
+              title='Carte'
+              key='map'
+              component={MapScene}
+              icon={TabIcon}
+            />
+            <Scene
+              title='Compte'
+              key='account'
+              component={AccountScene}
+              icon={TabIcon}
+            />
+          </Scene>
+        </Router>
       )
     }
   }
@@ -125,9 +105,9 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   tabBar: {
-    marginTop: 20
-  },
-  tabBarUnderline: {
-    height: 0
+    borderTopWidth: 0.5,
+    borderColor: '#b7b7b7',
+    backgroundColor: 'white',
+    opacity: 1
   }
 })

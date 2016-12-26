@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View } from 'react-native'
+import { AsyncStorage, ListView, StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -8,17 +8,39 @@ import parse from 'date-fns/parse'
 import ItemCard from '../components/ItemCard'
 import AddItemModal from '../components/AddItemModal'
 import { colors } from '../style'
+import { getItems } from '../store/api'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
 export default class ItemScene extends Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      items: {},
+      location: {'lat': 48.566140, 'lon': -3.148260}
+    }
+  }
+
+  componentDidMount () {
+    getItems()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
+  }
+
+  postItem (item) {
+    const items = this.state.items.concat(item)
+    this.setState({items})
+    AsyncStorage.setItem('items', JSON.stringify(items))
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
 
         <ListView
           style={styles.list}
-          dataSource={ds.cloneWithRows(this.props.items)}
+          dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => <ItemCard
             title={item.title}
             category={item.category}
@@ -27,8 +49,8 @@ export default class ItemScene extends Component {
             imgUrl={item.img_url}
             itemLat={item.coordinates.lat}
             itemLon={item.coordinates.lon}
-            userLat={this.props.geoLocation.lat}
-            userLon={this.props.geoLocation.lon}
+            userLat={this.state.location.lat}
+            userLon={this.state.location.lon}
             userImg={item.publisher.user_img_url}
             username={item.publisher.name}
             publishDate={parse(item.publish_date)}

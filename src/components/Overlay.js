@@ -11,7 +11,7 @@ export default class Overlay extends Component {
     return (
       <View style={styles.containerWrapper}>
         <View style={styles.container}>
-          <Icon name={this.props.iconLabel} size={100} color={colors.primaryLight} />
+          <Icon name={this.props.iconLabel} size={100} color={colors.secondary} />
           <AppText>
             <Text style={styles.containerMessage}>
               {this.props.message}
@@ -25,7 +25,7 @@ export default class Overlay extends Component {
 
 const styles = StyleSheet.create({
   containerMessage: {
-    color: colors.primaryLight,
+    color: colors.secondary,
     fontSize: 30
   },
   containerWrapper: {
