@@ -54,6 +54,7 @@ export default class ItemScene extends Component {
             userImg={item.publisher.user_img_url}
             username={item.publisher.name}
             publishDate={parse(item.publish_date)}
+            views={item.views}
             />
           }
           enableEmptySections

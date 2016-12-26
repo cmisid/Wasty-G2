@@ -7,7 +7,11 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
 import Card from './card/Card'
+import CardHeader from './card/CardHeader'
+import CardFooter from './card/CardFooter'
+
 import AppText from './AppText'
+
 import { colors } from '../style'
 
 // Google Maps
@@ -29,15 +33,16 @@ const haversineDistance = (lat1, lon1, lat2, lon2) => {
 
 const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
+
 export default class ItemCard extends Component {
   // TODO: add TouchableOpacity parent
   render () {
     return (
       <Card>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-          <AppText style={{marginLeft: 10, marginTop: 5}}>{this.props.title}</AppText>
-          <AppText style={{marginLeft: 10, marginTop: 5, marginBottom: 5}}>{this.props.category}</AppText>
-        </View>
+        <CardHeader
+          title={this.props.title}
+          category={this.props.category}
+        />
         <Lightbox
           navigator={this.props.navigator}
           swipeToDismiss
@@ -47,80 +52,29 @@ export default class ItemCard extends Component {
             source={{uri: this.props.imgUrl}}
           />
         </Lightbox>
-        <View style={styles.publishMetadata}>
-          <Image
-            style={styles.userImage}
-            resizeMode='contain'
-            source={{uri: this.props.userImg}}
-          />
-          <View style={{flex: 2, flexDirection: 'column'}}>
-            <AppText style={StyleSheet.flatten(styles.publisher)}>
-              {this.props.username}
-            </AppText>
-            <AppText
-              style={StyleSheet.flatten(styles.streetName)}
-              onPress={() => Linking.openURL(generateMapLink(
-                this.props.userLat,
-                this.props.userLon,
-                this.props.itemLat,
-                this.props.itemLon
-              ))}
-            >{`${this.props.streetName}, ${this.props.cityName}`}
-            </AppText>
-            <AppText style={StyleSheet.flatten(styles.distance)}>
-              {distanceFmt(haversineDistance(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
-            </AppText>
-          </View>
-          <AppText style={StyleSheet.flatten(styles.date)}>
-            {distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
-          </AppText>
-        </View>
+        
+        <CardFooter
+          publishDate={distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
+          streetName={this.props.streetName}
+          cityName={this.props.cityName}
+          userImg={this.props.userImg}
+          username={this.props.username}
+          distance={distanceFmt(haversineDistance(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
+          mapUrl={generateMapLink(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon)}
+          views={this.props.views}
+        />
       </Card>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    marginRight: 10
-  },
-  publishMetadata: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginBottom: 5,
-    marginLeft: 10
-  },
-  publisher: {
-    marginTop: 10,
-    marginLeft: 5
-  },
-  streetName: {
-    marginLeft: 5,
-    color: colors.link
-  },
   image: {
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
     alignSelf: 'center'
   },
-  userImage: {
-    marginTop: 10,
-    width: 30,
-    height: 30,
-    borderRadius: 13
-  },
-  distance: {
-    fontStyle: 'italic',
-    marginLeft: 5,
-    color: colors.background
-  },
-  date: {
-    marginTop: 10,
-    marginRight: 5,
-    color: colors.background
-  }
 })
 
 ItemCard.propTypes = {
@@ -136,5 +90,6 @@ ItemCard.propTypes = {
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number,
   userImg: React.PropTypes.string,
-  username: React.PropTypes.string
+  username: React.PropTypes.string,
+  views: React.PropTypes.number
 }

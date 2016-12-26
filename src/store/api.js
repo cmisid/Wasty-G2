@@ -14,6 +14,7 @@ export const getItems = () => {
           'email': 'axel.bellec@outlook.fr',
           'user_img_url': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg'
         },
+        'views': 14,
         'coordinates': {
           'lat': 48.5712432,
           'lon': -3.1075241999999434
@@ -32,6 +33,7 @@ export const getItems = () => {
           'email': 'maxhalford25@gmail.com',
           'user_img_url': 'https://avatars2.githubusercontent.com/u/8095957?v=3&s=460.jpg'
         },
+        'views': 26,
         'coordinates': {
           'lat': 48.560811,
           'lon': -3.148260
@@ -50,6 +52,7 @@ export const getItems = () => {
           'email': 'axel.bellec@outlook.fr',
           'user_img_url': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg'
         },
+        'views': 57,
         'coordinates': {
           'lat': 48.555107,
           'lon': -3.143054
