@@ -3,6 +3,8 @@ import { Text } from 'react-native'
 
 import { textStyle } from '../style'
 
+// TODO: merge style properties if a new style is passed as argument
+
 export default class AppText extends Component {
   render () {
     return (
