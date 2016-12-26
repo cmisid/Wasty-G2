@@ -5,7 +5,7 @@ import { toLower, upperFirst } from 'lodash'
 import Button from 'react-native-button'
 import Modal from 'react-native-modalbox'
 
-import AppText from './text/AppText'
+import AppText from './AppText'
 import { colors } from '../style.js'
 
 export default class AddItemModal extends Component {

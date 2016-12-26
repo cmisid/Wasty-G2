@@ -1,39 +1,35 @@
 import React, {Component} from 'react'
 import { Image, StyleSheet, View, Text, Linking, Dimensions } from 'react-native'
 
-import Button from 'react-native-button'
 import Lightbox from 'react-native-lightbox'
 
-import { format } from 'date-fns'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
-
-import AppText from './text/AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 
-// Google Maps 
+// Google Maps
 const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
 
 const toRad = x => x * Math.PI / 180
 
-const haversineDistance = (coordsLat_1, coordsLon_1, coordsLat_2, coordsLon_2) => {
-  const dLat = toRad(coordsLat_2 - coordsLat_1)
-  const dLon = toRad(coordsLon_2 - coordsLon_1)
+const haversineDistance = (lat1, lon1, lat2, lon2) => {
+  const dLat = toRad(lat2 - lat1)
+  const dLon = toRad(lon2 - lon1)
 
   const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(toRad(coordsLat_1)) * 
-        Math.cos(toRad(coordsLat_2)) *
+        Math.cos(toRad(lat1)) *
+        Math.cos(toRad(lat2)) *
         Math.sin(dLon / 2) * Math.sin(dLon / 2)
 
   return 12742 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
-const distanceFmt = dist => dist < 1 ? `${Math.round((dist*1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
+const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
 export default class ItemCard extends Component {
-  // TODO: add TouchableOpacity parent 
+  // TODO: add TouchableOpacity parent
   render () {
     return (
       <Card>
@@ -52,13 +48,13 @@ export default class ItemCard extends Component {
         </Lightbox>
         <View style={styles.publishMetadata}>
           <Image
-              style={styles.userImage}
-              resizeMode='contain'
-              source={{uri: this.props.userImg}}
+            style={styles.userImage}
+            resizeMode='contain'
+            source={{uri: this.props.userImg}}
           />
           <View style={{flex: 2, flexDirection: 'column'}}>
             <Text style={styles.publisher}>{this.props.username}</Text>
-            <Text 
+            <Text
               style={styles.streetName}
               onPress={() => Linking.openURL(generateMapLink(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
             >{`${this.props.streetName}, ${this.props.cityName}`}
@@ -81,15 +77,15 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   publishMetadata: {
-    flex: 1, 
-    flexDirection: 'row', 
-    alignSelf: 'flex-start', 
-    marginBottom: 5, 
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
     marginLeft: 10
   },
   publisher: {
     marginTop: 10,
-    marginLeft: 5,
+    marginLeft: 5
   },
   streetName: {
     marginLeft: 5,
@@ -103,8 +99,8 @@ const styles = StyleSheet.create({
   },
   userImage: {
     marginTop: 10,
-    width: 30, 
-    height: 30, 
+    width: 30,
+    height: 30,
     borderRadius: 13
   },
   distance: {
