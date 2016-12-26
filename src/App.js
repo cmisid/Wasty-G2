@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, AsyncStorage, NetInfo, StyleSheet } from 'react-native'
+import { Alert, NetInfo, StyleSheet } from 'react-native'
 
 import { Scene, Router } from 'react-native-router-flux'
 
@@ -63,25 +63,28 @@ export default class App extends Component {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else {
       return (
-        <Router {...this.state}>
+        <Router>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
             <Scene
               title='Notifications'
               key='notifications'
               component={NotificationsScene}
               icon={TabIcon}
+              iconName='notifications'
             />
             <Scene
               title='Panier'
               key='cart'
               component={CartScene}
               icon={TabIcon}
+              iconName='shopping-cart'
             />
             <Scene
               title='Recherche'
               key='search'
               component={SearchScene}
               icon={TabIcon}
+              iconName='search'
               initial
             />
             <Scene
@@ -89,12 +92,14 @@ export default class App extends Component {
               key='map'
               component={MapScene}
               icon={TabIcon}
+              iconName='map'
             />
             <Scene
               title='Compte'
               key='account'
               component={AccountScene}
               icon={TabIcon}
+              iconName='account-circle'
             />
           </Scene>
         </Router>
