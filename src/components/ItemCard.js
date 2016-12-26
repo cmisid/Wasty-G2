@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Image, StyleSheet, View, Linking, Dimensions } from 'react-native'
+import { Image, StyleSheet, Dimensions } from 'react-native'
 
 import Lightbox from 'react-native-lightbox'
 
@@ -9,10 +9,6 @@ import frLocale from 'date-fns/locale/fr'
 import Card from './card/Card'
 import CardHeader from './card/CardHeader'
 import CardFooter from './card/CardFooter'
-
-import AppText from './AppText'
-
-import { colors } from '../style'
 
 // Google Maps
 const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
@@ -33,7 +29,6 @@ const haversineDistance = (lat1, lon1, lat2, lon2) => {
 
 const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
-
 export default class ItemCard extends Component {
   // TODO: add TouchableOpacity parent
   render () {
@@ -52,7 +47,7 @@ export default class ItemCard extends Component {
             source={{uri: this.props.imgUrl}}
           />
         </Lightbox>
-        
+
         <CardFooter
           publishDate={distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
           streetName={this.props.streetName}
@@ -74,7 +69,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
     alignSelf: 'center'
-  },
+  }
 })
 
 ItemCard.propTypes = {
