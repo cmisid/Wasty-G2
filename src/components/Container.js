@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native'
 export default class Container extends Component {
   render () {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style || {}]}>
         {this.props.children}
       </View>
     )
@@ -13,12 +13,13 @@ export default class Container extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    padding: 20,
-    flex: 1
+    flex: 1,
+    marginTop: 62,
+    marginBottom: 50
   }
 })
 
 Container.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  style: React.PropTypes.object
 }
