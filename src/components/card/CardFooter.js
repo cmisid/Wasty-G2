@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -11,27 +11,27 @@ export default class CardFooter extends Component {
     return (
       <View style={styles.publishMetadata}>
         <Image
-            style={styles.userImage}
-            resizeMode='contain'
-            source={{uri: this.props.userImg}}
+          style={styles.userImage}
+          resizeMode='contain'
+          source={{uri: this.props.userImg}}
         />
         <View style={{flex: 2, flexDirection: 'column'}}>
-          <AppText style={styles.publisher}>{this.props.username}</AppText>
-          <AppText 
-            style={styles.streetName}
+          <AppText style={StyleSheet.flatten(styles.publisher)}>{this.props.username}</AppText>
+          <AppText
+            style={StyleSheet.flatten(styles.streetName)}
             onPress={() => Linking.openURL(this.props.mapUrl)}
           >{`${this.props.streetName}, ${this.props.cityName}`}
           </AppText>
-          <AppText style={styles.distance}>
+          <AppText style={StyleSheet.flatten(styles.distance)}>
             {this.props.distance}
           </AppText>
         </View>
         <View style={{flex: 2, flexDirection: 'column', alignItems: 'flex-end'}}>
-          <AppText style={styles.date}>
+          <AppText style={StyleSheet.flatten(styles.date)}>
             {this.props.publishDate}
           </AppText>
           <View style={{flexDirection: 'row', marginRight: 5}}>
-            <Icon name="remove-red-eye" iconStyle={{marginTop: 10}}  size={20} color={colors.secondary} />
+            <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
             <AppText>{this.props.views}</AppText>
           </View>
         </View>
@@ -53,15 +53,15 @@ CardFooter.propTypes = {
 
 const styles = StyleSheet.create({
   publishMetadata: {
-    flex: 1, 
-    flexDirection: 'row', 
-    alignSelf: 'flex-start', 
-    marginBottom: 5, 
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
     marginLeft: 10
   },
   publisher: {
     marginTop: 10,
-    marginLeft: 5,
+    marginLeft: 5
   },
   streetName: {
     marginLeft: 5,
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
   },
   userImage: {
     marginTop: 10,
-    width: 30, 
-    height: 30, 
+    width: 30,
+    height: 30,
     borderRadius: 13
   },
   distance: {
