@@ -30,7 +30,7 @@ const options = {
   order: [ 'name', 'surname' ]
 }
 
-export default class AccountSettingsForm extends Component {
+export default class AccountSettingsScene extends Component {
 
   onConfirm () {
     /**
