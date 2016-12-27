@@ -6,6 +6,9 @@
     <a href="http://standardjs.com/">
       <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard - JavaScript Style Guide" />
     </a>
+    <a href="https://www.codacy.com/app/maxhalford25/Wasty-Mobile?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cmisid/Wasty-Mobile&amp;utm_campaign=Badge_Grade">
+      <img src="https://api.codacy.com/project/badge/Grade/96233b7009c44dd883680a2498c89f9f" alt="Codacy Badge" />
+    </a>
   </div>
 <div>
 

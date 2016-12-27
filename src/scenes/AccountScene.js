@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { AsyncStorage, StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
+import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
@@ -31,24 +32,39 @@ export default class AccountScene extends Component {
 
   render () {
     return (
-      <View style={{flex: 1, marginBottom: 40}}>
+      <Container>
         <AppText>{this.state.accountSettings.name}</AppText>
         <AppText>{this.state.accountSettings.surname}</AppText>
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='list' size={24} />}
         >
-          <ActionButton.Item buttonColor={colors.accent} title='Modifier mon mot de passe' onPress={() => console.log('notes tapped!')}>
+          <ActionButton.Item
+            buttonColor={colors.accent}
+            title='Modifier mon mot de passe'
+            onPress={() => {}}
+          >
             <Icon name='lock-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor={colors.accent} title='Modifier mon adresse e-mail' onPress={() => {}}>
+          <ActionButton.Item
+            buttonColor={colors.accent}
+            title='Modifier mon adresse e-mail'
+            onPress={() => {}}
+          >
             <Icon name='mail-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor={colors.accent} title='Modifier mes informations' onPress={() => {}}>
+          <ActionButton.Item
+            buttonColor={colors.accent}
+            title='Modifier mes informations'
+            onPress={() => Actions.accountSettingsForm({
+              currentAccountSettings: this.state.accountSettings,
+              updateAccountSettings: this.updateAccountSettings.bind(this)
+            })}
+          >
             <Icon name='person-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
-      </View>
+      </Container>
     )
   }
 }

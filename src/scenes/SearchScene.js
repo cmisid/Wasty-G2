@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, StyleSheet, View } from 'react-native'
+import { AsyncStorage, ListView, StyleSheet } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import parse from 'date-fns/parse'
 
-import ItemCard from '../components/ItemCard'
 import AddItemModal from '../components/AddItemModal'
+import Container from '../components/Container'
+import ItemCard from '../components/ItemCard'
 import { colors } from '../style'
 import { getItems } from '../store/api'
 
@@ -36,8 +37,7 @@ export default class ItemScene extends Component {
 
   render () {
     return (
-      <View style={styles.wrapper}>
-
+      <Container style={{backgroundColor: colors.background}}>
         <ListView
           style={styles.list}
           dataSource={ds.cloneWithRows(this.state.items)}
@@ -65,26 +65,17 @@ export default class ItemScene extends Component {
           ref={'postItemModal'}
         />
 
-        <View>
-          <ActionButton
-            buttonColor={colors.primary}
-            icon={<Icon color='white' name='add' size={24} />}
-            onPress={() => this.refs.postItemModal.openModal()}
-          />
-        </View>
-
-      </View>
+        <ActionButton
+          buttonColor={colors.primary}
+          icon={<Icon color='white' name='add' size={24} />}
+          onPress={() => this.refs.postItemModal.openModal()}
+        />
+      </Container>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: colors.background,
-    marginTop: 62,
-    marginBottom: 50
-  },
   list: {
     flex: 1
   }

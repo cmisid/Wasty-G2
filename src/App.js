@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Alert, NetInfo, StyleSheet } from 'react-native'
 
-import { Scene, Router } from 'react-native-router-flux'
+import { Router, Scene } from 'react-native-router-flux'
 
 import Overlay from './components/Overlay'
 import TabIcon from './components/TabIcon'
+import AccountSettingsForm from './components/forms/AccountSettingsForm'
 import AccountScene from './scenes/AccountScene'
 import CartScene from './scenes/CartScene'
 import SearchScene from './scenes/SearchScene'
@@ -66,42 +67,14 @@ export default class App extends Component {
       return (
         <Router sceneStyle={styles.sceneStyle} titleStyle={textStyle}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
-            <Scene
-              title='Notifications'
-              key='notifications'
-              component={NotificationsScene}
-              icon={TabIcon}
-              iconName='notifications'
-            />
-            <Scene
-              title='Panier'
-              key='cart'
-              component={CartScene}
-              icon={TabIcon}
-              iconName='shopping-cart'
-            />
-            <Scene
-              title='Recherche'
-              key='search'
-              component={SearchScene}
-              icon={TabIcon}
-              iconName='search'
-              initial
-            />
-            <Scene
-              title='Carte'
-              key='map'
-              component={MapScene}
-              icon={TabIcon}
-              iconName='map'
-            />
-            <Scene
-              title='Compte'
-              key='account'
-              component={AccountScene}
-              icon={TabIcon}
-              iconName='account-circle'
-            />
+            <Scene title='Notifications' key='notifications' component={NotificationsScene} icon={TabIcon} iconName='notifications' />
+            <Scene title='Panier' key='cart' component={CartScene} icon={TabIcon} iconName='shopping-cart' />
+            <Scene title='Recherche' key='search' component={SearchScene} icon={TabIcon} iconName='search' initial />
+            <Scene title='Carte' key='map' component={MapScene} icon={TabIcon} iconName='map' />
+            <Scene title='Compte' key='account' icon={TabIcon} iconName='account-circle'>
+              <Scene title='Compte' key='accountView' component={AccountScene} />
+              <Scene title='Modifier mes informations' key='accountSettingsForm' component={AccountSettingsForm} />
+            </Scene>
           </Scene>
         </Router>
       )

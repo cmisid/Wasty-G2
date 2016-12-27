@@ -1,12 +1,13 @@
-import 'react-native';
-import React from 'react';
-import Index from '../index.ios.js';
+import 'react-native'
+import React from 'react'
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
+
+import Overlay from '../src/components/Overlay'
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <Index />
-  );
-});
+    <Overlay iconLabel='bolt' message='Vous êtes hors-ligne' />
+  ).toJSON()
+  expect(tree).toMatchSnapshot()
+})
