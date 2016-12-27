@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, StyleSheet, Linking } from 'react-native'
+import { View, Image, StyleSheet, Linking, Text } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -17,11 +17,11 @@ export default class CardFooter extends Component {
         />
         <View style={{flex: 2, flexDirection: 'column'}}>
           <AppText style={StyleSheet.flatten(styles.publisher)}>{this.props.username}</AppText>
-          <AppText
+          <Text
             style={StyleSheet.flatten(styles.streetName)}
             onPress={() => Linking.openURL(this.props.mapUrl)}
           >{`${this.props.streetName}, ${this.props.cityName}`}
-          </AppText>
+          </Text>
           <AppText style={StyleSheet.flatten(styles.distance)}>
             {this.props.distance}
           </AppText>

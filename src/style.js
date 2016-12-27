@@ -4,7 +4,7 @@ export const colors = {
   accent: 'goldenrod',
 
   background: 'darkgray',
-  inactive: 'lightgray',
+  inactive: 'darkgray',
 
   link: 'dodgerblue'
 }
