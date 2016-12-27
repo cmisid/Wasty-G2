@@ -30,7 +30,7 @@ const options = {
   order: [ 'name', 'surname' ]
 }
 
-export default class AccountSettingsForm extends Component {
+export default class AccountSettingsScene extends Component {
 
   onConfirm () {
     /**
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   }
 })
 
-AccountSettingsForm.propTypes = {
+AccountSettingsScene.propTypes = {
   currentAccountSettings: React.PropTypes.object,
   updateAccountSettings: React.PropTypes.func
 }

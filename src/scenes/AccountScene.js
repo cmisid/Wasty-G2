@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, StyleSheet, View } from 'react-native'
+import { AsyncStorage, StyleSheet } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
@@ -56,7 +56,7 @@ export default class AccountScene extends Component {
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mes informations'
-            onPress={() => Actions.accountSettingsForm({
+            onPress={() => Actions.accountSettingsScene({
               currentAccountSettings: this.state.accountSettings,
               updateAccountSettings: this.updateAccountSettings.bind(this)
             })}
