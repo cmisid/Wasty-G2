@@ -11,7 +11,9 @@ import CardHeader from './card/CardHeader'
 import CardFooter from './card/CardFooter'
 
 // Google Maps
-const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
+const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => (
+  `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
+)
 
 const toRad = x => x * Math.PI / 180
 
@@ -35,8 +37,8 @@ export default class ItemCard extends Component {
     return (
       <Card>
         <CardHeader
-          title={this.props.title}
-          category={this.props.category}
+          title={this.props.item.title}
+          category={this.props.item.category}
         />
         <Lightbox
           navigator={this.props.navigator}
@@ -44,19 +46,32 @@ export default class ItemCard extends Component {
         >
           <Image
             style={styles.image}
-            source={{uri: this.props.imgUrl}}
+            source={{uri: this.props.item.imgUrl}}
           />
         </Lightbox>
 
         <CardFooter
-          publishDate={distanceInWordsToNow(this.props.publishDate, {locale: frLocale, addSuffix: true})}
-          streetName={this.props.streetName}
-          cityName={this.props.cityName}
-          userImg={this.props.userImg}
-          username={this.props.username}
-          distance={distanceFmt(haversineDistance(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon))}
-          mapUrl={generateMapLink(this.props.userLat, this.props.userLon, this.props.itemLat, this.props.itemLon)}
-          views={this.props.views}
+          publishDate={distanceInWordsToNow(
+            this.props.item.publishDate,
+            {locale: frLocale, addSuffix: true}
+          )}
+          streetName={this.props.item.streetName}
+          cityName={this.props.item.cityName}
+          userImg={this.props.item.publisher.imgUrl}
+          username={`${this.props.item.publisher.firstName} ${this.props.item.publisher.lastName}`}
+          distance={distanceFmt(haversineDistance(
+            this.props.userLat,
+            this.props.userLon,
+            this.props.item.lat,
+            this.props.item.lon
+          ))}
+          mapUrl={generateMapLink(
+            this.props.userLat,
+            this.props.userLon,
+            this.props.item.lat,
+            this.props.item.lon
+          )}
+          views={this.props.item.nViews}
         />
       </Card>
     )
@@ -73,18 +88,7 @@ const styles = StyleSheet.create({
 })
 
 ItemCard.propTypes = {
-  category: React.PropTypes.string,
-  publishDate: React.PropTypes.object,
-  navigator: React.PropTypes.node,
-  title: React.PropTypes.string,
-  streetName: React.PropTypes.string,
-  cityName: React.PropTypes.string,
-  imgUrl: React.PropTypes.string,
-  itemLat: React.PropTypes.number,
-  itemLon: React.PropTypes.number,
+  item: React.PropTypes.object,
   userLat: React.PropTypes.number,
-  userLon: React.PropTypes.number,
-  userImg: React.PropTypes.string,
-  username: React.PropTypes.string,
-  views: React.PropTypes.number
+  userLon: React.PropTypes.number
 }

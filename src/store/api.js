@@ -1,18 +1,21 @@
 import { AsyncStorage } from 'react-native'
 
+import { Item, User } from '../classes'
+
 export const getItems = () => {
-  return new Promise(function (resolve, reject) {
-    resolve([
+  return new Promise((resolve, reject) => {
+    const response = [
       {
         'title': 'Canapé cuir',
         'category': 'AMEUBLEMENT',
         'img_url': 'https://unsplash.it/300/300/',
         'publish_date': '2016-12-26T00:34:00',
         'publisher': {
-          'publisher_id': 1,
-          'name': 'Axel Bellec',
           'email': 'axel.bellec@outlook.fr',
-          'user_img_url': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg'
+          'first_name': 'Axel',
+          'img_url': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg',
+          'last_name': 'Bellec',
+          'date_joined': '2016-11-26T00:34:00'
         },
         'views': 14,
         'coordinates': {
@@ -28,10 +31,11 @@ export const getItems = () => {
         'img_url': 'https://unsplash.it/300/400/',
         'publish_date': '2016-12-19T00:00:00',
         'publisher': {
-          'publisher_id': 2,
-          'name': 'Max Halford',
           'email': 'maxhalford25@gmail.com',
-          'user_img_url': 'https://avatars2.githubusercontent.com/u/8095957?v=3&s=460.jpg'
+          'first_name': 'Max',
+          'img': 'https://avatars2.githubusercontent.com/u/8095957?v=3&s=460.jpg',
+          'last_name': 'Halford',
+          'date_joined': '2016-11-26T00:34:00'
         },
         'views': 26,
         'coordinates': {
@@ -47,10 +51,11 @@ export const getItems = () => {
         'img_url': 'https://unsplash.it/400/300/',
         'publish_date': '2016-12-20T00:00:00',
         'publisher': {
-          'publisher_id': 1,
-          'name': 'Axel Bellec',
           'email': 'axel.bellec@outlook.fr',
-          'user_img_url': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg'
+          'first_name': 'Axel',
+          'img': 'https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg',
+          'last_name': 'Bellec',
+          'date_joined': '2016-11-26T00:34:00'
         },
         'views': 57,
         'coordinates': {
@@ -60,7 +65,28 @@ export const getItems = () => {
         'street_name': 'Allée de Barcelone',
         'city_name': 'Toulouse'
       }
-    ])
+    ]
+
+    const items = response.map(item => new Item({
+      category: item.category,
+      cityName: item.city_name,
+      imgUrl: item.img_url,
+      lat: item.coordinates.lat,
+      lon: item.coordinates.lon,
+      nViews: item.views,
+      publishDate: item.publish_date,
+      streetName: item.streetName,
+      title: item.title,
+      publisher: new User({
+        email: item.publisher.email,
+        firstName: item.publisher.first_name,
+        imgUrl: item.publisher.img_url,
+        joinDate: item.publisher.date_joined,
+        lastName: item.publisher.last_name
+      })
+    }))
+
+    resolve(items)
   })
 }
 

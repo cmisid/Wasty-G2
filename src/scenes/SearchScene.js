@@ -3,7 +3,6 @@ import { AsyncStorage, ListView, StyleSheet } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import parse from 'date-fns/parse'
 
 import AddItemModal from '../components/AddItemModal'
 import Container from '../components/Container'
@@ -41,22 +40,13 @@ export default class ItemScene extends Component {
         <ListView
           style={styles.list}
           dataSource={ds.cloneWithRows(this.state.items)}
-          renderRow={item => <ItemCard
-            title={item.title}
-            category={item.category}
-            streetName={item.street_name}
-            cityName={item.city_name}
-            imgUrl={item.img_url}
-            itemLat={item.coordinates.lat}
-            itemLon={item.coordinates.lon}
-            userLat={this.state.location.lat}
-            userLon={this.state.location.lon}
-            userImg={item.publisher.user_img_url}
-            username={item.publisher.name}
-            publishDate={parse(item.publish_date)}
-            views={item.views}
+          renderRow={item => (
+            <ItemCard
+              item={item}
+              userLat={this.state.location.lat}
+              userLon={this.state.location.lon}
             />
-          }
+          )}
           enableEmptySections
         />
 
