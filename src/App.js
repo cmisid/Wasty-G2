@@ -11,7 +11,7 @@ import AccountSettingsScene from './scenes/AccountSettingsScene'
 import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
-import SocialAuthScene from './scenes/SocialAuthScene'
+// import SocialAuthScene from './scenes/SocialAuthScene'
 import PostsScene from './scenes/PostsScene'
 
 export default class App extends Component {
@@ -68,7 +68,7 @@ export default class App extends Component {
       return (
         <Router sceneStyle={styles.sceneStyle} renderTitle={() => <RouterTitle />}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
-            <Scene title='Connexion' key='connexion' component={SocialAuthScene} icon={TabIcon} iconName='info' />
+            { /* <Scene title='Connexion' key='connexion' component={SocialAuthScene} icon={TabIcon} iconName='info' /> */ }
             <Scene title='Mes posts' key='postsScene' component={PostsScene} icon={TabIcon} iconName='playlist-add' />
             <Scene title='Ma liste' key='listScene' component={ListScene} icon={TabIcon} iconName='playlist-add-check' />
             <Scene title='Recherche' key='searchScene' component={SearchScene} icon={TabIcon} iconName='search' initial />

@@ -24,7 +24,7 @@ export default class ProfileView extends Component {
         <View style={styles.messageBox}>
           <Image
             style={styles.badge}
-            source={{uri: 'https://raw.githubusercontent.com/auth0/Mobile-Samples.React/master/Classic/Lock/img/badge.png'}}
+            source={require('../../img/logo.png')}
           />
           <Image
             style={styles.avatar}

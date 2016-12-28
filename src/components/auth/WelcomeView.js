@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native'
 
 import Auth0Lock from 'react-native-lock'
@@ -28,6 +29,7 @@ export default class WelcomeView extends Component {
   _onLogin () {
     lock.show({
       closable: true
+
     }, (err, profile, token) => {
       if (err) {
         console.log(err)
@@ -50,7 +52,7 @@ export default class WelcomeView extends Component {
         <View style={styles.messageBox}>
           <Image
             style={styles.badge}
-            source={{uri: 'https://raw.githubusercontent.com/auth0/Mobile-Samples.React/master/Classic/Lock/img/badge.png'}}
+            source={require('../../img/logo.png')}
           />
           <Text style={styles.title}>Auth0 Example</Text>
           <Text style={styles.subtitle}>Identity made simple for Developers</Text>
@@ -78,9 +80,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   badge: {
-    alignSelf: 'center',
-    height: 169,
-    width: 151
+    width: Dimensions.get('window').width - 10 / 2,
+    // height: Dimensions.get('window').height / 2 - 10,
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   title: {
     fontSize: 17,
