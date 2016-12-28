@@ -11,6 +11,7 @@ import CartScene from './scenes/CartScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import NotificationsScene from './scenes/NotificationsScene'
+import SocialAuthScene from './scenes/SocialAuthScene'
 import { textStyle } from './style'
 
 export default class App extends Component {
@@ -67,7 +68,8 @@ export default class App extends Component {
       return (
         <Router sceneStyle={styles.sceneStyle} titleStyle={textStyle}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
-            <Scene title='Notifications' key='notifications' component={NotificationsScene} icon={TabIcon} iconName='notifications' />
+            {/* <Scene title='Notifications' key='notifications' component={NotificationsScene} icon={TabIcon} iconName='notifications' /> */}
+            <Scene title='Connexion' key='connexion' component={SocialAuthScene} icon={TabIcon} iconName='info' />
             <Scene title='Panier' key='cart' component={CartScene} icon={TabIcon} iconName='shopping-cart' />
             <Scene title='Recherche' key='search' component={SearchScene} icon={TabIcon} iconName='search' initial />
             <Scene title='Carte' key='map' component={MapScene} icon={TabIcon} iconName='map' />
