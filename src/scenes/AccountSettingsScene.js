@@ -6,8 +6,8 @@ import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import t from 'tcomb-form-native'
 
-import Container from '../Container'
-import { colors } from '../../style'
+import Container from '../components/Container'
+import { colors } from '../style'
 
 const Form = t.form.Form
 
