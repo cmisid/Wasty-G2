@@ -7,11 +7,11 @@ import Overlay from './components/Overlay'
 import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
 import AccountSettingsScene from './scenes/AccountSettingsScene'
-import CartScene from './scenes/CartScene'
+import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
-// import NotificationsScene from './scenes/NotificationsScene'
 import SocialAuthScene from './scenes/SocialAuthScene'
+import PostsScene from './scenes/PostsScene'
 import { textStyle } from './style'
 
 export default class App extends Component {
@@ -68,13 +68,13 @@ export default class App extends Component {
       return (
         <Router sceneStyle={styles.sceneStyle} titleStyle={textStyle}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
-            {/* <Scene title='Notifications' key='notifications' component={NotificationsScene} icon={TabIcon} iconName='notifications' /> */}
             <Scene title='Connexion' key='connexion' component={SocialAuthScene} icon={TabIcon} iconName='info' />
-            <Scene title='Panier' key='cart' component={CartScene} icon={TabIcon} iconName='shopping-cart' />
-            <Scene title='Recherche' key='search' component={SearchScene} icon={TabIcon} iconName='search' initial />
-            <Scene title='Carte' key='map' component={MapScene} icon={TabIcon} iconName='map' />
-            <Scene title='Compte' key='account' icon={TabIcon} iconName='account-circle'>
-              <Scene title='Compte' key='accountView' component={AccountScene} />
+            <Scene title='Mes posts' key='postsScene' component={PostsScene} icon={TabIcon} iconName='playlist-add' />
+            <Scene title='Ma liste' key='listScene' component={ListScene} icon={TabIcon} iconName='playlist-add-check' />
+            <Scene title='Recherche' key='searchScene' component={SearchScene} icon={TabIcon} iconName='search' initial />
+            <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
+            <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
+              <Scene title='Compte' key='accountViewScene' component={AccountScene} />
               <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
             </Scene>
           </Scene>
