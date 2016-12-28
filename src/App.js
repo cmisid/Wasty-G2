@@ -5,8 +5,8 @@ import { Router, Scene } from 'react-native-router-flux'
 
 import Overlay from './components/Overlay'
 import TabIcon from './components/TabIcon'
-import AccountSettingsForm from './components/forms/AccountSettingsForm'
 import AccountScene from './scenes/AccountScene'
+import AccountSettingsScene from './scenes/AccountSettingsScene'
 import CartScene from './scenes/CartScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
@@ -75,7 +75,7 @@ export default class App extends Component {
             <Scene title='Carte' key='map' component={MapScene} icon={TabIcon} iconName='map' />
             <Scene title='Compte' key='account' icon={TabIcon} iconName='account-circle'>
               <Scene title='Compte' key='accountView' component={AccountScene} />
-              <Scene title='Modifier mes informations' key='accountSettingsForm' component={AccountSettingsForm} />
+              <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
             </Scene>
           </Scene>
         </Router>
