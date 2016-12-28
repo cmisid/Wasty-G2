@@ -10,7 +10,7 @@ import AccountSettingsScene from './scenes/AccountSettingsScene'
 import CartScene from './scenes/CartScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
-import NotificationsScene from './scenes/NotificationsScene'
+// import NotificationsScene from './scenes/NotificationsScene'
 import SocialAuthScene from './scenes/SocialAuthScene'
 import { textStyle } from './style'
 
