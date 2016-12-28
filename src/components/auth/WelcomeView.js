@@ -22,10 +22,10 @@ export default class WelcomeView extends Component {
 
   constructor (props) {
     super(props)
-    this.onLogin = this.onLogin.bind(this)
+    this._onLogin = this._onLogin.bind(this)
   }
 
-  onLogin () {
+  _onLogin () {
     lock.show({
       closable: true
     }, (err, profile, token) => {
@@ -58,7 +58,7 @@ export default class WelcomeView extends Component {
         <TouchableHighlight
           style={styles.signInButton}
           underlayColor='#949494'
-          onPress={this.onLogin}>
+          onPress={this._onLogin}>
           <Text>Log In</Text>
         </TouchableHighlight>
       </View>

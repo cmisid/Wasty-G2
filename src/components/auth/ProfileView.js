@@ -12,6 +12,12 @@ import {
 const API_ENDPOINT = 'http://localhost:3001/secured/ping'
 
 export default class ProfileView extends Component {
+
+  constructor (props) {
+    super(props)
+    this._onCallApi = this._onCallApi.bind(this)
+  }
+
   render () {
     return (
       <View style={styles.container}>
