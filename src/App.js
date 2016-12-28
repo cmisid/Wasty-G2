@@ -4,6 +4,7 @@ import { Alert, NetInfo, StyleSheet } from 'react-native'
 import { Router, Scene } from 'react-native-router-flux'
 
 import Overlay from './components/Overlay'
+import RouterTitle from './components/RouterTitle'
 import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
 import AccountSettingsScene from './scenes/AccountSettingsScene'
@@ -12,7 +13,6 @@ import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import SocialAuthScene from './scenes/SocialAuthScene'
 import PostsScene from './scenes/PostsScene'
-import { textStyle } from './style'
 
 export default class App extends Component {
 
@@ -66,15 +66,15 @@ export default class App extends Component {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else {
       return (
-        <Router sceneStyle={styles.sceneStyle} titleStyle={textStyle}>
+        <Router sceneStyle={styles.sceneStyle} renderTitle={() => <RouterTitle />}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
             <Scene title='Connexion' key='connexion' component={SocialAuthScene} icon={TabIcon} iconName='info' />
             <Scene title='Mes posts' key='postsScene' component={PostsScene} icon={TabIcon} iconName='playlist-add' />
             <Scene title='Ma liste' key='listScene' component={ListScene} icon={TabIcon} iconName='playlist-add-check' />
             <Scene title='Recherche' key='searchScene' component={SearchScene} icon={TabIcon} iconName='search' initial />
             <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
-            <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
-              <Scene title='Compte' key='accountViewScene' component={AccountScene} />
+            <Scene title='Mon compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
+              <Scene title='Mon compte' key='accountViewScene' component={AccountScene} />
               <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
             </Scene>
           </Scene>
