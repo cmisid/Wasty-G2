@@ -5,8 +5,7 @@ import {
   Text,
   View,
   Image,
-  TouchableHighlight,
-  AsyncStorage
+  TouchableHighlight
 } from 'react-native'
 
 import Auth0Lock from 'react-native-lock'
@@ -26,11 +25,6 @@ export default class WelcomeView extends Component {
     this.onLogin = this.onLogin.bind(this)
   }
 
-  onChangeAuth (auth) {
-    this.setState(auth)
-    AsyncStorage.setItem('auth', JSON.stringify(auth))
-  }
-
   onLogin () {
     lock.show({
       closable: true
@@ -40,14 +34,13 @@ export default class WelcomeView extends Component {
         return
       }
 
-      this.onChangeAuth({
+      this.props.navigator.push({
         name: 'Profile',
         passProps: {
           profile: profile,
           token: token
         }
       })
-      console.log(this.state)
     })
   }
 

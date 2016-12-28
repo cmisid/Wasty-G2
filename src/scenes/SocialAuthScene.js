@@ -28,6 +28,8 @@ export default class SocialAuthScene extends Component {
   }
 
   renderScene (route, navigator) {
+    console.log(route.name)
+    console.log(route.passProps)
     if (route.name === 'Welcome') {
       return <WelcomeView navigator={navigator} {...route.passProps} />
     }
