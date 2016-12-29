@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import { Image, StyleSheet, Dimensions } from 'react-native'
+import { Dimensions, Image, StyleSheet, TouchableHighlight } from 'react-native'
 
-import Lightbox from 'react-native-lightbox'
+import { Actions } from 'react-native-router-flux'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
@@ -40,16 +40,14 @@ export default class ItemCard extends Component {
           title={this.props.item.title}
           category={this.props.item.category}
         />
-        <Lightbox
-          navigator={this.props.navigator}
-          swipeToDismiss
-        >
+        <TouchableHighlight onPress={() => Actions.searchItemScene({
+          item: this.props.item
+        })}>
           <Image
             style={styles.image}
             source={{uri: this.props.item.imgUrl}}
           />
-        </Lightbox>
-
+        </TouchableHighlight>
         <CardFooter
           publishDate={distanceInWordsToNow(
             this.props.item.publishDate,

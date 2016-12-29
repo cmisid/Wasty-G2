@@ -8,6 +8,7 @@ import RouterTitle from './components/RouterTitle'
 import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
 import AccountSettingsScene from './scenes/AccountSettingsScene'
+import ItemScene from './scenes/ItemScene'
 import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
@@ -69,7 +70,10 @@ export default class App extends Component {
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
             <Scene title='Mes posts' key='postsScene' component={PostsScene} icon={TabIcon} iconName='playlist-add' />
             <Scene title='Ma liste' key='listScene' component={ListScene} icon={TabIcon} iconName='playlist-add-check' />
-            <Scene title='Recherche' key='searchScene' component={SearchScene} icon={TabIcon} iconName='search' initial />
+            <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
+              <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
+              <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
+            </Scene>
             <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
             <Scene title='Mon compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
               <Scene title='Mon compte' key='accountViewScene' component={AccountScene} />
