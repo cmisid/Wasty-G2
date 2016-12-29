@@ -75,7 +75,7 @@ export const getItems = () => {
       lon: item.coordinates.lon,
       nViews: item.views,
       publishDate: item.publish_date,
-      streetName: item.streetName,
+      streetName: item.street_name,
       title: item.title,
       publisher: new User({
         email: item.publisher.email,
