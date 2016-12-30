@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, StyleSheet } from 'react-native'
+import { AsyncStorage, ListView, Platform, StyleSheet } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
+import ImagePicker from 'react-native-image-picker'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import AddItemModal from '../components/AddItemModal'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
 import { colors } from '../style'
@@ -18,7 +18,10 @@ export default class ItemScene extends Component {
     super(props)
     this.state = {
       items: {},
-      location: {'lat': 48.566140, 'lon': -3.148260}
+      location: {'lat': 48.566140, 'lon': -3.148260},
+
+      avatarSource: null,
+      videoSource: null
     }
   }
 
@@ -34,12 +37,40 @@ export default class ItemScene extends Component {
     AsyncStorage.setItem('items', JSON.stringify(items))
   }
 
+  selectPhotoTapped () {
+    const options = {
+      quality: 1.0,
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true
+      }
+    }
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response)
+      if (response.didCancel) {
+        console.log('User cancelled photo picker')
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error)
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton)
+      } else {
+        const source = Platform.OS === 'android'
+          ? {uri: response.uri, isStatic: true}
+          : {uri: response.uri.replace('file://', ''), isStatic: true}
+        this.setState({
+          avatarSource: source
+        })
+      }
+    })
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <ListView
-          style={styles.list}
           dataSource={ds.cloneWithRows(this.state.items)}
+          enableEmptySections
           renderRow={item => (
             <ItemCard
               item={item}
@@ -47,18 +78,13 @@ export default class ItemScene extends Component {
               userLon={this.state.location.lon}
             />
           )}
-          enableEmptySections
-        />
-
-        <AddItemModal
-          onConfirm={this.props.postItem}
-          ref={'postItemModal'}
+          style={styles.list}
         />
 
         <ActionButton
           buttonColor={colors.primary}
-          icon={<Icon color='white' name='add' size={24} />}
-          onPress={() => this.refs.postItemModal.openModal()}
+          icon={<Icon color='white' name='photo-camera' size={20} />}
+          onPress={() => this.selectPhotoTapped()}
         />
       </Container>
     )
