@@ -8,7 +8,8 @@ export const getItems = () => {
       {
         'title': 'Canapé cuir',
         'category': 'AMEUBLEMENT',
-        'img_url': 'https://unsplash.it/300/300/',
+        'img': 'https://unsplash.it/300/300/',
+        'img_placeholder': 'https://unsplash.it/100/100/?blur',
         'publish_date': '2016-12-26T00:34:00',
         'publisher': {
           'email': 'axel.bellec@outlook.fr',
@@ -28,7 +29,8 @@ export const getItems = () => {
       {
         'title': 'Portes coulissantes',
         'category': 'BOIS ET MATERIAUX',
-        'img_url': 'https://unsplash.it/300/400/',
+        'img': 'https://unsplash.it/300/300/',
+        'img_placeholder': 'https://unsplash.it/100/100/?blur',
         'publish_date': '2016-12-19T00:00:00',
         'publisher': {
           'email': 'maxhalford25@gmail.com',
@@ -48,7 +50,8 @@ export const getItems = () => {
       {
         'title': 'Frigo',
         'category': 'ELECTROMENAGER',
-        'img_url': 'https://unsplash.it/400/300/',
+        'img': 'https://unsplash.it/300/300/',
+        'img_placeholder': 'https://unsplash.it/100/100/?blur',
         'publish_date': '2016-12-20T00:00:00',
         'publisher': {
           'email': 'axel.bellec@outlook.fr',
@@ -70,7 +73,8 @@ export const getItems = () => {
     const items = response.map(item => new Item({
       category: item.category,
       cityName: item.city_name,
-      imgUrl: item.img_url,
+      imgUrl: item.img,
+      imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,
       lon: item.coordinates.lon,
       nViews: item.views,
