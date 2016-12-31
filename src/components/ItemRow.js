@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { View, Image, StyleSheet, Linking } from 'react-native'
+import { View, StyleSheet, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import ProgressiveImage from './ProgressiveImage'
+
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
@@ -36,8 +38,9 @@ export default class ItemRow extends Component {
         <View
           style={styles.row}
         >
-          <Image
-            source={{uri: this.props.item.imgUrl}}
+          <ProgressiveImage
+            thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
+            imageSource={{ uri: this.props.item.imgUrl }}
             style={styles.image}
           />
           <View
@@ -106,20 +109,25 @@ ItemRow.propTypes = {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
+    marginLeft: 10,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between'
   },
   category: {
+    marginLeft: 10,
     fontWeight: 'bold',
     color: colors.primary
   },
   image: {
     width: 100 - 10,
     height: 100 - 10,
-    marginTop: 10
+    marginTop: 5,
+    marginBottom: 10,
+    borderRadius: 5
   },
   title: {
+    marginLeft: 10,
     marginTop: 10
   },
   row: {
