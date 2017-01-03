@@ -7,7 +7,6 @@ import Overlay from './components/Overlay'
 import RouterTitle from './components/RouterTitle'
 import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
-import AccountSettingsScene from './scenes/AccountSettingsScene'
 import ItemScene from './scenes/ItemScene'
 import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
@@ -75,9 +74,9 @@ export default class App extends Component {
               <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
             </Scene>
             <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
-            <Scene title='Mon compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
-              <Scene title='Mon compte' key='accountViewScene' component={AccountScene} />
-              <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
+            <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
+              <Scene title='Compte' key='accountViewScene' component={AccountScene} />
+              <Scene title='Modifier mes informations' key='userScene' component={AccountScene} />
             </Scene>
           </Scene>
         </Router>

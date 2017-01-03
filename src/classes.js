@@ -19,7 +19,12 @@ export class User {
     this.email = email
     this.firstName = firstName
     this.imgUrl = imgUrl
+    this.imgPlaceholderUrl = imgUrl
     this.joinDate = joinDate
     this.lastName = lastName
+  }
+
+  get fullName () {
+    return `${this.firstName} ${this.lastName}`
   }
 }

@@ -12,34 +12,34 @@ import { colors } from '../style'
 const Form = t.form.Form
 
 const Account = t.struct({
-  name: t.String,
-  surname: t.String
+  firstName: t.String,
+  lastName: t.String
 })
 
 const options = {
   fields: {
-    name: {
+    firstName: {
       label: 'Prénom',
       error: 'Un prénom est requis'
     },
-    surname: {
+    lastName: {
       label: 'Nom',
       error: 'Un nom est requis'
     }
   },
-  order: [ 'name', 'surname' ]
+  order: [ 'firstName', 'lastName' ]
 }
 
-export default class AccountSettingsScene extends Component {
+export default class AccountScene extends Component {
 
   onConfirm () {
     /**
      * Update the account settings. The update is triggered if the provided
      * settings are valid and are different from the previous ones.
      */
-    const newAccountSettings = this.refs.form.getValue()
-    if (newAccountSettings && !isEqual(newAccountSettings, this.props.accountSettings)) {
-      this.props.updateAccountSettings(newAccountSettings)
+    const newUser = this.refs.form.getValue()
+    if (newUser && !isEqual(newUser, this.props.user)) {
+      this.props.updateUser(newUser)
     }
   }
 
@@ -51,7 +51,7 @@ export default class AccountSettingsScene extends Component {
             options={options}
             ref='form'
             type={Account}
-            value={this.props.currentAccountSettings}
+            value={this.props.currentUser}
           />
           <ActionButton
             buttonColor={colors.primary}
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   }
 })
 
-AccountSettingsScene.propTypes = {
-  currentAccountSettings: React.PropTypes.object,
-  updateAccountSettings: React.PropTypes.func
+AccountScene.propTypes = {
+  currentUser: React.PropTypes.object,
+  updateUser: React.PropTypes.func
 }
