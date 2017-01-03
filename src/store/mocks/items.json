@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "title": "Canapé cuir",
     "category": "AMEUBLEMENT",
     "img": "https://unsplash.it/600/400/",
@@ -21,6 +22,7 @@
     "city_name": "Toulouse"
   },
   {
+    "id": "2",
     "title": "Portes coulissantes",
     "category": "BOIS ET MATERIAUX",
     "img": "https://unsplash.it/600/400/",
@@ -42,6 +44,7 @@
     "city_name": "Toulouse"
   },
   {
+    "id": "3",
     "title": "Frigo",
     "category": "ELECTROMENAGER",
     "img": "https://unsplash.it/600/400/",

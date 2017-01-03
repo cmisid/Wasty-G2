@@ -13,6 +13,9 @@ import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import PostsScene from './scenes/PostsScene'
 
+// Disable RCTAnimation warning
+console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
+
 export default class App extends Component {
 
   constructor (props) {
