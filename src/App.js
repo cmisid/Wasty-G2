@@ -68,7 +68,10 @@ export default class App extends Component {
         <Router sceneStyle={styles.sceneStyle} renderTitle={() => <RouterTitle />}>
           <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
             <Scene title='Mes posts' key='postsScene' component={PostsScene} icon={TabIcon} iconName='playlist-add' />
-            <Scene title='Ma liste' key='listScene' component={ListScene} icon={TabIcon} iconName='playlist-add-check' />
+            <Scene title='Ma liste' key='listScene' icon={TabIcon} iconName='playlist-add-check'>
+              <Scene title='Ma liste' key='listViewScene' component={ListScene} />
+              <Scene title='Ma liste' key='listItemScene' component={ItemScene} />
+            </Scene>
             <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
               <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
               <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
