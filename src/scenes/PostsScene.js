@@ -3,7 +3,7 @@ import { ListView, StyleSheet, View } from 'react-native'
 
 import ItemRow from '../components/ItemRow'
 import Container from '../components/Container'
-import { getUserItems } from '../store/api'
+import { getPosts } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -13,14 +13,14 @@ export default class PostedScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      userItems: {},
+      items: [],
       location: {'lat': 48.566140, 'lon': -3.148260}
     }
   }
 
   componentDidMount () {
-    getUserItems()
-      .then(userItems => { this.setState({userItems}) })
+    getPosts()
+      .then(items => { this.setState({items}) })
       .catch(() => {})
   }
 
@@ -29,10 +29,10 @@ export default class PostedScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
         <ListView
           style={styles.list}
-          dataSource={ds.cloneWithRows(this.state.userItems)}
-          renderRow={userItem => (
+          dataSource={ds.cloneWithRows(this.state.items)}
+          renderRow={item => (
             <ItemRow
-              item={userItem}
+              item={item}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
