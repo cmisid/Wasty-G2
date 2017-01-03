@@ -1,28 +1,46 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import AppText from './AppText'
+
+const itemScenes = [
+  'postsItemScene',
+  'listItemScene',
+  'searchItemScene'
+]
 
 export default class RouterTitle extends Component {
-
-  shouldComponentUpdate () {
-    return false
-  }
-
   render () {
-    return (
-      <View style={styles.titleWrapper}>
-        <Image source={require('../img/logo.png')} style={styles.titleImage} />
-      </View>
-    )
+    if (itemScenes.includes(this.props.scene.name)) {
+      return (
+        <View style={styles.titleWrapper}>
+          <AppText style={StyleSheet.flatten(styles.titleText)}>
+            {this.props.scene.item.title}
+          </AppText>
+        </View>
+      )
+    } else {
+      return (
+        <View style={styles.titleWrapper}>
+          <AppText style={StyleSheet.flatten(styles.titleText)}>
+            {this.props.scene.title}
+          </AppText>
+        </View>
+      )
+    }
   }
 }
 
 const styles = StyleSheet.create({
-  titleImage: {
-    height: 30,
-    width: 80
-  },
   titleWrapper: {
     alignItems: 'center',
-    paddingTop: 24
+    paddingTop: 26
+  },
+  titleText: {
+    fontSize: 20
   }
 })
+
+RouterTitle.propTypes = {
+  scene: React.PropTypes.object
+}

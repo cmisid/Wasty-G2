@@ -67,11 +67,11 @@ export const getPosts = () => {
   })
 }
 
-export const getTimeline = () => {
+export const getEvents = () => {
   return new Promise((resolve, reject) => {
-    const response = require('./mocks/timeline.json')
+    const response = require('./mocks/events.json')
 
-    const timeline = response.map(event => new Event({
+    const events = response.map(event => new Event({
       action: event.action,
       date: event.date,
       item: new Item({
@@ -79,16 +79,13 @@ export const getTimeline = () => {
         cityName: event.item.city_name,
         imgUrl: event.item.img,
         imgPlaceholderUrl: event.item.img_placeholder,
-        lat: event.item.coordinates.lat,
-        lon: event.item.coordinates.lon,
-        nViews: event.item.views,
         publishDate: event.item.publish_date,
         streetName: event.item.street_name,
         title: event.item.title
       })
     }))
 
-    resolve(timeline)
+    resolve(events)
   })
 }
 

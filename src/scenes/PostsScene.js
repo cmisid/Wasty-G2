@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { ListView, StyleSheet, View } from 'react-native'
 
+import { Actions } from 'react-native-router-flux'
+
 import ItemRow from '../components/ItemRow'
 import Container from '../components/Container'
 import { getPosts } from '../store/api'
@@ -33,6 +35,7 @@ export default class PostedScene extends Component {
           renderRow={item => (
             <ItemRow
               item={item}
+              onPressAction={() => Actions.postsItemScene({item})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />

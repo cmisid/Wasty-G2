@@ -11,8 +11,6 @@ import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 
-import { Actions } from 'react-native-router-flux'
-
 const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => (
   `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
 )
@@ -36,10 +34,8 @@ const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1
 export default class ItemRow extends Component {
   render () {
     return (
-      <TouchableHighlight onPress={() => Actions.searchItemScene({
-        item : this.props.item
-      })}>
-        <View style ={{flex: 1}}>
+      <TouchableHighlight onPress={this.props.onPressAction}>
+        <View style={{flex: 1}}>
           <Card>
             <View
               style={styles.row}
@@ -110,6 +106,7 @@ export default class ItemRow extends Component {
 
 ItemRow.propTypes = {
   item: React.PropTypes.object,
+  onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
 }
@@ -137,13 +134,6 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10,
     marginTop: 10
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginBottom: 5,
-    marginLeft: 10
   },
   streetName: {
     color: colors.link
