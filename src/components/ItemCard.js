@@ -40,7 +40,7 @@ export default class ItemCard extends Component {
       <TouchableHighlight onPress={() => Actions.searchItemScene({
         item: this.props.item
       })}>
-        <View>
+        <View style={{flex: 1}}>
           <Card>
 
             <CardHeader
