@@ -24,6 +24,7 @@ export default class MapScene extends Component {
     super(props)
     this.state = {
       markers: [],
+      map: {...StyleSheet.absoluteFillObject},
       coordinate: {
         latitude: 43.588958,
         longitude: 1.450104
@@ -37,29 +38,50 @@ export default class MapScene extends Component {
       .catch(() => {})
   }
 
+  changeMapLayout (e) {
+    console.log(e)
+    this.setState({
+      map: {
+        ...StyleSheet.absoluteFillObject,
+        height: (Dimensions.get('window').height - 62) / 2
+      }
+    })
+  }
+
+  resetMapLayout (e) {
+    console.log(e)
+    this.setState({
+      map: {
+        ...StyleSheet.absoluteFillObject
+      }
+    })
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
         <MapView
-          style={styles.map}
+          style={this.state.map}
           region={{
             latitude: 43.589012,
             longitude: 1.450592,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121
           }}
+          onPress={(e) => this.resetMapLayout(e)}
           showsUserLocation
           loadingEnabled
           loadingIndicatorColor={colors.primary}
         >
-          {this.state.markers.map(marker => (
+          {this.state.markers.map((marker, i) => (
             <MapView.Marker
-              key={marker.key}
+              key={i}
+              identifier={marker.title}
               coordinate={marker.coordinate}
               title={marker.title}
               description={marker.description}
               pinColor={colors.primary}
-              onPress={(e) => console.log('onPress', e)}
+              onSelect={(e) => this.changeMapLayout(e)}
             />
           ))}
         </MapView>
@@ -72,7 +94,6 @@ export default class MapScene extends Component {
 const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
-    flex: 2,
     height: (Dimensions.get('window').height - 62) / 2
   },
   wrapper: {
