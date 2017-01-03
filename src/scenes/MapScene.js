@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
 
 import MapView from 'react-native-maps'
+import _ from 'lodash'
+
+import AppText from '../components/AppText'
+import ItemRow from '../components/ItemRow'
 
 import { getItems } from '../store/api'
 import { colors } from '../style'
 
 const formatMarkers = (items) => items.map(function (item) {
   return {
-    key: `${item.title} - ${item.publishDate}`,
+    key: item.id,
     title: item.title,
     description: item.category,
     coordinate: {
@@ -24,22 +28,28 @@ export default class MapScene extends Component {
     super(props)
     this.state = {
       markers: [],
-      map: {...StyleSheet.absoluteFillObject},
+      items: [],
+      map: {
+        ...StyleSheet.absoluteFillObject
+      },
       coordinate: {
         latitude: 43.588958,
         longitude: 1.450104
-      }
+      },
+      selectedMarker: {}
     }
   }
 
   componentWillMount () {
     getItems()
-      .then(items => { this.setState({markers: formatMarkers(items)}) })
+      .then(items => {
+        this.setState({markers: formatMarkers(items)})
+        this.setState({ items })
+      })
       .catch(() => {})
   }
 
-  changeMapLayout (e) {
-    console.log(e)
+  changeMapLayout () {
     this.setState({
       map: {
         ...StyleSheet.absoluteFillObject,
@@ -48,13 +58,18 @@ export default class MapScene extends Component {
     })
   }
 
-  resetMapLayout (e) {
-    console.log(e)
+  resetMapLayout () {
     this.setState({
       map: {
         ...StyleSheet.absoluteFillObject
       }
     })
+    this.setState({ selectedMarker: {} })
+  }
+
+  handleSelectedEvent (event) {
+    this.setState({ selectedMarker: event.nativeEvent })
+    this.changeMapLayout()
   }
 
   render () {
@@ -73,22 +88,23 @@ export default class MapScene extends Component {
           loadingEnabled
           loadingIndicatorColor={colors.primary}
         >
-          {this.state.markers.map((marker, i) => (
+          {this.state.markers.map(marker => (
             <MapView.Marker
-              key={i}
-              identifier={marker.title}
+              identifier={marker.key}
               coordinate={marker.coordinate}
               title={marker.title}
               description={marker.description}
               pinColor={colors.primary}
-              onSelect={(e) => this.changeMapLayout(e)}
+              onSelect={(e) => this.handleSelectedEvent(e)}
             />
           ))}
         </MapView>
+        <View>
+          <AppText>{this.state.selectedMarker.id ? this.state.selectedMarker.id : "Aucun marker n'est sélectionné"}</AppText>
+        </View>
       </View>
     )
-  };
-
+  }
 }
 
 const styles = StyleSheet.create({

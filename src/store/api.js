@@ -5,6 +5,7 @@ export const getItems = () => {
     const response = require('./mocks/items.json')
 
     const items = response.map(item => new Item({
+      id: item.id,
       category: item.category,
       cityName: item.city_name,
       imgUrl: item.img,
