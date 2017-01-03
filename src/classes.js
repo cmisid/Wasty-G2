@@ -28,3 +28,11 @@ export class User {
     return `${this.firstName} ${this.lastName}`
   }
 }
+
+export class Event {
+  constructor ({action, item, date}) {
+    this.action = action
+    this.item = item
+    this.date = date
+  }
+}
