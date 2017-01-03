@@ -3,7 +3,7 @@ import { ListView, StyleSheet, View } from 'react-native'
 
 import ItemRow from '../components/ItemRow'
 import Container from '../components/Container'
-import { getUserItems } from '../store/api'
+import { getItems } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -19,7 +19,7 @@ export default class PostedScene extends Component {
   }
 
   componentDidMount () {
-    getUserItems()
+    getItems()
       .then(userItems => { this.setState({userItems}) })
       .catch(() => {})
   }
