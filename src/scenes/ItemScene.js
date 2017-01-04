@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Text } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Text, Image } from 'react-native'
 
 import ProgressiveImage from '../components/ProgressiveImage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -32,19 +32,16 @@ export default class ItemScene extends Component {
           <AppText style={styles.header}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-          <View style={{flexDirection: 'row', marginRight: 5}}>
-            <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} />
-            <AppText>{this.props.item.nViews}</AppText>
-          </View>
-          <View>
-            <ProgressiveImage
-              thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
-              imageSource={{ uri: this.props.item.imgUrl }}
+            <Image
+              source={{ uri: this.props.item.imgUrl }}
               style={styles.image}
+
             >
-              <Text style={styles.headline}>Headline</Text>
-            </ProgressiveImage>
-          </View>
+            <View >
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color = 'green'/>
+              <AppText>{this.props.item.nViews}</AppText>
+            </View>
+            </Image>
           <View style={styles.wrapper}>
             <AppText style={StyleSheet.flatten(styles.distance)}>
               {distanceFmt(haversineDistance(
@@ -86,7 +83,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-end'
+    
   },
   header: {
     marginLeft: 20,
@@ -111,6 +111,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
-  }
+  },
+    backdrop: {
+    paddingTop: 60,
+    width: 320,
+    height: 220
+  },
 })
 
