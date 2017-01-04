@@ -71,12 +71,12 @@ export default class ItemScene extends Component {
     })
   }
 
-    _onRefresh() {
-    this.setState({refreshing: true});
+  _onRefresh () {
+    this.setState({refreshing: true})
     getItems()
       .then(items => { this.setState({items}) })
       .catch(() => {})
-    this.setState({refreshing: false});
+    this.setState({refreshing: false})
   }
 
   render () {
@@ -84,10 +84,10 @@ export default class ItemScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
         <ListView
           refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           enableEmptySections

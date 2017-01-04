@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'

@@ -23,12 +23,18 @@ export default class UserView extends Component {
     }
   }
 
-  _onRefresh () {
-    this.setState({refreshing: true})
-
+  componentWillMount () {
     getUser()
       .then(user => { this.setState({user}) })
       .catch(() => { this.setState({user: {}}) })
+
+    getEvents()
+      .then(events => { this.setState({events}) })
+      .catch(() => { this.setState({events: []}) })
+  }
+
+  _onRefresh () {
+    this.setState({refreshing: true})
 
     getEvents()
       .then(events => { this.setState({events}) })
