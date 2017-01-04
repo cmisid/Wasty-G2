@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View } from 'react-native'
+import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 
@@ -15,6 +15,7 @@ export default class PostedScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      refreshing: false,
       items: [],
       location: {'lat': 48.566140, 'lon': -3.148260}
     }
@@ -26,11 +27,25 @@ export default class PostedScene extends Component {
       .catch(() => {})
   }
 
+      _onRefresh() {
+    this.setState({refreshing: true});
+    getPosts()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
+    this.setState({refreshing: false});
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <ListView
           style={styles.list}
+           refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+          }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
             <ItemRow

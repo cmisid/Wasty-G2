@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Text } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Text, Image } from 'react-native'
 
 import ProgressiveImage from '../components/ProgressiveImage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -32,43 +32,42 @@ export default class ItemScene extends Component {
           <AppText style={styles.header}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-          <View style={{flexDirection: 'row', marginRight: 5}}>
-            <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} />
-            <AppText>{this.props.item.nViews}</AppText>
-          </View>
-          <View style={styles.cont}>
-            <ProgressiveImage
-              thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
-              imageSource={{ uri: this.props.item.imgUrl }}
-              style={styles.image}
-            >
-              <Text style={styles.headline}>Headline</Text>
-            </ProgressiveImage>
-          </View>
-          <View style={{flex: 2, flexDirection: 'column', marginTop: 10}}>
-            <AppText style={StyleSheet.flatten(styles.distance)}>
-              {distanceFmt(haversineDistance(
-                this.props.userLat,
-                this.props.userLon,
-                this.props.item.lat,
-                this.props.item.lon
-              ))}
-            </AppText>
-            <View style={{flex: 2, flexDirection: 'column', alignItems: 'flex-end'}}>
+          <Image
+            source={{ uri: this.props.item.imgUrl }}
+            style={styles.image}
+          >
+            <View>
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color='green' />
+              <AppText>{this.props.item.nViews}</AppText>
+            </View>
+          </Image>
+
+          <View style={styles.publishMetadata}>
+            <View style={{flex: 2, flexDirection: 'column'}}>
+              <AppText style={StyleSheet.flatten(styles.distance)}>
+                {distanceFmt(haversineDistance(
+                  this.props.userLat,
+                  this.props.userLon,
+                  this.props.item.lat,
+                  this.props.item.lon
+                ))}
+              </AppText>
+            </View>
+            <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText>
                 {this.props.item.streetName}, {this.props.item.cityName}
               </AppText>
             </View>
-            <AppText style={styles.header}>
-              {this.props.item.category}
-            </AppText>
-            <AppText style={styles.description}>
-              Description
-            </AppText>
-            <AppText>
-              {this.props.item.description}
-            </AppText>
           </View>
+          <AppText style={styles.header}>
+            {this.props.item.category}
+          </AppText>
+          <AppText style={styles.description}>
+            Description
+          </AppText>
+          <AppText>
+            {this.props.item.description}
+          </AppText>
         </ScrollView>
       </Container>
     )
@@ -88,7 +87,18 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-end'
+    
+  },
+  publishMetadata: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+    marginLeft: 10,
+    marginTop: 10
   },
   header: {
     marginLeft: 20,
@@ -120,6 +130,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
-  }
+  },
+    backdrop: {
+    paddingTop: 60,
+    width: 320,
+    height: 220
+  },
 })
 
