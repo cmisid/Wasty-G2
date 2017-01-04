@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View } from 'react-native'
+import { ListView, StyleSheet, View, RefreshControl} from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 
@@ -15,12 +15,22 @@ export default class ListScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      refreshing: false,
       items: [],
       location: {
         lat: 48.566140,
         lon: -3.148260
       }
     }
+  }
+
+  
+  _onRefresh() {
+    this.setState({refreshing: true});
+    getItems()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
+    this.setState({refreshing: false});
   }
 
   componentDidMount () {
@@ -34,6 +44,12 @@ export default class ListScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
         <ListView
           style={styles.list}
+          refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
             <ItemRow
@@ -46,6 +62,7 @@ export default class ListScene extends Component {
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           enableEmptySections
         />
+       
       </Container>
     )
   }
