@@ -79,7 +79,11 @@ export default class ItemScene extends Component {
           renderRow={item => (
             <ItemCard
               item={item}
-              onPressAction={() => Actions.searchItemScene({item})}
+              onPressAction={() => Actions.searchItemScene({
+                item: item,
+                userLat: this.state.location.lat,
+                userLon: this.state.location.lon
+              })}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />

@@ -3,6 +3,7 @@ export const colors = {
   secondary: 'darkseagreen',
   accent: 'goldenrod',
 
+  lightBackground: 'lightgray',
   background: 'darkgray',
   inactive: 'darkgray',
 
