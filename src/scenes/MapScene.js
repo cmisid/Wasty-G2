@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Alert } from 'react-native'
 
 import MapView from 'react-native-maps'
 import _ from 'lodash'
@@ -46,8 +46,12 @@ export default class MapScene extends Component {
       },
       selectedMarker: {},
       markerSelected: false,
-      mapSelected: false
+      mapSelected: false,
+      // User location stuff
+      initialPosition: null,
+      lastPosition: null
     }
+    this.watchID = null
   }
 
   componentWillMount () {
@@ -57,6 +61,37 @@ export default class MapScene extends Component {
         this.setState({ items })
       })
       .catch(() => {})
+  }
+
+  componentDidMount () {
+    // Get user position
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const initialPosition = JSON.stringify(position)
+        this.setState({initialPosition})
+      },
+      error => Alert.alert('Erreur de localisation', JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )
+
+    this.watchID = navigator.geolocation.watchPosition(position => {
+      const lastPosition = JSON.stringify(position)
+      this.setState({lastPosition})
+    })
+
+    // Access the user location coordinates and set them to the initial map region
+    this.setState({
+      region: {
+        latitude: this.lastPosition ? this.lastPosition.coords.latitude : 43.589012,
+        longitude: this.lastPosition ? this.lastPosition.coords.longitude : 1.450592,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      }
+    })
+  }
+
+  componentWillUnmount () {
+    navigator.geolocation.clearWatch(this.watchID)
   }
 
   handleMapPressedEvent () {
@@ -94,6 +129,9 @@ export default class MapScene extends Component {
   }
 
   render () {
+    // In order to display an Item component, we need to split the render part of MapScene into
+    // 2 components because when a user press a marker we need to display the
+    // Item properties into a component
     if (!this.state.markerSelected) {
       return (
         <View style={styles.wrapper}>
@@ -122,6 +160,8 @@ export default class MapScene extends Component {
         </View>
       )
     } else {
+      // You can notice that this code is the same that above but here
+      // we add a view to display the Item properties below the map view
       return (
         <View style={styles.wrapper}>
           <MapView
@@ -145,6 +185,7 @@ export default class MapScene extends Component {
               />
             ))}
           </MapView>
+          {/* Here we display the selected marker properties */}
           <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
             <ItemMap
               item={this.state.selectedMarker.id ? this.findItemData(this.state.selectedMarker.id) : {}}

@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
   headerDescription: {
     alignItems: 'center',
     flex: 2,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    alignSelf: 'center'
   },
   timeline: {
     flex: 5
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   wrapper: {
-    padding: 20,
+    padding: 30,
     flex: 1
   }
 })
