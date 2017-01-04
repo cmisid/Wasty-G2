@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 
 import { Dimensions, StyleSheet, TouchableHighlight, View } from 'react-native'
 
-import { Actions } from 'react-native-router-flux'
-
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import ProgressiveImage from './ProgressiveImage'
@@ -34,7 +32,6 @@ const haversineDistance = (lat1, lon1, lat2, lon2) => {
 const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
 export default class ItemCard extends Component {
-  // TODO: add TouchableOpacity parent
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPressAction}>
