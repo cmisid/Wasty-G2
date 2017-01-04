@@ -40,6 +40,10 @@ export default class ItemScene extends Component {
 
   selectPhotoTapped () {
     const options = {
+      title: 'Poster un objet',
+      cancelButtonTitle: 'Annuler',
+      takePhotoButtonTitle: 'Prendre une photo',
+      chooseFromLibraryButtonTitle: 'Choisir une photo existante',
       quality: 1.0,
       maxWidth: 500,
       maxHeight: 500,
