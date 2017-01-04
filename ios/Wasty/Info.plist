@@ -36,6 +36,10 @@
     </array>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <true />
+    <key>NSCameraUsageDescription</key>
+    <true />
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
     <key>NSLocationAlwaysUsageDescription</key>
