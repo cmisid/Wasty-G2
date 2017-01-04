@@ -36,7 +36,7 @@ export default class ItemScene extends Component {
             <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} />
             <AppText>{this.props.item.nViews}</AppText>
           </View>
-          <View>
+          <View style={styles.cont}>
             <ProgressiveImage
               thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
               imageSource={{ uri: this.props.item.imgUrl }}
@@ -45,7 +45,7 @@ export default class ItemScene extends Component {
               <Text style={styles.headline}>Headline</Text>
             </ProgressiveImage>
           </View>
-          <View style={styles.wrapper}>
+          <View style={{flex: 2, flexDirection: 'column', marginTop: 10}}>
             <AppText style={StyleSheet.flatten(styles.distance)}>
               {distanceFmt(haversineDistance(
                 this.props.userLat,
@@ -54,9 +54,11 @@ export default class ItemScene extends Component {
                 this.props.item.lon
               ))}
             </AppText>
-            <AppText>
-              {this.props.item.streetName}, {this.props.item.cityName}
-            </AppText>
+            <View style={{flex: 2, flexDirection: 'column', alignItems: 'flex-end'}}>
+              <AppText>
+                {this.props.item.streetName}, {this.props.item.cityName}
+              </AppText>
+            </View>
             <AppText style={styles.header}>
               {this.props.item.category}
             </AppText>
@@ -105,6 +107,13 @@ const styles = StyleSheet.create({
   wrapper: {
     padding: 20,
     flex: 1
+  },
+  cont: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#000000',
+    width: 320
   },
   headline: {
     fontSize: 20,
