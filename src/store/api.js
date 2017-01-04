@@ -8,6 +8,7 @@ export const getItems = () => {
       id: item.id,
       category: item.category,
       cityName: item.city_name,
+      description:item.description,
       imgUrl: item.img,
       imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,

@@ -13,7 +13,7 @@ export default class ItemScene extends Component {
       <Container>
         <View style= {styles.wrapper}>
           <AppText>
-            Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
+            Publié par {this.props.item.description} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText> 
           <ProgressiveImage
             thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
