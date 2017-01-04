@@ -11,7 +11,7 @@ import { colors } from '../style'
 
 const Form = t.form.Form
 
-const Account = t.struct({
+const AccountForm = t.struct({
   firstName: t.String,
   lastName: t.String
 })
@@ -50,7 +50,7 @@ export default class AccountScene extends Component {
           <Form
             options={options}
             ref='form'
-            type={Account}
+            type={AccountForm}
             value={this.props.currentUser}
           />
           <ActionButton
