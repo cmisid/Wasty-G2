@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View } from 'react-native'
+import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
@@ -7,11 +7,42 @@ import frLocale from 'date-fns/locale/fr'
 import AppText from './AppText'
 import EventRow from './EventRow'
 import ProgressiveImage from './ProgressiveImage'
+import { getEvents, getUser } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
 export default class UserView extends Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      events: [],
+      items: {},
+      refreshing: false
+    }
+  }
+
+  componentWillMount () {
+    getUser()
+      .then(user => { this.setState({user}) })
+      .catch(() => { this.setState({user: {}}) })
+
+    getEvents()
+      .then(events => { this.setState({events}) })
+      .catch(() => { this.setState({events: []}) })
+  }
+
+  _onRefresh () {
+    this.setState({refreshing: true})
+
+    getEvents()
+      .then(events => { this.setState({events}) })
+      .catch(() => { this.setState({events: []}) })
+
+    this.setState({refreshing: false})
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -39,11 +70,17 @@ export default class UserView extends Component {
         {/* Timeline block which contains the user's activity log */}
         <View style={styles.bottom}>
           <ListView
-            dataSource={ds.cloneWithRows(this.props.events)}
+            dataSource={ds.cloneWithRows(this.state.events)}
             enableEmptySections
             renderRow={event => <EventRow event={event} />}
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             style={styles.timeline}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
           />
         </View>
       </View>
@@ -91,6 +128,5 @@ const styles = StyleSheet.create({
 })
 
 UserView.propTypes = {
-  events: React.PropTypes.array,
   user: React.PropTypes.object
 }

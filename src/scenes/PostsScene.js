@@ -27,12 +27,12 @@ export default class PostedScene extends Component {
       .catch(() => {})
   }
 
-      _onRefresh() {
-    this.setState({refreshing: true});
+  _onRefresh () {
+    this.setState({refreshing: true})
     getPosts()
       .then(items => { this.setState({items}) })
       .catch(() => {})
-    this.setState({refreshing: false});
+    this.setState({refreshing: false})
   }
 
   render () {
@@ -40,17 +40,19 @@ export default class PostedScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
         <ListView
           style={styles.list}
-           refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
             <ItemRow
               item={item}
-              onPressAction={() => Actions.postsItemScene({item})}
+              onPressAction={() => Actions.postsItemScene({item: item,
+                userLat: this.state.location.lat,
+                userLon: this.state.location.lon})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, RefreshControl} from 'react-native'
+import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 
@@ -23,13 +23,13 @@ export default class ListScene extends Component {
       }
     }
   }
-  
-  _onRefresh() {
-    this.setState({refreshing: true});
+
+  _onRefresh () {
+    this.setState({refreshing: true})
     getItems()
       .then(items => { this.setState({items}) })
       .catch(() => {})
-    this.setState({refreshing: false});
+    this.setState({refreshing: false})
   }
 
   componentDidMount () {
@@ -44,16 +44,18 @@ export default class ListScene extends Component {
         <ListView
           style={styles.list}
           refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
             <ItemRow
               item={item}
-              onPressAction={() => Actions.listItemScene({item})}
+              onPressAction={() => Actions.listItemScene({item: item,
+                userLat: this.state.location.lat,
+                userLon: this.state.location.lon})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
@@ -61,7 +63,7 @@ export default class ListScene extends Component {
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           enableEmptySections
         />
-       
+
       </Container>
     )
   }
