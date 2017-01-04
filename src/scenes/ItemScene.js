@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Text, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
 
-import ProgressiveImage from '../components/ProgressiveImage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
@@ -41,7 +40,6 @@ export default class ItemScene extends Component {
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
-
           <View style={styles.publishMetadata}>
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'column',
     alignItems: 'flex-end'
-    
+
   },
   publishMetadata: {
     flex: 1,
@@ -131,10 +129,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
   },
-    backdrop: {
+  backdrop: {
     paddingTop: 60,
     width: 320,
     height: 220
-  },
+  }
 })
 
