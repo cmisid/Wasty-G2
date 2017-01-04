@@ -21,6 +21,9 @@ const formatMarkers = (items) => items.map(function (item) {
   }
 })
 
+const LATITUDE_DELTA = 0.015
+const LONGITUDE_DELTA = 0.0121
+
 export default class MapScene extends Component {
 
   constructor (props) {
@@ -30,6 +33,12 @@ export default class MapScene extends Component {
       items: [],
       map: {
         ...StyleSheet.absoluteFillObject
+      },
+      region: {
+        latitude: 43.589012,
+        longitude: 1.450592,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
       },
       coordinate: {
         latitude: 43.588958,
@@ -63,7 +72,13 @@ export default class MapScene extends Component {
     this.setState({
       selectedMarker: event.nativeEvent,
       mapSelected: false,
-      markerSelected: true
+      markerSelected: true,
+      region: {
+        latitude: event.nativeEvent.coordinate.latitude,
+        longitude: event.nativeEvent.coordinate.longitude,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      }
     })
     console.log('handleMarkerSelectedEvent()', this.state)
   }
@@ -74,19 +89,19 @@ export default class MapScene extends Component {
     return itemObject
   }
 
+  onRegionChange (region) {
+    this.setState({ region })
+  }
+
   render () {
     if (!this.state.markerSelected) {
       return (
         <View style={styles.wrapper}>
           <MapView
             style={{flex: 1}}
-            region={{
-              latitude: 43.589012,
-              longitude: 1.450592,
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121
-            }}
+            region={this.state.region}
             onPress={(e) => this.handleMapPressedEvent()}
+            onRegionChange={this.onRegionChange.bind(this)}
             showsUserLocation
             loadingEnabled
             loadingIndicatorColor={colors.primary}
@@ -111,12 +126,7 @@ export default class MapScene extends Component {
         <View style={styles.wrapper}>
           <MapView
             style={{flex: 1}}
-            region={{
-              latitude: 43.589012,
-              longitude: 1.450592,
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121
-            }}
+            region={this.state.region}
             onPress={(e) => this.handleMapPressedEvent()}
             showsUserLocation
             loadingEnabled
