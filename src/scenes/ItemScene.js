@@ -32,44 +32,42 @@ export default class ItemScene extends Component {
           <AppText style={styles.header}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-            <Image
-              source={{ uri: this.props.item.imgUrl }}
-              style={styles.image}
-
-            >
+          <Image
+            source={{ uri: this.props.item.imgUrl }}
+            style={styles.image}
+          >
             <View >
               <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color = 'green'/>
               <AppText>{this.props.item.nViews}</AppText>
             </View>
-            </Image>
+          </Image>
 
-            <View style={styles.publishMetadata}>
-             <View style={{flex: 2, flexDirection: 'column'}}>
+          <View style={styles.publishMetadata}>
+            <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
-              {distanceFmt(haversineDistance(
+                {distanceFmt(haversineDistance(
                 this.props.userLat,
                 this.props.userLon,
                 this.props.item.lat,
                 this.props.item.lon
               ))}
               </AppText>
-             </View>
-             <View style={{flex: 2, flexDirection: 'column'}}> 
+            </View>
+            <View style={{flex: 2, flexDirection: 'column'}}> 
               <AppText>
                 {this.props.item.streetName}, {this.props.item.cityName}
               </AppText>
-             </View>
             </View>
-            <AppText style={styles.header}>
-              {this.props.item.category}
-            </AppText>
-            <AppText style={styles.description}>
-              Description
-            </AppText>
-            <AppText>
-              {this.props.item.description}
-            </AppText>
-          
+          </View>
+          <AppText style={styles.header}>
+            {this.props.item.category}
+          </AppText>
+          <AppText style={styles.description}>
+            Description
+          </AppText>
+          <AppText>
+            {this.props.item.description}
+          </AppText>
         </ScrollView>
       </Container>
     )
