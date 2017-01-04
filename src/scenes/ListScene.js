@@ -53,7 +53,9 @@ export default class ListScene extends Component {
           renderRow={item => (
             <ItemRow
               item={item}
-              onPressAction={() => Actions.listItemScene({item})}
+              onPressAction={() => Actions.listItemScene({item: item,
+                userLat: this.state.location.lat,
+                userLon: this.state.location.lon})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />

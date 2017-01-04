@@ -53,6 +53,9 @@ export default class ItemScene extends Component {
                   this.props.item.lon
                 ))}
               </AppText>
+              <AppText style={{marginBottom: 10, marginTop: 5}}>
+                {this.props.item.category}
+              </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText>
@@ -60,9 +63,6 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
           </View>
-          <AppText style={{marginLeft: 20, marginTop: 10, marginBottom: 10, textAlign: 'center'}}>
-            {this.props.item.category}
-          </AppText>
           <AppText style={styles.description}>
             Description
           </AppText>
