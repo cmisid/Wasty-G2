@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Text, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
 
-import ProgressiveImage from '../components/ProgressiveImage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
@@ -32,16 +31,16 @@ export default class ItemScene extends Component {
           <AppText style={styles.header}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-            <Image
-              source={{ uri: this.props.item.imgUrl }}
-              style={styles.image}
+          <Image
+            source={{ uri: this.props.item.imgUrl }}
+            style={styles.image}
 
-            >
-            <View >
-              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color = 'green'/>
+          >
+            <View>
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
-            </Image>
+          </Image>
           <View style={styles.wrapper}>
             <AppText style={StyleSheet.flatten(styles.distance)}>
               {distanceFmt(haversineDistance(
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'column',
     alignItems: 'flex-end'
-    
+
   },
   header: {
     marginLeft: 20,
@@ -112,10 +111,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
   },
-    backdrop: {
+  backdrop: {
     paddingTop: 60,
     width: 320,
     height: 220
-  },
+  }
 })
 
