@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Text, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
 
-import ProgressiveImage from '../components/ProgressiveImage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
@@ -36,8 +35,9 @@ export default class ItemScene extends Component {
             source={{ uri: this.props.item.imgUrl }}
             style={styles.image}
           >
-            <View >
-              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color = 'green'/>
+
+            <View>
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
@@ -46,14 +46,15 @@ export default class ItemScene extends Component {
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
                 {distanceFmt(haversineDistance(
-                this.props.userLat,
-                this.props.userLon,
-                this.props.item.lat,
-                this.props.item.lon
-              ))}
+
+                  this.props.userLat,
+                  this.props.userLon,
+                  this.props.item.lat,
+                  this.props.item.lon
+                ))}
               </AppText>
             </View>
-            <View style={{flex: 2, flexDirection: 'column'}}> 
+            <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText>
                 {this.props.item.streetName}, {this.props.item.cityName}
               </AppText>
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'column',
     alignItems: 'flex-end'
-    
+
   },
   publishMetadata: {
     flex: 1,
@@ -118,16 +119,23 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 1
   },
+  cont: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#000000',
+    width: 320
+  },
   headline: {
     fontSize: 20,
     textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white'
   },
-    backdrop: {
+  backdrop: {
     paddingTop: 60,
     width: 320,
     height: 220
-  },
+  }
 })
 
