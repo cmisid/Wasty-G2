@@ -8,14 +8,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import UserView from '../components/UserView'
 import Container from '../components/Container'
 import { colors } from '../style'
-import { getEvents, getUser } from '../store/api'
+import { getUser } from '../store/api'
 
 export default class AccountScene extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      events: [],
       user: {}
     }
   }
@@ -24,10 +23,6 @@ export default class AccountScene extends Component {
     getUser()
       .then(user => { this.setState({user}) })
       .catch(() => { this.setState({user: {}}) })
-
-    getEvents()
-      .then(events => { this.setState({events}) })
-      .catch(() => { this.setState({events: []}) })
   }
 
   updateUser (user) {
@@ -37,7 +32,9 @@ export default class AccountScene extends Component {
   render () {
     return (
       <Container>
-        <UserView events={this.state.events} user={this.state.user} />
+        <UserView
+          user={this.state.user}
+        />
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='list' size={24} />}

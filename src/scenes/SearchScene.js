@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, StyleSheet } from 'react-native'
+import { AsyncStorage, ListView, Platform, StyleSheet, RefreshControl, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
@@ -11,6 +11,8 @@ import ItemCard from '../components/ItemCard'
 import { colors } from '../style'
 import { getItems } from '../store/api'
 
+import SearchBar from 'react-native-searchbar'
+
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
 export default class ItemScene extends Component {
@@ -18,6 +20,7 @@ export default class ItemScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      refreshing: false,
       items: {},
       location: {'lat': 48.566140, 'lon': -3.148260},
 
@@ -70,32 +73,56 @@ export default class ItemScene extends Component {
     })
   }
 
+  _onRefresh () {
+    this.setState({refreshing: true})
+    getItems()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
+    this.setState({refreshing: false})
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
-        <ListView
-          dataSource={ds.cloneWithRows(this.state.items)}
-          enableEmptySections
-          renderRow={item => (
-            <ItemCard
-              item={item}
-              onPressAction={() => Actions.searchItemScene({
-                item: item,
-                userLat: this.state.location.lat,
-                userLon: this.state.location.lon
-              })}
-              userLat={this.state.location.lat}
-              userLon={this.state.location.lon}
-            />
-          )}
-          style={styles.list}
-        />
+        <View style={styles.top}>
+          <SearchBar
+            ref={(ref) => this.searchBar = ref}
+            data={getItems()}
+            handleResults={this.componentDidMount}
+            showOnLoad
+          />
+        </View>
+        <View style={styles.bottom}>
+          <ListView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+            dataSource={ds.cloneWithRows(this.state.items)}
+            enableEmptySections
+            renderRow={item => (
+              <ItemCard
+                item={item}
+                onPressAction={() => Actions.searchItemScene({
+                  item: item,
+                  userLat: this.state.location.lat,
+                  userLon: this.state.location.lon
+                })}
+                userLat={this.state.location.lat}
+                userLon={this.state.location.lon}
+              />
+            )}
+            style={styles.list}
+          />
 
-        <ActionButton
-          buttonColor={colors.primary}
-          icon={<Icon color='white' name='photo-camera' size={20} />}
-          onPress={() => this.selectPhotoTapped()}
-        />
+          <ActionButton
+            buttonColor={colors.primary}
+            icon={<Icon color='white' name='photo-camera' size={20} />}
+            onPress={() => this.selectPhotoTapped()}
+          />
+        </View>
       </Container>
     )
   }
@@ -104,6 +131,12 @@ export default class ItemScene extends Component {
 const styles = StyleSheet.create({
   list: {
     flex: 1
+  },
+  top: {
+    flex: 1
+  },
+  bottom: {
+    flex: 6
   }
 })
 
