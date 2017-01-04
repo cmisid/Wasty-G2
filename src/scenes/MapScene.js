@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
 
 import MapView from 'react-native-maps'
-import _ from 'lodash'
 
 import AppText from '../components/AppText'
-import ItemRow from '../components/ItemRow'
 
 import { getItems } from '../store/api'
 import { colors } from '../style'
@@ -90,6 +88,7 @@ export default class MapScene extends Component {
         >
           {this.state.markers.map(marker => (
             <MapView.Marker
+              key={marker.key}
               identifier={marker.key}
               coordinate={marker.coordinate}
               title={marker.title}

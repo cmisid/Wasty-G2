@@ -1,4 +1,4 @@
-import { Item, User } from '../classes'
+import { Event, Item, User } from '../classes'
 
 export const getItems = () => {
   return new Promise((resolve, reject) => {
@@ -64,6 +64,28 @@ export const getPosts = () => {
     }))
 
     resolve(posts)
+  })
+}
+
+export const getEvents = () => {
+  return new Promise((resolve, reject) => {
+    const response = require('./mocks/events.json')
+
+    const events = response.map(event => new Event({
+      action: event.action,
+      date: event.date,
+      item: new Item({
+        category: event.item.category,
+        cityName: event.item.city_name,
+        imgUrl: event.item.img,
+        imgPlaceholderUrl: event.item.img_placeholder,
+        publishDate: event.item.publish_date,
+        streetName: event.item.street_name,
+        title: event.item.title
+      })
+    }))
+
+    resolve(events)
   })
 }
 

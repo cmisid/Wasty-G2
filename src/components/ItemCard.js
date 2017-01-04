@@ -37,9 +37,7 @@ export default class ItemCard extends Component {
   // TODO: add TouchableOpacity parent
   render () {
     return (
-      <TouchableHighlight onPress={() => Actions.searchItemScene({
-        item: this.props.item
-      })}>
+      <TouchableHighlight onPress={this.props.onPressAction}>
         <View style={{flex: 1}}>
           <Card>
 
@@ -95,6 +93,7 @@ const styles = StyleSheet.create({
 
 ItemCard.propTypes = {
   item: React.PropTypes.object,
+  onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
 }
