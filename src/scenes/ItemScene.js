@@ -21,14 +21,14 @@ export default class ItemScene extends Component {
             style={styles.image}
           />
           <View style={styles.wrapper}>
-            <AppText style={styles.header>
+            <AppText style={styles.header}>
               {this.props.item.category}
             </AppText>
             <AppText>
               Description
             </AppText>
             <AppText>
-              {{this.props.item.description}
+              {this.props.item.description}
             </AppText>
           </View>
         </View>
