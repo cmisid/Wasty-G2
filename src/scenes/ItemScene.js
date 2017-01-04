@@ -28,7 +28,7 @@ export default class ItemScene extends Component {
               Description
             </AppText>
             <AppText>
-              {this.item.description}
+              {{this.props.item.description}
             </AppText>
           </View>
         </View>
