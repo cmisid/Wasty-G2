@@ -36,7 +36,7 @@ export default class ItemScene extends Component {
             style={styles.image}
           >
 
-            <View>
+            <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
               <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
@@ -60,7 +60,7 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
           </View>
-          <AppText style={styles.header}>
+          <AppText style={{marginLeft: 20, marginTop: 10, marginBottom: 10, textAlign: 'center'}}>
             {this.props.item.category}
           </AppText>
           <AppText style={styles.description}>
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
   },
   header: {
     marginLeft: 20,
-    marginTop: 10,
     marginBottom: 10,
     textAlign: 'center'
   },
