@@ -41,28 +41,33 @@ export default class ItemScene extends Component {
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
-          <View style={styles.wrapper}>
-            <AppText style={StyleSheet.flatten(styles.distance)}>
-              {distanceFmt(haversineDistance(
-                this.props.userLat,
-                this.props.userLon,
-                this.props.item.lat,
-                this.props.item.lon
-              ))}
-            </AppText>
-            <AppText>
-              {this.props.item.streetName}, {this.props.item.cityName}
-            </AppText>
-            <AppText style={styles.header}>
-              {this.props.item.category}
-            </AppText>
-            <AppText style={styles.description}>
-              Description
-            </AppText>
-            <AppText>
-              {this.props.item.description}
-            </AppText>
+          <View style={styles.publishMetadata}>
+            <View style={{flex: 2, flexDirection: 'column'}}>
+              <AppText style={StyleSheet.flatten(styles.distance)}>
+                {distanceFmt(haversineDistance(
+                  this.props.userLat,
+                  this.props.userLon,
+                  this.props.item.lat,
+                  this.props.item.lon
+                ))}
+              </AppText>
+            </View>
+            <View style={{flex: 2, flexDirection: 'column'}}>
+              <AppText>
+                {this.props.item.streetName}, {this.props.item.cityName}
+              </AppText>
+            </View>
           </View>
+          <AppText style={styles.header}>
+            {this.props.item.category}
+          </AppText>
+          <AppText style={styles.description}>
+            Description
+          </AppText>
+          <AppText>
+            {this.props.item.description}
+          </AppText>
+
         </ScrollView>
       </Container>
     )
@@ -86,6 +91,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-end'
 
+  },
+  publishMetadata: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+    marginLeft: 10,
+    marginTop: 10
   },
   header: {
     marginLeft: 20,
