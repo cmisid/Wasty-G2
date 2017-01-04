@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Dimensions } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import MapView from 'react-native-maps'
+import _ from 'lodash'
 
-import AppText from '../components/AppText'
+import ItemRow from '../components/ItemRow'
 
 import { getItems } from '../store/api'
 import { colors } from '../style'
@@ -34,7 +35,9 @@ export default class MapScene extends Component {
         latitude: 43.588958,
         longitude: 1.450104
       },
-      selectedMarker: {}
+      selectedMarker: {},
+      markerSelected: false,
+      mapSelected: false
     }
   }
 
@@ -47,41 +50,42 @@ export default class MapScene extends Component {
       .catch(() => {})
   }
 
-  changeMapLayout () {
+  handleMapPressedEvent () {
     this.setState({
-      map: {
-        ...StyleSheet.absoluteFillObject,
-        height: (Dimensions.get('window').height - 62) / 2
-      }
+      selectedMarker: {},
+      mapSelected: true,
+      markerSelected: false
     })
+    console.log('handleMapPressedEvent()', this.state)
   }
 
-  resetMapLayout () {
+  handleMarkerSelectedEvent (event) {
     this.setState({
-      map: {
-        ...StyleSheet.absoluteFillObject
-      }
+      selectedMarker: event.nativeEvent,
+      mapSelected: false,
+      markerSelected: true
     })
-    this.setState({ selectedMarker: {} })
+    console.log('handleMarkerSelectedEvent()', this.state)
   }
 
-  handleSelectedEvent (event) {
-    this.setState({ selectedMarker: event.nativeEvent })
-    this.changeMapLayout()
+  findItemData (markerId) {
+    const itemObject = _.find(this.state.items, (obj) => obj.id === markerId)
+    console.log(itemObject)
+    return itemObject
   }
 
   render () {
     return (
       <View style={styles.wrapper}>
         <MapView
-          style={this.state.map}
+          style={{flex: 1}}
           region={{
             latitude: 43.589012,
             longitude: 1.450592,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121
           }}
-          onPress={(e) => this.resetMapLayout(e)}
+          onPress={(e) => this.handleMapPressedEvent()}
           showsUserLocation
           loadingEnabled
           loadingIndicatorColor={colors.primary}
@@ -94,12 +98,16 @@ export default class MapScene extends Component {
               title={marker.title}
               description={marker.description}
               pinColor={colors.primary}
-              onSelect={(e) => this.handleSelectedEvent(e)}
+              onSelect={(e) => this.handleMarkerSelectedEvent(e)}
             />
           ))}
         </MapView>
-        <View>
-          <AppText>{this.state.selectedMarker.id ? this.state.selectedMarker.id : "Aucun marker n'est sélectionné"}</AppText>
+        <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
+          <ItemRow
+            item={this.state.selectedMarker.id ? this.findItemData(this.state.selectedMarker.id) : {}}
+            userLat={this.state.coordinate.latitude}
+            userLon={this.state.coordinate.longitude}
+          />
         </View>
       </View>
     )
@@ -107,13 +115,10 @@ export default class MapScene extends Component {
 }
 
 const styles = StyleSheet.create({
-  map: {
-    ...StyleSheet.absoluteFillObject,
-    height: (Dimensions.get('window').height - 62) / 2
-  },
   wrapper: {
     flex: 1,
-    backgroundColor: colors.background,
+    flexDirection: 'column',
+    backgroundColor: colors.lightBackground,
     marginTop: 62,
     marginBottom: 50
   }
