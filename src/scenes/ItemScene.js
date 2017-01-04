@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Text } from 'react-native'
 
 import ProgressiveImage from '../components/ProgressiveImage'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
@@ -31,22 +32,29 @@ export default class ItemScene extends Component {
           <AppText style={styles.header}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
+          <View style={{flexDirection: 'row', marginRight: 5}}>
+            <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} />
+            <AppText>{this.props.item.nViews}</AppText>
+          </View>
           <View>
             <ProgressiveImage
               thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
               imageSource={{ uri: this.props.item.imgUrl }}
               style={styles.image}
+            >
               <Text style={styles.headline}>Headline</Text>
-            />
+            </ProgressiveImage>
           </View>
           <View style={styles.wrapper}>
-            <AppText style={styles.city}>
-              distance={distanceFmt(haversineDistance(
+            <AppText style={StyleSheet.flatten(styles.distance)}>
+              {distanceFmt(haversineDistance(
                 this.props.userLat,
                 this.props.userLon,
                 this.props.item.lat,
                 this.props.item.lon
               ))}
+            </AppText>
+            <AppText>
               {this.props.item.streetName}, {this.props.item.cityName}
             </AppText>
             <AppText style={styles.header}>
@@ -74,6 +82,7 @@ ItemScene.propTypes = {
 
 const styles = StyleSheet.create({
   image: {
+    paddingTop: 60,
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
@@ -98,7 +107,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   headline: {
-    color: 'green'
+    fontSize: 20,
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'white'
   }
 })
 
