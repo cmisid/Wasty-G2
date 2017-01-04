@@ -64,7 +64,7 @@ export default class UserView extends Component {
         {/* Timeline block which contains the user's activity log */}
         <View style={styles.bottom}>
           <ListView
-            dataSource={ds.cloneWithRows(this.props.events)}
+            dataSource={ds.cloneWithRows(this.state.events)}
             enableEmptySections
             renderRow={event => <EventRow event={event} />}
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -122,6 +122,5 @@ const styles = StyleSheet.create({
 })
 
 UserView.propTypes = {
-  events: React.PropTypes.array,
   user: React.PropTypes.object
 }
