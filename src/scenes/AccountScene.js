@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, RefreshControl, ScrollView} from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
@@ -15,6 +15,7 @@ export default class AccountScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      refreshing: false,
       events: [],
       user: {}
     }
@@ -34,40 +35,70 @@ export default class AccountScene extends Component {
     this.setState({user})
   }
 
+  _onRefresh() {
+    this.setState({refreshing: true});
+    
+    getUser()
+      .then(user => { this.setState({user}) })
+      .catch(() => { this.setState({user: {}}) })
+
+    getEvents()
+      .then(events => { this.setState({events}) })
+      .catch(() => { this.setState({events: []}) })
+    
+    this.setState({refreshing: false});
+  }
+
   render () {
-    return (
-      <Container>
-        <UserView events={this.state.events} user={this.state.user} />
-        <ActionButton
-          buttonColor={colors.primary}
-          icon={<Icon color='white' name='list' size={24} />}
-        >
-          <ActionButton.Item
-            buttonColor={colors.accent}
-            title='Modifier mon mot de passe'
-            onPress={() => {}}
+      return (
+      <ScrollView 
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
+      >  
+        <Container>
+          <UserView events={this.state.events} user={this.state.user}         
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+          />
+          <ActionButton
+            buttonColor={colors.primary}
+            icon={<Icon color='white' name='list' size={24} />}
           >
-            <Icon name='lock-outline' style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-          <ActionButton.Item
-            buttonColor={colors.accent}
-            title='Modifier mon adresse e-mail'
-            onPress={() => {}}
-          >
-            <Icon name='mail-outline' style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-          <ActionButton.Item
-            buttonColor={colors.accent}
-            title='Modifier mes informations'
-            onPress={() => Actions.userScene({
-              currentUser: this.state.user,
-              updateUser: this.updateUser.bind(this)
-            })}
-          >
-            <Icon name='person-outline' style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-        </ActionButton>
-      </Container>
+            <ActionButton.Item
+              buttonColor={colors.accent}
+              title='Modifier mon mot de passe'
+              onPress={() => {}}
+            >
+              <Icon name='lock-outline' style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+            <ActionButton.Item
+              buttonColor={colors.accent}
+              title='Modifier mon adresse e-mail'
+              onPress={() => {}}
+            >
+              <Icon name='mail-outline' style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+            <ActionButton.Item
+              buttonColor={colors.accent}
+              title='Modifier mes informations'
+              onPress={() => Actions.userScene({
+                currentUser: this.state.user,
+                updateUser: this.updateUser.bind(this)
+              })}
+            >
+              <Icon name='person-outline' style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+          </ActionButton>
+        </Container>
+    </ScrollView>
     )
   }
 }

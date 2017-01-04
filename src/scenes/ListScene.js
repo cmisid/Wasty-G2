@@ -23,7 +23,6 @@ export default class ListScene extends Component {
       }
     }
   }
-
   
   _onRefresh() {
     this.setState({refreshing: true});

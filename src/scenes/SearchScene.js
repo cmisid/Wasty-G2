@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, StyleSheet } from 'react-native'
+import { AsyncStorage, ListView, Platform, StyleSheet, RefreshControl } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
@@ -18,6 +18,7 @@ export default class ItemScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      refreshing: false,
       items: {},
       location: {'lat': 48.566140, 'lon': -3.148260},
 
@@ -66,10 +67,24 @@ export default class ItemScene extends Component {
     })
   }
 
+    _onRefresh() {
+    this.setState({refreshing: true});
+    getItems()
+      .then(items => { this.setState({items}) })
+      .catch(() => {})
+    this.setState({refreshing: false});
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <ListView
+          refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+          }
           dataSource={ds.cloneWithRows(this.state.items)}
           enableEmptySections
           renderRow={item => (
