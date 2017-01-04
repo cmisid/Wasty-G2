@@ -11,10 +11,10 @@ export default class ItemScene extends Component {
   render () {
     return (
       <Container>
-        <View>
-          <AppText>
-            {this.props.item.title}
-          </AppText> 
+        <View style={styles.wrapper}>
+          <AppText style={styles.header}>
+            {this.props.item.category}
+          </AppText>
           <ProgressiveImage
             thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
             imageSource={{ uri: this.props.item.imgUrl }}
@@ -38,6 +38,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   header: {
+    marginLeft: 30,
+    marginTop: 10,
+    justifyContent: 'center'
 
+  },
+  wrapper: {
+    padding: 20,
+    flex: 10
   }
 })
