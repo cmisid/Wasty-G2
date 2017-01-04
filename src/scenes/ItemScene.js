@@ -37,9 +37,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center'
   },
-  wrapper:{
-    padding: 20
-    
-  }
+  header: {
+    marginLeft: 30,
+    marginTop: 10,
+    justifyContent: 'center'
 
+  },
+  wrapper: {
+    padding: 20,
+    flex: 10
+  }
 })
+
