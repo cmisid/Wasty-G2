@@ -135,6 +135,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10
   },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+    marginLeft: 10
+  },
   streetName: {
     color: colors.link
   },
