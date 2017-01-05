@@ -43,7 +43,7 @@ const scenes = Actions.create(
     <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
-      <Scene title='Utilisateur' key='userScene' component={UserScene} />
+      <Scene title='Profil utilisateur' key='userScene' component={UserScene} />
     </Scene>
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
