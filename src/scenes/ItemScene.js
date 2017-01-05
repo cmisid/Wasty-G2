@@ -7,7 +7,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
+
+import CardFooter from '../components/card/CardFooter'
 
 export default class ItemScene extends Component {
   render () {
@@ -21,18 +23,15 @@ export default class ItemScene extends Component {
             source={{ uri: this.props.item.imgUrl }}
             style={styles.image}
           >
-
             <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
               <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
-
           <View style={styles.publishMetadata}>
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
                 {distanceFmt(haversineDistance(
-
                   this.props.userLat,
                   this.props.userLon,
                   this.props.item.lat,
@@ -44,9 +43,16 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <AppText>
-                {this.props.item.streetName}, {this.props.item.cityName}
-              </AppText>
+              <CardFooter
+                streetName={this.props.item.streetName}
+                cityName={this.props.item.cityName}
+                mapUrl={generateMapLink(
+                  this.props.userLat,
+                  this.props.userLon,
+                  this.props.item.lat,
+                  this.props.item.lon
+                )}
+              />
             </View>
           </View>
           <AppText style={styles.description}>
@@ -64,6 +70,7 @@ export default class ItemScene extends Component {
 ItemScene.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
+  mapUrl: React.PropTypes.string,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
 }
