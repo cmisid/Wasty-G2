@@ -52,8 +52,10 @@ export const getPosts = () => {
     const response = require('./mocks/posts.json')
 
     const posts = response.map(item => new Item({
+      id: item.id,
       category: item.category,
       cityName: item.city_name,
+      description: item.description,
       imgUrl: item.img,
       imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,
@@ -61,7 +63,14 @@ export const getPosts = () => {
       nViews: item.views,
       publishDate: item.publish_date,
       streetName: item.street_name,
-      title: item.title
+      title: item.title,
+      publisher: new User({
+        email: item.publisher.email,
+        firstName: item.publisher.first_name,
+        imgUrl: item.publisher.img_url,
+        joinDate: item.publisher.date_joined,
+        lastName: item.publisher.last_name
+      })
     }))
 
     resolve(posts)

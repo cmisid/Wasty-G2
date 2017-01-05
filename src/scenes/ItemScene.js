@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
-
+import { colors } from '../style'
 import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
-
-import CardFooter from '../components/card/CardFooter'
 
 export default class ItemScene extends Component {
   render () {
@@ -23,36 +21,40 @@ export default class ItemScene extends Component {
             source={{ uri: this.props.item.imgUrl }}
             style={styles.image}
           >
+
             <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
-              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19} color='green' />
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19.5} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
+
           <View style={styles.publishMetadata}>
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
                 {distanceFmt(haversineDistance(
+
                   this.props.userLat,
                   this.props.userLon,
                   this.props.item.lat,
                   this.props.item.lon
                 ))}
+
               </AppText>
               <AppText style={{marginBottom: 10, marginTop: 5}}>
                 {this.props.item.category}
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <CardFooter
-                streetName={this.props.item.streetName}
-                cityName={this.props.item.cityName}
-                mapUrl={generateMapLink(
-                  this.props.userLat,
-                  this.props.userLon,
-                  this.props.item.lat,
-                  this.props.item.lon
-                )}
-              />
+              <Text
+                style={StyleSheet.flatten(styles.streetName)}
+                onPress={() => Linking.openURL(generateMapLink(
+                this.props.userLat,
+                this.props.userLon,
+                this.props.item.lat,
+                this.props.item.lon
+              ))}
+              >{this.props.item.streetName}, {this.props.item.cityName}
+              </Text>
             </View>
           </View>
           <AppText style={styles.description}>
@@ -70,7 +72,6 @@ export default class ItemScene extends Component {
 ItemScene.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
-  mapUrl: React.PropTypes.string,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
 }
@@ -128,6 +129,10 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     width: 320,
     height: 220
+  },
+  streetName: {
+    marginLeft: 5,
+    color: colors.link
   }
 })
 
