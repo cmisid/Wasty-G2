@@ -3,11 +3,15 @@ import React, { Component } from 'react'
 import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import format from 'date-fns/format'
+import frLocale from 'date-fns/locale/fr'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 import { colors } from '../style'
 import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
+
+const formatDate = datetime => format(datetime, 'DD/MM/YYYY', {locale: frLocale})
 
 export default class ItemScene extends Component {
   render () {
@@ -15,7 +19,7 @@ export default class ItemScene extends Component {
       <Container>
         <ScrollView style={styles.wrapper}>
           <AppText style={StyleSheet.flatten(styles.header)}>
-            {`Publié par ${this.props.item.publisher.firstName} ${this.props.item.publisher.lastName} le ${this.props.item.publishDate}`}
+            {`Publié par ${this.props.item.publisher.firstName} ${this.props.item.publisher.lastName} le ${formatDate(this.props.item.publishDate)}`}
           </AppText>
           <View style={{borderColor: 'lightgrey', borderWidth: 1, borderRadius: 0, backgroundColor: '#efeff2', width: 340, marginLeft: 8, marginTop: 8}}>
             <Image
