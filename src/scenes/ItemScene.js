@@ -23,7 +23,7 @@ export default class ItemScene extends Component {
           >
 
             <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
-              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color='green' />
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>

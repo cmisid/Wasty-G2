@@ -11,7 +11,7 @@ import ItemCard from '../components/ItemCard'
 import { colors } from '../style'
 import { getItems } from '../store/api'
 
-import SearchBar from 'react-native-searchbar'
+import Tags from 'react-native-tags'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -85,7 +85,7 @@ export default class ItemScene extends Component {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <View style={styles.top}>
-          <SearchBar
+          <Tags
             ref={(ref) => this.searchBar = ref}
             data={getItems()}
             handleResults={this.componentDidMount}
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   bottom: {
-    flex: 6
+    flex: 12
   }
 })
 
