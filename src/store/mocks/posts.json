@@ -1,42 +1,69 @@
 [
   {
+    "id": "1",
     "title": "Canapé cuir",
     "category": "AMEUBLEMENT",
+    "description": "Canapé cuir 3 places, non convertible, de chez Natuzzi très bon état. Assises impeccables",
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-26T00:34:00",
+    "publisher": {
+      "email": "axel.bellec@outlook.fr",
+      "first_name": "Axel",
+      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+      "last_name": "Bellec",
+      "date_joined": "2016-11-26T00:34:00"
+    },
     "views": 14,
     "coordinates": {
-      "lat": 48.5712432,
-      "lon": -3.1075241999999434
+      "lat": 43.589246,
+      "lon": 1.445684
     },
     "street_name": "Rue St Michel",
     "city_name": "Toulouse"
   },
   {
+    "id": "2",
     "title": "Portes coulissantes",
     "category": "BOIS ET MATERIAUX",
+    "description": "Portes de placard coulissantes, avec tringles et étagères, sur 2 niveaux à démonter. Excellent état",
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-19T00:00:00",
+    "publisher": {
+      "email": "axel.bellec@outlook.fr",
+      "first_name": "Axel",
+      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+      "last_name": "Bellec",
+      "date_joined": "2016-11-26T00:34:00"
+    },
     "views": 26,
     "coordinates": {
-      "lat": 48.560811,
-      "lon": -3.148260
+      "lat": 43.592797,
+      "lon": 1.447755
     },
     "street_name": "Rue Jeanne d'Arc",
     "city_name": "Toulouse"
   },
   {
+    "id": "3",
     "title": "Frigo",
     "category": "ELECTROMENAGER",
+    "description": "Refrigirateur en tres bon etat de marche la lumiere ne marche plus et des rayures sur les parois sinon nikel ",
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-20T00:00:00",
+    "publisher": {
+      "email": "axel.bellec@outlook.fr",
+      "first_name": "Axel",
+      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+      "last_name": "Bellec",
+      "date_joined": "2016-11-26T00:34:00"
+    },
     "views": 57,
     "coordinates": {
-      "lat": 48.571243,
-      "lon": -3.107527
+      "lat": 43.573179,
+      "lon": 1.459670
     },
     "street_name": "Allée de Barcelone",
     "city_name": "Toulouse"
