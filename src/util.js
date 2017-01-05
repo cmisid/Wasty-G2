@@ -1,4 +1,4 @@
-//Functions which are used in wasty/src/components/itemCard.js & itemMap.js & itemRow.js
+//Functions which are used in wasty/src/components/itemCard.js & itemMap.js & itemRow.js & wasty/scenes/itemScene.js
 
 export const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => (
   `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
