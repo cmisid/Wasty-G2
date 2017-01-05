@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
+import _ from 'lodash'
 
-import ItemRow from '../components/ItemRow'
+import ItemRowSwipe from '../components/ItemRowSwipe'
 import Container from '../components/Container'
 import { getItems } from '../store/api'
 import { colors } from '../style'
@@ -32,6 +33,12 @@ export default class ListScene extends Component {
     this.setState({refreshing: false})
   }
 
+  onDeleteItem (id) {
+    const listWithoutItem = _.reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
+  }
+
   componentDidMount () {
     getItems()
       .then(items => { this.setState({items}) })
@@ -51,8 +58,9 @@ export default class ListScene extends Component {
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
-            <ItemRow
+            <ItemRowSwipe
               item={item}
+              onDeleteItem={this.onDeleteItem.bind(this)}
               onPressAction={() => Actions.listItemScene({item: item,
                 userLat: this.state.location.lat,
                 userLon: this.state.location.lon})}
