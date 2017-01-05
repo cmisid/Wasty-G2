@@ -61,9 +61,10 @@ export const getPosts = () => {
       imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,
       lon: item.coordinates.lon,
-      nFavorite: item.favorite,
+      nLikes: item.likes,
       nViews: item.views,
       publishDate: item.publish_date,
+      pickedUp: item.picked_up,
       streetName: item.street_name,
       title: item.title,
       publisher: new User({
