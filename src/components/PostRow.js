@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TouchableHighlight } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ProgressiveImage from './ProgressiveImage'
@@ -10,8 +10,6 @@ import frLocale from 'date-fns/locale/fr'
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
-
-import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
 export default class ItemRow extends Component {
   render () {
@@ -33,46 +31,24 @@ export default class ItemRow extends Component {
                 <AppText
                   style={StyleSheet.flatten(styles.title)}
                 >
-                  {this.props.item.title}
+                  {this.props.item.title} publié {distanceInWordsToNow(
+                      this.props.item.publishDate,
+                      {locale: frLocale, addSuffix: true}
+                    )}
                 </AppText>
                 <AppText
                   style={StyleSheet.flatten(styles.category)}
                 >
                   {this.props.item.category}
                 </AppText>
-                <View
-                  style={styles.content}
-                >
-                  <AppText
-                    style={StyleSheet.flatten(styles.streetName)}
-                    onPress={() => Linking.openURL(generateMapLink(
-                      this.props.userLat,
-                      this.props.userLon,
-                      this.props.item.lat,
-                      this.props.item.lon
-                    ))}
-                  >{`${this.props.item.streetName}, ${this.props.item.cityName}`}
-                  </AppText>
-
-                  <AppText style={StyleSheet.flatten(styles.distance)}>
-                    {distanceFmt(haversineDistance(
-                      this.props.userLat,
-                      this.props.userLon,
-                      this.props.item.lat,
-                      this.props.item.lon
-                    ))}
-                  </AppText>
+                <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200}}>
+                  <Icon name='star' iconStyle={{marginTop: 10}} size={20} color='yellow' />
+                  <AppText> {this.props.item.nFavorite}</AppText>
                 </View>
                 <View
                   style={styles.content}
                 >
-                  <AppText>
-                    {distanceInWordsToNow(
-                      this.props.item.publishDate,
-                      {locale: frLocale, addSuffix: true}
-                    )}
-                  </AppText>
-                  <View style={{flexDirection: 'row', marginRight: 5}}>
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginTop: 28}}>
                     <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                     <AppText> {this.props.item.nViews}</AppText>
                   </View>
@@ -104,7 +80,8 @@ const styles = StyleSheet.create({
   category: {
     marginLeft: 10,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'black',
+    marginTop: 10
   },
   image: {
     width: 100 - 10,

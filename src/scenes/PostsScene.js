@@ -3,7 +3,7 @@ import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 
-import ItemRow from '../components/ItemRow'
+import PostRow from '../components/PostRow'
 import Container from '../components/Container'
 import { getPosts } from '../store/api'
 import { colors } from '../style'
@@ -48,7 +48,7 @@ export default class PostedScene extends Component {
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
-            <ItemRow
+            <PostRow
               item={item}
               onPressAction={() => Actions.postsItemScene({item})}
               userLat={this.state.location.lat}
