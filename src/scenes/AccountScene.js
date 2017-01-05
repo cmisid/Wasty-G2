@@ -56,7 +56,7 @@ export default class AccountScene extends Component {
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mes informations'
-            onPress={() => Actions.userScene({
+            onPress={() => Actions.accountSettingsScene({
               currentUser: this.state.user,
               updateUser: this.updateUser.bind(this)
             })}
