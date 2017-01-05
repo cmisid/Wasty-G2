@@ -15,7 +15,7 @@ export default class CardFooter extends Component {
           resizeMode='contain'
           source={{uri: this.props.userImg}}
         />
-        <View style={styles.wrapper}>
+        <View style={{flex: 2, flexDirection: 'column'}}>
           <AppText style={StyleSheet.flatten(styles.publisher)}>{this.props.username}</AppText>
           <Text
             style={StyleSheet.flatten(styles.streetName)}

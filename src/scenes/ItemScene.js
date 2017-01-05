@@ -1,27 +1,15 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 
-const toRad = x => x * Math.PI / 180
+import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
 
-const haversineDistance = (lat1, lon1, lat2, lon2) => {
-  const dLat = toRad(lat2 - lat1)
-  const dLon = toRad(lon2 - lon1)
-
-  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLon / 2) * Math.sin(dLon / 2)
-
-  return 12742 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-}
-
-const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
+import CardFooter from '../components/card/CardFooter'
 
 export default class ItemScene extends Component {
   render () {
@@ -35,18 +23,15 @@ export default class ItemScene extends Component {
             source={{ uri: this.props.item.imgUrl }}
             style={styles.image}
           >
-
             <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
               <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
-
           <View style={styles.publishMetadata}>
             <View style={{flex: 2, flexDirection: 'column'}}>
               <AppText style={StyleSheet.flatten(styles.distance)}>
                 {distanceFmt(haversineDistance(
-
                   this.props.userLat,
                   this.props.userLon,
                   this.props.item.lat,
@@ -58,9 +43,16 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <AppText>
-                {this.props.item.streetName}, {this.props.item.cityName}
-              </AppText>
+              <CardFooter
+                streetName={this.props.item.streetName}
+                cityName={this.props.item.cityName}
+                mapUrl={generateMapLink(
+                  this.props.userLat,
+                  this.props.userLon,
+                  this.props.item.lat,
+                  this.props.item.lon
+                )}
+              />
             </View>
           </View>
           <AppText style={styles.description}>
@@ -78,6 +70,7 @@ export default class ItemScene extends Component {
 ItemScene.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
+  mapUrl: React.PropTypes.string,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
 }
