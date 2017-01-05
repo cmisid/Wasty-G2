@@ -16,8 +16,15 @@ export default class ItemRow extends Component {
     return (
       <TouchableHighlight onPress={this.props.onPressAction}>
         <View style={{flex: 1}}>
-          <View>
-            <Card>
+          <Card>
+            <View>
+              <Icon
+                name={this.props.item.pickedUp ? 'check' : ''}
+                iconStyle={{textAlign: 'center'}}
+                size={20}
+                color='green'
+                opacity={this.props.item.pickedUp ? 0.2 : 1}
+              />
               <View
                 style={styles.row}
               >
@@ -47,7 +54,7 @@ export default class ItemRow extends Component {
                   >
                     <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
                       <Icon
-                        name={this.props.item.pickedUp ? 'arrow-forward' : 'arrow-back'}
+                        name='star'
                         iconStyle={{marginTop: 10}}
                         size={20}
                         color='gold'
@@ -65,8 +72,8 @@ export default class ItemRow extends Component {
                   </View>
                 </View>
               </View>
-            </Card>
-          </View>
+            </View>
+          </Card>
         </View>
       </TouchableHighlight>
     )
