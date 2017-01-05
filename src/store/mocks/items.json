@@ -14,6 +14,7 @@
       "last_name": "Bellec",
       "date_joined": "2016-11-26T00:34:00"
     },
+    "favorite": 2,
     "views": 14,
     "coordinates": {
       "lat": 43.589246,
@@ -37,6 +38,7 @@
       "last_name": "Bellec",
       "date_joined": "2016-11-26T00:34:00"
     },
+    "favorite": 6,
     "views": 26,
     "coordinates": {
       "lat": 43.592797,
@@ -60,6 +62,7 @@
       "last_name": "Bellec",
       "date_joined": "2016-11-26T00:34:00"
     },
+    "favorite": 18,
     "views": 57,
     "coordinates": {
       "lat": 43.573179,
