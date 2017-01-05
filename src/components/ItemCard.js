@@ -10,7 +10,7 @@ import Card from './card/Card'
 import CardHeader from './card/CardHeader'
 import CardFooter from './card/CardFooter'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import { generateMapLink, haversineDistance, distanceFmt } from './../util.js'
 
 export default class ItemCard extends Component {
   render () {

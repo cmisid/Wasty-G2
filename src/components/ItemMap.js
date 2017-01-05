@@ -9,7 +9,7 @@ import Card from './card/Card'
 import CardFooter from './card/CardFooter'
 import ProgressiveImage from './ProgressiveImage'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
 export default class ItemMap extends Component {
   render () {

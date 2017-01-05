@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image, Linking } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
 import CardFooter from '../components/card/CardFooter'
 
