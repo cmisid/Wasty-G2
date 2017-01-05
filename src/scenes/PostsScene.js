@@ -50,9 +50,7 @@ export default class PostedScene extends Component {
           renderRow={item => (
             <ItemRow
               item={item}
-              onPressAction={() => Actions.postsItemScene({item: item,
-                userLat: this.state.location.lat,
-                userLon: this.state.location.lon})}
+              onPressAction={() => Actions.postsItemScene({item})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
