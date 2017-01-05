@@ -8,10 +8,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
+import TagInput from '../components/TagInput'
 import { colors } from '../style'
 import { getItems } from '../store/api'
-
-import Tags from 'react-native-tags'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -85,7 +84,7 @@ export default class ItemScene extends Component {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <View style={styles.top}>
-          <Tags
+          <TagInput
             ref={(ref) => this.searchBar = ref}
             data={getItems()}
             handleResults={this.componentDidMount}
