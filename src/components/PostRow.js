@@ -40,15 +40,20 @@ export default class ItemRow extends Component {
                   style={StyleSheet.flatten(styles.category)}
                 >
                   {this.props.item.category}
+                  {this.props.item.nFavorite}
                 </AppText>
-                <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200}}>
-                  <Icon name='star' iconStyle={{marginTop: 10}} size={20} color='yellow' />
-                  <AppText> {this.props.item.nFavorite}</AppText>
+                <View
+                  style={styles.content}
+                >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
+                    <Icon name='star' iconStyle={{marginTop: 10}} size={20} color='yellow' />
+                    <AppText> {this.props.item.nFavorite}</AppText>
+                  </View>
                 </View>
                 <View
                   style={styles.content}
                 >
-                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginTop: 28}}>
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
                     <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                     <AppText> {this.props.item.nViews}</AppText>
                   </View>
