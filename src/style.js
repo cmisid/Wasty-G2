@@ -7,7 +7,9 @@ export const colors = {
   background: 'darkgray',
   inactive: 'darkgray',
 
-  link: 'dodgerblue'
+  link: 'dodgerblue',
+
+  transparent: 'transparent'
 }
 
 export const textStyle = {

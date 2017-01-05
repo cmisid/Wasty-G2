@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Platform } from 'react-native'
 
 import AppText from './AppText'
 
@@ -34,7 +34,8 @@ export default class RouterTitle extends Component {
 const styles = StyleSheet.create({
   titleWrapper: {
     alignItems: 'center',
-    paddingTop: 26
+    //The presentation of the title depend of the os. 
+    paddingTop: (Platform.OS === 'ios') ? 26 : 13 
   },
   titleText: {
     fontSize: 20
