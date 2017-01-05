@@ -37,7 +37,11 @@ export default class ItemRowSwipe extends Component {
 
   render () {
     return (
-      <Swipeout right={this.state.deleteButton} autoClose>
+      <Swipeout
+        right={this.state.deleteButton}
+        autoClose
+        sensitivity={0.9}
+      >
         <TouchableHighlight onPress={this.props.onPressAction}>
           <View style={{flex: 1}}>
             <Card>
