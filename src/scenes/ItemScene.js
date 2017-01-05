@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image, Linking } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image, Linking, Text } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -9,7 +9,7 @@ import Container from '../components/Container'
 
 import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
 
-import CardFooter from '../components/card/CardFooter'
+import { colors } from '../style'
 
 export default class ItemScene extends Component {
   render () {
@@ -43,16 +43,16 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <CardFooter
-                streetName={this.props.item.streetName}
-                cityName={this.props.item.cityName}
-                mapUrl={generateMapLink(
-                  this.props.userLat,
-                  this.props.userLon,
-                  this.props.item.lat,
-                  this.props.item.lon
-                )}
-              />
+              <Text
+                style={StyleSheet.flatten(styles.streetName)}
+                onPress={() => Linking.openURL(generateMapLink(
+                this.props.userLat,
+                this.props.userLon,
+                this.props.item.lat,
+                this.props.item.lon
+              ))}
+                >{this.props.item.streetName}, {this.props.item.cityName}
+              </Text>
             </View>
           </View>
           <AppText style={styles.description}>
@@ -128,6 +128,10 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     width: 320,
     height: 220
+  },
+  streetName: {
+    marginLeft: 5,
+    color: colors.link
   }
 })
 
