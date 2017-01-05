@@ -13,6 +13,7 @@ import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import PostsScene from './scenes/PostsScene'
+import PostItemScene from './scenes/PostItemScene'
 import UserScene from './scenes/UserScene'
 
 // Disable RCTAnimation warning
@@ -44,6 +45,7 @@ const scenes = Actions.create(
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
       <Scene title='Profil utilisateur' key='userScene' component={UserScene} />
+      <Scene title='Poster' key='searchPostItemScene' component={PostItemScene} />
     </Scene>
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
