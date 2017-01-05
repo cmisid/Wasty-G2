@@ -1,27 +1,12 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
+import cardFooter from '../components/card/CardFooter'
 import AppText from '../components/AppText'
 import Container from '../components/Container'
-
-const toRad = x => x * Math.PI / 180
-
-const haversineDistance = (lat1, lon1, lat2, lon2) => {
-  const dLat = toRad(lat2 - lat1)
-  const dLon = toRad(lon2 - lon1)
-
-  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLon / 2) * Math.sin(dLon / 2)
-
-  return 12742 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-}
-
-const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
+import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
 
 export default class ItemScene extends Component {
   render () {
@@ -37,7 +22,7 @@ export default class ItemScene extends Component {
           >
 
             <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-end'}} >
-              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19} color='green' />
+              <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19.5} color='green' />
               <AppText>{this.props.item.nViews}</AppText>
             </View>
           </Image>
@@ -52,15 +37,22 @@ export default class ItemScene extends Component {
                   this.props.item.lat,
                   this.props.item.lon
                 ))}
+
               </AppText>
               <AppText style={{marginBottom: 10, marginTop: 5}}>
                 {this.props.item.category}
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <AppText>
-                {this.props.item.streetName}, {this.props.item.cityName}
-              </AppText>
+              <cardFooter mapUrl = {generateMapLink(
+                this.props.userLat,
+                this.props.userLon,
+                this.props.item.lat,
+                this.props.item.lon)}
+              
+              />
+
+
             </View>
           </View>
           <AppText style={styles.description}>
