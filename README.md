@@ -56,6 +56,15 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 ![recherche_io](https://docs.google.com/drawings/d/1BgCKhWAEdvcfh4jvmrewnz3txm5sF6JIpx3ttUdY-Kw/pub?w=1231&h=730)
 
 
+### Page ajouter un objet
+
+#### Visuel
+
+#### IO
+
+![object_io](https://docs.google.com/drawings/d/12paEYAcop-IIRlovjBoLd5DwXzR7_oapUxM5KrYG7LU/pub?w=1231&h=730)
+
+
 ### Page "Ma liste"
 
 #### Visuel

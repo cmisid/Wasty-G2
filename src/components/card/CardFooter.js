@@ -1,22 +1,43 @@
 import React, { Component } from 'react'
-import { View, Image, StyleSheet, Linking, Text } from 'react-native'
+import { View, StyleSheet, Linking, Text, TouchableHighlight } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { Actions } from 'react-native-router-flux'
 
 import AppText from '../AppText'
+import ProgressiveImage from '../ProgressiveImage'
 import { colors } from '../../style'
 
 export default class CardFooter extends Component {
+
+  _onPressUser () {
+    console.log('Image pressed')
+    Actions.userScene({
+      user: this.props.user
+    })
+  }
+
   render () {
     return (
       <View style={styles.publishMetadata}>
-        <Image
-          style={styles.userImage}
-          resizeMode='contain'
-          source={{uri: this.props.userImg}}
-        />
+
+        <TouchableHighlight onPress={this._onPressUser.bind(this)} underlayColor={colors.transparent}>
+          <View>
+            <ProgressiveImage
+              thumbnailSource={{ uri: this.props.user.imgPlaceholderUrl }}
+              imageSource={{ uri: this.props.user.imgUrl }}
+              style={styles.userImage}
+            />
+          </View>
+        </TouchableHighlight>
         <View style={{flex: 2, flexDirection: 'column'}}>
-          <AppText style={StyleSheet.flatten(styles.publisher)}>{this.props.username}</AppText>
+          <TouchableHighlight onPress={this._onPressUser.bind(this)} underlayColor={colors.transparent}>
+            <View>
+              <AppText style={StyleSheet.flatten(styles.publisher)}>
+                {`${this.props.user.firstName} ${this.props.user.lastName}`}
+              </AppText>
+            </View>
+          </TouchableHighlight>
           <Text
             style={StyleSheet.flatten(styles.streetName)}
             onPress={() => Linking.openURL(this.props.mapUrl)}
@@ -44,11 +65,10 @@ CardFooter.propTypes = {
   publishDate: React.PropTypes.string,
   streetName: React.PropTypes.string,
   cityName: React.PropTypes.string,
-  userImg: React.PropTypes.string,
-  username: React.PropTypes.string,
   distance: React.PropTypes.string,
   mapUrl: React.PropTypes.string,
-  views: React.PropTypes.number
+  views: React.PropTypes.number,
+  user: React.PropTypes.object
 }
 
 const styles = StyleSheet.create({
