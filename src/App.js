@@ -13,6 +13,7 @@ import ListScene from './scenes/ListScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import PostsScene from './scenes/PostsScene'
+import UserScene from './scenes/UserScene'
 
 // Disable RCTAnimation warning
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
@@ -42,6 +43,7 @@ const scenes = Actions.create(
     <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
+      <Scene title='Utilisateur' key='userScene' component={UserScene} />
     </Scene>
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>

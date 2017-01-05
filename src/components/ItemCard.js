@@ -36,9 +36,8 @@ export default class ItemCard extends Component {
                 {locale: frLocale, addSuffix: true}
               )}
               streetName={this.props.item.streetName}
+              user={this.props.item.publisher}
               cityName={this.props.item.cityName}
-              userImg={this.props.item.publisher.imgUrl}
-              username={`${this.props.item.publisher.firstName} ${this.props.item.publisher.lastName}`}
               distance={distanceFmt(haversineDistance(
                 this.props.userLat,
                 this.props.userLon,
