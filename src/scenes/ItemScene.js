@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
 import { colors } from '../style'
 

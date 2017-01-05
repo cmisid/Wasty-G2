@@ -11,7 +11,7 @@ import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 
-import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
 export default class ItemRow extends Component {
   render () {
