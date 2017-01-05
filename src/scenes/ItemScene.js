@@ -3,9 +3,10 @@ import React, { Component } from 'react'
 import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import cardFooter from '../components/card/CardFooter'
+
 import AppText from '../components/AppText'
 import Container from '../components/Container'
+import { colors } from '../style'
 import {generateMapLink, haversineDistance, distanceFmt, toRad} from './../util.js'
 
 export default class ItemScene extends Component {
@@ -44,15 +45,16 @@ export default class ItemScene extends Component {
               </AppText>
             </View>
             <View style={{flex: 2, flexDirection: 'column'}}>
-              <cardFooter mapUrl = {generateMapLink(
+              <Text
+                style={StyleSheet.flatten(styles.streetName)}
+                onPress={() => Linking.openURL(generateMapLink(
                 this.props.userLat,
                 this.props.userLon,
                 this.props.item.lat,
-                this.props.item.lon)}
-              
-              />
-
-
+                this.props.item.lon
+              ))}
+              >{this.props.item.streetName}, {this.props.item.cityName}
+              </Text>
             </View>
           </View>
           <AppText style={styles.description}>
@@ -127,6 +129,10 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     width: 320,
     height: 220
+  },
+  streetName: {
+    marginLeft: 5,
+    color: colors.link
   }
 })
 
