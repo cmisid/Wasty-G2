@@ -4,6 +4,8 @@ import { View, StyleSheet, TouchableHighlight } from 'react-native'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import modalbox from 'react-native-modalbox'
+
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
@@ -77,7 +79,7 @@ export default class ItemRow extends Component {
 
                 </View>
               }
-              {this.props.item.status === 'picked-up' &&
+              {this.props.item.status === 'pickedUp' &&
                 <View style={styles.pickedup} >
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
                     <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />
@@ -169,6 +171,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'peachpuff',
     width: 365,
     height: 117
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
-
 })
