@@ -140,12 +140,6 @@ export default class ItemScene extends Component {
               renderSeparator={() => <View style={styles.separator} />}
               style={styles.list}
             />
-
-            <ActionButton
-              buttonColor={colors.primary}
-              icon={<Icon color='white' name='photo-camera' size={20} />}
-              onPress={() => Actions.searchPostItemScene()}
-            />
           </View>
           <View style={styles.buttonFooter}>
             <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
@@ -153,6 +147,11 @@ export default class ItemScene extends Component {
             </TouchableOpacity>
           </View>
         </ScrollView>
+        <ActionButton
+          buttonColor={colors.primary}
+          icon={<Icon color='white' name='photo-camera' size={20} />}
+          onPress={() => Actions.searchPostItemScene()}
+        />
       </Container>
     )
   }
