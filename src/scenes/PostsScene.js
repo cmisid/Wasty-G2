@@ -77,7 +77,8 @@ export default class PostedScene extends Component {
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >{`Thierry dit avoir récupéré :`}</Text>
           <Text
-            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0}}
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0, color: colors.link}}
+            onPress={() => Actions.postsItemScene({item: this.state.selectedItem})}
           >{`${this.state.selectedItem.title}`}</Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
