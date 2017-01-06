@@ -5,8 +5,8 @@ import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import _ from 'lodash'
 
-import AppText from '../components/AppText'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
 import Tag from '../components/Tag'
@@ -74,6 +74,12 @@ export default class ItemScene extends Component {
     })
   }
 
+  onLikedItem (id) {
+    const listWithoutItem = _.reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
+  }
+
   _onRefresh () {
     this.setState({refreshing: true})
     getItems()
@@ -109,6 +115,7 @@ export default class ItemScene extends Component {
             renderRow={item => (
               <ItemCard
                 item={item}
+                onLikedItem={this.onLikedItem.bind(this)}
                 onPressAction={() => Actions.searchItemScene({
                   item: item,
                   userLat: this.state.location.lat,
