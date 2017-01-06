@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View } from 'react-native'
+import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View, TouchableOpacity } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import _ from 'lodash'
 
-import AppText from '../components/AppText'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
 import Tag from '../components/Tag'
@@ -74,6 +74,12 @@ export default class ItemScene extends Component {
     })
   }
 
+  onLikedItem (id) {
+    const listWithoutItem = _.reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
+  }
+
   _onRefresh () {
     this.setState({refreshing: true})
     getItems()
@@ -82,52 +88,69 @@ export default class ItemScene extends Component {
     this.setState({refreshing: false})
   }
 
+  _showMoreItems () {
+    // TODO: implémenter la logique de récupération des données via l'API (avec pagination)
+    // Ici on a fait un exemple basique d'ajout d'item dans la liste
+    const newItem = {Item: this.state.items[1]}
+    this.setState({
+      items: Object.assign(this.state.items, newItem)
+    })
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
-        <View style={styles.top}>
-          <ScrollView style={styles.tagScroll} horizontal>
-            <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
-            <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
-            <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
-            <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
-            <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
-            <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
-            <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
-          </ScrollView>
-        </View>
-        <View style={styles.bottom}>
-          <ListView
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-            dataSource={ds.cloneWithRows(this.state.items)}
-            enableEmptySections
-            renderRow={item => (
-              <ItemCard
-                item={item}
-                onPressAction={() => Actions.searchItemScene({
-                  item: item,
-                  userLat: this.state.location.lat,
-                  userLon: this.state.location.lon
-                })}
-                userLat={this.state.location.lat}
-                userLon={this.state.location.lon}
-              />
-            )}
-            renderSeparator={() => <View style={styles.separator} />}
-            style={styles.list}
-          />
+        <ScrollView>
+          <View style={styles.top}>
+            <ScrollView style={styles.tagScroll} horizontal>
+              <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
+              <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
+              <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
+              <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
+              <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
+              <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
+              <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
+            </ScrollView>
+          </View>
+          <View style={styles.bottom}>
+            <ListView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh.bind(this)}
+                />
+              }
+              dataSource={ds.cloneWithRows(this.state.items)}
+              enableEmptySections
+              renderRow={item => (
+                <ItemCard
+                  item={item}
+                  onLikedItem={this.onLikedItem.bind(this)}
+                  onPressAction={() => Actions.searchItemScene({
+                    item: item,
+                    userLat: this.state.location.lat,
+                    userLon: this.state.location.lon
+                  })}
+                  userLat={this.state.location.lat}
+                  userLon={this.state.location.lon}
+                />
+              )}
+              renderSeparator={() => <View style={styles.separator} />}
+              style={styles.list}
+            />
 
-          <ActionButton
-            buttonColor={colors.primary}
-            icon={<Icon color='white' name='photo-camera' size={20} />}
-            onPress={() => Actions.searchPostItemScene()}
-          />
-        </View>
+            <ActionButton
+              buttonColor={colors.primary}
+              icon={<Icon color='white' name='photo-camera' size={20} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
+          <View style={styles.buttonFooter}>
+            <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
+              <Icon color='white' name='add-circle' size={40} />
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </Container>
     )
   }
@@ -161,6 +184,14 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 12
+  },
+  moreItemsButton: {
+    flex: 1,
+    backgroundColor: 'transparent'
+  },
+  buttonFooter: {
+    alignSelf: 'center',
+    height: 50
   }
 })
 
