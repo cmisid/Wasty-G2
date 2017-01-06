@@ -11,7 +11,7 @@ const ItemForm = t.struct({
   title: t.String,
   category: t.String,
   description: t.String,
-  //disponibilitées du posteur
+  // disponibilitées du posteur
   beginHour: t.Date,
   endingHour: t.Date
 })
@@ -33,14 +33,15 @@ const options = {
     beginHour: {
       label: 'Heure de début',
       error: 'Une heure de début est requise',
-      mod: 'time'
+      mode: 'time'
     },
     endingHour: {
       label: 'Heure de fin',
-      error: 'Une heure de fin est requise'
+      error: 'Une heure de fin est requise',
+      mode: 'time'
     }
   },
-  order: [ 'title', 'category', 'description', 'beginHour', 'endingHour']
+  order: ['title', 'category', 'description', 'beginHour', 'endingHour']
 }
 
 export default class PostItemScene extends Component {
