@@ -70,16 +70,17 @@ export default class PostedScene extends Component {
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           enableEmptySections
         />
-
         <Modal style={{borderRadius: 5, height: 200, paddingLeft: 5, paddingRight: 5}} ref={'modal'}>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
-          <ActionButton
-            buttonColor={colors.primary}
-            icon={<Icon color='white' name='check' size={20} />}
-            onPress={() => Actions.searchPostItemScene()}
-          />
+          <View style={{marginTop: 100, marginRight: 50}}>
+            <ActionButton
+              buttonColor={colors.primary}
+              icon={<Icon color='white' name='check' size={20} iconStyle={{marginLeft: 15}} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
         </Modal>
       </Container>
     )
