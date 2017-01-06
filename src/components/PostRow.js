@@ -23,7 +23,7 @@ export default class ItemRow extends Component {
                 iconStyle={{textAlign: 'center'}}
                 size={20}
                 color='green'
-                opacity={this.props.item.pickedUp ? 0.2 : 1}
+                style={{textAlign: 'center'}}
               />
               <View
                 style={styles.row}
