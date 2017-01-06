@@ -4,6 +4,8 @@ import { View, StyleSheet, TouchableHighlight } from 'react-native'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import modalbox from 'react-native-modalbox'
+
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
@@ -166,6 +168,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'peachpuff',
     width: 365,
     height: 117
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
-
 })
