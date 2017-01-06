@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Image } from 'react-native'
 
 import t from 'tcomb-form-native'
 
@@ -45,10 +45,19 @@ const options = {
 }
 
 export default class PostItemScene extends Component {
+
+  componentDidMount () {
+    console.log(this.props.itemImgSource)
+  }
+
   render () {
     return (
       <Container>
         <View style={styles.formWrapper}>
+          <Image
+            style={{width: 100, height: 100}}
+            source={{uri: this.props.itemImgSource.uri}}
+          />
           <Form
             options={options}
             ref='form'
@@ -58,6 +67,10 @@ export default class PostItemScene extends Component {
       </Container>
     )
   }
+}
+
+PostItemScene.propTypes = {
+  itemImgSource: React.PropTypes.object
 }
 
 const styles = StyleSheet.create({

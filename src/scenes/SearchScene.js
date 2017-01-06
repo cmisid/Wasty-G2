@@ -57,6 +57,7 @@ export default class ItemScene extends Component {
         skipBackup: true
       }
     }
+
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response)
       if (response.didCancel) {
@@ -69,9 +70,12 @@ export default class ItemScene extends Component {
         const source = Platform.OS === 'android'
           ? {uri: response.uri, isStatic: true}
           : {uri: response.uri.replace('file://', ''), isStatic: true}
+
         this.setState({
-          avatarSource: source
+          itemImgSource: source
         })
+
+        Actions.searchPostItemScene({itemImgSource: this.itemImgSource})
       }
     })
   }
@@ -150,7 +154,7 @@ export default class ItemScene extends Component {
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='photo-camera' size={20} />}
-          onPress={() => Actions.searchPostItemScene()}
+          onPress={() => this.selectPhotoTapped()}
         />
       </Container>
     )
