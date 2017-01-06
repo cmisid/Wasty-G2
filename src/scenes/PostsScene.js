@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { ListView, StyleSheet, View, Text, RefreshControl } from 'react-native'
 
-import { isEmpty } from 'lodash'
 import Modal from 'react-native-modalbox'
 import { Actions } from 'react-native-router-flux'
 
@@ -58,7 +57,7 @@ export default class PostedScene extends Component {
             <PostRow
               item={item}
               onPressAction={() => {
-                if (item.status === 'picked-up') {
+                if (item.status === 'pickedUp') {
                   this.setState({selectedItem: item}, () => this.openModal())
                 } else Actions.postsItemScene({item})
               }}
@@ -70,8 +69,8 @@ export default class PostedScene extends Component {
           enableEmptySections
         />
 
-        <Modal style={{height: 200}} ref={'modal'}>
-          <Text>{!isEmpty(this.state.selectedItem) ? this.state.selectedItem.title : 'Vide'}</Text>
+        <Modal style={{height: 200, borderRadius: 5, marginLeft: 5, marginRight: 10}} ref={'modal'}>
+          <Text>Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
         </Modal>
       </Container>
     )
