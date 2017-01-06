@@ -23,8 +23,10 @@ export default class ItemScene extends Component {
     this.state = {
       refreshing: false,
       items: {},
-      location: {'lat': 48.566140, 'lon': -3.148260},
-
+      location: {
+        'lat': 48.566140,
+        'lon': -3.148260
+      },
       avatarSource: null,
       videoSource: null
     }
@@ -55,6 +57,7 @@ export default class ItemScene extends Component {
         skipBackup: true
       }
     }
+
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response)
       if (response.didCancel) {
@@ -67,9 +70,12 @@ export default class ItemScene extends Component {
         const source = Platform.OS === 'android'
           ? {uri: response.uri, isStatic: true}
           : {uri: response.uri.replace('file://', ''), isStatic: true}
+
         this.setState({
-          avatarSource: source
+          itemImgSource: source
         })
+
+        Actions.searchPostItemScene({itemImgSource: this.itemImgSource})
       }
     })
   }
@@ -138,12 +144,6 @@ export default class ItemScene extends Component {
               renderSeparator={() => <View style={styles.separator} />}
               style={styles.list}
             />
-
-            <ActionButton
-              buttonColor={colors.primary}
-              icon={<Icon color='white' name='photo-camera' size={20} />}
-              onPress={() => Actions.searchPostItemScene()}
-            />
           </View>
           <View style={styles.buttonFooter}>
             <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
@@ -151,6 +151,11 @@ export default class ItemScene extends Component {
             </TouchableOpacity>
           </View>
         </ScrollView>
+        <ActionButton
+          buttonColor={colors.primary}
+          icon={<Icon color='white' name='photo-camera' size={20} />}
+          onPress={() => this.selectPhotoTapped()}
+        />
       </Container>
     )
   }
