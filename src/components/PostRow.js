@@ -47,11 +47,12 @@ export default class ItemRow extends Component {
                   >
                     <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
                       <Icon
-                        name={this.props.item.pickedUp ? 'arrow-forward' : 'arrow-back'}
+                        name={'star'}
                         iconStyle={{marginTop: 10}}
                         size={20}
                         color='gold'
                       />
+
                       <AppText> {this.props.item.nLikes}</AppText>
                     </View>
                   </View>
@@ -64,6 +65,17 @@ export default class ItemRow extends Component {
                     </View>
                   </View>
                 </View>
+                
+                
+                
+                {this.props.item.pickedUp &&
+                  <View style={this.props.item.pickedUp && styles.overlay} >
+                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                      <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
+                    </View>
+                
+                </View>
+              }
               </View>
             </Card>
           </View>
@@ -127,5 +139,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginLeft: 10,
     opacity: 0.2
-  }
+  },
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: -10,
+    top: 0,
+    opacity: 0.5,
+    borderRadius:5,
+    backgroundColor: 'lightgreen',
+    width:365,
+    height: 117}
 })
