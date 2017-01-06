@@ -10,6 +10,9 @@ import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 import ProgressiveImage from './ProgressiveImage'
+import Button  from 'react-native-button'
+import Slider  from'react-native-slider'
+
 
 export default class ItemRow extends Component {
   render () {
