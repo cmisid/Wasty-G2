@@ -72,6 +72,7 @@ export default class PostedScene extends Component {
         />
 
         <Modal style={{height: 180, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
+
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >{`Thierry dit avoir récupéré :`}</Text>
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 7
-  },
+  }
 })
 
 PostedScene.propTypes = {
