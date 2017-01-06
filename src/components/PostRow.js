@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, TouchableHighlight } from 'react-native'
 
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import ProgressiveImage from './ProgressiveImage'
-
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
+import ProgressiveImage from './ProgressiveImage'
 
 export default class ItemRow extends Component {
   render () {
@@ -65,13 +64,14 @@ export default class ItemRow extends Component {
                   </View>
                 </View>
               </View>
-              {this.props.item.pickedUp &&
+              {this.props.item.status === 'finished' &&
                 <View style={styles.overlay} >
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
                     <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
                   </View>
                 </View>
               }
+
             </View>
           </Card>
         </View>
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     left: -10,
     top: 0,
     opacity: 0.5,
-    borderRadius:5,
+    borderRadius: 5,
     backgroundColor: 'lightgreen',
-    width:365,
+    width: 365,
     height: 117}
 })

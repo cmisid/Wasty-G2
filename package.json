@@ -12,6 +12,7 @@
     "lodash": "^4.17.2",
     "react": "15.4.1",
     "react-native": "0.38.0",
+    "react-native-blur": "1.2.1",
     "react-native-action-button": "^2.0.16",
     "react-native-button": "^1.7.1",
     "react-native-gifted-listview": "0.0.15",

@@ -64,7 +64,7 @@ export const getPosts = () => {
       nLikes: item.likes,
       nViews: item.views,
       publishDate: item.publish_date,
-      pickedUp: item.picked_up,
+      status: item.status,
       streetName: item.street_name,
       title: item.title,
       publisher: new User({

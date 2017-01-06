@@ -7,7 +7,7 @@
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-26T00:34:00",
-    "picked_up": true,
+    "status": "pending",
     "publisher": {
       "email": "axel.bellec@outlook.fr",
       "first_name": "Axel",
@@ -32,7 +32,7 @@
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-19T00:00:00",
-    "picked_up": false,
+    "status": "finished",
     "publisher": {
       "email": "axel.bellec@outlook.fr",
       "first_name": "Axel",
@@ -57,7 +57,7 @@
     "img": "https://unsplash.it/600/400/",
     "img_placeholder": "https://unsplash.it/100/100/?blur",
     "publish_date": "2016-12-20T00:00:00",
-    "picked_up": true,
+    "status": "pending",
     "publisher": {
       "email": "axel.bellec@outlook.fr",
       "first_name": "Axel",
