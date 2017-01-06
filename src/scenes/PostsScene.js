@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
+import { ListView, StyleSheet, View, Text, RefreshControl } from 'react-native'
 
+import { isEmpty } from 'lodash'
+import Modal from 'react-native-modalbox'
 import { Actions } from 'react-native-router-flux'
 
 import PostRow from '../components/PostRow'
@@ -15,10 +17,15 @@ export default class PostedScene extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      selectedItem: {},
       refreshing: false,
       items: [],
       location: {'lat': 48.566140, 'lon': -3.148260}
     }
+  }
+
+  openModal () {
+    this.refs.modal.open()
   }
 
   componentDidMount () {
@@ -50,7 +57,11 @@ export default class PostedScene extends Component {
           renderRow={item => (
             <PostRow
               item={item}
-              onPressAction={() => Actions.postsItemScene({item})}
+              onPressAction={() => {
+                if (item.status === 'picked-up') {
+                  this.setState({selectedItem: item}, () => this.openModal())
+                } else Actions.postsItemScene({item})
+              }}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
@@ -58,6 +69,10 @@ export default class PostedScene extends Component {
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           enableEmptySections
         />
+
+        <Modal style={{height: 200}} ref={'modal'}>
+          <Text>{!isEmpty(this.state.selectedItem) ? this.state.selectedItem.title : 'Vide'}</Text>
+        </Modal>
       </Container>
     )
   }
