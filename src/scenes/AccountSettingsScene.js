@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { isEqual } from 'lodash'
+import { forEach } from 'lodash'
 import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import t from 'tcomb-form-native'
 
+import { User } from '../classes'
 import Container from '../components/Container'
 import { colors } from '../style'
 
@@ -37,9 +38,28 @@ export default class AccountScene extends Component {
      * Update the account settings. The update is triggered if the provided
      * settings are valid and are different from the previous ones.
      */
-    const newUser = this.refs.form.getValue()
-    if (newUser && !isEqual(newUser, this.props.user)) {
-      this.props.updateUser(newUser)
+
+    // FIXME: the following algorithm can probably be done with a lodash merge
+
+    const form = this.refs.form.getValue()
+
+    // Make sure the form is valid
+    if (form) {
+      // Clone the current user
+      const newUser = Object.assign({}, this.props.currentUser)
+      let userWasModified = false
+      // Iterate through each field in the form and check if it is different from the current user
+      forEach(form, (value, key) => {
+        if (newUser[key] !== value) {
+          newUser[key] = value
+          userWasModified = true
+        }
+      })
+      console.log(this.props.currentUser)
+      console.log(form)
+      console.log(newUser)
+      // Trigger the user update callback if there was a change
+      if (userWasModified) this.props.updateUser(new User(newUser))
     }
   }
 
