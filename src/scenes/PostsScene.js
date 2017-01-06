@@ -66,7 +66,7 @@ export default class PostedScene extends Component {
               userLon={this.state.location.lon}
             />
           )}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+          renderSeparator={() => <View style={styles.separator} />}
           enableEmptySections
         />
 
@@ -83,10 +83,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   separator: {
-    flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.accent
-  }
+    height: 7
+  },
 })
 
 PostedScene.propTypes = {
