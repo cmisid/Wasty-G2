@@ -82,7 +82,13 @@ export default class ItemRow extends Component {
 
                 </View>
               }
-
+              {this.props.item.status === 'picked-up' &&
+                <View style={styles.pickedup} >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                    <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />
+                  </View>
+                </View>
+              }
             </View>
           </Card>
         </View>
@@ -155,8 +161,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'lightgreen',
     width: 365,
-    height: 117},
-    overlayPicked: {
+
+    height: 117
+  },
+  pickedup: {
     flex: 1,
     position: 'absolute',
     left: -10,
@@ -165,5 +173,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'peachpuff',
     width: 365,
-    height: 117}
+    height: 117
+  }
+
 })
