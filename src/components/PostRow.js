@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, TouchableHighlight } from 'react-native'
 
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import ProgressiveImage from './ProgressiveImage'
-
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
-
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
+import ProgressiveImage from './ProgressiveImage'
 
 export default class ItemRow extends Component {
   render () {
@@ -17,67 +15,74 @@ export default class ItemRow extends Component {
       <TouchableHighlight onPress={this.props.onPressAction}>
         <View style={{flex: 1}}>
           <Card>
-            <View>
+
+            <View
+              style={styles.row}
+            >
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
+                imageSource={{ uri: this.props.item.imgUrl }}
+                style={styles.image}
+              />
+
               <View
-                style={styles.row}
+                style={{flex: 2, marginLeft: 5}}
               >
-                <ProgressiveImage
-                  thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
-                  imageSource={{ uri: this.props.item.imgUrl }}
-                  style={styles.image}
-                />
-                <View
-                  style={{flex: 2, marginLeft: 5}}
+                <AppText
+                  style={StyleSheet.flatten(styles.title)}
                 >
-                  <AppText
-                    style={StyleSheet.flatten(styles.title)}
-                  >
-                    {this.props.item.title} publié {distanceInWordsToNow(
-                        this.props.item.publishDate,
-                        {locale: frLocale, addSuffix: true}
-                      )}
-                  </AppText>
-                  <AppText
-                    style={StyleSheet.flatten(styles.category)}
-                  >
-                    {this.props.item.category}
-                  </AppText>
-                  <View
-                    style={styles.content}
-                  >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
-                      <Icon
-                        name='star'
+                  {this.props.item.title} publié {distanceInWordsToNow(
+                      this.props.item.publishDate,
+                      {locale: frLocale, addSuffix: true}
+                    )}
+                </AppText>
+                <AppText
+                  style={StyleSheet.flatten(styles.category)}
+                >
+                  {this.props.item.category}
+                </AppText>
+                <View
+                  style={styles.content}
+                >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
+                    <Icon
+                      name='star'
 
-                        iconStyle={{marginTop: 10}}
-                        size={20}
-                        color='gold'
-                      />
+                      iconStyle={{marginTop: 10}}
+                      size={20}
+                      color='gold'
+                    />
 
-                      <AppText> {this.props.item.nLikes}</AppText>
-                    </View>
-                  </View>
-                  <View
-                    style={styles.content}
-                  >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
-                      <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
-                      <AppText> {this.props.item.nViews}</AppText>
-                    </View>
+                    <AppText> {this.props.item.nLikes}</AppText>
                   </View>
                 </View>
-                
-                
-                
-                {this.props.item.pickedUp &&
-                  <View style={styles.overlay} >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}} >
-                      <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
-                    </View>
-                
+                <View
+                  style={styles.content}
+                >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
+                    <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
+                    <AppText> {this.props.item.nViews}</AppText>
+                  </View>
+                </View>
+
+              </View>
+              {this.props.item.status === 'finished' &&
+                <View style={styles.overlayFinished} >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                    <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
+                  </View>
+
                 </View>
               }
-              </View>
+              {this.props.item.status === 'picked-up' &&
+                <View style={styles.overlayPicked} >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                    <Icon name='' iconStyle={{marginTop: 10}} size={100} color='darkorange' />
+                  </View>
+
+                </View>
+              }
+
             </View>
           </Card>
         </View>
@@ -141,14 +146,24 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     opacity: 0.2
   },
-  overlay: {
+  overlayFinished: {
     flex: 1,
     position: 'absolute',
     left: -10,
     top: 0,
     opacity: 0.5,
-    borderRadius:5,
+    borderRadius: 5,
     backgroundColor: 'lightgreen',
-    width:365,
+    width: 365,
+    height: 117},
+    overlayPicked: {
+    flex: 1,
+    position: 'absolute',
+    left: -10,
+    top: 0,
+    opacity: 0.5,
+    borderRadius: 5,
+    backgroundColor: 'peachpuff',
+    width: 365,
     height: 117}
 })
