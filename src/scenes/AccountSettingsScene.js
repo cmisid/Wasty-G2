@@ -55,9 +55,6 @@ export default class AccountScene extends Component {
           userWasModified = true
         }
       })
-      console.log(this.props.currentUser)
-      console.log(form)
-      console.log(newUser)
       // Trigger the user update callback if there was a change
       if (userWasModified) this.props.updateUser(new User(newUser))
     }

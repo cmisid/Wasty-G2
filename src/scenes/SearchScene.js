@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, StyleSheet, RefreshControl, View } from 'react-native'
+import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import AppText from '../components/AppText'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
-import TagInput from '../components/TagInput'
+import Tag from '../components/Tag'
 import { colors } from '../style'
 import { getItems } from '../store/api'
+import { randPastelColor } from '../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -84,12 +86,15 @@ export default class ItemScene extends Component {
     return (
       <Container style={{backgroundColor: colors.background}}>
         <View style={styles.top}>
-          <TagInput
-            ref={(ref) => this.searchBar = ref}
-            data={getItems()}
-            handleResults={this.componentDidMount}
-            showOnLoad
-          />
+          <ScrollView style={styles.tagScroll} horizontal>
+            <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
+            <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
+            <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
+            <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
+            <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
+            <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
+            <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
+          </ScrollView>
         </View>
         <View style={styles.bottom}>
           <ListView
@@ -113,6 +118,7 @@ export default class ItemScene extends Component {
                 userLon={this.state.location.lon}
               />
             )}
+            renderSeparator={() => <View style={styles.separator} />}
             style={styles.list}
           />
 
@@ -127,9 +133,28 @@ export default class ItemScene extends Component {
   }
 }
 
+// The tag style is dynamic because it should have a random pastel color
+const tagStyle = () => ({
+  borderRadius: 5,
+  padding: 5,
+  marginRight: 6,
+  backgroundColor: randPastelColor(),
+  flex: 1
+})
+
 const styles = StyleSheet.create({
+  tagScroll: {
+    flex: 1,
+    padding: 5,
+    marginBottom: 5,
+    paddingBottom: 0,
+    paddingTop: 7
+  },
   list: {
     flex: 1
+  },
+  separator: {
+    height: 7
   },
   top: {
     flex: 1
