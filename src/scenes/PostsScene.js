@@ -71,14 +71,27 @@ export default class PostedScene extends Component {
           enableEmptySections
         />
 
-        <Modal style={{height: 200, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
+        <Modal style={{height: 180, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
-          >Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
-          <View style={{position: 'absolute', marginTop: 135, marginLeft: 270}}>
+          >{`Thierry dit avoir récupéré :`}</Text>
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0}}
+          >{`${this.state.selectedItem.title}`}</Text>
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
+          >{`Voulez-vous confirmer ?`}</Text>
+          <View style={{position: 'absolute', marginTop: 105, marginLeft: 260}}>
             <ActionButton
               buttonColor={colors.primary}
               icon={<Icon color='white' name='check' size={20} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
+          <View style={{position: 'absolute', marginTop: 105, marginLeft: 120}}>
+            <ActionButton
+              buttonColor={'crimson'}
+              icon={<Icon color='white' name='clear' size={20} />}
               onPress={() => Actions.searchPostItemScene()}
             />
           </View>
