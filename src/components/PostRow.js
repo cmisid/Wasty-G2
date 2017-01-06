@@ -18,13 +18,6 @@ export default class ItemRow extends Component {
         <View style={{flex: 1}}>
           <Card>
             <View>
-              <Icon
-                name={this.props.item.pickedUp ? 'check' : ''}
-                iconStyle={{textAlign: 'center'}}
-                size={20}
-                color='green'
-                opacity={this.props.item.pickedUp ? 0.2 : 1}
-              />
               <View
                 style={styles.row}
               >
@@ -77,8 +70,8 @@ export default class ItemRow extends Component {
                 
                 
                 {this.props.item.pickedUp &&
-                  <View style={this.props.item.pickedUp && styles.overlay} >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                  <View style={styles.overlay} >
+                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}} >
                       <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
                     </View>
                 

@@ -3,23 +3,19 @@ import React, { Component } from 'react'
 import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import format from 'date-fns/format'
-import frLocale from 'date-fns/locale/fr'
 
 import AppText from '../components/AppText'
 import Container from '../components/Container'
 import { colors } from '../style'
 import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
 
-const formatDate = datetime => format(datetime, 'DD/MM/YYYY', {locale: frLocale})
-
 export default class ItemScene extends Component {
   render () {
     return (
       <Container>
         <ScrollView style={styles.wrapper}>
-          <AppText style={StyleSheet.flatten(styles.header)}>
-            {`Publié par ${this.props.item.publisher.firstName} ${this.props.item.publisher.lastName} le ${formatDate(this.props.item.publishDate)}`}
+          <AppText style={styles.header}>
+            Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
           <View style={{borderColor: 'lightgrey', borderWidth: 1, borderRadius: 0, backgroundColor: '#efeff2', width: 340, marginLeft: 8, marginTop: 8}}>
             <Image
@@ -43,7 +39,7 @@ export default class ItemScene extends Component {
                   ))}
 
                 </AppText>
-                <AppText style={StyleSheet.flatten(styles.category)}>
+                <AppText style={{marginBottom: 0, marginTop: 5}}>
                   {this.props.item.category}
                 </AppText>
               </View>
@@ -56,15 +52,15 @@ export default class ItemScene extends Component {
                   this.props.item.lat,
                   this.props.item.lon
                 ))}
-                >{`${this.props.item.streetName}, ${this.props.item.cityName}`}
+                >{this.props.item.streetName}, {this.props.item.cityName}
                 </Text>
               </View>
             </View>
           </View>
-          <AppText style={StyleSheet.flatten(styles.description)}>
+          <AppText style={styles.description}>
             Description
           </AppText>
-          <AppText style={StyleSheet.flatten(styles.description_prop)}>
+          <AppText style={{textAlign: 'center'}}>
             {this.props.item.description}
           </AppText>
         </ScrollView>
@@ -141,13 +137,6 @@ const styles = StyleSheet.create({
   streetName: {
     marginLeft: 5,
     color: colors.link
-  },
-  category: {
-    marginBottom: 0,
-    marginTop: 5
-  },
-  description_prop: {
-    textAlign: 'center'
   }
 })
 
