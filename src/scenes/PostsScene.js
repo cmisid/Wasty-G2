@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { ListView, StyleSheet, View, Text, RefreshControl } from 'react-native'
 
 import Modal from 'react-native-modalbox'
+import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import PostRow from '../components/PostRow'
 import Container from '../components/Container'
@@ -69,8 +71,15 @@ export default class PostedScene extends Component {
           enableEmptySections
         />
 
-        <Modal style={{height: 200, borderRadius: 5, marginLeft: 5, marginRight: 10}} ref={'modal'}>
-          <Text>Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
+        <Modal style={{height: 200, borderRadius: 5, marginLeft: 0, marginRight: 5}} ref={'modal'}>
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
+          >Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
+          <ActionButton
+            buttonColor={colors.primary}
+            icon={<Icon color='white' name='md-done-all' size={20} />}
+            onPress={() => Actions.searchPostItemScene()}
+          />
         </Modal>
       </Container>
     )
