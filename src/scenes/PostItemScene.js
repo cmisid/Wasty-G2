@@ -40,7 +40,6 @@ export default class PostItemScene extends Component {
             options={options}
             ref='form'
             type={ItemForm}
-            value={this.props.currentUser}
           />
         </View>
       </Container>

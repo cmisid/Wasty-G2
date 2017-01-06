@@ -119,7 +119,7 @@ export default class ItemScene extends Component {
           <ActionButton
             buttonColor={colors.primary}
             icon={<Icon color='white' name='photo-camera' size={20} />}
-            onPress={() => this.selectPhotoTapped()}
+            onPress={() => Actions.searchPostItemScene()}
           />
         </View>
       </Container>

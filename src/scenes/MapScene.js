@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Alert } from 'react-native'
+import { View, StyleSheet, Alert, Platform } from 'react-native'
 
 import MapView from 'react-native-maps'
 import _ from 'lodash'
@@ -118,8 +118,12 @@ export default class MapScene extends Component {
     console.log('handleMarkerSelectedEvent()', this.state)
   }
 
-  findItemData (markerId) {
-    const itemObject = _.find(this.state.items, (obj) => obj.id === markerId)
+  findItemData (event) {
+    // FIXME: if 2 items have the same coordinates, this component will raise an error
+    // The iOS MapView returns a Marker.id which is not returned by the Android MapView
+    // The Marker identifier refers to the item id
+    const joinAttribute = obj => Platform.OS === 'ios' ? obj.id === event.id : (obj.lat === event.coordinate.latitude && obj.lon === event.coordinate.longitude)
+    const itemObject = _.find(this.state.items, (obj) => joinAttribute(obj))
     console.log(itemObject)
     return itemObject
   }
@@ -188,7 +192,7 @@ export default class MapScene extends Component {
           {/* Here we display the selected marker properties */}
           <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
             <ItemMap
-              item={this.state.selectedMarker.id ? this.findItemData(this.state.selectedMarker.id) : {}}
+              item={this.state.selectedMarker.coordinate ? this.findItemData(this.state.selectedMarker) : {}}
               userLat={this.state.coordinate.latitude}
               userLon={this.state.coordinate.longitude}
             />

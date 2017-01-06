@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ProgressiveImage from './ProgressiveImage'
+import Swipeout from 'react-native-swipeout'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
@@ -11,20 +12,34 @@ import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 
-export default class ItemRow extends Component {
+import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
+
+export default class ItemRowSwipe extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      deleteButton: [
+        {
+          text: 'Supprimer',
+          backgroundColor: 'lightcoral',
+          color: 'white',
+          underlayColor: 'dimgray',
+          onPress: () => this.props.onDeleteItem(this.props.item.id)
+        }
+      ]
+    }
+  }
+
   render () {
     return (
-      <TouchableHighlight onPress={this.props.onPressAction}>
-        <View style={{flex: 1}}>
-          <Card>
-            <View>
-              <Icon
-                name={this.props.item.pickedUp ? 'check' : ''}
-                iconStyle={{textAlign: 'center'}}
-                size={20}
-                color='green'
-                opacity={this.props.item.pickedUp ? 0.2 : 1}
-              />
+      <Swipeout
+        right={this.state.deleteButton}
+        autoClose
+        sensitivity={0.9}
+      >
+        <TouchableHighlight onPress={this.props.onPressAction}>
+          <View style={{flex: 1}}>
+            <Card>
               <View
                 style={styles.row}
               >
@@ -39,10 +54,7 @@ export default class ItemRow extends Component {
                   <AppText
                     style={StyleSheet.flatten(styles.title)}
                   >
-                    {this.props.item.title} publié {distanceInWordsToNow(
-                        this.props.item.publishDate,
-                        {locale: frLocale, addSuffix: true}
-                      )}
+                    {this.props.item.title}
                   </AppText>
                   <AppText
                     style={StyleSheet.flatten(styles.category)}
@@ -52,49 +64,53 @@ export default class ItemRow extends Component {
                   <View
                     style={styles.content}
                   >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
-                      <Icon
-                        name='star'
+                    <AppText
+                      style={StyleSheet.flatten(styles.streetName)}
+                      onPress={() => Linking.openURL(generateMapLink(
+                        this.props.userLat,
+                        this.props.userLon,
+                        this.props.item.lat,
+                        this.props.item.lon
+                      ))}
+                    >{`${this.props.item.streetName}, ${this.props.item.cityName}`}
+                    </AppText>
 
-                        iconStyle={{marginTop: 10}}
-                        size={20}
-                        color='gold'
-                      />
-
-                      <AppText> {this.props.item.nLikes}</AppText>
-                    </View>
+                    <AppText style={StyleSheet.flatten(styles.distance)}>
+                      {distanceFmt(haversineDistance(
+                        this.props.userLat,
+                        this.props.userLon,
+                        this.props.item.lat,
+                        this.props.item.lon
+                      ))}
+                    </AppText>
                   </View>
                   <View
                     style={styles.content}
                   >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
+                    <AppText>
+                      {distanceInWordsToNow(
+                        this.props.item.publishDate,
+                        {locale: frLocale, addSuffix: true}
+                      )}
+                    </AppText>
+                    <View style={{flexDirection: 'row', marginRight: 5}}>
                       <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                       <AppText> {this.props.item.nViews}</AppText>
                     </View>
                   </View>
                 </View>
-                
-                
-                
-                {this.props.item.pickedUp &&
-                  <View style={this.props.item.pickedUp && styles.overlay} >
-                    <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
-                      <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
-                    </View>
-                
-                </View>
-              }
               </View>
-            </View>
-          </Card>
-        </View>
-      </TouchableHighlight>
+            </Card>
+          </View>
+        </TouchableHighlight>
+      </Swipeout>
     )
   }
 }
 
-ItemRow.propTypes = {
+ItemRowSwipe.propTypes = {
   item: React.PropTypes.object,
+  onDeleteItem: React.PropTypes.func,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
@@ -111,8 +127,7 @@ const styles = StyleSheet.create({
   category: {
     marginLeft: 10,
     fontWeight: 'bold',
-    color: 'black',
-    marginTop: 10
+    color: 'red'
   },
   image: {
     width: 100 - 10,
@@ -139,23 +154,5 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: colors.background,
     marginRight: 5
-  },
-  recup: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginBottom: 5,
-    marginLeft: 10,
-    opacity: 0.2
-  },
-  overlay: {
-    flex: 1,
-    position: 'absolute',
-    left: -10,
-    top: 0,
-    opacity: 0.5,
-    borderRadius:5,
-    backgroundColor: 'lightgreen',
-    width:365,
-    height: 117}
+  }
 })
