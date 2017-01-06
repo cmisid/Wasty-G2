@@ -31,7 +31,6 @@ export default class ItemScene extends Component {
               <View style={{flex: 2, flexDirection: 'column'}}>
                 <AppText style={StyleSheet.flatten(styles.distance)}>
                   {distanceFmt(haversineDistance(
-
                     this.props.userLat,
                     this.props.userLon,
                     this.props.item.lat,

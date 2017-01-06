@@ -78,7 +78,10 @@ export default class PostedScene extends Component {
           >{`Thierry dit avoir récupéré :`}</Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0}}
-          >{`${this.state.selectedItem.title}`}</Text>
+            onPress={() => Actions.postsItemScene({item: this.selectedItem})}
+          >
+            {`${this.state.selectedItem.title}`}
+          </Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
           >{`Voulez-vous confirmer ?`}</Text>

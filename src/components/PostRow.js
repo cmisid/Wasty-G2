@@ -4,17 +4,13 @@ import { View, StyleSheet, TouchableHighlight } from 'react-native'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import modalbox from 'react-native-modalbox'
 
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
 import ProgressiveImage from './ProgressiveImage'
-import Button  from 'react-native-button'
-import Slider  from'react-native-slider'
 
-
-export default class ItemRow extends Component {
+export default class PostRow extends Component {
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPressAction}>
@@ -94,7 +90,7 @@ export default class ItemRow extends Component {
   }
 }
 
-ItemRow.propTypes = {
+PostRow.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
