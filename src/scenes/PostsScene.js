@@ -71,13 +71,13 @@ export default class PostedScene extends Component {
           enableEmptySections
         />
 
-        <Modal style={{height: 200, borderRadius: 5, marginLeft: 0, marginRight: 5}} ref={'modal'}>
+        <Modal style={{borderRadius: 5, height: 200, paddingLeft: 5, paddingRight: 5}} ref={'modal'}>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
           <ActionButton
             buttonColor={colors.primary}
-            icon={<Icon color='white' name='md-done-all' size={20} />}
+            icon={<Icon color='white' name='check' size={20} />}
             onPress={() => Actions.searchPostItemScene()}
           />
         </Modal>
