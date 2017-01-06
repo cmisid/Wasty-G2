@@ -30,11 +30,6 @@ export default class ItemRowSwipe extends Component {
     }
   }
 
-  _onPressDeleteButton () {
-    // TODO: physically delete this item from list scene
-    console.log(`"${this.props.item.title}" successfully deleted !`)
-  }
-
   render () {
     return (
       <Swipeout
