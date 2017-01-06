@@ -22,7 +22,7 @@ export default class CardFooter extends Component {
       <View style={styles.publishMetadata}>
 
         <TouchableHighlight onPress={this._onPressUser.bind(this)} underlayColor={colors.transparent}>
-          <View>
+          <View style={{marginTop: 13}}>
             <ProgressiveImage
               thumbnailSource={{ uri: this.props.user.imgPlaceholderUrl }}
               imageSource={{ uri: this.props.user.imgUrl }}
@@ -88,10 +88,9 @@ const styles = StyleSheet.create({
     color: colors.link
   },
   userImage: {
-    marginTop: 10,
     width: 30,
     height: 30,
-    borderRadius: 13
+    borderRadius: 15
   },
   distance: {
     fontStyle: 'italic',
