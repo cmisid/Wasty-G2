@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
+import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
 
+import Modal from 'react-native-modalbox'
+import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import ItemRow from '../components/ItemRow'
+import PostRow from '../components/PostRow'
 import Container from '../components/Container'
 import { getPosts } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-
+const width = Dimensions.get('window').width - 30
 export default class PostedScene extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
+      selectedItem: {},
       refreshing: false,
       items: [],
       location: {'lat': 48.566140, 'lon': -3.148260}
     }
+  }
+
+  openModal () {
+    this.refs.modal.open()
   }
 
   componentDidMount () {
@@ -48,16 +56,48 @@ export default class PostedScene extends Component {
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
-            <ItemRow
+            <PostRow
               item={item}
-              onPressAction={() => Actions.postsItemScene({item})}
+              onPressAction={() => {
+                if (item.status === 'pickedUp') {
+                  this.setState({selectedItem: item}, () => this.openModal())
+                } else Actions.postsItemScene({item})
+              }}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
           )}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+          renderSeparator={() => <View style={styles.separator} />}
           enableEmptySections
         />
+
+        <Modal style={{height: 180, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
+
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
+          >{`Thierry dit avoir récupéré :`}</Text>
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0, color: colors.link}}
+            onPress={() => Actions.postsItemScene({item: this.state.selectedItem})}
+          >{`${this.state.selectedItem.title}`}</Text>
+          <Text
+            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
+          >{`Voulez-vous confirmer ?`}</Text>
+          <View style={{position: 'absolute', marginTop: 105, marginLeft: 260}}>
+            <ActionButton
+              buttonColor={colors.primary}
+              icon={<Icon color='white' name='check' size={20} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
+          <View style={{position: 'absolute', marginTop: 105, marginLeft: 120}}>
+            <ActionButton
+              buttonColor={'crimson'}
+              icon={<Icon color='white' name='clear' size={20} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
+        </Modal>
       </Container>
     )
   }
@@ -68,9 +108,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   separator: {
-    flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.accent
+    height: 7
   }
 })
 

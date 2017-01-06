@@ -1,5 +1,5 @@
 export class Item {
-  constructor ({id, category, description, cityName, imgUrl, imgPlaceholderUrl, lat, lon, nViews, publishDate, streetName, title, publisher}) {
+  constructor ({id, category, description, cityName, imgUrl, imgPlaceholderUrl, lat, lon, nLikes, nViews, publishDate, status, streetName, title, publisher}) {
     this.id = id
     this.category = category
     this.description = description
@@ -8,8 +8,10 @@ export class Item {
     this.imgPlaceholderUrl = imgPlaceholderUrl
     this.lat = lat
     this.lon = lon
+    this.nLikes = nLikes
     this.nViews = nViews
     this.publishDate = publishDate
+    this.status = status
     this.streetName = streetName
     this.title = title
     this.publisher = publisher

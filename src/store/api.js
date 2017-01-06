@@ -13,6 +13,7 @@ export const getItems = () => {
       imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,
       lon: item.coordinates.lon,
+      nFavorite: item.favorite,
       nViews: item.views,
       publishDate: item.publish_date,
       streetName: item.street_name,
@@ -60,8 +61,10 @@ export const getPosts = () => {
       imgPlaceholderUrl: item.img_placeholder,
       lat: item.coordinates.lat,
       lon: item.coordinates.lon,
+      nLikes: item.likes,
       nViews: item.views,
       publishDate: item.publish_date,
+      status: item.status,
       streetName: item.street_name,
       title: item.title,
       publisher: new User({
