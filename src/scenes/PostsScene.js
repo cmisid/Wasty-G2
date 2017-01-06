@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, Text, RefreshControl } from 'react-native'
+import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
 
 import Modal from 'react-native-modalbox'
 import ActionButton from 'react-native-action-button'
@@ -12,7 +12,7 @@ import { getPosts } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-
+const width = Dimensions.get('window').width - 30
 export default class PostedScene extends Component {
 
   constructor (props) {
@@ -71,15 +71,17 @@ export default class PostedScene extends Component {
           enableEmptySections
         />
 
-        <Modal style={{height: 200, borderRadius: 5, marginLeft: 0, marginRight: 5}} ref={'modal'}>
+        <Modal style={{height: 200, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >Thierry dit avoir récupéré votre {this.state.selectedItem.title}. Voulez-vous confirmer ?</Text>
-          <ActionButton
-            buttonColor={colors.primary}
-            icon={<Icon color='white' name='md-done-all' size={20} />}
-            onPress={() => Actions.searchPostItemScene()}
-          />
+          <View style={{position: 'absolute', marginTop: 135, marginLeft: 270}}>
+            <ActionButton
+              buttonColor={colors.primary}
+              icon={<Icon color='white' name='check' size={20} />}
+              onPress={() => Actions.searchPostItemScene()}
+            />
+          </View>
         </Modal>
       </Container>
     )
