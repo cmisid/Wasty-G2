@@ -1,8 +1,10 @@
-// Functions which are used in wasty/src/components/itemCard.js & itemMap.js & itemRow.js & wasty/scenes/itemScene.js
+import { colors } from './style'
 
 export const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => (
   `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${destLat},${destLon}`
 )
+
+const _toRad = x => x * Math.PI / 180
 
 export const haversineDistance = (lat1, lon1, lat2, lon2) => {
   const dLat = _toRad(lat2 - lat1)
@@ -17,4 +19,4 @@ export const haversineDistance = (lat1, lon1, lat2, lon2) => {
 
 export const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
-export const _toRad = x => x * Math.PI / 180
+export const randPastelColor = () => colors.pastels[Math.floor(Math.random() * colors.pastels.length)]

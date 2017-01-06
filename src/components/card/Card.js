@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#f5fcff',
-    margin: 5
+    marginLeft: 5,
+    marginRight: 5
   },
   card: {
     backgroundColor: 'white',
