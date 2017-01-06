@@ -23,8 +23,10 @@ export default class ItemScene extends Component {
     this.state = {
       refreshing: false,
       items: {},
-      location: {'lat': 48.566140, 'lon': -3.148260},
-
+      location: {
+        'lat': 48.566140,
+        'lon': -3.148260
+      },
       avatarSource: null,
       videoSource: null
     }
