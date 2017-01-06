@@ -75,14 +75,6 @@ export default class ItemRow extends Component {
                 </View>
               }
               {this.props.item.status === 'picked-up' &&
-                <View style={styles.overlayPicked} >
-                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
-                    <Icon name='' iconStyle={{marginTop: 10}} size={100} color='darkorange' />
-                  </View>
-
-                </View>
-              }
-              {this.props.item.status === 'picked-up' &&
                 <View style={styles.pickedup} >
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
                     <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />
