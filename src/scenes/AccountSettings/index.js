@@ -6,13 +6,13 @@ import ActionButton from 'react-native-action-button'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import t from 'tcomb-form-native'
 
-import { User } from '../classes'
-import Container from '../components/Container'
-import { colors } from '../style'
+import { User } from '../../classes'
+import Container from '../../components/Container'
+import { colors } from '../../style'
 
 const Form = t.form.Form
 
-const AccountForm = t.struct({
+const AccountSettingsForm = t.struct({
   firstName: t.String,
   lastName: t.String
 })
@@ -31,7 +31,7 @@ const options = {
   order: [ 'firstName', 'lastName' ]
 }
 
-export default class AccountScene extends Component {
+export default class AccountSettingsScene extends Component {
 
   onConfirm () {
     /**
@@ -67,7 +67,7 @@ export default class AccountScene extends Component {
           <Form
             options={options}
             ref='form'
-            type={AccountForm}
+            type={AccountSettingsForm}
             value={this.props.currentUser}
           />
           <ActionButton
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   }
 })
 
-AccountScene.propTypes = {
+AccountSettingsScene.propTypes = {
   currentUser: React.PropTypes.object,
   updateUser: React.PropTypes.func
 }

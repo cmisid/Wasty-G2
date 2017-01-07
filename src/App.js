@@ -6,15 +6,16 @@ import { Actions, Router, Scene } from 'react-native-router-flux'
 import Overlay from './components/Overlay'
 import RouterTitle from './components/RouterTitle'
 import TabIcon from './components/TabIcon'
-import AccountScene from './scenes/AccountScene'
-import AccountSettingsScene from './scenes/AccountSettingsScene'
-import ItemScene from './scenes/ItemScene'
+
+import AccountScene from './scenes/Account'
+import AccountSettingsScene from './scenes/AccountSettings'
+import ItemScene from './scenes/Item'
+import ItemPostScene from './scenes/ItemPost'
 import LikesScene from './scenes/LikesScene'
-import SearchScene from './scenes/SearchScene'
-import MapScene from './scenes/MapScene'
-import PostsScene from './scenes/PostsScene'
-import PostItemScene from './scenes/PostItemScene'
-import UserScene from './scenes/UserScene'
+import MapScene from './scenes/Map'
+import PostsScene from './scenes/Posts'
+import SearchScene from './scenes/Search'
+import UserScene from './scenes/User'
 
 // Disable RCTAnimation warning
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
@@ -44,8 +45,8 @@ const scenes = Actions.create(
     <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
+      <Scene title='Poster' key='searchItemPostScene' component={ItemPostScene} />
       <Scene title='Recherche' key='searchUserScene' component={UserScene} />
-      <Scene title='Poster' key='searchPostItemScene' component={PostItemScene} />
     </Scene>
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>

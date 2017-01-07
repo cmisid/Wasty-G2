@@ -6,15 +6,16 @@ import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import Container from '../components/Container'
-import PostRow from '../components/PostRow'
-import Separator from '../components/Separator'
-import { getPosts } from '../store/api'
-import { colors } from '../style'
+import Container from '../../components/Container'
+import PostRow from '../../components/PostRow'
+import Separator from '../../components/Separator'
+import { getPosts } from '../../store/api'
+import { colors } from '../../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 const width = Dimensions.get('window').width - 30
-export default class PostedScene extends Component {
+
+export default class PostsScene extends Component {
 
   constructor (props) {
     super(props)
@@ -97,14 +98,14 @@ export default class PostedScene extends Component {
             <ActionButton
               buttonColor={colors.primary}
               icon={<Icon color='white' name='check' size={20} />}
-              onPress={() => Actions.searchPostItemScene()}
+              onPress={() => Actions.searchItemPostScene()}
             />
           </View>
           <View style={{position: 'absolute', marginTop: 105, marginLeft: 120}}>
             <ActionButton
               buttonColor={'crimson'}
               icon={<Icon color='white' name='clear' size={20} />}
-              onPress={() => Actions.searchPostItemScene()}
+              onPress={() => Actions.searchItemPostScene()}
             />
           </View>
         </Modal>
@@ -120,6 +121,6 @@ const styles = StyleSheet.create({
   }
 })
 
-PostedScene.propTypes = {
+PostsScene.propTypes = {
   userItems: React.PropTypes.array
 }

@@ -4,9 +4,9 @@ import { View, StyleSheet, Alert, Platform } from 'react-native'
 import MapView from 'react-native-maps'
 import _ from 'lodash'
 
-import ItemMap from '../components/ItemMap'
-import { getItems } from '../store/api'
-import { colors } from '../style'
+import ItemMap from '../../components/ItemMap'
+import { getItems } from '../../store/api'
+import { colors } from '../../style'
 
 const formatMarkers = (items) => items.map(function (item) {
   return {

@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from 'react-native'
 
 import t from 'tcomb-form-native'
 
-import Container from '../components/Container'
+import Container from '../../components/Container'
 
 const Form = t.form.Form
 
@@ -44,7 +44,7 @@ const options = {
   order: ['title', 'category', 'description', 'beginHour', 'endingHour']
 }
 
-export default class PostItemScene extends Component {
+export default class ItemPostScene extends Component {
 
   componentDidMount () {
     console.log(this.props.itemImgSource)
@@ -69,7 +69,7 @@ export default class PostItemScene extends Component {
   }
 }
 
-PostItemScene.propTypes = {
+ItemPostScene.propTypes = {
   itemImgSource: React.PropTypes.object
 }
 

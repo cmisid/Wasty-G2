@@ -7,17 +7,17 @@ import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
 
-import Container from '../components/Container'
-import ItemCard from '../components/ItemCard'
-import Tag from '../components/Tag'
-import Separator from '../components/Separator'
-import { colors } from '../style'
-import { getItems } from '../store/api'
-import { randPastelColor } from '../util'
+import Container from '../../components/Container'
+import ItemCard from '../../components/ItemCard'
+import Tag from '../../components/Tag'
+import Separator from '../../components/Separator'
+import { colors } from '../../style'
+import { getItems } from '../../store/api'
+import { randPastelColor } from '../../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
-export default class ItemScene extends Component {
+export default class SearchScene extends Component {
 
   constructor (props) {
     super(props)
@@ -76,7 +76,7 @@ export default class ItemScene extends Component {
           itemImgSource: source
         })
 
-        Actions.searchPostItemScene({itemImgSource: this.itemImgSource})
+        Actions.searchItemPostScene({itemImgSource: this.itemImgSource})
       }
     })
   }
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   }
 })
 
-ItemScene.propTypes = {
+SearchScene.propTypes = {
   postItem: React.PropTypes.func,
   items: React.PropTypes.array
 }

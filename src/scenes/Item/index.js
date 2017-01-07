@@ -4,10 +4,10 @@ import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from '
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import AppText from '../components/AppText'
-import Container from '../components/Container'
-import { colors } from '../style'
-import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
+import AppText from '../../components/AppText'
+import Container from '../../components/Container'
+import { colors } from '../../style'
+import { distanceFmt, generateMapLink, haversineDistance } from '../../util.js'
 
 export default class ItemScene extends Component {
   render () {

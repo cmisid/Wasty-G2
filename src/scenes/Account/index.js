@@ -5,10 +5,10 @@ import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import UserView from '../components/UserView'
-import Container from '../components/Container'
-import { colors } from '../style'
-import { getUser } from '../store/api'
+import UserView from '../../components/UserView'
+import Container from '../../components/Container'
+import { colors } from '../../style'
+import { getUser } from '../../store/api'
 
 export default class AccountScene extends Component {
 

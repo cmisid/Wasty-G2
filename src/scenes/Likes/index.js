@@ -4,15 +4,15 @@ import { ListView, StyleSheet, RefreshControl } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
-import ItemRowSwipe from '../components/ItemRowSwipe'
-import Container from '../components/Container'
-import Separator from '../components/Separator'
-import { getLikes } from '../store/api'
-import { colors } from '../style'
+import ItemRowSwipe from '../../omponents/ItemRowSwipe'
+import Container from '../../components/Container'
+import Separator from '../../components/Separator'
+import { getLikes } from '../../store/api'
+import { colors } from '../../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
-export default class ListScene extends Component {
+export default class LikesScene extends Component {
 
   constructor (props) {
     super(props)

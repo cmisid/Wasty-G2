@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import UserView from '../components/UserView'
-import Container from '../components/Container'
+import UserView from '../../components/UserView'
+import Container from '../../components/Container'
 
 export default class UserScene extends Component {
 
