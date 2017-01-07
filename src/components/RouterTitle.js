@@ -5,8 +5,14 @@ import AppText from './AppText'
 
 const itemScenes = [
   'postsItemScene',
-  'listItemScene',
+  'likesItemScene',
   'searchItemScene'
+]
+
+const userScenes = [
+  'postsUserScene',
+  'likesUserScene',
+  'searchUserScene'
 ]
 
 export default class RouterTitle extends Component {
@@ -16,6 +22,14 @@ export default class RouterTitle extends Component {
         <View style={styles.titleWrapper}>
           <AppText style={StyleSheet.flatten(styles.titleText)}>
             {this.props.scene.item.title}
+          </AppText>
+        </View>
+      )
+    } else if (userScenes.includes(this.props.scene.name)) {
+      return (
+        <View style={styles.titleWrapper}>
+          <AppText style={StyleSheet.flatten(styles.titleText)}>
+            {this.props.scene.user.fullName}
           </AppText>
         </View>
       )
@@ -34,8 +48,8 @@ export default class RouterTitle extends Component {
 const styles = StyleSheet.create({
   titleWrapper: {
     alignItems: 'center',
-    //The presentation of the title depend of the os. 
-    paddingTop: (Platform.OS === 'ios') ? 26 : 13 
+    // The presentation of the title depends on the os
+    paddingTop: (Platform.OS === 'ios') ? 26 : 13
   },
   titleText: {
     fontSize: 20

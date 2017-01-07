@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
+import { ListView, StyleSheet, RefreshControl } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 import ItemRowSwipe from '../components/ItemRowSwipe'
 import Container from '../components/Container'
-import { getItems } from '../store/api'
+import Separator from '../components/Separator'
+import { getLikes } from '../store/api'
 import { colors } from '../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -27,7 +28,7 @@ export default class ListScene extends Component {
 
   _onRefresh () {
     this.setState({refreshing: true})
-    getItems()
+    getLikes()
       .then(items => { this.setState({items}) })
       .catch(() => {})
     this.setState({refreshing: false})
@@ -40,7 +41,7 @@ export default class ListScene extends Component {
   }
 
   componentDidMount () {
-    getItems()
+    getLikes()
       .then(items => { this.setState({items}) })
       .catch(() => {})
   }
@@ -61,14 +62,14 @@ export default class ListScene extends Component {
             <ItemRowSwipe
               item={item}
               onDeleteItem={this.onDeleteItem.bind(this)}
-              onPressAction={() => Actions.listItemScene({item: item,
+              onPressAction={() => Actions.likesItemScene({item: item,
                 userLat: this.state.location.lat,
                 userLon: this.state.location.lon})}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
           )}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+          renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
         />
 
@@ -79,11 +80,7 @@ export default class ListScene extends Component {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1
-  },
-  separator: {
     flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.accent
+    marginTop: 7
   }
 })

@@ -10,6 +10,7 @@ import _ from 'lodash'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
 import Tag from '../components/Tag'
+import Separator from '../components/Separator'
 import { colors } from '../style'
 import { getItems } from '../store/api'
 import { randPastelColor } from '../util'
@@ -22,17 +23,11 @@ export default class ItemScene extends Component {
     super(props)
     this.state = {
       refreshing: false,
-<<<<<<< HEAD
       items: [],
-      location: {'lat': 48.566140, 'lon': -3.148260},
-
-=======
-      items: {},
       location: {
         'lat': 48.566140,
         'lon': -3.148260
       },
->>>>>>> 4e56e1cdecbbc49018aaa406ea9a6a2e71543588
       avatarSource: null,
       videoSource: null
     }
@@ -112,51 +107,49 @@ export default class ItemScene extends Component {
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
-        <ScrollView>
-          <View style={styles.top}>
-            <ScrollView style={styles.tagScroll} horizontal>
-              <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
-              <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
-              <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
-              <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
-              <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
-              <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
-              <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
-            </ScrollView>
-          </View>
-          <View style={styles.bottom}>
-            <ListView
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh.bind(this)}
-                />
-              }
-              dataSource={ds.cloneWithRows(this.state.items)}
-              enableEmptySections
-              renderRow={item => (
-                <ItemCard
-                  item={item}
-                  onLikedItem={this.onLikedItem.bind(this)}
-                  onPressAction={() => Actions.searchItemScene({
-                    item: item,
-                    userLat: this.state.location.lat,
-                    userLon: this.state.location.lon
-                  })}
-                  userLat={this.state.location.lat}
-                  userLon={this.state.location.lon}
-                />
-              )}
-              renderSeparator={() => <View style={styles.separator} />}
-              style={styles.list}
-            />
-          </View>
-          <View style={styles.buttonFooter}>
-            <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
-              <Icon color='white' name='add-circle' size={40} />
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+        <View style={styles.top}>
+          <ScrollView style={styles.tagScroll} horizontal>
+            <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
+            <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
+            <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
+            <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
+            <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
+            <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
+            <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
+          </ScrollView>
+        </View>
+        <View style={styles.bottom}>
+          <ListView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+            dataSource={ds.cloneWithRows(this.state.items)}
+            enableEmptySections
+            renderRow={item => (
+              <ItemCard
+                item={item}
+                onLikedItem={this.onLikedItem.bind(this)}
+                onPressAction={() => Actions.searchItemScene({
+                  item: item,
+                  userLat: this.state.location.lat,
+                  userLon: this.state.location.lon
+                })}
+                userLat={this.state.location.lat}
+                userLon={this.state.location.lon}
+              />
+            )}
+            renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
+            style={styles.list}
+          />
+        </View>
+        <View style={styles.buttonFooter}>
+          <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
+            <Icon color='white' name='add-circle' size={40} />
+          </TouchableOpacity>
+        </View>
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='photo-camera' size={20} />}
@@ -187,9 +180,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1
   },
-  separator: {
-    height: 7
-  },
   top: {
     flex: 1
   },
@@ -202,7 +192,7 @@ const styles = StyleSheet.create({
   },
   buttonFooter: {
     alignSelf: 'center',
-    height: 50
+    height: 0 // FIXME
   }
 })
 

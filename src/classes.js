@@ -43,7 +43,7 @@ export class Item {
     this.nViews = nViews
     this.publishDate = publishDate
     this.publisher = publisher // Instance of class User
-    this.status = status // One of "pending", "picked-up", "finished"
+    this.status = status // One of "PENDING", "PICKEDUP", "FINISHED"
     this.title = title
   }
 }

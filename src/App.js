@@ -9,7 +9,7 @@ import TabIcon from './components/TabIcon'
 import AccountScene from './scenes/AccountScene'
 import AccountSettingsScene from './scenes/AccountSettingsScene'
 import ItemScene from './scenes/ItemScene'
-import ListScene from './scenes/ListScene'
+import LikesScene from './scenes/LikesScene'
 import SearchScene from './scenes/SearchScene'
 import MapScene from './scenes/MapScene'
 import PostsScene from './scenes/PostsScene'
@@ -37,14 +37,14 @@ const scenes = Actions.create(
       <Scene title='Mes posts' key='postsViewScene' component={PostsScene} />
       <Scene title='Mes posts' key='postsItemScene' component={ItemScene} />
     </Scene>
-    <Scene title='Ma liste' key='listScene' icon={TabIcon} iconName='playlist-add-check'>
-      <Scene title='Ma liste' key='listViewScene' component={ListScene} />
-      <Scene title='Ma liste' key='listItemScene' component={ItemScene} />
+    <Scene title='Mes likes' key='likesScene' icon={TabIcon} iconName='playlist-add-check'>
+      <Scene title='Mes likes' key='likesViewScene' component={LikesScene} />
+      <Scene title='Mes likes' key='likesItemScene' component={ItemScene} />
     </Scene>
     <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
-      <Scene title='Profil utilisateur' key='userScene' component={UserScene} />
+      <Scene title='Recherche' key='searchUserScene' component={UserScene} />
       <Scene title='Poster' key='searchPostItemScene' component={PostItemScene} />
     </Scene>
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />

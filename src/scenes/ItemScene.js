@@ -14,7 +14,7 @@ export default class ItemScene extends Component {
     return (
       <Container>
         <ScrollView style={styles.wrapper}>
-          <AppText style={styles.header}>
+          <AppText style={StyleSheet.flatten(styles.header)}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
           <View style={{borderColor: 'lightgrey', borderWidth: 1, borderRadius: 0, backgroundColor: '#efeff2', width: 340, marginLeft: 8, marginTop: 8}}>
@@ -36,7 +36,6 @@ export default class ItemScene extends Component {
                     this.props.item.address.lat,
                     this.props.item.address.lon
                   ))}
-
                 </AppText>
                 <AppText style={{marginBottom: 0, marginTop: 5}}>
                   {this.props.item.category}
@@ -57,7 +56,7 @@ export default class ItemScene extends Component {
               </View>
             </View>
           </View>
-          <AppText style={styles.description}>
+          <AppText style={StyleSheet.flatten(styles.description)}>
             Description
           </AppText>
           <AppText style={{textAlign: 'center'}}>
@@ -139,4 +138,3 @@ const styles = StyleSheet.create({
     color: colors.link
   }
 })
-

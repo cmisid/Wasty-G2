@@ -12,7 +12,7 @@ export default class CardFooter extends Component {
 
   _onPressUser () {
     console.log('Image pressed')
-    Actions.userScene({
+    Actions.searchUserScene({
       user: this.props.user
     })
   }

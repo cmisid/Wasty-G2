@@ -1,77 +1,104 @@
 [
-  {
-    "id": "1",
-    "title": "Canapé cuir",
-    "category": "AMEUBLEMENT",
-    "description": "Canapé cuir 3 places, non convertible, de chez Natuzzi très bon état. Assises impeccables",
-    "img": "https://unsplash.it/600/400/",
-    "img_placeholder": "https://unsplash.it/100/100/?blur",
-    "publish_date": "2016-12-26T00:34:00",
-    "status": "finished",
-    "publisher": {
-      "email": "axel.bellec@outlook.fr",
-      "first_name": "Axel",
-      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
-      "last_name": "Bellec",
-      "date_joined": "2016-11-26T00:34:00"
+    {
+        "address": {
+            "addition": "En face du club de tuning",
+            "city_name": "Toulouse",
+            "district_name": "Carmes",
+            "lat": 43.589246,
+            "lon": 1.445684,
+            "postal_code": 31000,
+            "street_name": "Place des pigeons",
+            "street_number": "42"
+        },
+        "category": "Meuble",
+        "description": "Belle chaise",
+        "id": 1,
+        "img": "https://unsplash.it/600/400/",
+        "img_placeholder": "https://unsplash.it/100/100/?blur",
+        "likes": 42,
+        "publish_date": "2016-12-26T00:34:00",
+        "publisher": {
+            "birth_date": "1994-12-26T00:34:00",
+            "email": "arnold.schwarzenegger@gmail.com",
+            "first_name": "Arnold",
+            "gender": "male",
+            "img": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "img_placeholder": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "date_joined": "2016-12-26T00:34:00",
+            "last_name": "Schwarzenegger",
+            "phone_number": "0628251338",
+            "scp": 1
+        },
+        "status": "PENDING",
+        "title": "Chaise",
+        "views": 42
     },
-    "likes": 2,
-    "views": 14,
-    "coordinates": {
-      "lat": 43.589246,
-      "lon": 1.445684
+    {
+        "address": {
+            "addition": "En face du club de tuning",
+            "city_name": "Toulouse",
+            "district_name": "Carmes",
+            "lat": 43.589246,
+            "lon": 1.445684,
+            "postal_code": 31000,
+            "street_name": "Place des pigeons",
+            "street_number": "42"
+        },
+        "category": "Meuble",
+        "description": "Belle chaise",
+        "id": 2,
+        "img": "https://unsplash.it/600/400/",
+        "img_placeholder": "https://unsplash.it/100/100/?blur",
+        "likes": 42,
+        "publish_date": "2016-12-26T00:34:00",
+        "publisher": {
+            "birth_date": "1994-12-26T00:34:00",
+            "email": "arnold.schwarzenegger@gmail.com",
+            "first_name": "Arnold",
+            "gender": "male",
+            "img": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "img_placeholder": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "date_joined": "2016-12-26T00:34:00",
+            "last_name": "Schwarzenegger",
+            "phone_number": "0628251338",
+            "scp": 1
+        },
+        "status": "PICKEDUP",
+        "title": "Chaise",
+        "views": 42
     },
-    "street_name": "Rue St Michel",
-    "city_name": "Toulouse"
-  },
-  {
-    "id": "2",
-    "title": "Portes coulissantes",
-    "category": "BOIS ET MATERIAUX",
-    "description": "Portes de placard coulissantes, avec tringles et étagères, sur 2 niveaux à démonter. Excellent état",
-    "img": "https://unsplash.it/600/400/",
-    "img_placeholder": "https://unsplash.it/100/100/?blur",
-    "publish_date": "2016-12-19T00:00:00",
-    "status": "pickedUp",
-    "publisher": {
-      "email": "axel.bellec@outlook.fr",
-      "first_name": "Axel",
-      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
-      "last_name": "Bellec",
-      "date_joined": "2016-11-26T00:34:00"
-    },
-    "likes": 9,
-    "views": 26,
-    "coordinates": {
-      "lat": 43.592797,
-      "lon": 1.447755
-    },
-    "street_name": "Rue Jeanne d'Arc",
-    "city_name": "Toulouse"
-  },
-  {
-    "id": "3",
-    "title": "Frigo",
-    "category": "ELECTROMENAGER",
-    "description": "Refrigirateur en tres bon etat de marche la lumiere ne marche plus et des rayures sur les parois sinon nikel ",
-    "img": "https://unsplash.it/600/400/",
-    "img_placeholder": "https://unsplash.it/100/100/?blur",
-    "publish_date": "2016-12-20T00:00:00",
-    "status": "pending",
-    "publisher": {
-      "email": "axel.bellec@outlook.fr",
-      "first_name": "Axel",
-      "img_url": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
-      "last_name": "Bellec",
-      "date_joined": "2016-11-26T00:34:00"
-    },
-    "likes": 20,
-    "views": 57,
-    "coordinates": {
-      "lat": 43.573179,
-      "lon": 1.459670
-    },
-    "street_name": "Allée de Barcelone",
-    "city_name": "Toulouse"
-  }
+    {
+        "address": {
+            "addition": "En face du club de tuning",
+            "city_name": "Toulouse",
+            "district_name": "Carmes",
+            "lat": 43.589246,
+            "lon": 1.445684,
+            "postal_code": 31000,
+            "street_name": "Place des pigeons",
+            "street_number": "42"
+        },
+        "category": "Meuble",
+        "description": "Belle chaise",
+        "id": 3,
+        "img": "https://unsplash.it/600/400/",
+        "img_placeholder": "https://unsplash.it/100/100/?blur",
+        "likes": 42,
+        "publish_date": "2016-12-26T00:34:00",
+        "publisher": {
+            "birth_date": "1994-12-26T00:34:00",
+            "email": "arnold.schwarzenegger@gmail.com",
+            "first_name": "Arnold",
+            "gender": "male",
+            "img": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "img_placeholder": "https://avatars2.githubusercontent.com/u/11810069?v=3&s=460.jpg",
+            "date_joined": "2016-12-26T00:34:00",
+            "last_name": "Schwarzenegger",
+            "phone_number": "0628251338",
+            "scp": 1
+        },
+        "status": "FINISHED",
+        "title": "Chaise",
+        "views": 42
+    }
 ]

@@ -6,8 +6,9 @@ import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import PostRow from '../components/PostRow'
 import Container from '../components/Container'
+import PostRow from '../components/PostRow'
+import Separator from '../components/Separator'
 import { getPosts } from '../store/api'
 import { colors } from '../style'
 
@@ -21,7 +22,10 @@ export default class PostedScene extends Component {
       selectedItem: {},
       refreshing: false,
       items: [],
-      location: {'lat': 48.566140, 'lon': -3.148260}
+      location: {
+        'lat': 48.566140,
+        'lon': -3.148260
+      }
     }
   }
 
@@ -59,15 +63,21 @@ export default class PostedScene extends Component {
             <PostRow
               item={item}
               onPressAction={() => {
-                if (item.status === 'pickedUp') {
+                if (item.status === 'PICKEDUP') {
                   this.setState({selectedItem: item}, () => this.openModal())
-                } else Actions.postsItemScene({item})
+                } else {
+                  Actions.postsItemScene({
+                    item: item,
+                    userLat: this.state.location.lat,
+                    userLon: this.state.location.lon
+                  })
+                }
               }}
               userLat={this.state.location.lat}
               userLon={this.state.location.lon}
             />
           )}
-          renderSeparator={() => <View style={styles.separator} />}
+          renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
         />
 
@@ -105,10 +115,8 @@ export default class PostedScene extends Component {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1
-  },
-  separator: {
-    height: 7
+    flex: 1,
+    marginTop: 7
   }
 })
 

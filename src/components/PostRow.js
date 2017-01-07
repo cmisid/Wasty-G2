@@ -16,44 +16,30 @@ export default class PostRow extends Component {
       <TouchableHighlight onPress={this.props.onPressAction}>
         <View style={{flex: 1}}>
           <Card>
-
-            <View
-              style={styles.row}
-            >
+            <View style={styles.row}>
               <ProgressiveImage
                 thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
                 imageSource={{ uri: this.props.item.imgUrl }}
                 style={styles.image}
               />
-
-              <View
-                style={{flex: 2, marginLeft: 5}}
-              >
-                <AppText
-                  style={StyleSheet.flatten(styles.title)}
-                >
+              <View style={{flex: 2, marginLeft: 5}}>
+                <AppText style={StyleSheet.flatten(styles.title)}>
                   {this.props.item.title} publié {distanceInWordsToNow(
                       this.props.item.publishDate,
                       {locale: frLocale, addSuffix: true}
                     )}
                 </AppText>
-                <AppText
-                  style={StyleSheet.flatten(styles.category)}
-                >
+                <AppText style={StyleSheet.flatten(styles.category)}>
                   {this.props.item.category}
                 </AppText>
-                <View
-                  style={styles.content}
-                >
+                <View style={styles.content}>
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
                     <Icon
                       name='star'
-
                       iconStyle={{marginTop: 10}}
                       size={20}
                       color='gold'
                     />
-
                     <AppText> {this.props.item.nLikes}</AppText>
                   </View>
                 </View>
@@ -67,7 +53,7 @@ export default class PostRow extends Component {
                 </View>
 
               </View>
-              {this.props.item.status === 'finished' &&
+              {this.props.item.status === 'FINISHED' &&
                 <View style={styles.overlayFinished} >
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
                     <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
@@ -75,7 +61,7 @@ export default class PostRow extends Component {
 
                 </View>
               }
-              {this.props.item.status === 'pickedUp' &&
+              {this.props.item.status === 'PICKEDUP' &&
                 <View style={styles.pickedup} >
                   <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
                     <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />

@@ -5,7 +5,6 @@ import MapView from 'react-native-maps'
 import _ from 'lodash'
 
 import ItemMap from '../components/ItemMap'
-
 import { getItems } from '../store/api'
 import { colors } from '../style'
 
@@ -15,8 +14,8 @@ const formatMarkers = (items) => items.map(function (item) {
     title: item.title,
     description: item.category,
     coordinate: {
-      latitude: item.lat,
-      longitude: item.lon
+      latitude: item.address.lat,
+      longitude: item.address.lon
     }
   }
 })
@@ -122,8 +121,8 @@ export default class MapScene extends Component {
     // FIXME: if 2 items have the same coordinates, this component will raise an error
     // The iOS MapView returns a Marker.id which is not returned by the Android MapView
     // The Marker identifier refers to the item id
-    const joinAttribute = obj => Platform.OS === 'ios' ? obj.id === event.id : (obj.lat === event.coordinate.latitude && obj.lon === event.coordinate.longitude)
-    const itemObject = _.find(this.state.items, (obj) => joinAttribute(obj))
+    const joinAttribute = obj => Platform.OS === 'ios' ? obj.id === event.id : (obj.address.lat === event.coordinate.latitude && obj.address.lon === event.coordinate.longitude)
+    const itemObject = _.find(this.state.items, obj => joinAttribute(obj))
     console.log(itemObject)
     return itemObject
   }

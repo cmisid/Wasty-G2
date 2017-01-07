@@ -8,19 +8,27 @@ export const getItems = () => {
   })
 }
 
-export const getUser = () => {
+export const getLikes = () => {
   return new Promise((resolve, reject) => {
-    const response = require('./mocks/user.json')
-    const user = parseUser(response)
-    resolve(user)
+    const response = require('./mocks/likes.json')
+    const items = response.map(r => parseItem(r))
+    resolve(items)
   })
 }
 
 export const getPosts = () => {
   return new Promise((resolve, reject) => {
     const response = require('./mocks/posts.json')
-    const posts = response.map(r => parseItem(r))
-    resolve(posts)
+    const items = response.map(r => parseItem(r))
+    resolve(items)
+  })
+}
+
+export const getUser = () => {
+  return new Promise((resolve, reject) => {
+    const response = require('./mocks/user.json')
+    const user = parseUser(response)
+    resolve(user)
   })
 }
 
