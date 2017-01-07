@@ -55,16 +55,16 @@ export default class ItemRow extends Component {
               </View>
               {this.props.item.status === 'FINISHED' &&
                 <View style={styles.overlayFinished} >
-                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
-                    <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginTop: 9}}>
+                    <Icon name='check-circle' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
                   </View>
 
                 </View>
               }
               {this.props.item.status === 'PICKEDUP' &&
                 <View style={styles.pickedup} >
-                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
-                    <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginTop: 9}}>
+                    <Icon name='help' iconStyle={{marginTop: 10}} size={100} color='orange' />
                   </View>
                 </View>
               }
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'lightgreen',
     width: 365,
-
     height: 117
   },
   pickedup: {

@@ -54,6 +54,7 @@ export default class ItemCard extends Component {
         right={this.likeButton}
         autoClose
         sensitivity={0.9}
+        style={{backgroundColor: colors.background}}
       >
         <TouchableHighlight onPress={this.props.onPressAction}>
           <View style={{flex: 1}}>

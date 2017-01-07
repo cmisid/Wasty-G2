@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import UserScene from '../User'
-import Container from '../../components/Container'
 import { colors } from '../../style'
 import { getUser } from '../../data/api'
 
@@ -31,11 +30,12 @@ export default class AccountScene extends Component {
 
   render () {
     return (
-      <Container>
+      <View style={{flex: 1}}>
         <UserScene user={this.state.user} />
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='list' size={24} />}
+          offsetY={80} // Hack because we're using the UserScene which is wrapped by a Container
         >
           <ActionButton.Item
             buttonColor={colors.accent}
@@ -62,7 +62,7 @@ export default class AccountScene extends Component {
             <Icon name='person-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
-      </Container>
+      </View>
     )
   }
 }

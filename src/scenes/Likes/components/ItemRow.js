@@ -34,6 +34,7 @@ export default class ItemRow extends Component {
         right={this.state.deleteButton}
         autoClose
         sensitivity={0.9}
+        style={{backgroundColor: colors.background}}
       >
         <TouchableHighlight onPress={this.props.onPressAction}>
           <View style={{flex: 1}}>

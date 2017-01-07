@@ -6,6 +6,7 @@ import frLocale from 'date-fns/locale/fr'
 
 import EventRow from './components/EventRow'
 import AppText from '../../components/AppText'
+import Container from '../../components/Container'
 import ProgressiveImage from '../../components/ProgressiveImage'
 import { getEvents, getUser } from '../../data/api'
 import { colors } from '../../style'
@@ -45,45 +46,47 @@ export default class UserScene extends Component {
 
   render () {
     return (
-      <View style={styles.wrapper}>
-        {/* Header block which contains the user's information */}
-        <View style={styles.top}>
-          <View style={styles.header}>
-            <View style={styles.headerImage}>
-              <ProgressiveImage
-                thumbnailSource={{ uri: this.props.user.imgPlaceholderUrl }}
-                imageSource={{ uri: this.props.user.imgUrl }}
-                style={styles.userImage}
-              />
-            </View>
-            <View style={styles.headerDescription}>
-              <AppText>{this.props.user.fullName}</AppText>
-              <AppText style={{color: colors.background}}>
-                {`Inscrit ${distanceInWordsToNow(
-                  this.props.user.joinDate,
-                  {locale: frLocale, addSuffix: true}
-                )}`}
-              </AppText>
+      <Container>
+        <View style={styles.wrapper}>
+          {/* Header block which contains the user's information */}
+          <View style={styles.top}>
+            <View style={styles.header}>
+              <View style={styles.headerImage}>
+                <ProgressiveImage
+                  thumbnailSource={{ uri: this.props.user.imgPlaceholderUrl }}
+                  imageSource={{ uri: this.props.user.imgUrl }}
+                  style={styles.userImage}
+                />
+              </View>
+              <View style={styles.headerDescription}>
+                <AppText>{this.props.user.fullName}</AppText>
+                <AppText style={{color: colors.background}}>
+                  {`Inscrit ${distanceInWordsToNow(
+                    this.props.user.joinDate,
+                    {locale: frLocale, addSuffix: true}
+                  )}`}
+                </AppText>
+              </View>
             </View>
           </View>
+          {/* Timeline block which contains the user's activity log */}
+          <View style={styles.bottom}>
+            <ListView
+              dataSource={ds.cloneWithRows(this.state.events)}
+              enableEmptySections
+              renderRow={event => <EventRow event={event} />}
+              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+              style={styles.timeline}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh.bind(this)}
+                />
+              }
+            />
+          </View>
         </View>
-        {/* Timeline block which contains the user's activity log */}
-        <View style={styles.bottom}>
-          <ListView
-            dataSource={ds.cloneWithRows(this.state.events)}
-            enableEmptySections
-            renderRow={event => <EventRow event={event} />}
-            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-            style={styles.timeline}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-          />
-        </View>
-      </View>
+      </Container>
     )
   }
 }
