@@ -1,29 +1,29 @@
-export class Item {
-  constructor ({id, category, description, cityName, imgUrl, imgPlaceholderUrl, lat, lon, nViews, publishDate, streetName, title, publisher}) {
-    this.id = id
-    this.category = category
-    this.description = description
+export class Address {
+  constructor ({addition, cityName, districtName, lat, lon, postalCode, streetName, streetNumber}) {
+    this.addition = addition
     this.cityName = cityName
-    this.imgUrl = imgUrl
-    this.imgPlaceholderUrl = imgPlaceholderUrl
+    this.districtName = districtName
     this.lat = lat
     this.lon = lon
-    this.nViews = nViews
-    this.publishDate = publishDate
+    this.postalCode = postalCode
     this.streetName = streetName
-    this.title = title
-    this.publisher = publisher
+    this.streetNumber = streetNumber
   }
 }
 
 export class User {
-  constructor ({email, firstName, imgUrl, joinDate, lastName}) {
+  constructor ({address, birthDate, email, firstName, gender, imgUrl, imgPlaceholderUrl, joinDate, lastName, phoneNumber, scp}) {
+    this.address = address // Instance of class Address
+    this.birthDate = birthDate
     this.email = email
     this.firstName = firstName
+    this.gender = gender
     this.imgUrl = imgUrl
     this.imgPlaceholderUrl = imgUrl
     this.joinDate = joinDate
     this.lastName = lastName
+    this.phoneNumber = phoneNumber
+    this.scp = scp
   }
 
   get fullName () {
@@ -31,10 +31,25 @@ export class User {
   }
 }
 
+export class Item {
+  constructor ({address, category, description, id, imgUrl, imgPlaceholderUrl, nViews, publishDate, title, publisher}) {
+    this.address = address // Instance of class Address
+    this.category = category
+    this.description = description
+    this.id = id
+    this.imgUrl = imgUrl
+    this.imgPlaceholderUrl = imgPlaceholderUrl
+    this.nViews = nViews
+    this.publishDate = publishDate
+    this.title = title
+    this.publisher = publisher // Instance of class User
+  }
+}
+
 export class Event {
   constructor ({action, item, date}) {
     this.action = action
-    this.item = item
+    this.item = item // Instance of class Item
     this.date = date
   }
 }

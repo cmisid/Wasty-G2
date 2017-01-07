@@ -35,11 +35,10 @@ export default class ItemScene extends Component {
               <View style={{flex: 2, flexDirection: 'column'}}>
                 <AppText style={StyleSheet.flatten(styles.distance)}>
                   {distanceFmt(haversineDistance(
-
                     this.props.userLat,
                     this.props.userLon,
-                    this.props.item.lat,
-                    this.props.item.lon
+                    this.props.item.address.lat,
+                    this.props.item.address.lon
                   ))}
 
                 </AppText>
@@ -53,10 +52,10 @@ export default class ItemScene extends Component {
                   onPress={() => Linking.openURL(generateMapLink(
                   this.props.userLat,
                   this.props.userLon,
-                  this.props.item.lat,
-                  this.props.item.lon
+                  this.props.item.address.lat,
+                  this.props.item.address.lon
                 ))}
-                >{`${this.props.item.streetName}, ${this.props.item.cityName}`}
+                >{`${this.props.item.address.streetName}, ${this.props.item.address.cityName}`}
                 </Text>
               </View>
             </View>

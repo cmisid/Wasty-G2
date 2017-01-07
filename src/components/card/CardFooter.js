@@ -34,14 +34,14 @@ export default class CardFooter extends Component {
           <TouchableHighlight onPress={this._onPressUser.bind(this)} underlayColor={colors.transparent}>
             <View>
               <AppText style={StyleSheet.flatten(styles.publisher)}>
-                {`${this.props.user.firstName} ${this.props.user.lastName}`}
+                {`${this.props.user.fullName}`}
               </AppText>
             </View>
           </TouchableHighlight>
           <Text
             style={StyleSheet.flatten(styles.streetName)}
             onPress={() => Linking.openURL(this.props.mapUrl)}
-          >{`${this.props.streetName}, ${this.props.cityName}`}
+          >{`${this.props.address.streetName}, ${this.props.address.cityName}`}
           </Text>
           <AppText style={StyleSheet.flatten(styles.distance)}>
             {this.props.distance}

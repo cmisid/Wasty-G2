@@ -35,20 +35,19 @@ export default class ItemCard extends Component {
                 this.props.item.publishDate,
                 {locale: frLocale, addSuffix: true}
               )}
-              streetName={this.props.item.streetName}
+              address={this.props.item.address}
               user={this.props.item.publisher}
-              cityName={this.props.item.cityName}
               distance={distanceFmt(haversineDistance(
                 this.props.userLat,
                 this.props.userLon,
-                this.props.item.lat,
-                this.props.item.lon
+                this.props.item.address.lat,
+                this.props.item.address.lon
               ))}
               mapUrl={generateMapLink(
                 this.props.userLat,
                 this.props.userLon,
-                this.props.item.lat,
-                this.props.item.lon
+                this.props.item.address.lat,
+                this.props.item.address.lon
               )}
               views={this.props.item.nViews}
             />

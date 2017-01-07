@@ -6,7 +6,6 @@ import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import AppText from '../components/AppText'
 import Container from '../components/Container'
 import ItemCard from '../components/ItemCard'
 import Tag from '../components/Tag'
@@ -22,7 +21,7 @@ export default class ItemScene extends Component {
     super(props)
     this.state = {
       refreshing: false,
-      items: {},
+      items: [],
       location: {'lat': 48.566140, 'lon': -3.148260},
 
       avatarSource: null,
