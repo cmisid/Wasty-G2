@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native'
 
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import ProgressiveImage from './ProgressiveImage'
-import Swipeout from 'react-native-swipeout'
-
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Swipeout from 'react-native-swipeout'
 
-import AppText from './AppText'
-import Card from './card/Card'
-import { colors } from '../style'
+import AppText from '../../../components/AppText'
+import Card from '../../../components/card/Card'
+import ProgressiveImage from '../../../components/ProgressiveImage'
+import { colors } from '../../../style'
+import { distanceFmt, generateMapLink, haversineDistance } from '../../../util.js'
 
-import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
-
-export default class ItemRowSwipe extends Component {
+export default class ItemRow extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -108,14 +106,6 @@ export default class ItemRowSwipe extends Component {
   }
 }
 
-ItemRowSwipe.propTypes = {
-  item: React.PropTypes.object,
-  onDeleteItem: React.PropTypes.func,
-  onPressAction: React.PropTypes.func,
-  userLat: React.PropTypes.number,
-  userLon: React.PropTypes.number
-}
-
 const styles = StyleSheet.create({
   content: {
     flex: 1,
@@ -156,3 +146,11 @@ const styles = StyleSheet.create({
     marginRight: 5
   }
 })
+
+ItemRow.propTypes = {
+  item: React.PropTypes.object,
+  onDeleteItem: React.PropTypes.func,
+  onPressAction: React.PropTypes.func,
+  userLat: React.PropTypes.number,
+  userLon: React.PropTypes.number
+}

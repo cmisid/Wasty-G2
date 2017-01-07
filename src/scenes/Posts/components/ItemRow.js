@@ -5,12 +5,12 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import AppText from './AppText'
-import Card from './card/Card'
-import { colors } from '../style'
-import ProgressiveImage from './ProgressiveImage'
+import AppText from '../../../components/AppText'
+import Card from '../../../components/card/Card'
+import { colors } from '../../../style'
+import ProgressiveImage from '../../../components/ProgressiveImage'
 
-export default class PostRow extends Component {
+export default class ItemRow extends Component {
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPressAction}>
@@ -76,7 +76,7 @@ export default class PostRow extends Component {
   }
 }
 
-PostRow.propTypes = {
+ItemRow.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,

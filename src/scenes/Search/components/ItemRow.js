@@ -5,19 +5,18 @@ import { Dimensions, StyleSheet, TouchableHighlight, View } from 'react-native'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import ProgressiveImage from './ProgressiveImage'
 import Swipeout from 'react-native-swipeout'
 import Toast from 'react-native-root-toast'
 
-import AppText from './AppText'
-import Card from './card/Card'
-import CardHeader from './card/CardHeader'
-import CardFooter from './card/CardFooter'
+import AppText from '../../../components/AppText'
+import Card from '../../../components/card/Card'
+import CardHeader from '../../../components/card/CardHeader'
+import CardFooter from '../../../components/card/CardFooter'
+import ProgressiveImage from '../../../components/ProgressiveImage'
+import { distanceFmt, generateMapLink, haversineDistance } from '../../../util'
+import { colors } from '../../../style'
 
-import { generateMapLink, haversineDistance, distanceFmt } from './../util'
-import { colors } from '../style'
-
-const toast = (text) => Toast.show(text, {
+const toast = text => Toast.show(text, {
   duration: Toast.durations.LONG,
   position: Toast.positions.TOP,
   shadow: true,

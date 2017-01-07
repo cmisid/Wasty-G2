@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { TouchableHighlight, View } from 'react-native'
 
-import AppText from './AppText'
+import AppText from '../../../components/AppText'
 
 export default class Tag extends Component {
   render () {

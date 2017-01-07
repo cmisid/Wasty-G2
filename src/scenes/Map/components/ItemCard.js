@@ -4,14 +4,13 @@ import { StyleSheet, Dimensions } from 'react-native'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
-import AppText from './AppText'
-import Card from './card/Card'
-import CardFooter from './card/CardFooter'
-import ProgressiveImage from './ProgressiveImage'
+import AppText from '../../../components/AppText'
+import Card from '../../../components/card/Card'
+import CardFooter from '../../../components/card/CardFooter'
+import ProgressiveImage from '../../../components/ProgressiveImage'
+import { distanceFmt, generateMapLink, haversineDistance } from '../../../util.js'
 
-import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
-
-export default class ItemMap extends Component {
+export default class ItemCard extends Component {
 
   render () {
     return (
@@ -52,7 +51,7 @@ export default class ItemMap extends Component {
   }
 }
 
-ItemMap.propTypes = {
+ItemCard.propTypes = {
   item: React.PropTypes.object,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number

@@ -5,9 +5,9 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import AppText from './AppText'
-import ProgressiveImage from './ProgressiveImage'
-import { colors } from '../style'
+import AppText from '../../../components/AppText'
+import ProgressiveImage from '../../../components/ProgressiveImage'
+import { colors } from '../../../style'
 
 export default class EventRow extends Component {
   render () {

@@ -6,10 +6,10 @@ import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import ItemRow from './components/ItemRow'
 import Container from '../../components/Container'
-import PostRow from '../../components/PostRow'
 import Separator from '../../components/Separator'
-import { getPosts } from '../../store/api'
+import { getPosts } from '../../data/api'
 import { colors } from '../../style'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -61,7 +61,7 @@ export default class PostsScene extends Component {
           }
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
-            <PostRow
+            <ItemRow
               item={item}
               onPressAction={() => {
                 if (item.status === 'PICKEDUP') {
