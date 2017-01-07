@@ -1,5 +1,5 @@
 /* These parsers are defined in the same order as the classes. They link the
-JSON responses -- noted r -- from the server to our classes. */
+JSON responses (noted r) from the server to our classes. */
 
 import { Address, Event, Item, User } from '../classes'
 
@@ -35,10 +35,12 @@ export const parseItem = r => new Item({
   id: r.id,
   imgUrl: r.img,
   imgPlaceholderUrl: r.img_placeholder,
+  nLikes: r.likes,
   nViews: r.views,
   publishDate: r.publish_date,
-  title: r.title,
-  publisher: r.publisher ? parseUser(r.publisher) : null
+  publisher: r.publisher ? parseUser(r.publisher) : null,
+  status: r.status,
+  title: r.title
 })
 
 export const parseEvent = r => new Event({

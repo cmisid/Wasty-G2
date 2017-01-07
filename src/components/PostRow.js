@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native'
-
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import ProgressiveImage from './ProgressiveImage'
+import { View, StyleSheet, TouchableHighlight } from 'react-native'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from './AppText'
 import Card from './card/Card'
 import { colors } from '../style'
+import ProgressiveImage from './ProgressiveImage'
 
-import {generateMapLink, haversineDistance, distanceFmt} from './../util.js'
-
-export default class ItemRow extends Component {
+export default class PostRow extends Component {
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPressAction}>
         <View style={{flex: 1}}>
           <Card>
+
             <View
               style={styles.row}
             >
@@ -27,13 +25,17 @@ export default class ItemRow extends Component {
                 imageSource={{ uri: this.props.item.imgUrl }}
                 style={styles.image}
               />
+
               <View
                 style={{flex: 2, marginLeft: 5}}
               >
                 <AppText
                   style={StyleSheet.flatten(styles.title)}
                 >
-                  {this.props.item.title}
+                  {this.props.item.title} publié {distanceInWordsToNow(
+                      this.props.item.publishDate,
+                      {locale: frLocale, addSuffix: true}
+                    )}
                 </AppText>
                 <AppText
                   style={StyleSheet.flatten(styles.category)}
@@ -43,41 +45,43 @@ export default class ItemRow extends Component {
                 <View
                   style={styles.content}
                 >
-                  <AppText
-                    style={StyleSheet.flatten(styles.streetName)}
-                    onPress={() => Linking.openURL(generateMapLink(
-                      this.props.userLat,
-                      this.props.userLon,
-                      this.props.item.address.lat,
-                      this.props.item.address.lon
-                    ))}
-                  >{`${this.props.item.address.streetName}, ${this.props.item.address.cityName}`}
-                  </AppText>
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
+                    <Icon
+                      name='star'
 
-                  <AppText style={StyleSheet.flatten(styles.distance)}>
-                    {distanceFmt(haversineDistance(
-                      this.props.userLat,
-                      this.props.userLon,
-                      this.props.item.address.lat,
-                      this.props.item.address.lon
-                    ))}
-                  </AppText>
+                      iconStyle={{marginTop: 10}}
+                      size={20}
+                      color='gold'
+                    />
+
+                    <AppText> {this.props.item.nLikes}</AppText>
+                  </View>
                 </View>
                 <View
                   style={styles.content}
                 >
-                  <AppText>
-                    {distanceInWordsToNow(
-                      this.props.item.publishDate,
-                      {locale: frLocale, addSuffix: true}
-                    )}
-                  </AppText>
-                  <View style={{flexDirection: 'row', marginRight: 5}}>
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
                     <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                     <AppText> {this.props.item.nViews}</AppText>
                   </View>
                 </View>
+
               </View>
+              {this.props.item.status === 'finished' &&
+                <View style={styles.overlayFinished} >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                    <Icon name='done' iconStyle={{marginTop: 10}} size={100} color='darkgreen' />
+                  </View>
+
+                </View>
+              }
+              {this.props.item.status === 'pickedUp' &&
+                <View style={styles.pickedup} >
+                  <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 150, marginBottom: 5}}>
+                    <Icon name='' iconStyle={{marginTop: 10}} size={100} color='orange' />
+                  </View>
+                </View>
+              }
             </View>
           </Card>
         </View>
@@ -86,7 +90,7 @@ export default class ItemRow extends Component {
   }
 }
 
-ItemRow.propTypes = {
+PostRow.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
@@ -104,7 +108,8 @@ const styles = StyleSheet.create({
   category: {
     marginLeft: 10,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'black',
+    marginTop: 10
   },
   image: {
     width: 100 - 10,
@@ -131,5 +136,40 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: colors.background,
     marginRight: 5
+  },
+  recup: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+    marginLeft: 10,
+    opacity: 0.2
+  },
+  overlayFinished: {
+    flex: 1,
+    position: 'absolute',
+    left: -10,
+    top: 0,
+    opacity: 0.5,
+    borderRadius: 5,
+    backgroundColor: 'lightgreen',
+    width: 365,
+
+    height: 117
+  },
+  pickedup: {
+    flex: 1,
+    position: 'absolute',
+    left: -10,
+    top: 0,
+    opacity: 0.5,
+    borderRadius: 5,
+    backgroundColor: 'peachpuff',
+    width: 365,
+    height: 117
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

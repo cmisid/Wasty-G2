@@ -19,7 +19,7 @@ export class User {
     this.firstName = firstName
     this.gender = gender
     this.imgUrl = imgUrl
-    this.imgPlaceholderUrl = imgUrl
+    this.imgPlaceholderUrl = imgPlaceholderUrl
     this.joinDate = joinDate
     this.lastName = lastName
     this.phoneNumber = phoneNumber
@@ -32,17 +32,19 @@ export class User {
 }
 
 export class Item {
-  constructor ({address, category, description, id, imgUrl, imgPlaceholderUrl, nViews, publishDate, title, publisher}) {
+  constructor ({address, category, description, id, imgUrl, imgPlaceholderUrl, nLikes, nViews, publishDate, publisher, status, title}) {
     this.address = address // Instance of class Address
     this.category = category
     this.description = description
     this.id = id
     this.imgUrl = imgUrl
     this.imgPlaceholderUrl = imgPlaceholderUrl
+    this.nLikes = nLikes
     this.nViews = nViews
     this.publishDate = publishDate
-    this.title = title
     this.publisher = publisher // Instance of class User
+    this.status = status // One of "pending", "picked-up", "finished"
+    this.title = title
   }
 }
 

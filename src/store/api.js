@@ -4,7 +4,6 @@ export const getItems = () => {
   return new Promise((resolve, reject) => {
     const response = require('./mocks/items.json')
     const items = response.map(r => parseItem(r))
-    console.log(items)
     resolve(items)
   })
 }

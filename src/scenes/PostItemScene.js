@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Image } from 'react-native'
 
 import t from 'tcomb-form-native'
 
@@ -11,7 +11,7 @@ const ItemForm = t.struct({
   title: t.String,
   category: t.String,
   description: t.String,
-  //disponibilitées du posteur
+  // disponibilitées du posteur
   beginHour: t.Date,
   endingHour: t.Date
 })
@@ -33,21 +33,31 @@ const options = {
     beginHour: {
       label: 'Heure de début',
       error: 'Une heure de début est requise',
-      mod: 'time'
+      mode: 'time'
     },
     endingHour: {
       label: 'Heure de fin',
-      error: 'Une heure de fin est requise'
+      error: 'Une heure de fin est requise',
+      mode: 'time'
     }
   },
-  order: [ 'title', 'category', 'description', 'beginHour', 'endingHour']
+  order: ['title', 'category', 'description', 'beginHour', 'endingHour']
 }
 
 export default class PostItemScene extends Component {
+
+  componentDidMount () {
+    console.log(this.props.itemImgSource)
+  }
+
   render () {
     return (
       <Container>
         <View style={styles.formWrapper}>
+          <Image
+            style={{width: 100, height: 100}}
+            source={{uri: this.props.itemImgSource.uri}}
+          />
           <Form
             options={options}
             ref='form'
@@ -57,6 +67,10 @@ export default class PostItemScene extends Component {
       </Container>
     )
   }
+}
+
+PostItemScene.propTypes = {
+  itemImgSource: React.PropTypes.object
 }
 
 const styles = StyleSheet.create({
