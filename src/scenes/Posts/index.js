@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
+import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions, TouchableHighlight } from 'react-native'
 
 import Modal from 'react-native-modalbox'
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import _ from 'lodash'
+import Swipeout from 'react-native-swipeout'
 
 import ItemRow from './components/ItemRow'
 import Container from '../../components/Container'
@@ -26,8 +28,22 @@ export default class PostsScene extends Component {
       location: {
         'lat': 48.566140,
         'lon': -3.148260
-      }
+      },
+      deleteButton: [
+        {
+          text: 'Supprimer',
+          backgroundColor: 'lightcoral',
+          color: 'white',
+          underlayColor: 'dimgray',
+          onPress: () => this.props.onDeleteItem(this.props.item.id)
+        }
+      ]
     }
+  }
+  onDeleteItem (id) {
+    const listWithoutItem = _.reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
   }
 
   openModal () {
@@ -60,30 +76,54 @@ export default class PostsScene extends Component {
             />
           }
           dataSource={ds.cloneWithRows(this.state.items)}
-          renderRow={item => (
-            <ItemRow
-              item={item}
-              onPressAction={() => {
-                if (item.status === 'PICKEDUP') {
-                  this.setState({selectedItem: item}, () => this.openModal())
-                } else {
-                  Actions.postsItemScene({
+          renderRow={item => {
+            if (item.status === 'PICKEDUP') {
+              return (
+                <TouchableHighlight onPress={() => this.setState({selectedItem: item}, () => this.openModal())}>
+                  <View>
+                    <ItemRow
+                      item={item}
+                      userLat={this.state.location.lat}
+                      userLon={this.state.location.lon}
+                    />
+                  </View>
+                </TouchableHighlight>
+              )
+            } else {
+              return (
+                <Swipeout
+                  right={this.state.deleteButton}
+                  autoClose
+                  sensitivity={0.9}
+                  style={{backgroundColor: colors.background}}
+                >
+                  <TouchableHighlight onPress={() => Actions.postsItemScene({
                     item: item,
                     userLat: this.state.location.lat,
                     userLon: this.state.location.lon
-                  })
-                }
-              }}
-              userLat={this.state.location.lat}
-              userLon={this.state.location.lon}
-            />
-          )}
+                  })}>
+                    <View>
+                      <ItemRow
+                        item={item}
+                        onDeleteItem={this.onDeleteItem.bind(this)}
+                        userLat={this.state.location.lat}
+                        userLon={this.state.location.lon}
+                      />
+                    </View>
+                  </TouchableHighlight>
+                </Swipeout>
+              )
+            }
+          }}
           renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
         />
-
-        <Modal style={{height: 180, borderRadius: 5, width: width}} color={'blue'} ref={'modal'} backdropColor={'black'} backdropOpacity={0.3}>
-
+        <Modal
+          style={{height: 180, borderRadius: 5, width: width}}
+          color={'blue'} ref={'modal'}
+          backdropColor={'black'}
+          backdropOpacity={0.3}
+        >
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >{`Thierry dit avoir récupéré :`}</Text>
