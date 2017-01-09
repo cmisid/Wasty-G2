@@ -129,7 +129,7 @@ export default class PostsScene extends Component {
           >{`Thierry dit avoir récupéré :`}</Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0, color: colors.link}}
-            onPress={() => Actions.postsItemScene({item: this.state.selectedItem})}
+            onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}
           >{`${this.state.selectedItem.title}`}</Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
@@ -145,7 +145,7 @@ export default class PostsScene extends Component {
             <ActionButton
               buttonColor={'crimson'}
               icon={<Icon color='white' name='clear' size={20} />}
-              onPress={() => Actions.searchItemPostScene()}
+              onPress={() => Actions.postsItemRow()}
             />
           </View>
         </Modal>
