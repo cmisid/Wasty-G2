@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Image } from 'react-native'
+import { StyleSheet, View, Image, ScrollView } from 'react-native'
 
 import t from 'tcomb-form-native'
 
@@ -54,17 +54,19 @@ export default class ItemPostScene extends Component {
   render () {
     return (
       <Container>
-        <View style={styles.formWrapper}>
-          <Image
-            style={{width: 100, height: 100}}
-            source={{uri: this.props.itemImgSource.uri}}
-          />
-          <Form
-            options={options}
-            ref='form'
-            type={ItemForm}
-          />
-        </View>
+        <ScrollView>
+          <View style={styles.formWrapper}>
+            <Image
+              style={{width: 100, height: 100}}
+              source={{uri: this.props.itemImgSource.uri}}
+            />
+            <Form
+              options={options}
+              ref='form'
+              type={ItemForm}
+            />
+          </View>
+        </ScrollView>
       </Container>
     )
   }
