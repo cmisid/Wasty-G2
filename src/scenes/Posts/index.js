@@ -40,14 +40,25 @@ export default class PostsScene extends Component {
       ]
     }
   }
+
+  setItemStatus (item, status) {
+    const index = _.findIndex(this.state.items, i => i.id === item.id)
+    const items = this.state.items
+    items[index].status = status
+    this.setState({items: items})
+  }
+
   onDeleteItem (id) {
     const listWithoutItem = _.reject(this.state.items, {id: id})
-    console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
   }
 
   openModal () {
     this.refs.modal.open()
+  }
+
+  closeModal () {
+    this.refs.modal.close()
   }
 
   componentDidMount () {
@@ -138,14 +149,20 @@ export default class PostsScene extends Component {
             <ActionButton
               buttonColor={colors.primary}
               icon={<Icon color='white' name='check' size={20} />}
-              onPress={() => Actions.searchItemPostScene()}
+              onPress={() => {
+                this.setItemStatus(this.state.selectedItem, 'FINISHED')
+                this.closeModal()
+              }}
             />
           </View>
           <View style={{position: 'absolute', marginTop: 105, marginLeft: 120}}>
             <ActionButton
               buttonColor={'crimson'}
               icon={<Icon color='white' name='clear' size={20} />}
-              onPress={() => Actions.postsItemRow()}
+              onPress={() => {
+                this.setItemStatus(this.state.selectedItem, 'PENDING')
+                this.closeModal()
+              }}
             />
           </View>
         </Modal>
