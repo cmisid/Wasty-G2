@@ -149,8 +149,7 @@ export default class MapScene extends Component {
           >
             {this.state.markers.map(marker => (
               <MapView.Marker
-                key={marker.key}
-                identifier={marker.key}
+                key={marker.key}      
                 coordinate={marker.coordinate}
                 title={marker.title}
                 description={marker.description}
@@ -177,8 +176,7 @@ export default class MapScene extends Component {
           >
             {this.state.markers.map(marker => (
               <MapView.Marker
-                key={marker.key}
-                identifier={marker.key}
+                key={marker.key}               
                 coordinate={marker.coordinate}
                 title={marker.title}
                 description={marker.description}
