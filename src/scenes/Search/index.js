@@ -28,8 +28,7 @@ export default class SearchScene extends Component {
         'lat': 48.566140,
         'lon': -3.148260
       },
-      avatarSource: null,
-      videoSource: null
+      itemImgSource: {}
     }
   }
 
@@ -75,8 +74,7 @@ export default class SearchScene extends Component {
         this.setState({
           itemImgSource: source
         })
-
-        Actions.searchItemPostScene({itemImgSource: this.itemImgSource})
+        Actions.searchItemPostScene({itemImgSource: this.state.itemImgSource})
       }
     })
   }

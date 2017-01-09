@@ -48,6 +48,7 @@ export default class ItemPostScene extends Component {
 
   componentDidMount () {
     console.log(this.props.itemImgSource)
+    console.log(this.props.itemImgSource)
   }
 
   render () {
