@@ -13,6 +13,7 @@ import { colors } from '../../../style'
 import { distanceFmt, generateMapLink, haversineDistance } from '../../../util.js'
 
 export default class ItemRow extends Component {
+
   constructor (props) {
     super(props)
     this.state = {
