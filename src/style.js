@@ -27,3 +27,9 @@ export const colors = {
 export const textStyle = {
   fontFamily: 'Nunito'
 }
+
+export const zIndexes = {
+  background: 1,
+  middleground: 2,
+  foreground: 3
+}

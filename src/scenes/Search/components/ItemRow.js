@@ -12,7 +12,7 @@ import AppText from '../../../components/AppText'
 import Card from '../../../components/card/Card'
 import CardHeader from '../../../components/card/CardHeader'
 import ProgressiveImage from '../../../components/ProgressiveImage'
-import { colors } from '../../../style'
+import { colors, zIndexes } from '../../../style'
 
 const toast = text => Toast.show(text, {
   duration: Toast.durations.LONG,
@@ -62,7 +62,8 @@ export default class ItemRow extends Component {
                 title={this.props.item.title}
                 category={this.props.item.category}
               />
-              <View style={{zIndex: -2}}>
+
+              <View style={{zIndex: zIndexes.background}}>
                 {/* Item image */}
                 <ProgressiveImage
                   thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
