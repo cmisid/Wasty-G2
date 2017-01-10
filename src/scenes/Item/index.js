@@ -17,7 +17,7 @@ export default class ItemScene extends Component {
           <AppText style={StyleSheet.flatten(styles.header)}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2'}}>
+          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2', flexDirection: 'column'}}>
             <Image
               source={{ uri: this.props.item.imgUrl }}
               style={styles.image}
@@ -37,7 +37,7 @@ export default class ItemScene extends Component {
                   {this.props.item.category}
                 </AppText>
               </View>
-              <View style={{flex: 2, flexDirection: 'column'}}>
+              <View style={{alignItems: 'flex-end', marginBottom: 5, marginRight: 10}}>
                 <Text
                   style={StyleSheet.flatten(styles.streetName)}
                   onPress={() => Linking.openURL(generateMapLink(
@@ -49,11 +49,15 @@ export default class ItemScene extends Component {
                 >
                   {`${this.props.item.address.streetName}, ${this.props.item.address.cityName}`}
                 </Text>
-              </View>
-              <View style={{flexDirection: 'row', marginRight: 5}}>
-                <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
-                
-                <AppText>{this.props.item.nViews}</AppText>
+                <View style={{flex: 2, flexDirection: 'column', alignItems: 'flex-end'}}>
+                  <AppText style={StyleSheet.flatten(styles.date)}>
+                    {this.props.publishDate}
+                  </AppText>
+                  <View style={{flexDirection: 'row', marginRight: 5}}>
+                    <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
+                    <AppText>{this.props.item.nViews}</AppText>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -79,7 +83,7 @@ ItemScene.propTypes = {
 const styles = StyleSheet.create({
   image: {
     paddingTop: 60,
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width - 20,
     height: Dimensions.get('window').height / 2,
     justifyContent: 'center',
     alignSelf: 'center',
@@ -88,7 +92,6 @@ const styles = StyleSheet.create({
 
   },
   publishMetadata: {
-    flex: 1,
     flexDirection: 'row',
     alignSelf: 'flex-start',
     marginBottom: 10,
