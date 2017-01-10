@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, RefreshControl } from 'react-native'
+import { ListView, StyleSheet, RefreshControl, Button, Linking, Alert } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
@@ -9,6 +9,7 @@ import Container from '../../components/Container'
 import Separator from '../../components/Separator'
 import { getLikes } from '../../data/api'
 import { colors } from '../../style'
+import { generateGoogleMapsItinerary } from '../../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -22,8 +23,12 @@ export default class LikesScene extends Component {
       location: {
         lat: 48.566140,
         lon: -3.148260
-      }
+      },
+      // User location stuff
+      initialPosition: null,
+      lastPosition: null
     }
+    this.watchID = null
   }
 
   _onRefresh () {
@@ -44,6 +49,46 @@ export default class LikesScene extends Component {
     getLikes()
       .then(items => { this.setState({items}) })
       .catch(() => {})
+
+    // Get user position
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const initialPosition = JSON.stringify(position)
+        this.setState({initialPosition})
+      },
+      error => Alert.alert('Erreur de localisation', JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )
+
+    this.watchID = navigator.geolocation.watchPosition(position => {
+      const lastPosition = JSON.stringify(position)
+      this.setState({lastPosition})
+    })
+  }
+
+  componentWillUnmount () {
+    navigator.geolocation.clearWatch(this.watchID)
+  }
+
+  _getItemsLatLonCoords () {
+    const userCoords = [{
+      lat: this.lastPosition ? this.lastPosition.coords.latitude : 43.589012,
+      lon: this.lastPosition ? this.lastPosition.coords.longitude : 1.450592
+    }]
+    // TODO: implémenter la logique pour savoir quel doit être l'ordre de passage
+    const itemsCoords = this.state.items.map(obj => (
+      {
+        lat: obj.address.lat,
+        lon: obj.address.lon
+      })
+    )
+    return _.concat(userCoords, itemsCoords)
+  }
+
+  _generateItinerary () {
+    const coords = this._getItemsLatLonCoords()
+    const url = generateGoogleMapsItinerary(coords)
+    Linking.openURL(url)
   }
 
   render () {
@@ -72,7 +117,11 @@ export default class LikesScene extends Component {
           renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
         />
-
+        <Button
+          onPress={this._generateItinerary.bind(this)}
+          title='Récupérer mes items'
+          color={colors.primary}
+        />
       </Container>
     )
   }
