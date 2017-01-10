@@ -32,8 +32,9 @@ export default class ItemRow extends Component {
               <AppText style={StyleSheet.flatten(styles.category)}>
                 {this.props.item.category}
               </AppText>
-              <View style={styles.content}>
-                <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 8}}>
+              <View style={styles.content,{flex:1, flexDirection: 'row'}}>
+                <View style={{flex: 5}}/>
+                <View style={{flexDirection: 'row',flex:1}}>
                   <Icon
                     name='star'
                     iconStyle={{marginTop: 10}}
@@ -42,14 +43,15 @@ export default class ItemRow extends Component {
                   />
                   <AppText> {this.props.item.nLikes}</AppText>
                 </View>
+                <View style={{flex: 0.2}}/>
               </View>
-              <View
-                style={styles.content}
-              >
-                <View style={{flexDirection: 'row', marginRight: 5, marginLeft: 200, marginBottom: 5}}>
+              <View style={styles.content,{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 5}}/>
+                <View style={{flexDirection: 'row',flex: 1}}>
                   <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                   <AppText> {this.props.item.nViews}</AppText>
                 </View>
+                <View style={{flex: 0.2}}/>
               </View>
 
             </View>
