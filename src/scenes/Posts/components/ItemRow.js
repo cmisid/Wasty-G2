@@ -33,6 +33,14 @@ export default class ItemRow extends Component {
           </View>
         </TouchableHighlight>
       )
+    } else if (this.props.item.status === 'FINISHED') {
+      return (
+        <TouchableHighlight onPress={() => this.props.onSelectItem(this.props.item)}>
+          <View>
+            <ItemRowContent item={this.props.item} />
+          </View>
+        </TouchableHighlight>
+      )
     } else {
       return (
         <Swipeout
