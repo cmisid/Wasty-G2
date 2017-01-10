@@ -32,8 +32,10 @@ export class User {
 }
 
 export class Item {
-  constructor ({address, category, description, id, imgUrl, imgPlaceholderUrl, nLikes, nViews, publishDate, publisher, status, title}) {
+  constructor ({address, availabilityUntil, availabilitySince, category, description, id, imgUrl, imgPlaceholderUrl, nLikes, nViews, publishDate, publisher, price, status, title}) {
     this.address = address // Instance of class Address
+    this.availabilityUntil = availabilityUntil
+    this.availabilitySince = availabilitySince
     this.category = category
     this.description = description
     this.id = id
@@ -43,6 +45,7 @@ export class Item {
     this.nViews = nViews
     this.publishDate = publishDate
     this.publisher = publisher // Instance of class User
+    this.price = price
     this.status = status // One of "PENDING", "PICKEDUP", "FINISHED"
     this.title = title
   }
