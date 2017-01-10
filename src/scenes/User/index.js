@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { ListView, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import frLocale from 'date-fns/locale/fr'
-
 import EventRow from './components/EventRow'
 import AppText from '../../components/AppText'
 import Container from '../../components/Container'
@@ -68,10 +65,7 @@ export default class UserScene extends Component {
               <View style={styles.headerDescription}>
                 <AppText>{this.props.user.fullName}</AppText>
                 <AppText style={{color: colors.background}}>
-                  {`Inscrit ${distanceInWordsToNow(
-                    this.props.user.joinDate,
-                    {locale: frLocale, addSuffix: true}
-                  )}`}
+                  {`Inscrit ${this.props.user.readableInscriptionSince}`}
                 </AppText>
               </View>
             </View>

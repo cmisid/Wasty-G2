@@ -1,3 +1,5 @@
+/*The objects we use*/
+
 export class Address {
   constructor ({addition, cityName, districtName, lat, lon, postalCode, streetName, streetNumber}) {
     this.addition = addition
