@@ -17,7 +17,7 @@ export default class ItemScene extends Component {
           <AppText style={StyleSheet.flatten(styles.header)}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2'}}>
+          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2', flexDirection: 'column'}}>
             <Image
               source={{ uri: this.props.item.imgUrl }}
               style={styles.image}
@@ -83,7 +83,7 @@ ItemScene.propTypes = {
 const styles = StyleSheet.create({
   image: {
     paddingTop: 60,
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width - 20,
     height: Dimensions.get('window').height / 2,
     justifyContent: 'center',
     alignSelf: 'center',
