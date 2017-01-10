@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, StyleSheet, TouchableHighlight, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
+import Toast from 'react-native-root-toast'
 import { forEach, isNil, omitBy } from 'lodash'
 import t from 'tcomb-form-native'
 
 import { User } from '../../classes'
-import AppText from '../../components/AppText'
 import Container from '../../components/Container'
 import { colors } from '../../style'
+import Button from '../../components/Button'
+import AppText from '../../components/AppText'
+
+const toast = text => Toast.show(text, {
+  duration: Toast.durations.LONG,
+  position: Toast.positions.BOTTOM,
+  shadow: true,
+  animation: true,
+  hideOnPress: true,
+  delay: 500,
+  backgroundColor: colors.primary,
+  shadowColor: colors.background,
+  textColor: 'white'
+})
 
 const Form = t.form.Form
 
@@ -41,13 +55,6 @@ const options = {
 
 export default class AccountSettingsScene extends Component {
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      submitting: false
-    }
-  }
-
   onSubmit () {
     /**
      * Update the account settings. The update is triggered if the provided
@@ -55,8 +62,6 @@ export default class AccountSettingsScene extends Component {
      */
 
     // FIXME: the following algorithm can probably be done with a lodash merge
-
-    this.setState({submitting: true})
 
     const form = this.refs.form.getValue()
 
@@ -75,53 +80,27 @@ export default class AccountSettingsScene extends Component {
       // Trigger the user update callback if there was a change
       if (userWasModified) this.props.updateUser(new User(newUser))
 
-      this.setState({submitting: false})
+      toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`Vos informations ont bien été modifiées`}</AppText>)
     }
   }
 
   render () {
-    // FIXME: this conditional rendering could be way better
-    if (this.state.submitting) {
-      return (
-        <Container>
-          <View style={styles.formWrapper}>
-            <Form
-              options={options}
-              ref='form'
-              type={AccountSettingsForm}
-              value={omitBy(this.props.currentUser, isNil)}
-            />
-            <TouchableHighlight style={styles.submitButton} onPress={() => this.onSubmit()} underlayColor={colors.primary}>
-              <View>
-                <ActivityIndicator
-                  animating
-                  style={styles.submitIcon}
-                  size='small'
-                />
-              </View>
-            </TouchableHighlight>
-          </View>
-        </Container>
-      )
-    } else {
-      return (
-        <Container>
-          <View style={styles.formWrapper}>
-            <Form
-              options={options}
-              ref='form'
-              type={AccountSettingsForm}
-              value={omitBy(this.props.currentUser, isNil)}
-            />
-            <TouchableHighlight style={styles.submitButton} onPress={() => this.onSubmit()} underlayColor={colors.primary}>
-              <View>
-                <AppText style={StyleSheet.flatten(styles.submitButtonText)}>Save</AppText>
-              </View>
-            </TouchableHighlight>
-          </View>
-        </Container>
-      )
-    }
+    return (
+      <Container>
+        <View style={styles.formWrapper}>
+          <Form
+            options={options}
+            ref='form'
+            type={AccountSettingsForm}
+            value={omitBy(this.props.currentUser, isNil)}
+          />
+          <Button
+            onPress={this.onSubmit.bind(this)}
+            text='Save'
+          />
+        </View>
+      </Container>
+    )
   }
 }
 
@@ -130,25 +109,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20
   },
-  submitButton: {
-    height: 36,
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  submitButtonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  submitIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
+  toast: {
+    fontWeight: 'bold'
   }
 })
 

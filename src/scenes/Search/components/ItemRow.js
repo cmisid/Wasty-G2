@@ -18,7 +18,7 @@ import { colors } from '../../../style'
 
 const toast = text => Toast.show(text, {
   duration: Toast.durations.LONG,
-  position: Toast.positions.TOP,
+  position: Toast.positions.BOTTOM,
   shadow: true,
   animation: true,
   hideOnPress: true,

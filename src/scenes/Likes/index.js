@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, RefreshControl, TouchableHighlight, Linking, Alert, View } from 'react-native'
+import { ListView, StyleSheet, RefreshControl, Linking, Alert } from 'react-native'
 
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
-import AppText from '../../components/AppText'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Separator from '../../components/Separator'
