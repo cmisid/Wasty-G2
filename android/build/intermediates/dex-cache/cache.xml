@@ -16,20 +16,6 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\javax.inject-1-a4831770bd0af52000ec7352fe1c5dc5e32f15a4.jar" />
     </item>
     <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-vector-icons\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5c4c8ec9ba84bc89d027bb422d44ebee049ccbf2">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-6f48a271e0a92de2636a850c6282973f33dea0d9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-5d89deb33aa8e16b98f148e997a7b48d369f517f.jar" />
-    </item>
-    <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-okhttp3\0.11.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -37,18 +23,11 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-930de93e98778ca0591f613961d148e9d21fde4f.jar" />
     </item>
     <item
-        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-vector-icons\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0-8ba9d444540227dc85d99ac09f3d5499a58f5d01.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-image-picker\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a3d619bdd137d50f439d3986f771e888f1db170b">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-04ad0b3762761c68fe5681b0f2e6ed9e0e939d57.jar" />
+        sha1="958f957679d3b6c808ac959d02cde2b41efa5330">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-6f48a271e0a92de2636a850c6282973f33dea0d9.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
@@ -58,11 +37,11 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-ea21a6d8126b887404ff0f422eb481bac84c9cf5.jar" />
     </item>
     <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-7fabe34881deeb6fc0924e8a86a3dee574eb271e.jar" />
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0-8ba9d444540227dc85d99ac09f3d5499a58f5d01.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.soloader\soloader\0.1.0\jars\classes.jar"
@@ -72,25 +51,25 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-2d0d510be8644c197bd9b96422a90943ab049833.jar" />
     </item>
     <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-image-picker\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dfbbc0d523fca9c8b0cc08b0f0c09eb12a8bcf10">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-04ad0b3762761c68fe5681b0f2e6ed9e0e939d57.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-7fabe34881deeb6fc0924e8a86a3dee574eb271e.jar" />
+    </item>
+    <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.11.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-212f2c433a569a9e6056867054b338b24c7b39fd.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1-bce7ddbd011fb0290db81a86a28a9ba4fc73eb5f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-maps\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2f29afb99791340b740334dcda8d2e27fc2b37d4">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-7a7286e5f8961d75bc482bc97bb67f5fd765a7bd.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
@@ -100,6 +79,13 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0-6bbee29376b37f0efac9a4fd3e9c0a79b613ae57.jar" />
     </item>
     <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.11.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-f9ddf440af4bb15cd7d496987508ca88e3a40e2a.jar" />
+    </item>
+    <item
         jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -107,74 +93,11 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-65a409224cd4662202b11b0975c34bcac5f0a230.jar" />
     </item>
     <item
-        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\Wasty\react-native-maps\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0-fff5e3c65d2d817d50e6e810c044ad55202d4ae3.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-fe49549a6fc92f2a3a2d123c4f6c12fbbbe2f030.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-bacf2d31e680402e1955174dbfea7633f77465f4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="63994437f62bc861bc20c605d12962f7246116d1">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1-4df467092ee10ca0c7032051f21cac88d21f72ba.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.38.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ac7d1eaeecd12d434a64174bd460db21e708813a">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-4e7dc0051b7539939db82393a0a462dffa493f5b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\library-2.4.0-240db31825d391b6efd97689b849cadae18e7d5f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-2ebf3599be1e7bc6600ae80efef50146f00a8ed0.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-92b836a470f20639cd08d22b1fe1489539d8115e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.38.0\jars\libs\infer-annotations-1.5.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1ce478946caf7789e5c617b9b7a8290cf8b863fa">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\infer-annotations-1.5-9476744216f9f002170ec482cd1bfc0b634407ef.jar" />
-    </item>
-    <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-e13b311bafc1a5555cc7400061779cc8822f4751.jar" />
+        sha1="4d4736158541b2d8d31c22b5e546684d1b754414">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-7a7286e5f8961d75bc482bc97bb67f5fd765a7bd.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.3\1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14\jackson-core-2.2.3.jar"
@@ -184,11 +107,60 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.3-9535391b47803ff5e3715cd6a0d094d221adbdb8.jar" />
     </item>
     <item
-        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.11.0\jars\classes.jar"
+        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
-        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-f9ddf440af4bb15cd7d496987508ca88e3a40e2a.jar" />
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1-bce7ddbd011fb0290db81a86a28a9ba4fc73eb5f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1-4df467092ee10ca0c7032051f21cac88d21f72ba.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.11.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-fe49549a6fc92f2a3a2d123c4f6c12fbbbe2f030.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\library-2.4.0-240db31825d391b6efd97689b849cadae18e7d5f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.11.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-92b836a470f20639cd08d22b1fe1489539d8115e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.11.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-bacf2d31e680402e1955174dbfea7633f77465f4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.38.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ac7d1eaeecd12d434a64174bd460db21e708813a">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-4e7dc0051b7539939db82393a0a462dffa493f5b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-2ebf3599be1e7bc6600ae80efef50146f00a8ed0.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
@@ -198,11 +170,39 @@
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0-faecc7968ba1aee19acb4ee12c6ba27e65bedfdd.jar" />
     </item>
     <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-e13b311bafc1a5555cc7400061779cc8822f4751.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0-fff5e3c65d2d817d50e6e810c044ad55202d4ae3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\classes-5d89deb33aa8e16b98f148e997a7b48d369f517f.jar" />
+    </item>
+    <item
         jar="C:\Users\Raphael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.4.1\8ace66ef7002d98f633377c9e67daeeb196d8c3b\okhttp-ws-3.4.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
         <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.4.1-814fdab8fb6ec2e80a2fa2c86c270eb520df6a6a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.38.0\jars\libs\infer-annotations-1.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ce478946caf7789e5c617b9b7a8290cf8b863fa">
+        <dex dex="C:\Users\Raphael\Documents\github\wasty\android\app\build\intermediates\pre-dexed\debug\infer-annotations-1.5-9476744216f9f002170ec482cd1bfc0b634407ef.jar" />
     </item>
     <item
         jar="C:\Users\Raphael\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
