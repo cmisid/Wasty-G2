@@ -17,15 +17,11 @@ export default class ItemScene extends Component {
           <AppText style={StyleSheet.flatten(styles.header)}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
           </AppText>
-          <View style={{borderColor: 'lightgrey', borderWidth: 1, borderRadius: 0, backgroundColor: '#efeff2', width: 340, marginLeft: 8, marginTop: 8}}>
+          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2'}}>
             <Image
               source={{ uri: this.props.item.imgUrl }}
               style={styles.image}
             >
-              <View style={{flex: 2, flexDirection: 'row', alignItems: 'flex-start'}} >
-                <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={19.5} color='green' />
-                <AppText>{this.props.item.nViews}</AppText>
-              </View>
             </Image>
             <View style={styles.publishMetadata}>
               <View style={{flex: 2, flexDirection: 'column'}}>
@@ -54,6 +50,11 @@ export default class ItemScene extends Component {
                   {`${this.props.item.address.streetName}, ${this.props.item.address.cityName}`}
                 </Text>
               </View>
+              <View style={{flexDirection: 'row', marginRight: 5}}>
+                <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
+                
+                <AppText>{this.props.item.nViews}</AppText>
+              </View>
             </View>
           </View>
           <AppText style={StyleSheet.flatten(styles.description)}>
@@ -78,8 +79,8 @@ ItemScene.propTypes = {
 const styles = StyleSheet.create({
   image: {
     paddingTop: 60,
-    width: Dimensions.get('window').width - 35,
-    height: Dimensions.get('window').height / 2 - 10,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height / 2,
     justifyContent: 'center',
     alignSelf: 'center',
     flexDirection: 'column',
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    marginBottom: 5,
+    marginBottom: 10,
     marginLeft: 10,
     marginTop: 10
   },

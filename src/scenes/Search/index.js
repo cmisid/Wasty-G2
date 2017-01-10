@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View, TouchableOpacity } from 'react-native'
+import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
@@ -7,10 +7,11 @@ import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
 
-import ItemRow from './components/ItemRow'
-import Tag from './components/Tag'
 import Container from '../../components/Container'
+import ItemRow from './components/ItemRow'
+import LoadMoreButton from '../../components/LoadMoreButton'
 import Separator from '../../components/Separator'
+import Tag from './components/Tag'
 import { getItems } from '../../data/api'
 import { colors } from '../../style'
 import { randPastelColor } from '../../util'
@@ -79,13 +80,12 @@ export default class SearchScene extends Component {
     })
   }
 
-  onLikeItem (id) {
+  likeItem (id) {
     const listWithoutItem = _.reject(this.state.items, {id: id})
-    console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
   }
 
-  _onRefresh () {
+  refreshItems () {
     this.setState({refreshing: true})
     getItems()
       .then(items => { this.setState({items}) })
@@ -93,7 +93,7 @@ export default class SearchScene extends Component {
     this.setState({refreshing: false})
   }
 
-  _showMoreItems () {
+  loadMoreItems () {
     // TODO: implémenter la logique de récupération des données via l'API (avec pagination)
     // Ici on a fait un exemple basique d'ajout d'item dans la liste)]
     const items = this.state.items
@@ -127,7 +127,7 @@ export default class SearchScene extends Component {
               refreshControl={
                 <RefreshControl
                   refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh.bind(this)}
+                  onRefresh={this.refreshItems.bind(this)}
                 />
               }
               dataSource={ds.cloneWithRows(this.state.items)}
@@ -135,7 +135,7 @@ export default class SearchScene extends Component {
               renderRow={item => (
                 <ItemRow
                   item={item}
-                  onLikeItem={this.onLikeItem.bind(this)}
+                  onLikeItem={this.likeItem.bind(this)}
                   onPressAction={() => Actions.searchItemScene({
                     item: item,
                     userLat: this.state.location.lat,
@@ -150,11 +150,10 @@ export default class SearchScene extends Component {
             />
 
             {/* Load more button */}
-            <View style={styles.buttonFooter}>
-              <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
-                <Icon color='white' name='add-circle' size={40} />
-              </TouchableOpacity>
-            </View>
+            <LoadMoreButton
+              iconColor='white'
+              onPress={this.loadMoreItems.bind(this)}
+            />
 
           </ScrollView>
         </View>
@@ -196,14 +195,6 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 12
-  },
-  moreItemsButton: {
-    flex: 1,
-    backgroundColor: 'transparent'
-  },
-  buttonFooter: {
-    alignSelf: 'center',
-    height: 45 // FIXME
   }
 })
 

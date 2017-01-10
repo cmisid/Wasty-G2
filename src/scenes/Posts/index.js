@@ -121,7 +121,7 @@ export default class PostsScene extends Component {
           <View style={{position: 'absolute', marginTop: 105, marginLeft: 260}}>
             <ActionButton
               buttonColor={colors.primary}
-              icon={<Icon color='white' name='check' size={20} />}
+              icon={<Icon.Button name='check' backgroundColor='darkgreen' />}
               onPress={() => {
                 this.setItemStatus(this.state.selectedItem, 'FINISHED')
                 this.closeModal()
