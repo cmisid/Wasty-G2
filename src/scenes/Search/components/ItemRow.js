@@ -2,19 +2,16 @@ import React, {Component} from 'react'
 
 import { Dimensions, Linking, StyleSheet, TouchableHighlight, View } from 'react-native'
 
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Swipeout from 'react-native-swipeout'
 import Toast from 'react-native-root-toast'
 import { Actions } from 'react-native-router-flux'
+import CornerLabel from 'react-native-smart-corner-label'
 
 import AppText from '../../../components/AppText'
 import Card from '../../../components/card/Card'
 import CardHeader from '../../../components/card/CardHeader'
-import CardFooter from '../../../components/card/CardFooter'
 import ProgressiveImage from '../../../components/ProgressiveImage'
-import { distanceFmt, generateMapLink, haversineDistance } from '../../../util'
 import { colors } from '../../../style'
 
 const toast = text => Toast.show(text, {
@@ -66,11 +63,21 @@ export default class ItemRow extends Component {
                 category={this.props.item.category}
               />
 
+              {/* Item image */}
               <ProgressiveImage
                 thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
                 imageSource={{ uri: this.props.item.imgUrl }}
                 style={styles.image}
               />
+              {/* Corner label to display the item price */}
+              <CornerLabel
+                alignment='right'
+                cornerRadius={60}
+                style={{backgroundColor: this.props.item.price > 0.0 ? 'orange' : 'mediumseagreen', borderRadius: 15}}
+                textStyle={{fontSize: 10, color: 'white', fontWeight: 'bold'}}
+              >
+                {this.props.item.price > 0.0 ? `\n${this.props.item.price} €` : '\nGRATUIT'}
+              </CornerLabel>
 
               {/* Metadata footer */}
               <View style={{height: 80, flex: 1, flexDirection: 'row'}}>
