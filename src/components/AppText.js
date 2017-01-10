@@ -6,7 +6,7 @@ import { textStyle } from '../style'
 export default class AppText extends Component {
   render () {
     return (
-      <Text style={[textStyle, this.props.style || {}]}>
+      <Text style={[textStyle, this.props.style || {}]} onPress={() => this.props.onPress()}>
         {this.props.children}
       </Text>
     )
@@ -15,5 +15,6 @@ export default class AppText extends Component {
 
 AppText.propTypes = {
   children: React.PropTypes.node,
+  onPress: React.PropTypes.func,
   style: React.PropTypes.object
 }

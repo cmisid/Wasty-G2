@@ -53,7 +53,7 @@ export default class CardFooter extends Component {
           </AppText>
           <View style={{flexDirection: 'row', marginRight: 5}}>
             <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
-            <AppText>{this.props.views}</AppText>
+            <AppText> {this.props.views}</AppText>
           </View>
         </View>
       </View>
