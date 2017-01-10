@@ -1,5 +1,5 @@
 import { parseItem, parseEvent, parseUser } from './parsers'
-import { isProd } from '../constants'
+import { isProd } from '../config'
 
 export const getItems = () => {
   return new Promise((resolve, reject) => {
