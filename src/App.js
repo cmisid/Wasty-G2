@@ -17,7 +17,7 @@ import PostsScene from './scenes/Posts'
 import SearchScene from './scenes/Search'
 import UserScene from './scenes/User'
 
-import { isProd, appEnv } from './constants'
+import { isProd, appEnv } from './config'
 
 // Disable RCTAnimation warning
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
