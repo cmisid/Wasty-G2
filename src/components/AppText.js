@@ -6,7 +6,7 @@ import { textStyle } from '../style'
 export default class AppText extends Component {
   render () {
     return (
-      <Text style={[textStyle, this.props.style || {}]} onPress={() => this.props.onPress()}>
+      <Text style={[textStyle, this.props.style || {}]} onPress={() => { if (this.props.onPress) this.props.onPress() }}>
         {this.props.children}
       </Text>
     )
