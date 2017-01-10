@@ -1,12 +1,14 @@
+/* There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
+ItemRowContent and ItemRow are the childs of these Index.js. */
+
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions, TouchableHighlight } from 'react-native'
+import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
 
 import Modal from 'react-native-modalbox'
 import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
-import Swipeout from 'react-native-swipeout'
 
 import ItemRow from './components/ItemRow'
 import Container from '../../components/Container'
@@ -35,7 +37,7 @@ export default class PostsScene extends Component {
           backgroundColor: 'lightcoral',
           color: 'white',
           underlayColor: 'dimgray',
-          onPress: () => this.props.onDeleteItem(this.props.item.id)
+          onPress: () => this.onDeleteItem(this.props.selectedItem.id)
         }
       ]
     }
@@ -51,6 +53,10 @@ export default class PostsScene extends Component {
   onDeleteItem (id) {
     const listWithoutItem = _.reject(this.state.items, {id: id})
     this.setState({items: listWithoutItem})
+  }
+
+  onSelectItem (item) {
+    this.setState({selectedItem: item}, () => this.openModal())
   }
 
   openModal () {
@@ -87,45 +93,12 @@ export default class PostsScene extends Component {
             />
           }
           dataSource={ds.cloneWithRows(this.state.items)}
-          renderRow={item => {
-            if (item.status === 'PICKEDUP') {
-              return (
-                <TouchableHighlight onPress={() => this.setState({selectedItem: item}, () => this.openModal())}>
-                  <View>
-                    <ItemRow
-                      item={item}
-                      userLat={this.state.location.lat}
-                      userLon={this.state.location.lon}
-                    />
-                  </View>
-                </TouchableHighlight>
-              )
-            } else {
-              return (
-                <Swipeout
-                  right={this.state.deleteButton}
-                  autoClose
-                  sensitivity={0.9}
-                  style={{backgroundColor: colors.background}}
-                >
-                  <TouchableHighlight onPress={() => Actions.postsItemScene({
-                    item: item,
-                    userLat: this.state.location.lat,
-                    userLon: this.state.location.lon
-                  })}>
-                    <View>
-                      <ItemRow
-                        item={item}
-                        onDeleteItem={this.onDeleteItem.bind(this)}
-                        userLat={this.state.location.lat}
-                        userLon={this.state.location.lon}
-                      />
-                    </View>
-                  </TouchableHighlight>
-                </Swipeout>
-              )
-            }
-          }}
+          renderRow={item => <ItemRow
+            item={item}
+            onDeleteItem={this.onDeleteItem.bind(this)}
+            onSelectItem={this.onSelectItem.bind(this)}
+            location={this.state.location}
+          />}
           renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
         />
@@ -148,7 +121,7 @@ export default class PostsScene extends Component {
           <View style={{position: 'absolute', marginTop: 105, marginLeft: 260}}>
             <ActionButton
               buttonColor={colors.primary}
-              icon={<Icon color='white' name='check' size={20} />}
+              icon={<Icon.Button name='check' backgroundColor='darkgreen' />}
               onPress={() => {
                 this.setItemStatus(this.state.selectedItem, 'FINISHED')
                 this.closeModal()

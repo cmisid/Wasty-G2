@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, RefreshControl } from 'react-native'
+import { ListView, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
@@ -7,6 +7,8 @@ import frLocale from 'date-fns/locale/fr'
 import EventRow from './components/EventRow'
 import AppText from '../../components/AppText'
 import Container from '../../components/Container'
+import LoadMoreButton from '../../components/LoadMoreButton'
+
 import ProgressiveImage from '../../components/ProgressiveImage'
 import { getEvents, getUser } from '../../data/api'
 import { colors } from '../../style'
@@ -34,20 +36,25 @@ export default class UserScene extends Component {
       .catch(() => { this.setState({events: []}) })
   }
 
-  _onRefresh () {
+  refreshEvents () {
     this.setState({refreshing: true})
-
     getEvents()
       .then(events => { this.setState({events}) })
       .catch(() => { this.setState({events: []}) })
-
     this.setState({refreshing: false})
+  }
+
+  loadMoreEvents () {
+    const events = this.state.events
+    events.push(events[Math.floor(Math.random() * events.length)])
+    this.setState({events})
   }
 
   render () {
     return (
       <Container>
         <View style={styles.wrapper}>
+
           {/* Header block which contains the user's information */}
           <View style={styles.top}>
             <View style={styles.header}>
@@ -69,22 +76,38 @@ export default class UserScene extends Component {
               </View>
             </View>
           </View>
+
           {/* Timeline block which contains the user's activity log */}
           <View style={styles.bottom}>
-            <ListView
-              dataSource={ds.cloneWithRows(this.state.events)}
-              enableEmptySections
-              renderRow={event => <EventRow event={event} />}
-              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-              style={styles.timeline}
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh.bind(this)}
+            {/* A ScrollView is necessary to put a "Load more" button under the list of events */}
+            <ScrollView>
+
+              {/* List of events */}
+              <ListView
+                dataSource={ds.cloneWithRows(this.state.events)}
+                enableEmptySections
+                renderRow={event => <EventRow event={event} />}
+                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                style={styles.timeline}
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.refreshEvents.bind(this)}
+                  />
+                }
+              />
+
+              {/* Load more button */}
+              <View style={{marginTop: 6}}>
+                <LoadMoreButton
+                  iconColor={colors.lightBackground}
+                  onPress={this.loadMoreEvents.bind(this)}
                 />
-              }
-            />
+              </View>
+
+            </ScrollView>
           </View>
+
         </View>
       </Container>
     )
@@ -125,7 +148,9 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   wrapper: {
-    padding: 30,
+    paddingTop: 30,
+    paddingLeft: 30,
+    paddingRight: 30,
     flex: 1
   }
 })

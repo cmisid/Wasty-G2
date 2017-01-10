@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View, TouchableOpacity } from 'react-native'
+import { AsyncStorage, ListView, Platform, ScrollView, StyleSheet, RefreshControl, View } from 'react-native'
 
 import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
@@ -7,10 +7,11 @@ import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
 
-import ItemRow from './components/ItemRow'
-import Tag from './components/Tag'
 import Container from '../../components/Container'
+import ItemRow from './components/ItemRow'
+import LoadMoreButton from '../../components/LoadMoreButton'
 import Separator from '../../components/Separator'
+import Tag from './components/Tag'
 import { getItems } from '../../data/api'
 import { colors } from '../../style'
 import { randPastelColor } from '../../util'
@@ -79,13 +80,12 @@ export default class SearchScene extends Component {
     })
   }
 
-  onLikedItem (id) {
+  likeItem (id) {
     const listWithoutItem = _.reject(this.state.items, {id: id})
-    console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
   }
 
-  _onRefresh () {
+  refreshItems () {
     this.setState({refreshing: true})
     getItems()
       .then(items => { this.setState({items}) })
@@ -93,18 +93,19 @@ export default class SearchScene extends Component {
     this.setState({refreshing: false})
   }
 
-  _showMoreItems () {
+  loadMoreItems () {
     // TODO: implémenter la logique de récupération des données via l'API (avec pagination)
-    // Ici on a fait un exemple basique d'ajout d'item dans la liste
-    const newItem = {Item: this.state.items[1]}
-    this.setState({
-      items: Object.assign(this.state.items, newItem)
-    })
+    // Ici on a fait un exemple basique d'ajout d'item dans la liste)]
+    const items = this.state.items
+    items.push(items[Math.floor(Math.random() * items.length)])
+    this.setState({items})
   }
 
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
+
+        {/* List of categories the user can click on */}
         <View style={styles.top}>
           <ScrollView style={styles.tagScroll} horizontal>
             <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
@@ -116,43 +117,54 @@ export default class SearchScene extends Component {
             <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
           </ScrollView>
         </View>
+
         <View style={styles.bottom}>
-          <ListView
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-            dataSource={ds.cloneWithRows(this.state.items)}
-            enableEmptySections
-            renderRow={item => (
-              <ItemRow
-                item={item}
-                onLikedItem={this.onLikedItem.bind(this)}
-                onPressAction={() => Actions.searchItemScene({
-                  item: item,
-                  userLat: this.state.location.lat,
-                  userLon: this.state.location.lon
-                })}
-                userLat={this.state.location.lat}
-                userLon={this.state.location.lon}
-              />
-            )}
-            renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
-            style={styles.list}
-          />
+          {/* A ScrollView is necessary to put a "Load more" button under the list of items */}
+          <ScrollView>
+
+            {/* List of items */}
+            <ListView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.refreshItems.bind(this)}
+                />
+              }
+              dataSource={ds.cloneWithRows(this.state.items)}
+              enableEmptySections
+              renderRow={item => (
+                <ItemRow
+                  item={item}
+                  onLikeItem={this.likeItem.bind(this)}
+                  onPressAction={() => Actions.searchItemScene({
+                    item: item,
+                    userLat: this.state.location.lat,
+                    userLon: this.state.location.lon
+                  })}
+                  userLat={this.state.location.lat}
+                  userLon={this.state.location.lon}
+                />
+              )}
+              renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
+              style={styles.list}
+            />
+
+            {/* Load more button */}
+            <LoadMoreButton
+              iconColor='white'
+              onPress={this.loadMoreItems.bind(this)}
+            />
+
+          </ScrollView>
         </View>
-        <View style={styles.buttonFooter}>
-          <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
-            <Icon color='white' name='add-circle' size={40} />
-          </TouchableOpacity>
-        </View>
+
+        {/* Take picture button */}
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='photo-camera' size={20} />}
           onPress={() => this.selectPhotoTapped()}
         />
+
       </Container>
     )
   }
@@ -183,14 +195,6 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 12
-  },
-  moreItemsButton: {
-    flex: 1,
-    backgroundColor: 'transparent'
-  },
-  buttonFooter: {
-    alignSelf: 'center',
-    height: 0 // FIXME
   }
 })
 

@@ -1,24 +1,46 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { forEach } from 'lodash'
-import ActionButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Toast from 'react-native-root-toast'
+import { forEach, isNil, omitBy } from 'lodash'
 import t from 'tcomb-form-native'
 
 import { User } from '../../classes'
 import Container from '../../components/Container'
 import { colors } from '../../style'
+import Button from '../../components/Button'
+import AppText from '../../components/AppText'
+
+const toast = text => Toast.show(text, {
+  duration: Toast.durations.LONG,
+  position: Toast.positions.BOTTOM,
+  shadow: true,
+  animation: true,
+  hideOnPress: true,
+  delay: 500,
+  backgroundColor: colors.primary,
+  shadowColor: colors.background,
+  textColor: 'white'
+})
 
 const Form = t.form.Form
 
+const Genders = t.enums({
+  male: 'Male',
+  female: 'Female'
+})
+
 const AccountSettingsForm = t.struct({
   firstName: t.String,
+  gender: t.maybe(Genders),
   lastName: t.String
 })
 
 const options = {
   fields: {
+    gender: {
+      label: 'Sexe'
+    },
     firstName: {
       label: 'Prénom',
       error: 'Un prénom est requis'
@@ -28,12 +50,12 @@ const options = {
       error: 'Un nom est requis'
     }
   },
-  order: [ 'firstName', 'lastName' ]
+  order: [ 'firstName', 'lastName', 'gender' ]
 }
 
 export default class AccountSettingsScene extends Component {
 
-  onConfirm () {
+  onSubmit () {
     /**
      * Update the account settings. The update is triggered if the provided
      * settings are valid and are different from the previous ones.
@@ -57,6 +79,8 @@ export default class AccountSettingsScene extends Component {
       })
       // Trigger the user update callback if there was a change
       if (userWasModified) this.props.updateUser(new User(newUser))
+
+      toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`Vos informations ont bien été modifiées`}</AppText>)
     }
   }
 
@@ -68,12 +92,11 @@ export default class AccountSettingsScene extends Component {
             options={options}
             ref='form'
             type={AccountSettingsForm}
-            value={this.props.currentUser}
+            value={omitBy(this.props.currentUser, isNil)}
           />
-          <ActionButton
-            buttonColor={colors.primary}
-            icon={<Icon color='white' name='check' size={24} />}
-            onPress={() => this.onConfirm()}
+          <Button
+            onPress={this.onSubmit.bind(this)}
+            text='Save'
           />
         </View>
       </Container>
@@ -85,6 +108,9 @@ const styles = StyleSheet.create({
   formWrapper: {
     flex: 1,
     padding: 20
+  },
+  toast: {
+    fontWeight: 'bold'
   }
 })
 

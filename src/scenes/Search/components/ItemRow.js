@@ -18,7 +18,7 @@ import { colors } from '../../../style'
 
 const toast = text => Toast.show(text, {
   duration: Toast.durations.LONG,
-  position: Toast.positions.TOP,
+  position: Toast.positions.BOTTOM,
   shadow: true,
   animation: true,
   hideOnPress: true,
@@ -28,7 +28,7 @@ const toast = text => Toast.show(text, {
   textColor: 'white'
 })
 
-export default class ItemCard extends Component {
+export default class ItemRow extends Component {
 
   constructor (props) {
     super(props)
@@ -45,7 +45,7 @@ export default class ItemCard extends Component {
 
   onLeftSwipeoutPressed () {
     toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été ajouté à votre liste d'items`}</AppText>)
-    this.props.onLikedItem(this.props.item.id)
+    this.props.onLikeItem(this.props.item.id)
   }
 
   render () {
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
   }
 })
 
-ItemCard.propTypes = {
+ItemRow.propTypes = {
   item: React.PropTypes.object,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number,
-  onLikedItem: React.PropTypes.func
+  onLikeItem: React.PropTypes.func
 }
