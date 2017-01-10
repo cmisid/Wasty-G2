@@ -10,6 +10,9 @@
             "street_name": "Place des pigeons",
             "street_number": "42"
         },
+        "availability_since": "08:00:00",
+        "availability_until": "17:00:00",
+        "price": 42.42,
         "category": "Meuble",
         "description": "Belle chaise",
         "id": 1,
@@ -44,6 +47,9 @@
             "street_name": "Place des pigeons",
             "street_number": "42"
         },
+        "availability_since": "08:00:00",
+        "availability_until": "17:00:00",
+        "price": 42.42,
         "category": "Meuble",
         "description": "Belle chaise",
         "id": 2,
@@ -78,6 +84,9 @@
             "street_name": "Place des pigeons",
             "street_number": "42"
         },
+        "availability_since": "08:00:00",
+        "availability_until": "17:00:00",
+        "price": 42.42,
         "category": "Meuble",
         "description": "Belle chaise",
         "id": 3,

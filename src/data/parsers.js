@@ -30,6 +30,8 @@ export const parseUser = r => new User({
 
 export const parseItem = r => new Item({
   address: r.address ? parseAddress(r.address) : null,
+  availabilityUntil: r.availability_until,
+  availabilitySince: r.availability_since,
   category: r.category,
   description: r.description,
   id: r.id,
@@ -39,6 +41,7 @@ export const parseItem = r => new Item({
   nViews: r.views,
   publishDate: r.publish_date,
   publisher: r.publisher ? parseUser(r.publisher) : null,
+  price: r.price,
   status: r.status,
   title: r.title
 })
