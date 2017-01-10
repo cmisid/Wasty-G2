@@ -95,16 +95,17 @@ export default class SearchScene extends Component {
 
   _showMoreItems () {
     // TODO: implémenter la logique de récupération des données via l'API (avec pagination)
-    // Ici on a fait un exemple basique d'ajout d'item dans la liste
-    const newItem = {Item: this.state.items[1]}
-    this.setState({
-      items: Object.assign(this.state.items, newItem)
-    })
+    // Ici on a fait un exemple basique d'ajout d'item dans la liste)]
+    const items = this.state.items
+    items.push(items[Math.floor(Math.random() * items.length)])
+    this.setState({items})
   }
 
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
+
+        {/* List of categories the user can click on */}
         <View style={styles.top}>
           <ScrollView style={styles.tagScroll} horizontal>
             <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
@@ -116,43 +117,55 @@ export default class SearchScene extends Component {
             <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
           </ScrollView>
         </View>
+
         <View style={styles.bottom}>
-          <ListView
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-            dataSource={ds.cloneWithRows(this.state.items)}
-            enableEmptySections
-            renderRow={item => (
-              <ItemRow
-                item={item}
-                onLikeItem={this.onLikeItem.bind(this)}
-                onPressAction={() => Actions.searchItemScene({
-                  item: item,
-                  userLat: this.state.location.lat,
-                  userLon: this.state.location.lon
-                })}
-                userLat={this.state.location.lat}
-                userLon={this.state.location.lon}
-              />
-            )}
-            renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
-            style={styles.list}
-          />
+          {/* A ScrollView is necessary to put a "Load more" button under the list of items */}
+          <ScrollView>
+
+            {/* List of items */}
+            <ListView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh.bind(this)}
+                />
+              }
+              dataSource={ds.cloneWithRows(this.state.items)}
+              enableEmptySections
+              renderRow={item => (
+                <ItemRow
+                  item={item}
+                  onLikeItem={this.onLikeItem.bind(this)}
+                  onPressAction={() => Actions.searchItemScene({
+                    item: item,
+                    userLat: this.state.location.lat,
+                    userLon: this.state.location.lon
+                  })}
+                  userLat={this.state.location.lat}
+                  userLon={this.state.location.lon}
+                />
+              )}
+              renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
+              style={styles.list}
+            />
+
+            {/* Load more button */}
+            <View style={styles.buttonFooter}>
+              <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
+                <Icon color='white' name='add-circle' size={40} />
+              </TouchableOpacity>
+            </View>
+
+          </ScrollView>
         </View>
-        <View style={styles.buttonFooter}>
-          <TouchableOpacity onPress={this._showMoreItems.bind(this)} style={styles.moreItemsButton} activeOpacity={0}>
-            <Icon color='white' name='add-circle' size={40} />
-          </TouchableOpacity>
-        </View>
+
+        {/* Take picture button */}
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='photo-camera' size={20} />}
           onPress={() => this.selectPhotoTapped()}
         />
+
       </Container>
     )
   }
@@ -190,7 +203,7 @@ const styles = StyleSheet.create({
   },
   buttonFooter: {
     alignSelf: 'center',
-    height: 0 // FIXME
+    height: 45 // FIXME
   }
 })
 
