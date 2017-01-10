@@ -79,7 +79,7 @@ export default class SearchScene extends Component {
     })
   }
 
-  onLikedItem (id) {
+  onLikeItem (id) {
     const listWithoutItem = _.reject(this.state.items, {id: id})
     console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
@@ -129,7 +129,7 @@ export default class SearchScene extends Component {
             renderRow={item => (
               <ItemRow
                 item={item}
-                onLikedItem={this.onLikedItem.bind(this)}
+                onLikeItem={this.onLikeItem.bind(this)}
                 onPressAction={() => Actions.searchItemScene({
                   item: item,
                   userLat: this.state.location.lat,
