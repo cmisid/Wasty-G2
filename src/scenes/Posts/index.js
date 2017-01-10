@@ -2,16 +2,16 @@
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
-import { ListView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
+import { ListView, ScrollView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
 
 import Modal from 'react-native-modalbox'
-import ActionButton from 'react-native-action-button'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
 import Container from '../../components/Container'
+import LoadMoreButton from '../../components/LoadMoreButton'
 import Separator from '../../components/Separator'
 import { getPosts } from '../../data/api'
 import { colors } from '../../style'
@@ -73,7 +73,7 @@ export default class PostsScene extends Component {
       .catch(() => {})
   }
 
-  _onRefresh () {
+  refreshItems () {
     this.setState({refreshing: true})
     getPosts()
       .then(items => { this.setState({items}) })
@@ -81,27 +81,50 @@ export default class PostsScene extends Component {
     this.setState({refreshing: false})
   }
 
+  loadMoreItems () {
+    const items = this.state.items
+    items.push(items[Math.floor(Math.random() * items.length)])
+    this.setState({items})
+  }
+
   render () {
     return (
       <Container style={{backgroundColor: colors.background}}>
-        <ListView
-          style={styles.list}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh.bind(this)}
+
+        {/* A ScrollView is necessary to put a "Load more" button under the list of posted items */}
+        <ScrollView>
+
+          {/* List of posted items */}
+          <ListView
+            style={styles.list}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.refreshItems.bind(this)}
+              />
+            }
+            dataSource={ds.cloneWithRows(this.state.items)}
+            renderRow={item => <ItemRow
+              item={item}
+              onDeleteItem={this.onDeleteItem.bind(this)}
+              onSelectItem={this.onSelectItem.bind(this)}
+              location={this.state.location}
+            />}
+            renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
+            enableEmptySections
+          />
+
+          {/* Load more button */}
+          <View style={{marginTop: 6}}>
+            <LoadMoreButton
+              iconColor='white'
+              onPress={this.loadMoreItems.bind(this)}
             />
-          }
-          dataSource={ds.cloneWithRows(this.state.items)}
-          renderRow={item => <ItemRow
-            item={item}
-            onDeleteItem={this.onDeleteItem.bind(this)}
-            onSelectItem={this.onSelectItem.bind(this)}
-            location={this.state.location}
-          />}
-          renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
-          enableEmptySections
-        />
+          </View>
+
+        </ScrollView>
+
+        {/* Modal window for confirming if an item was picked up or not */}
         <Modal
           style={{height: 180, borderRadius: 5, width: width}}
           color={'blue'} ref={'modal'}
@@ -117,26 +140,23 @@ export default class PostsScene extends Component {
           >{`${this.state.selectedItem.title}`}</Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
-          >{`Voulez-vous confirmer ?`}</Text>
-          <View style={{position: 'absolute', marginTop: 105, marginLeft: 260}}>
-            <ActionButton
-              buttonColor={colors.primary}
-              icon={<Icon.Button name='check' color='darkgreen' />}
-              onPress={() => {
-                this.setItemStatus(this.state.selectedItem, 'FINISHED')
-                this.closeModal()
-              }}
-            />
-          </View>
-          <View style={{position: 'absolute', marginTop: 105, marginLeft: 120}}>
-            <ActionButton
-              buttonColor={'crimson'}
-              icon={<Icon color='white' name='clear' size={20} />}
-              onPress={() => {
-                this.setItemStatus(this.state.selectedItem, 'PENDING')
-                this.closeModal()
-              }}
-            />
+          >
+            Voulez-vous confirmer ?
+          </Text>
+          <View style={{flex: 1, flexDirection: 'row', 'alignItems': 'center', justifyContent: 'center'}}>
+
+            <Icon.Button name='check' size={70} color='darkgreen' backgroundColor='white' onPress={() => {
+              this.setItemStatus(this.state.selectedItem, 'FINISHED')
+              this.closeModal()
+            }} />
+
+            <View style={{width: 20}} />
+
+            <Icon.Button name='clear' size={70} color='crimson' backgroundColor='white' onPress={() => {
+              this.setItemStatus(this.state.selectedItem, 'PENDING')
+              this.closeModal()
+            }} />
+
           </View>
         </Modal>
       </Container>

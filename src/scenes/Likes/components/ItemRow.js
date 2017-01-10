@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   category: {
     marginLeft: 10,
     fontWeight: 'bold',
-    color: 'red'
+    color: colors.background
   },
   image: {
     width: 100 - 10,
