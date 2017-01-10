@@ -6,6 +6,7 @@ import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
 import AppText from '../../components/AppText'
+import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Separator from '../../components/Separator'
 import { getLikes } from '../../data/api'
@@ -119,13 +120,10 @@ export default class LikesScene extends Component {
           enableEmptySections
         />
 
-        <TouchableHighlight style={styles.submitButton} onPress={() => this._generateItinerary.bind(this)} underlayColor={colors.primary}>
-          <View>
-            <AppText style={StyleSheet.flatten(styles.submitButtonText)}>
-              Récupérer mes items
-            </AppText>
-          </View>
-        </TouchableHighlight>
+        <Button
+          onPress={this._generateItinerary.bind(this)}
+          text='Récupérer mes items'
+        />
       </Container>
     )
   }
@@ -135,20 +133,5 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     marginTop: 7
-  },
-  submitButton: {
-    height: 36,
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  submitButtonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
   }
 })
