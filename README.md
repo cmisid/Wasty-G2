@@ -22,10 +22,10 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissonneau
-- Raphaël Sourty
+- Antoine Plissoneau
+- Raphael Sourty
 
-Des slides que résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
+Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
 
 ## Stack technologique
 
@@ -36,10 +36,10 @@ Des slides que résument notre partie du projet sont [disponibles en ligne](http
 Facebook propose de la [documentation](https://facebook.github.io/react-native/docs/getting-started.html#content) pour installer React Native sur Windows|Mac|Linux pour Android|iOS. Il faut ensuite faire un `react-native link` dans la console pour opérer un peu de magie et lier des dépendances au projet.
 
 ## Développement
-
+<div align="justify">
 - Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard).
 - Nous utilisons [Reactotron](https://github.com/reactotron/reactotron) pour débugger.
-
+</div>
 ## Architecture
 
 ### Flux des données
@@ -48,31 +48,31 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 
 ### Page "Recherche"
-
+<div align="justify">
 L'utilisateur est dirigé vers la page "Recherche" lorsqu'il se connecte sur l'application. 
 Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent.
 L'application mobile pour le projet wasty propose différents outils pour effectuer une recherche : recherche à partir de catégories, recherche cartographique.
 
 La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest".
-Les catégories sont représentés sous forme de blocs. ces blocs caractérisent les différentes catégories (verre, chaise, habits...)
+Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...).
 Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs. 
  
-Idéalement nous aimerions que 6 catégories soient affichées dans la barre de recherche et que celles-ci évoluent en fonction de l'utilisateur à partir d'un algorithme de machine learning. 
+Idéalement nous aimerions que 6 catégories soient affichées dans la barre de recherche et que celles-ci évoluent en fonction de l'utilisateur à partir d'un algorithme de Machine Learning. 
 
 Nous avons choisi de laisser une surface importante aux photos des objets pour que les utilisateurs puissent rapidement identifier les objets auxquels ils offriront une seconde vie.
 
 Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits. 
 Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
 
-Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut fair un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
 La page "Ma liste" rassemble tous les articles likés par l'utilisateur et dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
 
 La page "Recherche" rassemble les objets proposés par l'application "WASTY". Par défaut, l'application affiche 20 objets. 
 Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 résultats suivants.
 
 La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse ajouter une annonce. Cette fonctionnalité est matérialisée par un bouton en forme d'appareil photo en bas à droite de la page "Recherche".
-Après avoir cliquer sur ce bouton, l'utilisateur est redirigé vers la page "Ajouter un objet".
-
+Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est redirigé vers la page "Ajouter un objet".
+</div>
 
 #### Visuel
 
@@ -125,8 +125,6 @@ Après avoir cliquer sur ce bouton, l'utilisateur est redirigé vers la page "Aj
 
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
-### Pourquoi React Native ?
 
-#### Multi-plateforme
 
-Notre application peut être utilisée sous Android et IOS aussi bien que sur WindowsPhone.
+
