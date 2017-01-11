@@ -56,14 +56,14 @@ export default class ItemScene extends Component {
             </View>
           </View>
           <AppText />
-          <AppText style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center'}}>
+          <AppText style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', color: 'black'}}>
             {this.props.item.title} - {this.props.item.category}
           </AppText>
           <AppText style={{textAlign: 'center', fontSize: 12, color: 'grey'}}>
             Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} {this.props.item.readablePublishedSince}
           </AppText>
           <AppText />
-          <AppText style={{textAlign: 'justify', marginBottom: 15}}>
+          <AppText style={{textAlign: 'justify', marginBottom: 15, color: 'black'}}>
             {this.props.item.description}
           </AppText>
         </ScrollView>
