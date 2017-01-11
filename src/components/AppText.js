@@ -1,3 +1,9 @@
+/*
+AppText is a thin wrapper around React Native's Text component and is meant to
+act in the same way. This is the canonical way to set a global font all around
+the application. See https://facebook.github.io/react-native/docs/text.html#limited-style-inheritance
+for more information.
+*/
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 
