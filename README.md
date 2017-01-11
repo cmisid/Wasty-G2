@@ -227,9 +227,10 @@ Il nous a servit a créer un premier visuel des différentes pages de l'applicat
 
 ##### SourceTree
 
+<p style="text-align:justify";>
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
-
+</p>
 (ajouter une capture d'écran)
 
 
