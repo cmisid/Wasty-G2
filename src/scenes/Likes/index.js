@@ -116,6 +116,7 @@ export default class LikesScene extends Component {
           )}
           renderSeparator={(sectionId, rowId) => <Separator key={rowId} />}
           enableEmptySections
+          showsVerticalScrollIndicator={false}
         />
 
         <View style={{marginTop: 5}}>

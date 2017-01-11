@@ -28,7 +28,8 @@ export default class RouterTitle extends Component {
   render () {
     if (mainScenes.includes(this.props.scene.name)) {
       return (
-        <View style={styles.titleWrapper}>
+        // The paddingTop is different for the logo than for the text
+        <View style={{alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 22 : 9}}>
           <View style={{marginBottom: 10}}>
             <Image
               source={require('../assets/img/logo.png')}

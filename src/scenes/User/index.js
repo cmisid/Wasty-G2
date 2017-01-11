@@ -78,7 +78,7 @@ export default class UserScene extends Component {
           {/* Timeline block which contains the user's activity log */}
           <View style={styles.bottom}>
             {/* A ScrollView is necessary to put a "Load more" button under the list of events */}
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
 
               {/* List of events */}
               <ListView

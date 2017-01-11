@@ -99,7 +99,7 @@ export default class PostsScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
 
         {/* A ScrollView is necessary to put a "Load more" button under the list of posted items */}
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
 
           {/* List of posted items */}
           <ListView

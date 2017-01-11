@@ -1,7 +1,7 @@
 export const colors = {
-  primary: 'seagreen',
-  secondary: 'darkseagreen',
-  accent: 'goldenrod',
+  primary: '#2e8b57',
+  secondary: '#69c69c',
+  accent: 'steelblue',
 
   lightBackground: 'lightgray',
   background: 'darkgray',
