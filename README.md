@@ -1,4 +1,4 @@
-<div>
+﻿<div>
   <div align="center">
     <img src="https://docs.google.com/drawings/d/1CgBwaB4JOsYyUhqR1e9pPE5AdyEgIksgAIh_EIVtfsg/pub?w=476&h=230" alt="logo"/>
   </div>
@@ -22,8 +22,8 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissoneau
-- Raphael Sourty
+- Antoine Plissonneau
+- Raphaël Sourty
 
 Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
 
@@ -49,6 +49,31 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 ### Page "Recherche"
 
+L'utilisateur est dirigé vers la page "Recherche" lorsqu'il se connecte sur l'application. 
+Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent.
+L'application mobile pour le projet wasty propose différents outils pour effectuer une recherche : recherche à partir de catégories, recherche cartographique.
+
+La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest".
+Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...).
+Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs. 
+ 
+Idéalement nous aimerions que 6 catégories soient affichées dans la barre de recherche et que celles-ci évoluent en fonction de l'utilisateur à partir d'un algorithme de Machine Learning. 
+
+Nous avons choisi de laisser une surface importante aux photos des objets pour que les utilisateurs puissent rapidement identifier les objets auxquels ils offriront une seconde vie.
+
+Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits. 
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+
+La page "Recherche" rassemble les objets proposés par l'application "WASTY". Par défaut, l'application affiche 20 objets. 
+Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 résultats suivants.
+
+La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse ajouter une annonce. Cette fonctionnalité est matérialisée par un bouton en forme d'appareil photo en bas à droite de la page "Recherche".
+Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est redirigé vers la page "Ajouter un objet".
+
+
 #### Visuel
 
 #### IO
@@ -56,7 +81,7 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 ![recherche_io](https://docs.google.com/drawings/d/1BgCKhWAEdvcfh4jvmrewnz3txm5sF6JIpx3ttUdY-Kw/pub?w=1231&h=730)
 
 
-### Page ajouter un objet
+### Page "Ajouter un objet"
 
 #### Visuel
 
@@ -85,6 +110,20 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 ### Page "Carte"
 
+L'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
+
+La page Carte notifie les articles disponible à proximité de sa position à partir de marqueurs.
+S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
+
+La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert  . 
+
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+
+Nous avons imaginé un code couleurs pour les marqueurs : 
+ 
+
 #### Visuel
 
 #### IO
@@ -101,5 +140,72 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
 
+### Pourquoi avoir choisi React Native ?
+
+#### Multi-plateforme
+
+L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un langage 3 en 1. Une autre solution aurait été de développer en Android et en Swift, ici on se contente d'un seul langage : le React Native.
+
+#### Agile
+
+L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
+
+#### Créée par Facebook
+
+Le react native est un langage jeune (moins de 2 ans ?), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
 
 
+
+
+### Organisation du travail
+
+#### Hiérarchie Horizontale
+
+Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter en fonction de leur capacités.
+
+
+#### Planning Initial et Final
+
+Nous avons suivi un planning en ce qui concerne les grandes lignes du développement :
+- création des visuels
+- affichage de données factices
+- interaction avec la BD
+
+Nous avons organisé des réunions chaque fin de journée, en nous basant sur la Kanban, pour faire le point sur l'avancement et le mettre à jour avec de nouvelles issues.
+
+
+
+
+#### Les Outils
+
+##### Balsamiq
+
+Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
+Il nous a servit a créer un premier visuel des différentes pages de l'application et les liens entre elles.
+
+
+(ajouter des démos des mocks up)
+
+##### SourceTree
+
+Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
+Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
+
+(ajouter une capture d'écran)
+
+
+##### Android/IOS emulator
+
+
+
+
+
+### Bilan
+
+### Les Plus
+
+- le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
+- Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile.
+
+#### Les Moins
+- 

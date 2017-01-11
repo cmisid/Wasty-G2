@@ -39,6 +39,7 @@ const scenes = Actions.create(
     <Scene title='Mes posts' key='postsScene' icon={TabIcon} iconName='playlist-add'>
       <Scene title='Mes posts' key='postsViewScene' component={PostsScene} />
       <Scene title='Mes posts' key='postsItemScene' component={ItemScene} />
+      <Scene title='Mes posts' key='postsUserScene' component={UserScene} />
     </Scene>
     <Scene title='Mes likes' key='likesScene' icon={TabIcon} iconName='playlist-add-check'>
       <Scene title='Mes likes' key='likesViewScene' component={LikesScene} />
