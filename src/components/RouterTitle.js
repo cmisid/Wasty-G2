@@ -6,7 +6,8 @@ import AppText from './AppText'
 const itemScenes = [
   'postsItemScene',
   'likesItemScene',
-  'searchItemScene'
+  'searchItemScene',
+  'accountItemScene'
 ]
 
 const userScenes = [

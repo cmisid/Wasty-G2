@@ -54,6 +54,7 @@ const scenes = Actions.create(
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
       <Scene title='Compte' key='accountViewScene' component={AccountScene} />
+      <Scene title='Compte' key='accountItemScene' component={ItemScene} />
       <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
     </Scene>
   </Scene>
