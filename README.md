@@ -120,7 +120,9 @@ Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les art
 
 Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
 La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
-La couleur du marqueur d'un article "liké" par un utilisateur est bleu  
+
+Nous avons imaginé un code couleurs pour les marqueurs : 
+ 
 
 #### Visuel
 
