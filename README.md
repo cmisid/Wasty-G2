@@ -65,7 +65,7 @@ Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent
 Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
 
 Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
-La page "Ma liste" rassemble tous les articles likés par l'utilisateur et dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
 
 La page "Recherche" rassemble les objets proposés par l'application "WASTY". Par défaut, l'application affiche 20 objets. 
 Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 résultats suivants.
@@ -110,6 +110,20 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 ### Page "Carte"
 
+L'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
+
+La page Carte notifie les articles disponible à proximité de sa position à partir de marqueurs.
+S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
+
+La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+
+Nous avons imaginé un code couleurs pour les marqueurs : 
+ 
+
 #### Visuel
 
 #### IO
@@ -126,5 +140,52 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
 
+### Pourquoi avoir choisi React Native ?
+
+#### Multi-plateforme
+
+L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un langage 3 en 1. Une autre solution aurait été de développer en Android et en Swift, ici on se contente d'un seul langage : le React Native.
+
+#### Agile
+
+L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone.
+
+#### Créée par Facebook
+
+Le react native est un langage jeune, la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
 
 
+
+
+### Organisation du travail
+
+#### Hiérarchie Horizontale
+
+Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter.
+
+#### Les Outils
+
+##### Balsamiq
+
+Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
+Il nous a servit a créer un premier visuel des différentes pages de l'application et les liens entre elles.
+
+
+(ajouter des démos des mocks up)
+
+##### SourceTree
+
+Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
+Il nous a servit à travailler à plusieurs sur la même application sans avoir a constamment s'échanger des clés USB.
+
+##### Android/IOS emulator
+
+
+
+
+
+
+### les plus
+
+- le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
+- 
