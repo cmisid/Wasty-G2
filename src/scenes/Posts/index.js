@@ -8,8 +8,8 @@
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
-import { ListView, ScrollView, StyleSheet, View, Text, RefreshControl, Dimensions } from 'react-native'
-
+import { ListView, ScrollView, StyleSheet, View, Text, RefreshControl, Dimensions, TouchableHighlight } from 'react-native'
+import ProgressiveImage from '../../components/ProgressiveImage'
 import Modal from 'react-native-modalbox'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -131,12 +131,25 @@ export default class PostsScene extends Component {
         </ScrollView>
 
         {/* Modal window for confirming if an item was picked up or not */}
+        {this.state.selectedItem.picker &&
         <Modal
           style={{height: 180, borderRadius: 5, width: width}}
           color={'blue'} ref={'modal'}
           backdropColor={'black'}
           backdropOpacity={0.3}
         >
+          {/* User image */}
+
+          <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View>
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
+                imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
+                style={{width: 40, height: 40, borderRadius: 20}}
+              />
+            </View>
+          </View>
+
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
           >
@@ -177,6 +190,7 @@ export default class PostsScene extends Component {
 
           </View>
         </Modal>
+      }
       </Container>
     )
   }
