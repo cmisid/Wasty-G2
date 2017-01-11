@@ -40,14 +40,20 @@ export default class AccountScene extends Component {
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mon mot de passe'
-            onPress={() => {}}
+            onPress={() => Actions.accountPasswordScene({
+              currentUser: this.state.user,
+              updateUser: this.updateUser.bind(this)
+            })}
           >
             <Icon name='lock-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mon adresse e-mail'
-            onPress={() => {}}
+            onPress={() => Actions.accountEmailScene({
+              currentUser: this.state.user,
+              updateUser: this.updateUser.bind(this)
+            })}
           >
             <Icon name='mail-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>

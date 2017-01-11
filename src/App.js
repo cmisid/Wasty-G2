@@ -7,6 +7,8 @@ import Overlay from './components/Overlay'
 import RouterTitle from './components/RouterTitle'
 import TabIcon from './components/TabIcon'
 
+import AccountEmailScene from './scenes/AccountEmail'
+import AccountPasswordScene from './scenes/AccountPassword'
 import AccountScene from './scenes/Account'
 import AccountSettingsScene from './scenes/AccountSettings'
 import ItemScene from './scenes/Item'
@@ -56,6 +58,8 @@ const scenes = Actions.create(
       <Scene title='Compte' key='accountViewScene' component={AccountScene} />
       <Scene title='Compte' key='accountItemScene' component={ItemScene} />
       <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
+      <Scene title='Modifier mon addresse e-mail' key='accountEmailScene' component={AccountEmailScene} />
+      <Scene title='Modifier mon mot de passe' key='accountPasswordScene' component={AccountPasswordScene} />
     </Scene>
   </Scene>
 )
