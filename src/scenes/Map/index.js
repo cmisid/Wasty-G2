@@ -4,7 +4,7 @@ import { View, StyleSheet, Alert, Platform } from 'react-native'
 import MapView from 'react-native-maps'
 import _ from 'lodash'
 
-import ItemCard from './components/ItemCard'
+import MarkerContent from './components/MarkerContent'
 import { getItems } from '../../data/api'
 import { colors } from '../../style'
 
@@ -197,7 +197,7 @@ export default class MapScene extends Component {
           </MapView>
           {/* Here we display the selected marker properties */}
           <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
-            <ItemCard
+            <MarkerContent
               item={this.state.selectedMarker.coordinate ? this.findItemData(this.state.selectedMarker) : {}}
               onLikeItem={this.likeItem.bind(this)}
               userLat={this.state.coordinate.latitude}
