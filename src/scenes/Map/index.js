@@ -4,7 +4,7 @@ import { View, StyleSheet, Alert, Platform } from 'react-native'
 import MapView from 'react-native-maps'
 import _ from 'lodash'
 
-import ItemCard from './components/ItemCard'
+import MarkerContent from './components/MarkerContent'
 import { getItems } from '../../data/api'
 import { colors } from '../../style'
 
@@ -12,7 +12,7 @@ const formatMarkers = (items) => items.map(function (item) {
   return {
     key: item.id,
     title: item.title,
-    description: item.category,
+    description: item.category.toUpperCase(),
     coordinate: {
       latitude: item.address.lat,
       longitude: item.address.lon
@@ -131,6 +131,15 @@ export default class MapScene extends Component {
     this.setState({ region })
   }
 
+  likeItem (id) {
+    console.log(this.state.markers)
+    const markersWithoutItem = _.reject(this.state.markers, {key: id})
+    console.log(markersWithoutItem)
+    this.setState({markers: markersWithoutItem})
+    // Then go back to map view
+    this.handleMapPressedEvent()
+  }
+
   render () {
     // In order to display an Item component, we need to split the render part of MapScene into
     // 2 components because when a user press a marker we need to display the
@@ -188,8 +197,9 @@ export default class MapScene extends Component {
           </MapView>
           {/* Here we display the selected marker properties */}
           <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
-            <ItemCard
+            <MarkerContent
               item={this.state.selectedMarker.coordinate ? this.findItemData(this.state.selectedMarker) : {}}
+              onLikeItem={this.likeItem.bind(this)}
               userLat={this.state.coordinate.latitude}
               userLon={this.state.coordinate.longitude}
             />
