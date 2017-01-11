@@ -22,14 +22,28 @@ export const haversineDistance = (lat1, lon1, lat2, lon2) => {
 export const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
 export const generateGoogleMapsItinerary = (listOfLatLon) => {
-  // Example :
-  // let listOfLatLon = [{lat: 43.589246, lon: 1.445684}, {lat: 43.589246, lon: 1.475684}, {lat: 43.989246, lon: 1.445684}]
-  // ggmapsItineraryUrl = generateGoogleMapsItinerary(listOfLatLon)
-  // console.log(ggmapsItineraryUrl)
-  // 'https://www.google.com/maps/dir/43.589246,1.445684/43.589246,1.475684/43.989246,1.445684'
+  /* Example :
+
+  >>> let listOfLatLon = [
+    {
+      latitude: 43.589246,
+      lon: 1.445684
+    },
+    {
+      latitude: 43.589246,
+      lon: 1.475684
+    },
+    {
+      latitude: 43.989246,
+      lon: 1.445684
+  }]
+  >>> ggmapsItineraryUrl = generateGoogleMapsItinerary(listOfLatLon)
+  >>> console.log(ggmapsItineraryUrl)
+  >>> https://www.google.com/maps/dir/43.589246,1.445684/43.589246,1.475684/43.989246,1.445684'
+  */
 
   let url = 'https://www.google.com/maps/dir/'
-  listOfLatLon.forEach(coord => { url = url + `${coord.lat},${coord.lon}/` })
+  listOfLatLon.forEach(coord => { url = url + `${coord.latitude},${coord.longitude}/` })
   return url
 }
 

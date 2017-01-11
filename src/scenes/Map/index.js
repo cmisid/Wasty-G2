@@ -161,6 +161,7 @@ export default class MapScene extends Component {
       } else if (obj.id === id && wasFavorite === true) {
         obj.favorite === false
       }
+      // TODO: make a POST to the API to update the items liked
     })
 
     console.log(id, wasFavorite, updatedItems)

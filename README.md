@@ -22,7 +22,7 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissonneau
+- Antoine Plissoneau
 - Raphael Sourty
 
 Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
@@ -123,11 +123,14 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 ### Page "Mes posts"
 
-La page "Mes posts" permet à l'utilisateur de consulter ses publications. Il peut y retrouver les publications qu'il a ajouté. Pour pouvoir identifier une annonce publiée d'une annonce expirée, il existe différents statuts :
+La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets qu'il a postés. Il peut choisir de les supprimer.
 
-- Pending est un statut concernant les annonces en cours de publication.
-- Finished permet d'identifier sur la page "Mes posts" que l'objet a été récupéré.
-- 
+Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et une icone "?" s'affichera sur l'objet incitant l'utilisateur a cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
+
+Les objets peuvent avoir plusieurs statuts : PENDING, PICKEDUP, FINISHED, EXPIRED. Ils correspondent à : a été posté, dit avoir été récupéré, confirme avoir été récupéré, et expiré (si l'objet est présent sur l'applicatiojn depuis trop longtemps). L'affichage d'un objet dépend donc de son statut.
+Les objets expirés ne seront pas affichés.
+
+A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus d'objets.
 
 
 #### Visuel
@@ -162,6 +165,12 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 ### Page "Compte"
 
+La page "Compte" affiche en premier lieu des informations de base concernant l'utilisateur, ainsi qu'un historique de ses transactions : quels objets il a posté et quels objets il a récupéré. Elle comporte un bouton permettant d'afficher plus de contenu. Il peut choisir une ligne de l'historique pour accéder à la description détaillée de l'objet en question.
+
+Mais la principale raison d'exister de cette page est de permettre à l'utilisateur de modifier ses informations : nom, prénom, adresse e-mail, mot de passe. C'est en cliquant sur le bouton en bas de page qu'il accède au menu contextuel permettant de modifier ses informations.
+
+Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fois, et lorsqu'il renseigne son adresse e-mail le changement ne sera effectif que lorsqu'il l'aura confirmer en cliquant sur le lien dans le mail de confirmation que nous lui enverrons.
+
 #### Visuel
 
 #### IO
@@ -177,7 +186,7 @@ L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un
 
 #### Agile
 
-L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
+L'application peut être testée très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
 
 #### Créée par Facebook
 
@@ -218,9 +227,10 @@ Il nous a servit a créer un premier visuel des différentes pages de l'applicat
 
 ##### SourceTree
 
+<p style="text-align:justify";>
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
-
+</p>
 (ajouter une capture d'écran)
 
 
