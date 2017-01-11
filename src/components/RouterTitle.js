@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Platform } from 'react-native'
+import { Image, Platform, StyleSheet, View } from 'react-native'
 
 import AppText from './AppText'
+
+const mainScenes = [
+  'postsViewScene',
+  'likesViewScene',
+  'searchViewScene',
+  'mapScene',
+  'accountViewScene'
+]
 
 const itemScenes = [
   'postsItemScene',
@@ -18,7 +26,18 @@ const userScenes = [
 
 export default class RouterTitle extends Component {
   render () {
-    if (itemScenes.includes(this.props.scene.name)) {
+    if (mainScenes.includes(this.props.scene.name)) {
+      return (
+        <View style={styles.titleWrapper}>
+          <View style={{marginBottom: 10}}>
+            <Image
+              source={require('../assets/img/logo.png')}
+              style={{height: 36, width: 70, marginBottom: 3}}
+            />
+          </View>
+        </View>
+      )
+    } else if (itemScenes.includes(this.props.scene.name)) {
       return (
         <View style={styles.titleWrapper}>
           <AppText style={StyleSheet.flatten(styles.titleText)}>

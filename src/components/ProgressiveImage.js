@@ -1,5 +1,12 @@
+/*
+ProgressiveImage is a component to load images progressively, just like
+Facebook, Instagram and Medium.
+
+The idea is load a low quality
+*/
+
 import React, { Component, PropTypes } from 'react'
-import { Animated, View, Image, StyleSheet } from 'react-native'
+import { Animated, Image, View, StyleSheet } from 'react-native'
 
 export default class ProgressiveImage extends Component {
   constructor (props) {
@@ -29,11 +36,14 @@ export default class ProgressiveImage extends Component {
   render () {
     return (
       <View style={this.props.style}>
+        {/* Placeholder */}
         <Image
           resizeMode='cover'
           style={[styles.image, this.props.style]}
           source={this.props.placeHolderSource}
         />
+
+        {/* Low quality image */}
         <Animated.Image
           resizeMode='cover'
           style={[styles.image, { opacity: this.state.thumbnailOpacity }, this.props.style]}
@@ -41,6 +51,8 @@ export default class ProgressiveImage extends Component {
           onLoad={() => this.onLoadThumbnail()}
           blurRadius={this.props.thumbnailBlurRadius}
         />
+
+        {/* Full quality image */}
         <Animated.Image
           resizeMode='cover'
           style={[styles.image, { opacity: this.state.imageOpacity }, this.props.style]}

@@ -37,8 +37,12 @@ export default class UserScene extends Component {
     this.setState({refreshing: true})
     getEvents()
       .then(events => { this.setState({events}) })
-      .catch(() => { this.setState({events: []}) })
-    this.setState({refreshing: false})
+      .catch(() => {
+        this.setState(
+          {events: []},
+          this.setState({refreshing: false})
+        )
+      })
   }
 
   loadMoreEvents () {
