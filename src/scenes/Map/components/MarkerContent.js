@@ -26,13 +26,15 @@ const toast = text => Toast.show(text, {
   textColor: 'white'
 })
 
+
 export default class MarkerContent extends Component {
 
   constructor (props) {
     super(props)
+    this.likeButtonText = (<Icon name='favorite-border' iconStyle={{marginTop: 10}} size={30} color='white' />)
     this.likeButton = [
       {
-        text: <Icon name='favorite-border' iconStyle={{marginTop: 10}} size={30} color='white' />,
+        text: this.likeButtonText,
         backgroundColor: 'orange',
         color: 'white',
         underlayColor: 'orange',
