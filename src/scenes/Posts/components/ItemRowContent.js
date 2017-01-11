@@ -122,23 +122,23 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'absolute',
     left: -10,
-    top: 0,
+    top: -5,
     opacity: 0.5,
     borderRadius: 5,
     backgroundColor: 'lightgreen',
     width: 365,
-    height: 110
+    height: 115
   },
   pickedup: {
     flex: 1,
     position: 'absolute',
     left: -10,
-    top: 0,
+    top: -5,
     opacity: 0.5,
     borderRadius: 5,
     backgroundColor: 'peachpuff',
     width: 365,
-    height: 110
+    height: 115
   },
   modal: {
     justifyContent: 'center',
