@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { ListView, StyleSheet, RefreshControl, Linking, Alert } from 'react-native'
+import { Alert, Linking, ListView, RefreshControl, StyleSheet, View } from 'react-native'
 
+import { format } from 'date-fns'
+import { reject } from 'lodash'
 import { Actions } from 'react-native-router-flux'
-import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
 import Button from '../../components/Button'
@@ -41,7 +42,7 @@ export default class LikesScene extends Component {
   }
 
   onDeleteItem (id) {
-    const listWithoutItem = _.reject(this.state.items, {id: id})
+    const listWithoutItem = reject(this.state.items, {id: id})
     console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
   }
@@ -71,24 +72,22 @@ export default class LikesScene extends Component {
     navigator.geolocation.clearWatch(this.watchID)
   }
 
-  _getItemsLatLonCoords () {
-    const userCoords = [{
-      lat: this.lastPosition ? this.lastPosition.coords.latitude : 43.589012,
-      lon: this.lastPosition ? this.lastPosition.coords.longitude : 1.450592
-    }]
-    // TODO: implémenter la logique pour savoir quel doit être l'ordre de passage
-    const itemsCoords = this.state.items.map(obj => (
-      {
-        lat: obj.address.lat,
-        lon: obj.address.lon
-      })
-    )
-    return _.concat(userCoords, itemsCoords)
-  }
+  generateItinerary () {
+    const payload = {
+      start: {
+        latitude: this.lastPosition ? this.lastPosition.coords.latitude : 43.589012,
+        longitude: this.lastPosition ? this.lastPosition.coords.longitude : 1.450592,
+        departure_time: format(Date.now(), 'HH:MM:SS')
+      },
+      items: this.state.items.map(item => ({
+        latitude: item.address.lat,
+        longitude: item.address.lon,
+        available_since: item.availabilitySince,
+        available_until: item.availabilityUntil
+      }))
+    }
 
-  _generateItinerary () {
-    const coords = this._getItemsLatLonCoords()
-    const url = generateGoogleMapsItinerary(coords)
+    const url = generateGoogleMapsItinerary(payload.items)
     Linking.openURL(url)
   }
 
@@ -119,10 +118,12 @@ export default class LikesScene extends Component {
           enableEmptySections
         />
 
-        <Button
-          onPress={this._generateItinerary.bind(this)}
-          text='Récupérer mes items'
-        />
+        <View style={{marginTop: 5}}>
+          <Button
+            onPress={this.generateItinerary.bind(this)}
+            text='Récupérer mes items'
+          />
+        </View>
       </Container>
     )
   }

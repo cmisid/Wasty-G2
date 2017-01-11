@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, TouchableHighlight, View, ActivityIndicator } from 'react-native'
+import { ActivityIndicator, StyleSheet, TouchableHighlight, View } from 'react-native'
 
 import { colors } from '../style'
 import AppText from './AppText'
@@ -28,6 +28,7 @@ export default class Button extends Component {
               animating
               style={styles.submitIcon}
               size='small'
+              color='white'
             />
           </View>
         </TouchableHighlight>
