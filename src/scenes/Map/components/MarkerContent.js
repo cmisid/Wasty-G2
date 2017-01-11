@@ -26,7 +26,6 @@ const toast = text => Toast.show(text, {
   textColor: 'white'
 })
 
-
 export default class MarkerContent extends Component {
 
   constructor (props) {

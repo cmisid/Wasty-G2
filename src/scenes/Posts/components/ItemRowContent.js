@@ -75,7 +75,7 @@ export default class ItemRow extends Component {
             {this.props.item.status === 'EXPIRED' &&
               <View style={styles.expired} >
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                  <Icon name='clear' size={100} color='darkred' />
+                  <Icon name='cancel' size={100} color='darkred' />
                 </View>
               </View>
             }
@@ -151,12 +151,12 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'absolute',
     left: -10,
-    top: 0,
+    top: -5,
     opacity: 0.5,
     borderRadius: 5,
     backgroundColor: 'crimson',
     width: 365,
-    height: 110
+    height: 115
   },
   modal: {
     justifyContent: 'center',
