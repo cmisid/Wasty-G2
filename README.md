@@ -65,7 +65,7 @@ Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent
 Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
 
 Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
-La page "Ma liste" rassemble tous les articles likés par l'utilisateur et dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
 
 La page "Recherche" rassemble les objets proposés par l'application "WASTY". Par défaut, l'application affiche 20 objets. 
 Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 résultats suivants.
@@ -109,6 +109,18 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 
 ### Page "Carte"
+
+L'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
+
+La page Carte notifie les articles disponible à proximité de sa position à partir de marqueurs.
+S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
+
+La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+La couleur du marqueur d'un article "liké" par un utilisateur est bleu  
 
 #### Visuel
 
