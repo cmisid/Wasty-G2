@@ -22,7 +22,7 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissonneau
+- Antoine Plissoneau
 - Raphael Sourty
 
 Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
@@ -155,6 +155,12 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 ### Page "Compte"
 
+La page "Compte" affiche en premier lieu des informations de base concernant l'utilisateur, ainsi qu'un historique de ses transactions : quels objets il a posté et quels objets il a récupéré. Elle comporte un bouton permettant d'afficher plus de contenu.
+
+Mais la principale raison d'exister de cette page est de permettre à l'utilisateur de modifier ses informations : nom, prénom, adresse e-mail, mot de passe. C'est en cliquant sur le bouton en bas de page qu'il accède au menu contextuel permettant de modifier ses informations.
+
+Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fois, et lorsqu'il renseigne son adresse e-mail le changement ne sera effectif que lorsqu'il l'aura confirmer en cliquant sur le lien dans le mail de confirmation que nous lui enverrons.
+
 #### Visuel
 
 #### IO
@@ -170,7 +176,7 @@ L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un
 
 #### Agile
 
-L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
+L'application peut être testée très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
 
 #### Créée par Facebook
 
