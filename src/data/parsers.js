@@ -43,6 +43,7 @@ export const parseItem = r => new Item({
   publisher: r.publisher ? parseUser(r.publisher) : null,
   price: r.price,
   status: r.status,
+  picker: r.picker ? parseUser(r.picker) : null,
   title: r.title
 })
 
