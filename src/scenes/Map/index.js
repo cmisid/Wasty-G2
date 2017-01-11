@@ -5,7 +5,7 @@ import MapView from 'react-native-maps'
 import _ from 'lodash'
 
 import MarkerContent from './components/MarkerContent'
-import { getItems } from '../../data/api'
+import { getItems, getLikes } from '../../data/api'
 import { colors } from '../../style'
 
 const formatMarkers = (items) => items.map(function (item) {
@@ -13,12 +13,17 @@ const formatMarkers = (items) => items.map(function (item) {
     key: item.id,
     title: item.title,
     description: item.category.toUpperCase(),
+    favorite: item.favorite,
     coordinate: {
       latitude: item.address.lat,
       longitude: item.address.lon
     }
   }
 })
+
+const enhance = (list, source) => {
+  return _.map(list, (element) => _.extend({}, element, source))
+}
 
 const LATITUDE_DELTA = 0.015
 const LONGITUDE_DELTA = 0.0121
@@ -30,6 +35,7 @@ export default class MapScene extends Component {
     this.state = {
       markers: [],
       items: [],
+      likes: [],
       map: {
         ...StyleSheet.absoluteFillObject
       },
@@ -54,10 +60,22 @@ export default class MapScene extends Component {
   }
 
   componentWillMount () {
+    // Partie un peu technique (applicable aux mocks) :
+    // Pour différencier les objets qui ont déjà été mis en favoris par l'utilisateur de ceux ne l'étant pas,
+    // il nous suffit simplement d'ajouter un attribut booléen 'favorite'.
+    // L'API nous renverra plus tard des payload json contenant cet attribut
     getItems()
       .then(items => {
-        this.setState({markers: formatMarkers(items)})
-        this.setState({ items })
+        const itemsEnhanced = enhance(items, { favorite: false })
+        getLikes()
+          .then(likes => {
+            // TODO: add this `favorite` attribute to `likes.json`
+            const likesEnhanced = enhance(likes, { favorite: true })
+            this.setState({ items: itemsEnhanced.concat(likesEnhanced) })
+          })
+          .then(() => this.setState({ markers: formatMarkers(this.state.items) }))
+          .then(() => console.log('markers', this.state.markers))
+          .catch(() => {})
       })
       .catch(() => {})
   }
@@ -131,13 +149,44 @@ export default class MapScene extends Component {
     this.setState({ region })
   }
 
-  likeItem (id) {
-    console.log(this.state.markers)
-    const markersWithoutItem = _.reject(this.state.markers, {key: id})
-    console.log(markersWithoutItem)
-    this.setState({markers: markersWithoutItem})
+  likeItem (id, wasFavorite) {
+    console.log(id, wasFavorite)
+    // If wasFavorite == True, it means that the item has been unliked by the user
+    // so we had to update the state and the markers
+    const updatedItems = _.forEach(this.state.items, (obj) => {
+      // If the user has never liked an item we update the item value as favorite
+      // Else if the user is has already set an item as favorite then when we had to update his state
+      if (obj.id === id && wasFavorite === false) {
+        obj.favorite === true
+      } else if (obj.id === id && wasFavorite === true) {
+        obj.favorite === false
+      }
+    })
+
+    console.log(id, wasFavorite, updatedItems)
+
+    this.setState({
+      items: updatedItems,
+      markers: formatMarkers(updatedItems)
+    }, () => this._renderMarkers())
+
     // Then go back to map view
     this.handleMapPressedEvent()
+  }
+
+  _renderMarkers () {
+    return this.state.markers.map(marker => (
+      <MapView.Marker
+        identifier={marker.key}
+        key={marker.key}
+        coordinate={marker.coordinate}
+        title={marker.title}
+        description={marker.description}
+        pinColor={marker.favorite ? colors.markers.favorite : colors.markers.basic}
+        onSelect={(e) => this.handleMarkerSelectedEvent(e)}
+        onPress={(e) => this.handleMarkerSelectedEvent(e)}
+      />
+    ))
   }
 
   render () {
@@ -156,17 +205,7 @@ export default class MapScene extends Component {
             loadingEnabled
             loadingIndicatorColor={colors.primary}
           >
-            {this.state.markers.map(marker => (
-              <MapView.Marker
-                key={marker.key}
-                coordinate={marker.coordinate}
-                title={marker.title}
-                description={marker.description}
-                pinColor={colors.primary}
-                onSelect={(e) => this.handleMarkerSelectedEvent(e)}
-                onPress={(e) => this.handleMarkerSelectedEvent(e)}
-              />
-            ))}
+            {this._renderMarkers()}
           </MapView>
         </View>
       )
@@ -183,17 +222,7 @@ export default class MapScene extends Component {
             loadingEnabled
             loadingIndicatorColor={colors.primary}
           >
-            {this.state.markers.map(marker => (
-              <MapView.Marker
-                key={marker.key}
-                coordinate={marker.coordinate}
-                title={marker.title}
-                description={marker.description}
-                pinColor={colors.primary}
-                onSelect={(e) => this.handleMarkerSelectedEvent(e)}
-                onPress={(e) => this.handleMarkerSelectedEvent(e)}
-              />
-            ))}
+            {this._renderMarkers()}
           </MapView>
           {/* Here we display the selected marker properties */}
           <View style={this.state.markerSelected ? {flex: 1} : {flex: 0, height: 0}}>
