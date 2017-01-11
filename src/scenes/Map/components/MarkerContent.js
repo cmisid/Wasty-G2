@@ -30,11 +30,12 @@ export default class MarkerContent extends Component {
 
   constructor (props) {
     super(props)
-    this.likeButtonText = (<Icon name='favorite-border' iconStyle={{marginTop: 10}} size={30} color='white' />)
+    this.iconName = this.props.item.favorite === true ? 'favorite' : 'favorite-border'
+    this.likeButtonText = (<Icon name={this.iconName} iconStyle={{marginTop: 10}} size={30} color='white' />)
     this.likeButton = [
       {
         text: this.likeButtonText,
-        backgroundColor: 'orange',
+        backgroundColor: this.props.item.favorite === true ? colors.markers.favorite : colors.markers.basic,
         color: 'white',
         underlayColor: 'orange',
         onPress: () => this._onLeftSwipeoutPressed()
@@ -43,8 +44,14 @@ export default class MarkerContent extends Component {
   }
 
   _onLeftSwipeoutPressed () {
-    toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été ajouté à votre liste d'items`}</AppText>)
-    this.props.onLikeItem(this.props.item.id)
+    if (this.props.item.favorite === false) {
+      this.props.item.favorite = true
+      toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été ajouté à votre liste de favoris`}</AppText>)
+    } else {
+      this.props.item.favorite = false
+      toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été retiré de votre liste de favoris`}</AppText>)
+    }
+    this.props.onLikeItem(this.props.item.id, this.props.item.favorite)
   }
 
   render () {
