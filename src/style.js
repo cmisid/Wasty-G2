@@ -21,7 +21,12 @@ export const colors = {
     '#b39eb5',
     '#f9d1af',
     '#ffb347'
-  ]
+  ],
+
+  markers: {
+    'basic': 'seagreen',
+    'favorite': 'orchid'
+  }
 }
 
 export const textStyle = {

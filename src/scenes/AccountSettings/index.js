@@ -23,7 +23,8 @@ const AccountSettingsForm = t.struct({
 const options = {
   fields: {
     gender: {
-      label: 'Sexe'
+      label: 'Sexe',
+      nullOption: {value: null, text: 'Aucun'}
     },
     firstName: {
       label: 'Prénom',
@@ -65,9 +66,11 @@ export default class AccountSettingsScene extends Component {
         }
       })
       // Trigger the user update callback if there was a change
-      if (userWasModified) this.props.updateUser(new User(newUser))
-
-      toast(<AppText style={{fontWeight: 'bold'}}>{`Vos modifications ont bien été prises en compte`}</AppText>)
+      if (userWasModified) {
+        this.props.updateUser(new User(newUser))
+        // Notify the user
+        toast(<AppText style={{fontWeight: 'bold'}}>{`Vos modifications ont bien été prises en compte`}</AppText>)
+      }
     }
   }
 

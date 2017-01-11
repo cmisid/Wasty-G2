@@ -156,5 +156,74 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
 
+### Pourquoi avoir choisi React Native ?
 
+#### Multi-plateforme
+
+L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un langage 3 en 1. Une autre solution aurait été de développer en Android et en Swift, ici on se contente d'un seul langage : le React Native.
+
+#### Agile
+
+L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
+
+#### Créée par Facebook
+
+Le react native est un langage jeune (moins de 2 ans ?), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
+
+
+
+
+### Organisation du travail
+
+#### Hiérarchie Horizontale
+
+Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter en fonction de leur capacités.
+
+
+#### Planning Initial et Final
+
+Nous avons suivi un planning en ce qui concerne les grandes lignes du développement :
+- création des visuels
+- affichage de données factices
+- interaction avec la BD
+
+Nous avons organisé des réunions chaque fin de journée, en nous basant sur la Kanban, pour faire le point sur l'avancement et le mettre à jour avec de nouvelles issues.
+
+Nous avons essayé le plus possible, concernant les explications concrètes, d'apprendre au même rythme. Lors d'une explication importante nous arretions de travailler pour tous écouter l'explication.
+
+
+
+#### Les Outils
+
+##### Balsamiq
+
+Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
+Il nous a servit a créer un premier visuel des différentes pages de l'application et les liens entre elles.
+
+
+(ajouter des démos des mocks up)
+
+##### SourceTree
+
+Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
+Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
+
+(ajouter une capture d'écran)
+
+
+##### Android/IOS emulator
+
+
+
+
+
+### Bilan
+
+### Les Plus
+
+- le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
+- Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
+
+#### Les Moins
+- Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
 
