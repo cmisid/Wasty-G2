@@ -12,23 +12,41 @@ import { toast } from '../../util'
 const Form = t.form.Form
 
 // Refinement for making sure a password is long enough
-const Email = t.refinement(t.String, str => /@/.test(str))
+const Password = t.refinement(t.String, str => str.length >= 6)
 
-const AccountEmailForm = t.struct({
-  email: Email
-})
+// Checks that the "password" and the "confirmation" fields are the same
+const samePasswords = form => form.password === form.confirmation
+
+const AccountPasswordForm = t.subtype(
+  t.struct({
+    password: Password,
+    confirmation: Password
+  }),
+  samePasswords
+)
 
 const options = {
+  error: 'Les mots de passe ne correspondent pas',
   fields: {
-    email: {
-      label: 'Address e-mail',
-      error: 'Veuillez rentrer une addresse valide'
+    password: {
+      label: 'Nouveau mot de passe',
+      password: true,
+      secureTextEntry: true,
+      help: 'Au moins 6 caractères',
+      error: 'Le mot de passe doit faire au moins 6 caractères'
+    },
+    confirmation: {
+      label: 'Confirmation du nouveau mot de passe',
+      password: true,
+      secureTextEntry: true,
+      help: 'Au moins 6 caractères',
+      error: 'Le mot de passe doit faire au moins 6 caractères'
     }
   },
-  order: [ 'email' ]
+  order: [ 'password', 'confirmation' ]
 }
 
-export default class AccountEmailScene extends Component {
+export default class AccountPasswordScene extends Component {
 
   onSubmit () {
     /**
@@ -39,7 +57,6 @@ export default class AccountEmailScene extends Component {
     // Make sure the form is valid
     if (form) {
       const newUser = Object.assign({}, this.props.currentUser)
-      // Update the user's e-mail if he has entered a new one
       if (form.email !== this.props.currentUser.email) {
         newUser.email = form.email
         this.props.updateUser(newUser)
@@ -56,7 +73,7 @@ export default class AccountEmailScene extends Component {
           <Form
             options={options}
             ref='form'
-            type={AccountEmailForm}
+            type={AccountPasswordForm}
             value={omitBy(this.props.currentUser, isNil)} // the form can't handle null values
           />
           <Button
@@ -76,7 +93,7 @@ const styles = StyleSheet.create({
   }
 })
 
-AccountEmailScene.propTypes = {
+AccountPasswordScene.propTypes = {
   currentUser: React.PropTypes.object,
   updateUser: React.PropTypes.func
 }
