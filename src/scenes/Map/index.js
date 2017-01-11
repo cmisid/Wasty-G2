@@ -12,7 +12,7 @@ const formatMarkers = (items) => items.map(function (item) {
   return {
     key: item.id,
     title: item.title,
-    description: item.category,
+    description: item.category.toUpperCase(),
     coordinate: {
       latitude: item.address.lat,
       longitude: item.address.lon
