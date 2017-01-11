@@ -53,6 +53,7 @@ export default class ItemScene extends Component {
                   <AppText style={StyleSheet.flatten(styles.date)}>
                     {this.props.publishDate}
                   </AppText>
+                  {/* FIXME : A corriger */}
                   <View style={{flexDirection: 'row', marginRight: 5}}>
                     <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
                     <AppText>{this.props.item.nViews}</AppText>

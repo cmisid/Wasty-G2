@@ -12,7 +12,7 @@ import AppText from '../../../components/AppText'
 import Card from '../../../components/card/Card'
 import CardHeader from '../../../components/card/CardHeader'
 import ProgressiveImage from '../../../components/ProgressiveImage'
-import { colors } from '../../../style'
+import { colors, zIndexes } from '../../../style'
 
 const toast = text => Toast.show(text, {
   duration: Toast.durations.LONG,
@@ -63,22 +63,23 @@ export default class ItemRow extends Component {
                 category={this.props.item.category}
               />
 
-              {/* Item image */}
-              <ProgressiveImage
-                thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
-                imageSource={{ uri: this.props.item.imgUrl }}
-                style={styles.image}
-              />
-              {/* Corner label to display the item price */}
-              <CornerLabel
-                alignment='right'
-                cornerRadius={60}
-                style={{backgroundColor: this.props.item.price > 0.0 ? 'orange' : 'mediumseagreen', borderRadius: 15}}
-                textStyle={{fontSize: 10, color: 'white', fontWeight: 'bold'}}
-              >
-                {this.props.item.price > 0.0 ? `\n${this.props.item.price} €` : '\nGRATUIT'}
-              </CornerLabel>
-
+              <View style={{zIndex: zIndexes.background}}>
+                {/* Item image */}
+                <ProgressiveImage
+                  thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
+                  imageSource={{ uri: this.props.item.imgUrl }}
+                  style={styles.image}
+                />
+                {/* Corner label to display the item price */}
+                <CornerLabel
+                  alignment='right'
+                  cornerRadius={60}
+                  style={{backgroundColor: this.props.item.price > 0.0 ? 'orange' : 'mediumseagreen', borderRadius: 20}}
+                  textStyle={{fontSize: 10, color: 'white', fontWeight: 'bold'}}
+                >
+                  {this.props.item.price > 0.0 ? `\n${this.props.item.price} €` : '\nGRATUIT'}
+                </CornerLabel>
+              </View>
               {/* Metadata footer */}
               <View style={{height: 80, flex: 1, flexDirection: 'row'}}>
 
@@ -149,7 +150,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 1
   }
 })
 
