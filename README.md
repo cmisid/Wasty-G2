@@ -116,7 +116,7 @@ La page Carte notifie les articles disponible à proximité de sa position à pa
 S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
 
 La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
-Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert  . 
 
 Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
 La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
@@ -148,11 +148,11 @@ L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un
 
 #### Agile
 
-L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone.
+L'application peut être testé très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
 
 #### Créée par Facebook
 
-Le react native est un langage jeune, la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
+Le react native est un langage jeune (moins de 2 ans ?), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
 
 
 
@@ -161,7 +161,20 @@ Le react native est un langage jeune, la communauté est donc peu nombreuse ce q
 
 #### Hiérarchie Horizontale
 
-Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter.
+Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter en fonction de leur capacités.
+
+
+#### Planning Initial et Final
+
+Nous avons suivi un planning en ce qui concerne les grandes lignes du développement :
+- création des visuels
+- affichage de données factices
+- interaction avec la BD
+
+Nous avons organisé des réunions chaque fin de journée, en nous basant sur la Kanban, pour faire le point sur l'avancement et le mettre à jour avec de nouvelles issues.
+
+
+
 
 #### Les Outils
 
@@ -176,7 +189,10 @@ Il nous a servit a créer un premier visuel des différentes pages de l'applicat
 ##### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
-Il nous a servit à travailler à plusieurs sur la même application sans avoir a constamment s'échanger des clés USB.
+Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
+
+(ajouter une capture d'écran)
+
 
 ##### Android/IOS emulator
 
@@ -184,8 +200,12 @@ Il nous a servit à travailler à plusieurs sur la même application sans avoir 
 
 
 
+### Bilan
 
-### les plus
+### Les Plus
 
 - le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
+- Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile.
+
+#### Les Moins
 - 
