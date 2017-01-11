@@ -5,7 +5,7 @@ import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import _ from 'lodash'
+import { forEach, reject } from 'lodash'
 
 import Container from '../../components/Container'
 import ItemRow from './components/ItemRow'
@@ -13,8 +13,8 @@ import LoadMoreButton from '../../components/LoadMoreButton'
 import Separator from '../../components/Separator'
 import Tag from './components/Tag'
 import { getItems } from '../../data/api'
+import { types } from '../../data/constants'
 import { colors } from '../../style'
-import { randPastelColor } from '../../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -34,9 +34,26 @@ export default class SearchScene extends Component {
   }
 
   componentDidMount () {
+    // Load items to display initially
     getItems()
       .then(items => { this.setState({items}) })
       .catch(() => {})
+  }
+
+  typeTags () {
+    const tags = []
+    forEach(types, (value, key) => {
+      // Override the default tag style with a color
+      const style = {
+        borderRadius: 5,
+        padding: 5,
+        marginRight: 6,
+        flex: 1,
+        backgroundColor: colors.pastels[key % colors.pastels.length]
+      }
+      tags.push(<Tag key={key} style={style} text={value} />)
+    })
+    return tags
   }
 
   postItem (item) {
@@ -81,7 +98,7 @@ export default class SearchScene extends Component {
   }
 
   likeItem (id) {
-    const listWithoutItem = _.reject(this.state.items, {id: id})
+    const listWithoutItem = reject(this.state.items, {id: id})
     this.setState({items: listWithoutItem})
   }
 
@@ -108,13 +125,7 @@ export default class SearchScene extends Component {
         {/* List of categories the user can click on */}
         <View style={styles.top}>
           <ScrollView style={styles.tagScroll} horizontal>
-            <Tag style={tagStyle()} text='Chaise' onPress={() => console.log('Chaise')} />
-            <Tag style={tagStyle()} text='Bureau' onPress={() => console.log('Bureau')} />
-            <Tag style={tagStyle()} text='Crêpière' onPress={() => console.log('Crêpière')} />
-            <Tag style={tagStyle()} text='Friteuse' onPress={() => console.log('Friteuse')} />
-            <Tag style={tagStyle()} text='Habits' onPress={() => console.log('Habits')} />
-            <Tag style={tagStyle()} text='Verre' onPress={() => console.log('Verre')} />
-            <Tag style={tagStyle()} text='Carton' onPress={() => console.log('Carton')} />
+            {this.typeTags()}
           </ScrollView>
         </View>
 
@@ -169,15 +180,6 @@ export default class SearchScene extends Component {
     )
   }
 }
-
-// The tag style is dynamic because it should have a random pastel color
-const tagStyle = () => ({
-  borderRadius: 5,
-  padding: 5,
-  marginRight: 6,
-  backgroundColor: randPastelColor(),
-  flex: 1
-})
 
 const styles = StyleSheet.create({
   tagScroll: {
