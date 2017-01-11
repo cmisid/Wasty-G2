@@ -22,8 +22,8 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissoneau
-- Raphael Sourty
+- Antoine Plissonneau
+- Raphaël Sourty
 
 Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
 
