@@ -36,7 +36,7 @@ export default class Button extends Component {
       return (
         <TouchableHighlight style={styles.submitButton} onPress={() => this.onPressEvent()} underlayColor={colors.primary}>
           <View>
-            <AppText style={StyleSheet.flatten(styles.submitButtonText)}>
+            <AppText style={StyleSheet.flatten(styles.submitButtonText)} onPress={() => this.onPressEvent()}>
               {this.props.text}
             </AppText>
           </View>

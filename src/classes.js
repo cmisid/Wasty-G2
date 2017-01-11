@@ -1,6 +1,8 @@
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 
+import { generateMapLink } from './util'
+
 export class Address {
   constructor ({addition, cityName, districtName, lat, lon, postalCode, streetName, streetNumber}) {
     this.addition = addition
@@ -21,7 +23,7 @@ export class Address {
   generateMapLink (sourceLat, sourceLon) {
     // Return a Google Maps link indicating how to go the address from some given latitude and
     // longitude values.
-    return `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${this.lat},${this.lon}`
+    return generateMapLink(sourceLat, sourceLon, this.lat, this.lon)
   }
 }
 

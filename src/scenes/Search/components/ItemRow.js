@@ -4,7 +4,6 @@ import { Dimensions, Linking, StyleSheet, TouchableHighlight, View } from 'react
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Swipeout from 'react-native-swipeout'
-import Toast from 'react-native-root-toast'
 import { Actions } from 'react-native-router-flux'
 import CornerLabel from 'react-native-smart-corner-label'
 
@@ -12,19 +11,8 @@ import AppText from '../../../components/AppText'
 import Card from '../../../components/card/Card'
 import CardHeader from '../../../components/card/CardHeader'
 import ProgressiveImage from '../../../components/ProgressiveImage'
+import { toast } from '../../../util'
 import { colors, zIndexes } from '../../../style'
-
-const toast = text => Toast.show(text, {
-  duration: Toast.durations.LONG,
-  position: Toast.positions.BOTTOM,
-  shadow: true,
-  animation: true,
-  hideOnPress: true,
-  delay: 500,
-  backgroundColor: colors.primary,
-  shadowColor: colors.background,
-  textColor: 'white'
-})
 
 export default class ItemRow extends Component {
 
@@ -42,7 +30,7 @@ export default class ItemRow extends Component {
   }
 
   onLeftSwipeoutPressed () {
-    toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été ajouté à votre liste d'items`}</AppText>)
+    toast(<AppText style={{fontWeight: 'bold'}}>{`"${this.props.item.title}" a été ajouté à votre liste d'items`}</AppText>)
     this.props.onLikeItem(this.props.item.id)
   }
 
@@ -143,9 +131,6 @@ export default class ItemRow extends Component {
 }
 
 const styles = StyleSheet.create({
-  toast: {
-    fontWeight: 'bold'
-  },
   image: {
     width: Dimensions.get('window').width - 10,
     height: Dimensions.get('window').height / 2 - 10,

@@ -1,3 +1,5 @@
+import Toast from 'react-native-root-toast'
+
 import { colors } from './style'
 
 export const generateMapLink = (sourceLat, sourceLon, destLat, destLon) => (
@@ -19,8 +21,6 @@ export const haversineDistance = (lat1, lon1, lat2, lon2) => {
 
 export const distanceFmt = dist => dist < 1 ? `${Math.round((dist * 1000).toFixed(2), 1)} m` : `${Math.round(dist.toFixed(2), 1)} km`
 
-export const randPastelColor = () => colors.pastels[Math.floor(Math.random() * colors.pastels.length)]
-
 export const generateGoogleMapsItinerary = (listOfLatLon) => {
   // Example :
   // let listOfLatLon = [{lat: 43.589246, lon: 1.445684}, {lat: 43.589246, lon: 1.475684}, {lat: 43.989246, lon: 1.445684}]
@@ -32,3 +32,18 @@ export const generateGoogleMapsItinerary = (listOfLatLon) => {
   listOfLatLon.forEach(coord => { url = url + `${coord.lat},${coord.lon}/` })
   return url
 }
+
+export const toast = text => Toast.show(
+  text,
+  {
+    duration: Toast.durations.LONG,
+    position: Toast.positions.BOTTOM,
+    shadow: true,
+    animation: true,
+    hideOnPress: true,
+    delay: 500,
+    backgroundColor: colors.primary,
+    shadowColor: colors.background,
+    textColor: 'white'
+  }
+)
