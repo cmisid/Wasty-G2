@@ -31,14 +31,14 @@ export default class ItemRow extends Component {
                 <AppText style={{fontWeight: 'bold'}}>
                   {this.props.item.title}
                 </AppText>
-                <AppText style={{color: 'grey'}}> publié {distanceInWordsToNow(
-                      this.props.item.publishDate,
-                      {locale: frLocale, addSuffix: true}
-                    )}
-                </AppText>
               </View>
               <AppText>
                 {this.props.item.category}
+              </AppText>
+              <AppText style={{color: 'grey'}}>Publié {distanceInWordsToNow(
+                this.props.item.publishDate,
+                {locale: frLocale, addSuffix: true}
+              )}
               </AppText>
 
             </View>

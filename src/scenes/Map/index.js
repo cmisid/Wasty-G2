@@ -139,7 +139,7 @@ export default class MapScene extends Component {
     // FIXME: if 2 items have the same coordinates, this component will raise an error
     // The iOS MapView returns a Marker.id which is not returned by the Android MapView
     // The Marker identifier refers to the item id
-    const joinAttribute = obj => Platform.OS === 'ios' ? obj.id === event.id : (obj.address.lat === event.coordinate.latitude && obj.address.lon === event.coordinate.longitude)
+    const joinAttribute = obj => (obj.address.lat === event.coordinate.latitude && obj.address.lon === event.coordinate.longitude)
     const itemObject = _.find(this.state.items, obj => joinAttribute(obj))
     console.log(itemObject)
     return itemObject
@@ -161,6 +161,7 @@ export default class MapScene extends Component {
       } else if (obj.id === id && wasFavorite === true) {
         obj.favorite === false
       }
+      // TODO: make a POST to the API to update the items liked
     })
 
     console.log(id, wasFavorite, updatedItems)
@@ -177,7 +178,6 @@ export default class MapScene extends Component {
   _renderMarkers () {
     return this.state.markers.map(marker => (
       <MapView.Marker
-        identifier={marker.key}
         key={marker.key}
         coordinate={marker.coordinate}
         title={marker.title}
