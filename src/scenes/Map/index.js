@@ -177,6 +177,7 @@ export default class MapScene extends Component {
   _renderMarkers () {
     return this.state.markers.map(marker => (
       <MapView.Marker
+        identifier={marker.key}
         key={marker.key}
         coordinate={marker.coordinate}
         title={marker.title}
