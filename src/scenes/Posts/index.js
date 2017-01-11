@@ -144,33 +144,41 @@ export default class PostsScene extends Component {
 
             {/* View for user */}
             <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
-              <ProgressiveImage
-                thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
-                imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
-                style={{width: 85, height: 85, borderRadius: 40}}
-              />
-              <AppText style={{fontSize: 14, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>
-              <AppText style={{fontSize: 14}}>{this.state.selectedItem.picker.lastName}</AppText>
+              <TouchableHighlight onPress={() => Actions.postsUserScene({user: this.state.selectedItem.picker})}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <ProgressiveImage
+                    thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
+                    imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
+                    style={{width: 85, height: 85, borderRadius: 40}}
+                  />
+                  <AppText style={{fontSize: 14, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>
+                  <AppText style={{fontSize: 14}}>{this.state.selectedItem.picker.lastName}</AppText>
+                </View>
+              </TouchableHighlight>
             </View>
 
             {/* Icon */}
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <Icon name='handshake-o' size={45} color={colors.background}/>
+              <Icon name='hand-o-right' size={45} color={colors.background} />
             </View>
 
             {/* View for the item */}
             <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
-              <ProgressiveImage
-                thumbnailSource={{ uri: this.state.selectedItem.imgUrl }}
-                imageSource={{ uri: this.state.selectedItem.imgUrl }}
-                style={{width: 85, height: 85, borderRadius: 40}}
-              />
-              <AppText
-                style={{textAlign: 'center', marginTop: 5, fontSize: 14}}
-                onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}
-              >{`${this.state.selectedItem.title}`}</AppText>
-              <AppText style={{textAlign: 'center', fontSize: 14}}>{this.state.selectedItem.category}</AppText>
+              <TouchableHighlight onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <ProgressiveImage
+                    thumbnailSource={{ uri: this.state.selectedItem.imgUrl }}
+                    imageSource={{ uri: this.state.selectedItem.imgUrl }}
+                    style={{width: 85, height: 85, borderRadius: 40}}
+                  />
+                  <AppText
+                    style={{textAlign: 'center', marginTop: 5, fontSize: 14}}
+                  >{`${this.state.selectedItem.title}`}</AppText>
+                  <AppText style={{textAlign: 'center', fontSize: 14}}>{this.state.selectedItem.category}</AppText>
+                </View>
+              </TouchableHighlight>
             </View>
+
           </View>
 
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
