@@ -1,3 +1,12 @@
+/*
+Container is simply a View with top and bottom margins to counteract
+react-native-router-flux's tab bar implementation which messes with the UI
+layout.
+
+For the while each scene in the app should begin with a Container so as to unify
+the layout accross the app.
+*/
+
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
