@@ -1,5 +1,4 @@
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import frLocale from 'date-fns/locale/fr'
+/*The objects we use*/
 
 export class Address {
   constructor ({addition, cityName, districtName, lat, lon, postalCode, streetName, streetNumber}) {
@@ -11,17 +10,6 @@ export class Address {
     this.postalCode = postalCode
     this.streetName = streetName
     this.streetNumber = streetNumber
-  }
-
-  get readableAddress () {
-    // Get the a human readable representation of the address.
-    return `${this.streetNumber}, ${this.streetName}, ${this.cityName}`
-  }
-
-  generateMapLink (sourceLat, sourceLon) {
-    // Return a Google Maps link indicating how to go the address from some given latitude and
-    // longitude values.
-    return `http://maps.google.com/maps?saddr=${sourceLat},${sourceLon}&daddr=${this.lat},${this.lon}`
   }
 }
 
@@ -43,10 +31,6 @@ export class User {
   get fullName () {
     return `${this.firstName} ${this.lastName}`
   }
-
-  get readableInscriptionSince () {
-    return distanceInWordsToNow(this.joinDate, {locale: frLocale, addSuffix: true})
-  }
 }
 
 export class Item {
@@ -66,10 +50,6 @@ export class Item {
     this.price = price
     this.status = status // One of "PENDING", "PICKEDUP", "FINISHED"
     this.title = title
-  }
-
-  get readablePublishedSince () {
-    return distanceInWordsToNow(this.publishDate, {locale: frLocale, addSuffix: true})
   }
 }
 

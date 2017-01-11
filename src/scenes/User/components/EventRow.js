@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
+import { Actions, Router, Scene } from 'react-native-router-flux'
+import ActionButton from 'react-native-action-button'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -10,6 +12,18 @@ import ProgressiveImage from '../../../components/ProgressiveImage'
 import { colors } from '../../../style'
 
 export default class EventRow extends Component {
+
+constructor (props) {
+    super(props)
+    this.state = {
+      event: {},
+      location: {
+        'lat': 48.566140,
+        'lon': -3.148260
+      }
+    }
+  }
+
   render () {
     return (
       <View style={styles.row}>
@@ -21,12 +35,14 @@ export default class EventRow extends Component {
           />
         </View>
         <View style={{flex: 5}}>
-          <AppText>
+          <Text onPress={() => Actions.accountItemScene({item: this.props.event.item,
+                                                         userLat: this.state.location.lat,
+                                                         userLon: this.state.location.lon})}>
             {`"${this.props.event.item.title}" ${this.props.event.action === 'post' ? 'posté' : 'récupéré'} ${distanceInWordsToNow(
                   this.props.event.date,
                   {locale: frLocale, addSuffix: true}
-                )}`}
-          </AppText>
+            )}`}
+          </Text>
         </View>
         <View style={{alignItems: 'flex-end', flex: 1}}>
           <Icon
