@@ -1,39 +1,23 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import Toast from 'react-native-root-toast'
 import { forEach, isNil, omitBy } from 'lodash'
 import t from 'tcomb-form-native'
 
 import { User } from '../../classes'
-import Container from '../../components/Container'
-import { colors } from '../../style'
-import Button from '../../components/Button'
 import AppText from '../../components/AppText'
-
-const toast = text => Toast.show(text, {
-  duration: Toast.durations.LONG,
-  position: Toast.positions.BOTTOM,
-  shadow: true,
-  animation: true,
-  hideOnPress: true,
-  delay: 500,
-  backgroundColor: colors.primary,
-  shadowColor: colors.background,
-  textColor: 'white'
-})
+import Button from '../../components/Button'
+import Container from '../../components/Container'
+import { toast } from '../../util'
+import { scps } from '../../data/constants'
 
 const Form = t.form.Form
 
-const Genders = t.enums({
-  male: 'Male',
-  female: 'Female'
-})
-
 const AccountSettingsForm = t.struct({
   firstName: t.String,
-  gender: t.maybe(Genders),
-  lastName: t.String
+  gender: t.maybe(t.enums({female: 'Femme', male: 'Homme'})),
+  lastName: t.String,
+  scp: t.maybe(t.enums(scps))
 })
 
 const options = {
@@ -48,9 +32,12 @@ const options = {
     lastName: {
       label: 'Nom',
       error: 'Un nom est requis'
+    },
+    scp: {
+      label: 'PCS'
     }
   },
-  order: [ 'firstName', 'lastName', 'gender' ]
+  order: [ 'firstName', 'lastName', 'gender', 'scp' ]
 }
 
 export default class AccountSettingsScene extends Component {
@@ -80,7 +67,7 @@ export default class AccountSettingsScene extends Component {
       // Trigger the user update callback if there was a change
       if (userWasModified) this.props.updateUser(new User(newUser))
 
-      toast(<AppText style={StyleSheet.flatten(styles.toast)}>{`Vos informations ont bien été modifiées`}</AppText>)
+      toast(<AppText style={{fontWeight: 'bold'}}>{`Vos modifications ont bien été prises en compte`}</AppText>)
     }
   }
 
@@ -92,11 +79,11 @@ export default class AccountSettingsScene extends Component {
             options={options}
             ref='form'
             type={AccountSettingsForm}
-            value={omitBy(this.props.currentUser, isNil)}
+            value={omitBy(this.props.currentUser, isNil)} // the form can't handle null values
           />
           <Button
             onPress={this.onSubmit.bind(this)}
-            text='Save'
+            text='Sauvegarder'
           />
         </View>
       </Container>
@@ -108,9 +95,6 @@ const styles = StyleSheet.create({
   formWrapper: {
     flex: 1,
     padding: 20
-  },
-  toast: {
-    fontWeight: 'bold'
   }
 })
 
