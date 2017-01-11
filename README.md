@@ -22,8 +22,8 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissonneau
-- Raphaël Sourty
+- Antoine Plissoneau
+- Raphael Sourty
 
 Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
 
@@ -83,6 +83,20 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 ### Page "Ajouter un objet"
 
+La page "Ajouter un objet" est accessible depuis le bouton matérialisé sous forme d'appareil de photographie sur la page "Recherche".
+L'application est visuelle. Il est indispensable d'inciter les utilisateurs à associer leurs publications à des photos.
+Il est nécessaire de disposer d'une photo de l'article pour le proposer à la vente. 
+
+
+L'application propose deux solutions pour associer une image à l'article :
+	- Prendre en photo l'article 
+	- Parcourir le répertoire des images du téléphone s'il a déjà pris l'article en photo
+
+Grâce au service de reconnaissance d'image intégré dans l'application, la catégorie est renseignée automatiquement.
+Les chances que ces articles aient une seconde vie est plus importante car ils seront référencés de manière pertinente dans la page "Recherche".
+L'utilisateur renseigne le titre de la publication, la description de l'objet et précise ses horaires de disponibilités.
+Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilisateur puisse renseigner les créneaux de disponibilités pour la transaction.
+
 #### Visuel
 
 #### IO
@@ -110,9 +124,11 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 ### Page "Carte"
 
-L'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
+La page Carte notifie les articles disponibles à proximité de la position de l'utilisateur.
+En effet, l'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
+La distance est un critère décisif pour sélectionner un article. 
+La carte permet à l'utilisateur de visualiser les articles présents dans son périmètre de prédilection.
 
-La page Carte notifie les articles disponible à proximité de sa position à partir de marqueurs.
 S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
 
 La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
@@ -120,8 +136,6 @@ Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les art
 
 Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
 La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
-
-Nous avons imaginé un code couleurs pour les marqueurs : 
  
 
 #### Visuel
