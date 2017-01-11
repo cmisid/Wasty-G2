@@ -60,17 +60,22 @@ export default class ItemRow extends Component {
       )
     } else if (this.props.item.status === 'EXPIRED') {
       return (
-        <TouchableHighlight onPress={() => this.props.onSelectItem(this.props.item)}>
-          <View>
-            <ItemRowContent item={this.props.item} />
-          </View>
-        </TouchableHighlight>
+        <Swipeout
+          right={this.state.deleteButton}
+          autoClose
+          sensitivity={0.9}
+          style={{backgroundColor: colors.background}}
+        >
+          <TouchableHighlight onPress={() => this.props.onSelectItem(this.props.item)}>
+            <View>
+              <ItemRowContent item={this.props.item} />
+            </View>
+          </TouchableHighlight>
+        </Swipeout>
       )
     }
   }
 }
-
-
 
 ItemRow.propTypes = {
   item: React.PropTypes.object,
