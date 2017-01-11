@@ -123,6 +123,16 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 ### Page "Mes posts"
 
+La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets qu'il a postés. Il peut choisir de les supprimer.
+
+Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et une icone "?" s'affichera sur l'objet incitant l'utilisateur a cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
+
+Les objets peuvent avoir plusieurs statuts : PENDING, PICKEDUP, FINISHED, EXPIRED. Ils correspondent à : a été posté, dit avoir été récupéré, confirme avoir été récupéré, et expiré (si l'objet est présent sur l'applicatiojn depuis trop longtemps). L'affichage d'un objet dépend donc de son statut.
+Les objets expirés ne seront pas affichés.
+
+A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus d'objets.
+
+
 #### Visuel
 
 #### IO
