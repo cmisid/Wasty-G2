@@ -92,7 +92,7 @@ L'application propose deux solutions pour associer une image à l'article :
 
 
 - Prendre en photo l'article 
-- Parcourir le répertoire des images du téléphone s'il a déjà pris l'article en photo
+- Parcourir le répertoire des images du téléphone si l'utilisateur a déjà pris l'article en photo
 
 Grâce au service de reconnaissance d'image intégré dans l'application, la catégorie est renseignée automatiquement.
 Les chances que ces articles aient une seconde vie est plus importante car ils seront référencés de manière pertinente dans la page "Recherche".
