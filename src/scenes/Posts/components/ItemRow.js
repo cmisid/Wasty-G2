@@ -41,7 +41,7 @@ export default class ItemRow extends Component {
           </View>
         </TouchableHighlight>
       )
-    } else {
+    } else if (this.props.item.status === 'PENDING') {
       return (
         <Swipeout
           right={this.state.deleteButton}
@@ -58,9 +58,19 @@ export default class ItemRow extends Component {
           </TouchableHighlight>
         </Swipeout>
       )
+    } else if (this.props.item.status === 'EXPIRED') {
+      return (
+        <TouchableHighlight onPress={() => this.props.onSelectItem(this.props.item)}>
+          <View>
+            <ItemRowContent item={this.props.item} />
+          </View>
+        </TouchableHighlight>
+      )
     }
   }
 }
+
+
 
 ItemRow.propTypes = {
   item: React.PropTypes.object,

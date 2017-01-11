@@ -104,4 +104,4 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 #### Multi-plateforme
 
-Notre application peut être utilisée sous Android, IOS aussi bien que sur WindowsPhone.
+Notre application peut être utilisée sous Android et IOS aussi bien que sur WindowsPhone.
