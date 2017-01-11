@@ -68,6 +68,8 @@ export default class SearchScene extends Component {
       cancelButtonTitle: 'Annuler',
       takePhotoButtonTitle: 'Prendre une photo',
       chooseFromLibraryButtonTitle: 'Choisir une photo existante',
+      cameraType: 'back',
+      mediaType: 'photo',
       quality: 1.0,
       maxWidth: 500,
       maxHeight: 500,
