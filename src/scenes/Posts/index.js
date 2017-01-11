@@ -8,11 +8,11 @@
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
-import { ListView, ScrollView, StyleSheet, View, Text, RefreshControl, Dimensions, TouchableHighlight } from 'react-native'
+import { ListView, ScrollView, StyleSheet, View, RefreshControl, Dimensions, TouchableHighlight } from 'react-native'
 import ProgressiveImage from '../../components/ProgressiveImage'
 import Modal from 'react-native-modalbox'
 import { Actions } from 'react-native-router-flux'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
@@ -140,26 +140,62 @@ export default class PostsScene extends Component {
           backdropOpacity={0.3}
         >
 
-          <View style={{flex: 3, flexDirection: 'row'}}>
-            <View style={{flex: 2, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{flex: 5, flexDirection: 'row'}}>
+
+            {/* View for user */}
+            <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
               <ProgressiveImage
                 thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
                 imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
-                style={{width: 80, height: 80, borderRadius: 40}}
+                style={{width: 85, height: 85, borderRadius: 40}}
               />
-              <AppText style={{fontSize: 11, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>
-              <AppText style={{fontSize: 11}}>{this.state.selectedItem.picker.lastName}</AppText>
+              <AppText style={{fontSize: 14, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>
+              <AppText style={{fontSize: 14}}>{this.state.selectedItem.picker.lastName}</AppText>
             </View>
 
-            <View style={{flex: 1, backgroundColor: 'orange'}} />
-            <View style={{flex: 2, backgroundColor: 'red'}} />
+            {/* Icon */}
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <Icon name='handshake-o' size={45} color={colors.background}/>
+            </View>
+
+            {/* View for the item */}
+            <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.state.selectedItem.imgUrl }}
+                imageSource={{ uri: this.state.selectedItem.imgUrl }}
+                style={{width: 85, height: 85, borderRadius: 40}}
+              />
+              <AppText
+                style={{textAlign: 'center', marginTop: 5, fontSize: 14}}
+                onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}
+              >{`${this.state.selectedItem.title}`}</AppText>
+              <AppText style={{textAlign: 'center', fontSize: 14}}>{this.state.selectedItem.category}</AppText>
+            </View>
           </View>
 
-          <View style={{flex: 1}} />
+          <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <AppText
+              style={{textAlign: 'center', fontWeight: 'bold', fontSize: 16}}
+            >
+              Voulez-vous confirmer ?
+            </AppText>
+          </View>
 
           <View style={{flex: 3, flexDirection: 'row'}}>
-            <View style={{flex: 1, backgroundColor: 'cyan'}} />
-            <View style={{flex: 1, backgroundColor: 'blue'}} />
+
+            {/* View for confirm */}
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <Icon.Button name='check' size={70} color='darkgreen' backgroundColor='white' onPress={() => {
+                this.setItemStatus(this.state.selectedItem, 'FINISHED')
+                this.closeModal()
+              }} />
+            </View>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <Icon.Button name='remove' size={70} color='crimson' backgroundColor='white' onPress={() => {
+                this.setItemStatus(this.state.selectedItem, 'PENDING')
+                this.closeModal()
+              }} />
+            </View>
           </View>
 
         </Modal>
