@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { ScrollView, View, StyleSheet, Dimensions, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
+import { Actions } from 'react-native-router-flux'
 import AppText from '../../components/AppText'
 import Container from '../../components/Container'
 import { colors } from '../../style'
@@ -59,8 +59,18 @@ export default class ItemScene extends Component {
           <AppText style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', color: 'black'}}>
             {this.props.item.title} - {this.props.item.category}
           </AppText>
-          <AppText style={{textAlign: 'center', fontSize: 12, color: 'grey'}}>
-            Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} {this.props.item.readablePublishedSince}
+          <AppText style={{textAlign: 'center', fontSize: 12}}>
+            <AppText style={{color: 'darkgrey'}}>
+              {`Publié par `}
+            </AppText>
+            <AppText
+              style={{color: 'grey'}}
+              onPress={() => Actions.postsUserScene({user: this.props.item.publisher})}>
+              {this.props.item.publisher.firstName} {this.props.item.publisher.lastName}
+            </AppText>
+            <AppText style={{color: 'darkgrey'}}>
+              {` ${this.props.item.readablePublishedSince}`}
+            </AppText>
           </AppText>
           <AppText />
           <AppText style={{textAlign: 'justify', marginBottom: 15, color: 'black'}}>
