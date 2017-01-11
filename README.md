@@ -123,13 +123,18 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 ### Page "Mes posts"
 
-La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets qu'il a postés. Il peut choisir de les supprimer.
+La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets qu'il a posté. Il peut choisir de les supprimer.
 
-Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et une icone "?" s'affichera sur l'objet incitant l'utilisateur a cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
+Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et un icone "?" s'affichera sur l'objet incitant l'utilisateur à cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
 
-Les objets peuvent avoir plusieurs statuts : PENDING, PICKEDUP, FINISHED, EXPIRED. Ils correspondent à : a été posté, dit avoir été récupéré, confirme avoir été récupéré, et expiré (si l'objet est présent sur l'applicatiojn depuis trop longtemps). L'affichage d'un objet dépend donc de son statut.
-Les objets expirés ne seront pas affichés.
+Les objets peuvent avoir plusieurs statuts :  
 
+- PENDING : L'objet a été posté.
+- PICKEDUP : Ce statut passe une information à l'utilisateur qu'il doit confirmer pour savoir si une personne a récupéré ou non son objet.
+- FINISHED : Lorsqu'un objet a été récupéré ce statut s'affichera.
+- EXPIRED : Une annonce qui a passé le délais requis obtiendra le statut expired.
+
+L'affichage d'un objet dépend donc de son statut. Les statuts sont visuellement distinguable. De plus, l'utilisateur peut supprimer une publication. Il glisse la publication vers la gauche et grâce à la fonctionnalité "swipout", il pourra la supprimer. Les publications pouvant être supprimées concernent les statuts PENDING et EXPIRED.
 A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus d'objets.
 
 
