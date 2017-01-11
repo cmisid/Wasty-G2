@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import _ from 'lodash'
 
 import ItemRow from './components/ItemRow'
+import AppText from '../../components/AppText'
 import Container from '../../components/Container'
 import LoadMoreButton from '../../components/LoadMoreButton'
 import Separator from '../../components/Separator'
@@ -133,62 +134,34 @@ export default class PostsScene extends Component {
         {/* Modal window for confirming if an item was picked up or not */}
         {this.state.selectedItem.picker &&
         <Modal
-          style={{height: 180, borderRadius: 5, width: width}}
+          style={{height: 300, borderRadius: 5, width: width}}
           color={'blue'} ref={'modal'}
           backdropColor={'black'}
           backdropOpacity={0.3}
         >
-          {/* User image */}
 
-          <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <View>
+          <View style={{flex: 3, flexDirection: 'row'}}>
+            <View style={{flex: 2, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center'}}>
               <ProgressiveImage
                 thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
                 imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
-                style={{width: 40, height: 40, borderRadius: 20}}
+                style={{width: 80, height: 80, borderRadius: 40}}
               />
+              <AppText style={{fontSize: 11, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>
+              <AppText style={{fontSize: 11}}>{this.state.selectedItem.picker.lastName}</AppText>
             </View>
+
+            <View style={{flex: 1, backgroundColor: 'orange'}} />
+            <View style={{flex: 2, backgroundColor: 'red'}} />
           </View>
 
-          <Text
-            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
-          >
-            {this.state.selectedItem.picker &&
-              <Text
-                onPress={() => Actions.postsUserScene({user: this.state.selectedItem.picker})}
-                style={{fontWeight: 'bold'}}
-              >
-                {this.state.selectedItem.picker.firstName} {this.state.selectedItem.picker.lastName}
-              </Text>
-            }
-            <Text>
-              {` dit avoir récupéré :`}
-            </Text>
-          </Text>
-          <Text
-            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0, color: colors.link}}
-            onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}
-          >{`${this.state.selectedItem.title}`}</Text>
-          <Text
-            style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10, fontWeight: 'bold'}}
-          >
-            Voulez-vous confirmer ?
-          </Text>
-          <View style={{flex: 1, flexDirection: 'row', 'alignItems': 'center', justifyContent: 'center'}}>
+          <View style={{flex: 1}} />
 
-            <Icon.Button name='check' size={70} color='darkgreen' backgroundColor='white' onPress={() => {
-              this.setItemStatus(this.state.selectedItem, 'FINISHED')
-              this.closeModal()
-            }} />
-
-            <View style={{width: 20}} />
-
-            <Icon.Button name='clear' size={70} color='crimson' backgroundColor='white' onPress={() => {
-              this.setItemStatus(this.state.selectedItem, 'PENDING')
-              this.closeModal()
-            }} />
-
+          <View style={{flex: 3, flexDirection: 'row'}}>
+            <View style={{flex: 1, backgroundColor: 'cyan'}} />
+            <View style={{flex: 1, backgroundColor: 'blue'}} />
           </View>
+
         </Modal>
       }
       </Container>
