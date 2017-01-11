@@ -36,10 +36,10 @@ Des slides qui résument notre partie du projet sont [disponibles en ligne](http
 Facebook propose de la [documentation](https://facebook.github.io/react-native/docs/getting-started.html#content) pour installer React Native sur Windows|Mac|Linux pour Android|iOS. Il faut ensuite faire un `react-native link` dans la console pour opérer un peu de magie et lier des dépendances au projet.
 
 ## Développement
-<div align="justify">
+
 - Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard).
 - Nous utilisons [Reactotron](https://github.com/reactotron/reactotron) pour débugger.
-</div>
+
 ## Architecture
 
 ### Flux des données
@@ -48,7 +48,7 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 
 ### Page "Recherche"
-<div align="justify">
+
 L'utilisateur est dirigé vers la page "Recherche" lorsqu'il se connecte sur l'application. 
 Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent.
 L'application mobile pour le projet wasty propose différents outils pour effectuer une recherche : recherche à partir de catégories, recherche cartographique.
@@ -72,7 +72,7 @@ Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 r�
 
 La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse ajouter une annonce. Cette fonctionnalité est matérialisée par un bouton en forme d'appareil photo en bas à droite de la page "Recherche".
 Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est redirigé vers la page "Ajouter un objet".
-</div>
+
 
 #### Visuel
 
