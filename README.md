@@ -123,6 +123,13 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 ### Page "Mes posts"
 
+La page "Mes posts" permet à l'utilisateur de consulter ses publications. Il peut y retrouver les publications qu'il a ajouté. Pour pouvoir identifier une annonce publiée d'une annonce expirée, il existe différents statuts :
+
+- Pending est un statut concernant les annonces en cours de publication.
+- Finished permet d'identifier sur la page "Mes posts" que l'objet a été récupéré.
+- 
+
+
 #### Visuel
 
 #### IO
