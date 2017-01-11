@@ -123,6 +123,16 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 ### Page "Mes posts"
 
+La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets qu'il a postés. Il peut choisir de les supprimer.
+
+Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et une icone "?" s'affichera sur l'objet incitant l'utilisateur a cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
+
+Les objets peuvent avoir plusieurs statuts : PENDING, PICKEDUP, FINISHED, EXPIRED. Ils correspondent à : a été posté, dit avoir été récupéré, confirme avoir été récupéré, et expiré (si l'objet est présent sur l'applicatiojn depuis trop longtemps). L'affichage d'un objet dépend donc de son statut.
+Les objets expirés ne seront pas affichés.
+
+A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus d'objets.
+
+
 #### Visuel
 
 #### IO
@@ -155,7 +165,7 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 ### Page "Compte"
 
-La page "Compte" affiche en premier lieu des informations de base concernant l'utilisateur, ainsi qu'un historique de ses transactions : quels objets il a posté et quels objets il a récupéré. Elle comporte un bouton permettant d'afficher plus de contenu.
+La page "Compte" affiche en premier lieu des informations de base concernant l'utilisateur, ainsi qu'un historique de ses transactions : quels objets il a posté et quels objets il a récupéré. Elle comporte un bouton permettant d'afficher plus de contenu. Il peut choisir une ligne de l'historique pour accéder à la description détaillée de l'objet en question.
 
 Mais la principale raison d'exister de cette page est de permettre à l'utilisateur de modifier ses informations : nom, prénom, adresse e-mail, mot de passe. C'est en cliquant sur le bouton en bas de page qu'il accède au menu contextuel permettant de modifier ses informations.
 
