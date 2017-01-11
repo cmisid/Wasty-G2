@@ -108,6 +108,12 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 ### Page "Ma liste"
 
+La page "MaListe" permet à l'utilisateur de visualiser une description concise de tous les objets qu'il a "liké". Il peut consulter leur description détaillée. De plus il peut les "dis-liker", c'est à dire les supprimer de la liste en les déplaçant vers la gauche puis en cliquant sur le bouton supprimer.
+
+Cette page permet à l'utilisateur de stocker et consulter ses annonces préférés.
+
+La dernière fonctionnalité, et la plus importante, présente sur cette page, c'est la possibilité pour l'utilisateur d'obtenir un trajet optimisé de récupération de ses objets en cliquant sur un bouton. Il sera ainsi amené à Google Maps et n'aura plus qu'à suivre le trajet proposé pour récupérer tous ses objets.
+
 #### Visuel
 
 #### IO
