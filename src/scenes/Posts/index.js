@@ -1,4 +1,10 @@
-/* There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
+/* <Text color={'blue'}>
+              {`${this.state.selectedItem.picker.firstName} ${this.state.selectedItem.picker.lastName} `}
+            </Text>
+            <Text>
+              dit avoir récupéré :
+            </Text>
+            There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
@@ -133,7 +139,19 @@ export default class PostsScene extends Component {
         >
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 10}}
-          >{`Thierry dit avoir récupéré :`}</Text>
+          >
+            {this.state.selectedItem.picker &&
+              <Text
+                onPress={() => Actions.postsUserScene({user: this.state.selectedItem.picker})}
+                style={{fontWeight: 'bold'}}
+              >
+                {this.state.selectedItem.picker.firstName} {this.state.selectedItem.picker.lastName}
+              </Text>
+            }
+            <Text>
+              {` dit avoir récupéré :`}
+            </Text>
+          </Text>
           <Text
             style={{textAlign: 'center', marginLeft: 8, marginRight: 8, marginTop: 0, color: colors.link}}
             onPress={() => Actions.postsItemScene({item: this.state.selectedItem, userLat: this.state.location.lat, userLon: this.state.location.lon})}

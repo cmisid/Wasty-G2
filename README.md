@@ -22,10 +22,10 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Elise Benois
 - Max Halford
 - Pierrick Herve
-- Antoine Plissoneau
-- Raphael Sourty
+- Antoine Plissonneau
+- Raphaël Sourty
 
-Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
+Des slides que résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
 
 ## Stack technologique
 
@@ -125,6 +125,8 @@ Après avoir cliquer sur ce bouton, l'utilisateur est redirigé vers la page "Aj
 
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
+### Pourquoi React Native ?
 
+#### Multi-plateforme
 
-
+Notre application peut être utilisée sous Android et IOS aussi bien que sur WindowsPhone.

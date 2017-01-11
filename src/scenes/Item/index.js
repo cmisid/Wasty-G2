@@ -1,71 +1,69 @@
 import React, { Component } from 'react'
 
-import { ScrollView, View, StyleSheet, Dimensions, Image, Text, Linking } from 'react-native'
+import { ScrollView, View, StyleSheet, Dimensions, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import AppText from '../../components/AppText'
 import Container from '../../components/Container'
 import { colors } from '../../style'
-import { distanceFmt, generateMapLink, haversineDistance } from '../../util.js'
+import ProgressiveImage from '../../components/ProgressiveImage'
 
 export default class ItemScene extends Component {
   render () {
     return (
       <Container>
         <ScrollView style={styles.wrapper}>
-          <AppText style={StyleSheet.flatten(styles.header)}>
-            Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} le {this.props.item.publishDate}
-          </AppText>
-          <View style={{borderColor: 'lightgrey', borderWidth: 1, alignItems: 'flex-start', borderRadius: 0, backgroundColor: '#efeff2', flexDirection: 'column'}}>
-            <Image
-              source={{ uri: this.props.item.imgUrl }}
+          <View style={{flex: 1}}>
+            <ProgressiveImage
+              thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
+              imageSource={{ uri: this.props.item.imgUrl }}
               style={styles.image}
-            >
-            </Image>
-            <View style={styles.publishMetadata}>
-              <View style={{flex: 2, flexDirection: 'column'}}>
-                <AppText style={StyleSheet.flatten(styles.distance)}>
-                  {distanceFmt(haversineDistance(
+            />
+
+            {/* Metadata footer */}
+            <View style={{backgroundColor: '#efeff2', height: 55, flex: 1, flexDirection: 'row', borderColor: 'lightgrey'}}>
+
+              {/* Item essential information */}
+              <View style={{flex: 4, justifyContent: 'center', marginLeft: 10}}>
+
+                {/* Item's address */}
+                <AppText
+                  onPress={() => Linking.openURL(this.props.item.address.generateMapLink(
                     this.props.userLat,
-                    this.props.userLon,
-                    this.props.item.address.lat,
-                    this.props.item.address.lon
+                    this.props.userLon
                   ))}
-                </AppText>
-                <AppText style={{marginBottom: 0, marginTop: 5}}>
-                  {this.props.item.category}
+                  style={{color: colors.link}}
+                >
+                  {this.props.item.address.readableAddress}
                 </AppText>
               </View>
-              <View style={{alignItems: 'flex-end', marginBottom: 5, marginRight: 10}}>
-                <Text
-                  style={StyleSheet.flatten(styles.streetName)}
-                  onPress={() => Linking.openURL(generateMapLink(
-                    this.props.userLat,
-                    this.props.userLon,
-                    this.props.item.address.lat,
-                    this.props.item.address.lon
-                  ))}
-                >
-                  {`${this.props.item.address.streetName}, ${this.props.item.address.cityName}`}
-                </Text>
-                <View style={{flex: 2, flexDirection: 'column', alignItems: 'flex-end'}}>
-                  <AppText style={StyleSheet.flatten(styles.date)}>
-                    {this.props.publishDate}
-                  </AppText>
-                  {/* FIXME : A corriger */}
-                  <View style={{flexDirection: 'row', marginRight: 5}}>
-                    <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
-                    <AppText>{this.props.item.nViews}</AppText>
-                  </View>
+
+              {/* Icons */}
+              <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                {/* Number of likes */}
+                <View style={{flexDirection: 'row', marginRight: 5}}>
+                  <Icon name='star' iconStyle={{marginTop: 10}} size={20} color='gold' />
+                  <AppText> {this.props.item.nLikes}</AppText>
+                </View>
+                {/* Number of views */}
+                <View style={{flexDirection: 'row', marginRight: 5}}>
+                  <Icon name='remove-red-eye' iconStyle={{marginTop: 10}} size={20} color={colors.secondary} />
+                  <AppText> {this.props.item.nViews}</AppText>
                 </View>
               </View>
+
             </View>
           </View>
-          <AppText style={StyleSheet.flatten(styles.description)}>
-            Description
+          <AppText />
+          <AppText style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', color: 'black'}}>
+            {this.props.item.title} - {this.props.item.category}
           </AppText>
-          <AppText style={{textAlign: 'center'}}>
+          <AppText style={{textAlign: 'center', fontSize: 12, color: 'grey'}}>
+            Publié par {this.props.item.publisher.firstName} {this.props.item.publisher.lastName} {this.props.item.readablePublishedSince}
+          </AppText>
+          <AppText />
+          <AppText style={{textAlign: 'justify', marginBottom: 15, color: 'black'}}>
             {this.props.item.description}
           </AppText>
         </ScrollView>
