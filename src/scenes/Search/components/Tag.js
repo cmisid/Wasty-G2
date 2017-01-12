@@ -7,6 +7,7 @@ export default class Tag extends Component {
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPress}>
+      {/*a tag CLIKABLE TO DELETE IT*/}
         <View style={this.props.style}>
           <AppText>
             {this.props.text}
