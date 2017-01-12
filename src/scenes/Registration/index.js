@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import t from 'tcomb-form-native'
+import { Actions } from 'react-native-router-flux'
 
-import { Email, Password, passwordChecker } from '../../formUtil'
+import { authStyleSheet, Email, Password, passwordChecker } from '../../formUtil'
 import Button from '../../components/Button'
 import { colors } from '../../style'
 
@@ -24,36 +25,38 @@ const options = {
   error: 'Les mots de passe ne correspondent pas',
   fields: {
     confirmation: {
-      label: 'Confirmation du nouveau mot de passe',
+      error: 'Le mot de passe doit faire au moins 6 caractères',
+      label: 'Confirmation',
       placeholder: '••••••',
       password: true,
-      secureTextEntry: true,
-      error: 'Le mot de passe doit faire au moins 6 caractères'
+      secureTextEntry: true
     },
     email: {
+      autoCapitalize: false,
+      error: 'Veuillez rentrer une addresse valide',
       label: 'Addresse e-mail',
-      placeholder: 'marie.dubois@gmail.com',
-      error: 'Veuillez rentrer une addresse valide'
+      placeholder: 'marie.dubois@gmail.com'
     },
     firstName: {
+      error: 'Un prénom est requis',
       label: 'Prénom',
-      placeholder: 'Marie',
-      error: 'Un prénom est requis'
+      placeholder: 'Marie'
     },
     lastName: {
+      error: 'Un nom est requis',
       label: 'Nom',
-      placeholder: 'Dubois',
-      error: 'Un nom est requis'
+      placeholder: 'Dubois'
     },
     password: {
-      label: 'Nouveau mot de passe',
+      error: 'Le mot de passe doit faire au moins 6 caractères',
+      label: 'Mot de passe',
       placeholder: '••••••',
       password: true,
-      secureTextEntry: true,
-      error: 'Le mot de passe doit faire au moins 6 caractères'
+      secureTextEntry: true
     }
   },
-  order: [ 'firstName', 'lastName', 'email', 'password', 'confirmation' ]
+  order: [ 'firstName', 'lastName', 'email', 'password', 'confirmation' ],
+  stylesheet: authStyleSheet()
 }
 
 export default class RegistrationScene extends Component {
@@ -79,6 +82,8 @@ export default class RegistrationScene extends Component {
           type={AccountPasswordForm}
         />
         <Button onPress={this.onSubmit.bind(this)} text='Créer mon compte' />
+        <View style={{height: 10}} />
+        <Button onPress={() => Actions.connectionScene()} text='Se connecter' />
       </View>
     )
   }

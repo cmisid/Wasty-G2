@@ -37,7 +37,11 @@ export default class Button extends Component {
   render () {
     if (this.state.loading) {
       return (
-        <TouchableHighlight style={styles.submitButton} onPress={() => this.onPressEvent()} underlayColor={colors.primary}>
+        <TouchableHighlight
+          onPress={() => this.onPressEvent()}
+          style={[styles.submitButton, this.props.style || {}]}
+          underlayColor={colors.primary}
+        >
           <View>
             <ActivityIndicator
               animating
@@ -50,9 +54,16 @@ export default class Button extends Component {
       )
     } else {
       return (
-        <TouchableHighlight style={styles.submitButton} onPress={() => this.onPressEvent()} underlayColor={colors.primary}>
+        <TouchableHighlight
+          onPress={() => this.onPressEvent()}
+          style={[styles.submitButton, this.props.style || {}]}
+          underlayColor={colors.primary}
+        >
           <View>
-            <AppText style={StyleSheet.flatten(styles.submitButtonText)} onPress={() => this.onPressEvent()}>
+            <AppText
+              onPress={() => this.onPressEvent()}
+              style={StyleSheet.flatten(styles.submitButtonText)}
+            >
               {this.props.text}
             </AppText>
           </View>
