@@ -72,6 +72,8 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 
 #### Visuel
 
+![authentification](docs/gifs/recherche.gif)
+
 #### IO
 
 ![recherche_io](https://docs.google.com/drawings/d/1BgCKhWAEdvcfh4jvmrewnz3txm5sF6JIpx3ttUdY-Kw/pub?w=1231&h=730)
@@ -135,6 +137,8 @@ A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus
 
 
 #### Visuel
+
+![posts](docs/gifs/posts.gif)
 
 #### IO
 
