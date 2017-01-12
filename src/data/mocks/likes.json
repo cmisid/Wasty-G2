@@ -5,7 +5,7 @@
             "addition": "",
             "city_name": "Toulouse",
             "district_name": "Capitole",
-            "lat": 43.605264, 
+            "lat": 43.605264,
             "lon": 1.445713,
             "postal_code": 31000,
             "street_name": "Rue Alsace Lorraine",
@@ -34,11 +34,7 @@
             "scp": 1
         },
         "status": "PENDING",
-<<<<<<< HEAD
         "title": "Tabouret",
-        "views": 42
-=======
-        "title": "Chaise",
         "views": 42,
         "weight": 45,
         "volume": 1
@@ -237,6 +233,5 @@
         "views": 42,
         "weight": 45,
         "volume": 1
->>>>>>> 6674538fce444f459f9f902897bcc9695ff5de25
     }
 ]

@@ -95,15 +95,10 @@
             "phone_number": "0638251338",
             "scp": 1
         },
-<<<<<<< HEAD
-        "title": "Gauffrier",
-        "views": 42
-=======
         "title": "Chaise",
         "views": 42,
         "weight": 45,
         "volume": 1
->>>>>>> 6674538fce444f459f9f902897bcc9695ff5de25
     },
     {
         "address": {
@@ -161,15 +156,10 @@
             "phone_number": "0638251338",
             "scp": 1
         },
-<<<<<<< HEAD
-        "title": "Armoire",
-        "views": 42
-=======
         "title": "Chaise",
         "views": 42,
         "weight": 45,
         "volume": 1
->>>>>>> 6674538fce444f459f9f902897bcc9695ff5de25
     },
     {
         "address": {
@@ -205,14 +195,9 @@
             "scp": 1
         },
         "status": "EXPIRED",
-<<<<<<< HEAD
-        "title": "Brouette",
-        "views": 42
-=======
         "title": "Tabouret",
         "views": 42,
         "weight": 45,
         "volume": 1
->>>>>>> 6674538fce444f459f9f902897bcc9695ff5de25
     }
 ]
