@@ -12,9 +12,7 @@
   </div>
 <div>
 
-# Application mobile pour le projet Wasty
-
-TODO: parler un peu de React Native
+# Application mobile pour le projet Wasty (2017)
 
 Cette partie du projet a été développée par le groupe 2 dont les membres sont:
 
@@ -25,20 +23,9 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Antoine Plissonneau
 - Raphaël Sourty
 
-Des slides qui résument notre partie du projet sont [disponibles en ligne](http://go-talks.appspot.com/github.com/MaxHalford/Presentations/Wasty_G2.slide#1).
-
 ## Stack technologique
 
 ![javascript_logos](https://docs.google.com/drawings/d/19nFuyK9FeESsOJcBfC2v4bsIxag4hO45wg0Y-facv_o/pub?w=1345&h=356)
-
-## Installation
-
-Facebook propose de la [documentation](https://facebook.github.io/react-native/docs/getting-started.html#content) pour installer React Native sur Windows|Mac|Linux pour Android|iOS. Il faut ensuite faire un `react-native link` dans la console pour opérer un peu de magie et lier des dépendances au projet.
-
-## Développement
-
-- Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard).
-- Nous utilisons [Reactotron](https://github.com/reactotron/reactotron) pour débugger.
 
 ## Architecture
 
@@ -46,6 +33,17 @@ Facebook propose de la [documentation](https://facebook.github.io/react-native/d
 
 ![data_flow](https://docs.google.com/drawings/d/13qPJ2f1Bn1BwYTsF3SR8ffvIodEDA8hSHTIiT7FvzJY/pub?w=1271&h=907)
 
+### Serialisation et parsing
+
+![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
+
+### Authentification
+
+Nous voulions donner la possibilité à un utilisateur de créer un compte et de se connecter à l'application. Cela est d'autant plus nécessaire pour enregistrer des données d'utilisation et de personnaliser l'application selon l'utilisateur.
+
+Hélas nous n'avons pas eu le temps de complètement gérer cette fonctionnalité à 100% puisqu'elle est très reliée 
+
+![authentification](docs/gifs/authentification.gif)
 
 ### Page "Recherche"
 
@@ -242,11 +240,15 @@ Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer 
 Un outil qui nous permet de simuler un téléphone (type smartphone) sur notre ordinateur. Le seul inconvénient est lorsque qu'on ne dispose pas d'un écran tactile, on doit alors tester avec la souris. C'est ce qui ne nous a pas permis de vérifier que l'application est intuitive. Nous avons donc aussi exécuté l'application sur nos téléphones personnels.
 
 
-#### GitHub
+##### GitHub
 
 Un logiciel de gestion de versions en ligne. Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
 
+##### Sublime Text
 
+Nous avons trouvé qu'utiliser le même éditeur de texte nous a permis d'uniformiser notre style de codage. Des choses bêtes comme les espaces en trop ou bien un espace manquant en fin 
+
+Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard). 
 
 ### Bilan
 
