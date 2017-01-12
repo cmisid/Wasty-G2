@@ -77,7 +77,7 @@ export default class AccountScene extends Component {
           >
             <Icon name='person-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          
+
         </ActionButton>
       </View>
     )

@@ -19,8 +19,9 @@ const AccountEmailForm = t.struct({
 const options = {
   fields: {
     email: {
-      label: 'Addresse e-mail',
-      error: 'Veuillez rentrer une addresse valide'
+      autoCapitalize: false,
+      error: 'Veuillez rentrer une addresse valide',
+      label: 'Addresse e-mail'
     }
   },
   order: [ 'email' ]

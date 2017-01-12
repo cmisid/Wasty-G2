@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NetInfo, StyleSheet } from 'react-native'
+import { NetInfo, StyleSheet, View } from 'react-native'
 
 import { Actions, Router, Scene } from 'react-native-router-flux'
 
@@ -28,6 +28,10 @@ import { isProd, appEnv } from './config'
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
 // Disable Swipeout warning
 console.ignoredYellowBox = ['Warning: Failed prop type: Invalid prop `text` of type `object` supplied to `SwipeoutBtn`']
+// Disable the warning when autoCapitalize is set to "false" in tcomb-form-native
+console.ignoredYellowBox = ['Warning: ReactNative.createElement: Invalid prop `autoCapitalize` of value `false` supplied to `TextInput`']
+
+console.disableYellowBox = true
 
 const styles = StyleSheet.create({
   sceneStyle: {
@@ -41,8 +45,8 @@ const styles = StyleSheet.create({
   }
 })
 
-// Scene layout/structure
-const scenes = Actions.create(
+// Application scene layout/structure
+const appScenes = Actions.create(
   <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
 
     <Scene title='Mes posts' key='postsScene' icon={TabIcon} iconName='playlist-add'>
@@ -72,6 +76,14 @@ const scenes = Actions.create(
       <Scene title='Modifier mon addresse e-mail' key='accountEmailScene' component={AccountEmailScene} />
       <Scene title='Modifier mon mot de passe' key='accountPasswordScene' component={AccountPasswordScene} />
     </Scene>
+
+  </Scene>
+)
+
+const authScenes = Actions.create(
+  <Scene key='root'>
+    <Scene key='connectionScene' component={ConnectionScene} title='Se connecter' />
+    <Scene key='registrationScene' component={RegistrationScene} title='Créer un compte' initial />
   </Scene>
 )
 
@@ -125,13 +137,15 @@ export default class App extends Component {
     } else if (!this.state.serverResponding) {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else if (!this.state.isLoggedIn) {
-      return (<RegistrationScene />)
+      return (
+        <Router scenes={authScenes} />
+      )
     } else {
       return (
         <Router
-          scenes={scenes}
-          sceneStyle={styles.sceneStyle}
           renderTitle={scene => <RouterTitle scene={scene} />}
+          scenes={appScenes}
+          sceneStyle={styles.sceneStyle}
         />
       )
     }

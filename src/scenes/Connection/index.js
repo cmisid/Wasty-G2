@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 
 import t from 'tcomb-form-native'
 
-import { Email, Password } from '../../formUtil'
+import { authStyleSheet, Email, Password } from '../../formUtil'
 import Button from '../../components/Button'
 import { colors } from '../../style'
 
@@ -18,16 +18,20 @@ const options = {
   error: 'Les mots de passe ne correspondent pas',
   fields: {
     email: {
+      autoCapitalize: false,
+      error: 'Veuillez rentrer une addresse valide',
       label: 'Addresse e-mail',
-      error: 'Veuillez rentrer une addresse valide'
+      placeholder: 'marie.dubois@gmail.com'
     },
     password: {
       label: 'Mot de passe',
       password: true,
+      placeholder: '••••••',
       secureTextEntry: true
     }
   },
-  order: [ 'email', 'password' ]
+  order: [ 'email', 'password' ],
+  stylesheet: authStyleSheet()
 }
 
 export default class ConnectionScene extends Component {
@@ -52,6 +56,7 @@ export default class ConnectionScene extends Component {
           ref='form'
           type={ConnectionForm}
         />
+        <View style={{height: 30}} />
         <Button onPress={this.onSubmit.bind(this)} text='Créer mon compte' />
       </View>
     )
