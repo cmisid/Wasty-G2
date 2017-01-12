@@ -3,7 +3,6 @@ import Toast from 'react-native-root-toast'
 import { colors } from './style'
 
 export const colorLuminance = (hex, lum) => {
-
   // Validate hex string
   hex = String(hex).replace(/[^0-9a-f]/gi, '')
   if (hex.length < 6) {
@@ -18,7 +17,6 @@ export const colorLuminance = (hex, lum) => {
     c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16)
     rgb += ('00' + c).substr(c.length)
   }
-
   return rgb
 }
 

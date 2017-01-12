@@ -29,13 +29,11 @@ export default class RouterTitle extends Component {
     if (mainScenes.includes(this.props.scene.name)) {
       return (
         // The paddingTop is different for the logo than for the text
-        <View style={{alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 22 : 9}}>
-          <View style={{marginBottom: 10}}>
-            <Image
-              source={require('../assets/img/logo.png')}
-              style={{height: 36, width: 70, marginBottom: 3}}
-            />
-          </View>
+        <View style={{alignItems: 'center', paddingTop: Platform.OS === 'ios' ? 30 : 9}}>
+          <Image
+            source={require('../assets/img/logo.png')}
+            style={{height: 22, width: 70, marginBottom: 3}}
+          />
         </View>
       )
     } else if (itemScenes.includes(this.props.scene.name)) {
