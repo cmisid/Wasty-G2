@@ -1,10 +1,4 @@
-/* <Text color={'blue'}>
-              {`${this.state.selectedItem.picker.firstName} ${this.state.selectedItem.picker.lastName} `}
-            </Text>
-            <Text>
-              dit avoir récupéré :
-            </Text>
-            There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
+/* There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
@@ -147,8 +141,8 @@ export default class PostsScene extends Component {
               <TouchableHighlight onPress={() => Actions.postsUserScene({user: this.state.selectedItem.picker})}>
                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <ProgressiveImage
-                    thumbnailSource={{ uri: this.state.selectedItem.publisher.imgPlaceholderUrl }}
-                    imageSource={{ uri: this.state.selectedItem.publisher.imgUrl }}
+                    thumbnailSource={{ uri: this.state.selectedItem.picker.imgPlaceholderUrl }}
+                    imageSource={{ uri: this.state.selectedItem.picker.imgUrl }}
                     style={{width: 85, height: 85, borderRadius: 40}}
                   />
                   <AppText style={{fontSize: 14, marginTop: 5}}>{this.state.selectedItem.picker.firstName}</AppText>

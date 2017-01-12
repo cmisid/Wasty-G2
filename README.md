@@ -108,9 +108,9 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 ### Page "Ma liste"
 
-La page "MaListe" permet à l'utilisateur de visualiser une description concise de tous les objets qu'il a "liké". Il peut consulter leur description détaillée. De plus il peut les "dis-liker", c'est à dire les supprimer de la liste en les déplaçant vers la gauche puis en cliquant sur le bouton supprimer.
+La page "Ma liste" permet à l'utilisateur de visualiser une description concise de tous les objets qu'il a "liké". Il peut consulter leur description détaillée. De plus il peut les "dis-liker", c'est à dire les supprimer de la liste en les déplaçant vers la gauche puis en cliquant sur le bouton supprimer.
 
-Cette page permet à l'utilisateur de stocker et consulter ses annonces préférés.
+Cette page permet à l'utilisateur de stocker et consulter ses annonces préférées.
 
 La dernière fonctionnalité, et la plus importante, présente sur cette page, c'est la possibilité pour l'utilisateur d'obtenir un trajet optimisé de récupération de ses objets en cliquant sur un bouton. Il sera ainsi amené à Google Maps et n'aura plus qu'à suivre le trajet proposé pour récupérer tous ses objets.
 
@@ -195,7 +195,7 @@ L'application peut être testée très facilement et simplement à l'aide d'un �
 
 #### Créée par Facebook
 
-Le react native est un langage jeune (moins de 2 ans ?), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
+Le react native est un langage jeune (moins de 2 ans), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
 
 
 
@@ -204,7 +204,7 @@ Le react native est un langage jeune (moins de 2 ans ?), la communauté est donc
 
 #### Hiérarchie Horizontale
 
-Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter en fonction de leur capacités.
+Le chef de groupe n'affecte pas le travail aux différents membres mais il alimente un tableau Kanban avec des issues triées par priorité. Puis les membres du groupe s'affecte aux tâches qu'ils souhaitent traiter en fonction de leurs capacités.
 
 
 #### Planning Initial et Final
@@ -225,7 +225,7 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 ##### Balsamiq
 
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
-Il nous a servit a créer un premier visuel des différentes pages de l'application et les liens entre elles.
+Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
 
 (ajouter des démos des mocks up)
