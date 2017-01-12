@@ -13,7 +13,11 @@ import { colors } from '../../../style'
 export default class EventRow extends Component {
   render () {
     return (
+
+      {/* One line of the Hystoric */}
       <View style={styles.row}>
+
+        {/* The picture of the object */}
         <View style={{flex: 1}}>
           <ProgressiveImage
             thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
@@ -21,6 +25,8 @@ export default class EventRow extends Component {
             style={styles.image}
           />
         </View>
+
+        {/* Description clikable of the object to access the detailled description */}
         <View style={{flex: 5}}>
           <AppText onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
             {`"${this.props.event.item.title}" ${this.props.event.action === 'post' ? 'posté' : 'récupéré'} ${distanceInWordsToNow(
@@ -29,6 +35,8 @@ export default class EventRow extends Component {
                 )}`}
           </AppText>
         </View>
+
+        {/* Arrow to indicate if you post or picked-up the object */}
         <View style={{alignItems: 'flex-end', flex: 1}}>
           <Icon
             name={this.props.event.action === 'post' ? 'arrow-forward' : 'arrow-back'}
