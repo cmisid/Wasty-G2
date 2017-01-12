@@ -55,13 +55,13 @@ L'utilisateur se trouve sur la page "Recherche" lorsqu'il lance l'application.
 
 Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent. On présente d'abord à l'utilisateur des annonces qui sont censées lui "correspondre"; le serveur se charge de cette partie si on lui donne un identifiant utilisateur. L'utilisateur peut aussi filtrer des annonces selon leurs catégories.
 
-La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest". Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...). Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs. 
- 
+La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest". Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...). Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs.
+
 Idéalement nous aimerions que les six premières catégories affichées évoluent en fonction de l'utilisateur à partir d'un algorithme d'apprentissage.
 
 Nous avons choisi de laisser une surface importante aux photos des objets pour que les utilisateurs puissent rapidement identifier les objets auxquels ils offriront une seconde vie.
 
-Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits.  Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits.  Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert.
 
 Lorsque l'utilisateur trouve un article qui lui correspond, celui-ci peut swiper vers la gauche pour ajouter l'objet à la page "Mes likes".
 
@@ -72,7 +72,11 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 
 #### Visuel
 
-![authentification](docs/gifs/recherche.gif)
+![authentification](docs/gifs/rechercheDescription.gif)
+![authentification](docs/gifs/rechercheLike.gif)
+![authentification](docs/gifs/rechercherefresh.gif)
+![authentification](docs/gifs/rechercheUtilisateur.gif)
+![authentification](docs/gifs/rechercheCarte.gif)
 
 #### IO
 
@@ -83,13 +87,13 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 
 La page "Ajouter un objet" est accessible depuis le bouton matérialisé sous forme d'appareil de photographie sur la page "Recherche".
 L'application est visuelle. Il est indispensable d'inciter les utilisateurs à associer leurs publications à des photos.
-Il est nécessaire de disposer d'une photo de l'article pour le proposer à la vente. 
+Il est nécessaire de disposer d'une photo de l'article pour le proposer à la vente.
 
 
 L'application propose deux solutions pour associer une image à l'article :
 
 
-- Prendre en photo l'article 
+- Prendre en photo l'article
 - Parcourir le répertoire des images du téléphone si l'utilisateur a déjà pris l'article en photo
 
 Grâce au service de reconnaissance d'image intégré dans l'application, la catégorie est renseignée automatiquement.
@@ -125,7 +129,7 @@ La page "Mes postes" permet à l'utilisateur de consulter et gérer les objets q
 
 Si un utilisateur dit avoir récupérer un de ses objets, un filtre orange et un icone "?" s'affichera sur l'objet incitant l'utilisateur à cliquer sur l'objet. Lorsqu'il sélectionne l'objet une fenêtre modale s'ouvre pour qu'il puisse confirmer si oui ou non l'objet a été récupéré.
 
-Les objets peuvent avoir plusieurs statuts :  
+Les objets peuvent avoir plusieurs statuts :
 
 - PENDING : L'objet a été posté.
 - PICKEDUP : Ce statut passe une information à l'utilisateur qu'il doit confirmer pour savoir si une personne a récupéré ou non son objet.
@@ -148,22 +152,24 @@ A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus
 ### Page "Carte"
 
 La page Carte notifie les articles disponibles à proximité de la position de l'utilisateur.
-En effet, l'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté. 
-La distance est un critère décisif pour sélectionner un article. 
+En effet, l'application Wasty géolocalise l'utilisateur pour lui proposer un service adapté.
+La distance est un critère décisif pour sélectionner un article.
 La carte permet à l'utilisateur de visualiser les articles présents dans son périmètre de prédilection.
 
 S'il clique sur l'un de ces marqueurs, l'écran se scinde en deux parties et l'utilisateur accède à une description détaillée de l'article sélectionné.
 
 La charte graphique de la description des objets est similaire à celle de la page "Recherche", "Mes Posts" et "Ma Liste".
-Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert.
 
-Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
-La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
- 
+Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste".
+La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur.
+
 
 #### Visuel
 
 ![compte](docs/gifs/compte.gif)
+![authentification](docs/gifs/carteLike.gif)
+![authentification](docs/gifs/carteDislike.gif)
 
 #### IO
 
@@ -245,7 +251,7 @@ Un logiciel de gestion de versions en ligne. Il nous a servit à travailler sur 
 
 Nous avons trouvé qu'utiliser le même éditeur de texte nous a permis d'uniformiser notre style de codage. Des choses bêtes comme les espaces en trop ou bien un espace manquant en fin de fichier peuvent être évités en faisant en sorte que chaque développeur utilise les mêmes réglages dans son éditeur de texte.
 
-Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard). 
+Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard).
 
 ### Bilan
 
