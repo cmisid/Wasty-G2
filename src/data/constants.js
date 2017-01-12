@@ -121,3 +121,16 @@ export const scps = {
   8: '8. Etudiants',
   9: '9. Autres'
 }
+
+export const carSizes = {
+  1: 'Petite voiture',
+  2: 'Moyenne voiture',
+  3: 'Grande voiture'
+}
+
+export const cumbersomenesses = {
+  1: 'Peu encombrant',
+  2: 'Encombrant',
+  3: 'Très encombrant'
+}
+
