@@ -262,7 +262,7 @@ Le logiciel avec lequel nous avons créée les gifs présent dans ce rapport.
 
 - le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
 - Nous avons tous appris un nouveau langage informatique très pertinent et très récent pour ce qui est de développer une application mobile
-- Nous avons appris a utiliser des logiciels puissants comme sourceTree et balsamiq
+- Nous avons appris a utiliser des logiciels puissants comme sourceTree, balsamiq et sublime text
 
 ### Les Moins
 
