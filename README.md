@@ -247,14 +247,23 @@ Un outil qui nous permet de simuler un téléphone (type smartphone) sur notre o
 Un logiciel de gestion de versions en ligne. Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
 
 
+#### Sublime Text
+
+Un éditeur de texte adapté aux développement avec GitHub. Il nous a permis de développer rapidement grâce aux nombreux modules que nous avons installés, tels que : Babel (coloration de texte), GitGutter (nous informe sur les différences entre les fichiers GitHub et nos fichiers), ou encore Sublime-Linter 3 (vérifie que le code respecte bien les conventions de codages).
+
+
+#### LiceCap
+
+Le logiciel avec lequel nous avons créée les gifs présent dans ce rapport.
 
 ### Bilan
 
 ### Les Plus
 
 - le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
-- Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
+- Nous avons tous appris un nouveau langage informatique très pertinent et très récent pour ce qui est de développer une application mobile
+- Nous avons appris a utiliser des logiciels puissants comme sourceTree et balsamiq
 
 ### Les Moins
 - Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
-
+- 
