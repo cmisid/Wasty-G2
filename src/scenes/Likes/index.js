@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Linking, ListView, RefreshControl, StyleSheet, View } from 'react-native'
+import { Alert, Linking, ListView, RefreshControl, StyleSheet, View } from 'react-native'
 
 import { format } from 'date-fns'
 import { reject } from 'lodash'
@@ -47,6 +47,14 @@ export default class LikesScene extends Component {
     this.setState({items: listWithoutItem})
   }
 
+  onPickedUpItem (id) {
+    const listWithoutItem = reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
+
+    //TODO : implémenter la logique de l'API
+  }
+
   componentDidMount () {
     getLikes()
       .then(items => { this.setState({items}) })
@@ -58,7 +66,7 @@ export default class LikesScene extends Component {
         const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => console.log('Erreur de localisation', JSON.stringify(error)),
+      error => Alert.alert('Erreur de localisation', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )
 
@@ -107,6 +115,7 @@ export default class LikesScene extends Component {
             <ItemRow
               item={item}
               onDeleteItem={this.onDeleteItem.bind(this)}
+              onPickedUpItem={this.onPickedUpItem.bind(this)}
               onPressAction={() => Actions.likesItemScene({item: item,
                 userLat: this.state.location.lat,
                 userLon: this.state.location.lon})}

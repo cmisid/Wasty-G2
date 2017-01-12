@@ -14,22 +14,30 @@ export default class ItemRow extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      deleteButton: [
+      Buttons: [
         {
           text: 'Supprimer',
           backgroundColor: 'lightcoral',
           color: 'white',
           underlayColor: 'dimgray',
           onPress: () => this.props.onDeleteItem(this.props.item.id)
+        },
+        {
+          text: 'Récupérer',
+          backgroundColor: 'limegreen',
+          color: 'white',
+          underlayColor: 'green',
+          onPress: () => this.props.onPickedUpItem(this.props.item.id)
         }
       ]
     }
   }
 
+
   render () {
     return (
       <Swipeout
-        right={this.state.deleteButton}
+        right={this.state.Buttons}
         autoClose
         sensitivity={0.9}
         style={{backgroundColor: colors.background}}
@@ -121,6 +129,7 @@ const styles = StyleSheet.create({
 ItemRow.propTypes = {
   item: React.PropTypes.object,
   onDeleteItem: React.PropTypes.func,
+  onPickedUpItem: React.PropTypes.func,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number
