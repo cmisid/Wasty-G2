@@ -72,6 +72,7 @@ const appScenes = Actions.create(
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
       <Scene title='Compte' key='accountViewScene' component={AccountScene} />
       <Scene title='Compte' key='accountItemScene' component={ItemScene} />
+      <Scene title='Compte' key='accountUserScene' component={UserScene} />
       <Scene title='Modifier mes informations' key='accountSettingsScene' component={AccountSettingsScene} />
       <Scene title='Modifier mon addresse e-mail' key='accountEmailScene' component={AccountEmailScene} />
       <Scene title='Modifier mon mot de passe' key='accountPasswordScene' component={AccountPasswordScene} />
