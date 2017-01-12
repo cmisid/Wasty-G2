@@ -13,6 +13,7 @@
         "availability_since": "08:00:00",
         "availability_until": "17:00:00",
         "price": 42.42,
+        "cumbersomenesses": 2,
         "category": "Meuble",
         "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
         "id": 1,
@@ -35,7 +36,8 @@
         "status": "PENDING",
         "picker":{},
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 23
     },
     {
         "address": {
@@ -52,6 +54,7 @@
         "availability_until": "17:00:00",
         "price": 0.0,
         "category": "Meuble",
+        "cumbersomenesses": 3,
         "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
         "id": 2,
         "img": "https://unsplash.it/600/400/",
@@ -94,7 +97,8 @@
             "scp": 1
         },
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 6
     },
     {
         "address": {
@@ -111,6 +115,7 @@
         "availability_until": "17:00:00",
         "price": 42.42,
         "category": "Meuble",
+        "cumbersomenesses": 1,
         "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
         "id": 3,
         "img": "https://unsplash.it/600/400/",
@@ -153,7 +158,8 @@
             "scp": 1
         },
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45
     },
     {
         "address": {
@@ -170,6 +176,7 @@
         "availability_until": "17:00:00",
         "price": 23.23,
         "category": "Meuble",
+        "cumbersomenesses": 2,
         "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
         "id": 4,
         "img": "https://unsplash.it/600/400/",
@@ -190,6 +197,8 @@
         },
         "status": "EXPIRED",
         "title": "Tabouret",
-        "views": 42
+        "views": 42,
+        "weight": 45
+
     }
 ]
