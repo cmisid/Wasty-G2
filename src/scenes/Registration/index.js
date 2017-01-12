@@ -25,28 +25,31 @@ const options = {
   fields: {
     confirmation: {
       label: 'Confirmation du nouveau mot de passe',
+      placeholder: '••••••',
       password: true,
       secureTextEntry: true,
-      help: 'Au moins 6 caractères',
       error: 'Le mot de passe doit faire au moins 6 caractères'
     },
     email: {
       label: 'Addresse e-mail',
+      placeholder: 'marie.dubois@gmail.com',
       error: 'Veuillez rentrer une addresse valide'
     },
     firstName: {
       label: 'Prénom',
+      placeholder: 'Marie',
       error: 'Un prénom est requis'
     },
     lastName: {
       label: 'Nom',
+      placeholder: 'Dubois',
       error: 'Un nom est requis'
     },
     password: {
       label: 'Nouveau mot de passe',
+      placeholder: '••••••',
       password: true,
       secureTextEntry: true,
-      help: 'Au moins 6 caractères',
       error: 'Le mot de passe doit faire au moins 6 caractères'
     }
   },

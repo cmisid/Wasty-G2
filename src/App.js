@@ -125,7 +125,7 @@ export default class App extends Component {
     } else if (!this.state.serverResponding) {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
     } else if (!this.state.isLoggedIn) {
-      return (<ConnectionScene />)
+      return (<RegistrationScene />)
     } else {
       return (
         <Router
