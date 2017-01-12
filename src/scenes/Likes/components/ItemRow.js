@@ -3,11 +3,27 @@ import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Swipeout from 'react-native-swipeout'
+import Toast from 'react-native-root-toast'
 
 import AppText from '../../../components/AppText'
 import Card from '../../../components/card/Card'
 import ProgressiveImage from '../../../components/ProgressiveImage'
 import { colors } from '../../../style'
+
+const toast = (text, backgroundColor) => Toast.show(
+  text,
+  {
+    duration: Toast.durations.MEDIUM,
+    position: Toast.positions.TOP,
+    shadow: true,
+    animation: true,
+    hideOnPress: true,
+    delay: 500,
+    backgroundColor: backgroundColor || colors.primary,
+    shadowColor: colors.background,
+    textColor: 'white'
+  }
+)
 
 export default class ItemRow extends Component {
 
@@ -20,17 +36,33 @@ export default class ItemRow extends Component {
           backgroundColor: 'lightcoral',
           color: 'white',
           underlayColor: 'dimgray',
-          onPress: () => this.props.onDeleteItem(this.props.item.id)
+          onPress: () => this._deleteItem()
         },
         {
           text: 'Récupérer',
-          backgroundColor: 'limegreen',
+          backgroundColor: 'mediumseagreen',
           color: 'white',
           underlayColor: 'green',
-          onPress: () => this.props.onPickedUpItem(this.props.item.id)
+          onPress: () => this._pickedUpItem()
         }
       ]
     }
+  }
+
+  _deleteItem () {
+    this.props.onDeleteItem(this.props.item.id)
+    toast(
+      <AppText style={StyleSheet.flatten(styles.toast)}>{`"${this.props.item.title}" a été retiré de vos favoris`}</AppText>,
+      'lightcoral'
+    )
+  }
+
+  _pickedUpItem () {
+    this.props.onPickedUpItem(this.props.item.id)
+    toast(
+      <AppText style={StyleSheet.flatten(styles.toast)}>{`Vous avez signalé avoir récupéré "${this.props.item.title}". Merci pour votre contribution !`}</AppText>,
+      'mediumseagreen'
+    )
   }
 
   render () {
@@ -126,7 +158,7 @@ const styles = StyleSheet.create({
   }
 })
 
-// Here we defined the props of the 
+// Here we defined the props of the
 ItemRow.propTypes = {
   item: React.PropTypes.object,
   onDeleteItem: React.PropTypes.func,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import frLocale from 'date-fns/locale/fr'
@@ -16,15 +16,19 @@ export default class EventRow extends Component {
       /* One line of the Hystoric */
       <View style={styles.row}>
         {/* The picture of the object */}
-        <View style={{flex: 2, flexDirection: 'column', alignItems: 'center'}} >
-          <ProgressiveImage
-            thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
-            imageSource={{ uri: this.props.event.item.imgUrl }}
-            style={styles.image}
-          />
-          <AppText onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
-            {`${this.props.event.item.title}`}
-          </AppText>
+        <View style={{flex: 2, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
+          <TouchableHighlight onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
+                imageSource={{ uri: this.props.event.item.imgUrl }}
+                style={styles.image}
+              />
+              <AppText style={{marginTop: 3}}>
+                {`${this.props.event.item.title}`}
+              </AppText>
+            </View>
+          </TouchableHighlight>
         </View>
 
         {/* Description clikable of the object to access the detailled description */}
@@ -48,33 +52,40 @@ export default class EventRow extends Component {
         {/* Arrow to indicate if you post or picked-up the object */}
         {this.props.event.action === 'post' && this.props.event.item.status === 'FINISHED' &&
         <View style={{alignItems: 'center', flex: 2}}>
-          <ProgressiveImage
-            thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
-            imageSource={{ uri: this.props.event.item.picker.imgUrl }}
-            style={styles.image}
-            onPress={() => Actions.accountItemScene({item: this.props.event.item})}
-          />
-          <AppText onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
-            {`${this.props.event.item.picker.firstName} ${this.props.event.item.picker.lastName}`}
-          </AppText>
+          <TouchableHighlight onPress={() => Actions.accountUserScene({user: this.props.event.item.picker})}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
+                imageSource={{ uri: this.props.event.item.picker.imgUrl }}
+                style={styles.image}
+              />
+              <AppText>
+                {`${this.props.event.item.picker.firstName} ${this.props.event.item.picker.lastName}`}
+              </AppText>
+            </View>
+          </TouchableHighlight>
         </View>
         }
 
         {this.props.event.action === 'post' && this.props.event.item.status !== 'FINISHED' &&
-        <View style={{alignItems: 'center', flex: 2}}>
-        </View>
+        <View style={{alignItems: 'center', flex: 2}} />
         }
 
         {this.props.event.action === 'recover' &&
         <View style={{alignItems: 'center', flex: 2}}>
-          <ProgressiveImage
-            thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
-            imageSource={{ uri: this.props.event.item.publisher.imgUrl }}
-            style={styles.image}
-          />
-          <AppText onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
-            {`${this.props.event.item.publisher.firstName} ${this.props.event.item.publisher.lastName}`}
-          </AppText>
+          <TouchableHighlight onPress={() => Actions.accountUserScene({user: this.props.event.item.publisher})}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <ProgressiveImage
+                thumbnailSource={{ uri: this.props.event.item.imgPlaceholderUrl }}
+                imageSource={{ uri: this.props.event.item.publisher.imgUrl }}
+                style={styles.image}
+              />
+              <AppText>
+                {`${this.props.event.item.publisher.firstName} ${this.props.event.item.publisher.lastName}`}
+              </AppText>
+            </View>
+          </TouchableHighlight>
+
         </View>
         }
       </View>
