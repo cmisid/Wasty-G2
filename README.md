@@ -25,51 +25,49 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 
 ## Stack technologique
 
+Nous avons décidé une technologie assez récente et très en vogue qui s'appelle **React Native**. En bref React Native permet de développer des applications en JavaScript et de lancer sur un mobile qui dispose d'un interpréteur JavaScript.
+
+La magie de React Native est que l'on peut dorénavant utiliser l'ensemble de l'écosystème JavaScript pour développer notre application. On a donc accès à [Webpack](https://webpack.github.io/docs/) pour gérer nos dépendances, [Babel](https://babeljs.io/) pour coder avec la spécification [ES6](http://es6-features.org/) de JavaScript, [lodash](https://lodash.com/) pour coder avec un paradigme fonctionnel, [moment](http://momentjs.com/) pour manipuler des dates, etc.
+
+Une application React Native peut donc tourner sous Android aussi bien que sous iOS et Windows Phone. On gagne énormément en temps de développement si on veut développer une application multi-plateformes. Lors des deux semaines de projet nous avions trois développeurs qui étaient sous Android et 3 autres sous iOS. De cette façon nous avons pu vérifier en continu que tous nos changements marchaient sur les deux plateformes.
+
+L'application peut être testée très facilement et simplement à l'aide d'un émulateur de téléphone. Il n'y a pas besoin de recompiler l'application à chaque modification. Il nous suffit d'enregistrer le fichier contenant pour voir apparaître nos changements; c'est ce qu'on appelle le *hot reloading*.
+
+Le react native est un langage jeune (moins de 2 ans), la petite taille de la communauté peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante, Facebook, c'est donc un gage de qualité qui compense sa jeunesse. De plus React-Native est le langage qui a le plus progressé en utilisation selon le rencesement StackOverflow de 2016.
+
 ![javascript_logos](https://docs.google.com/drawings/d/19nFuyK9FeESsOJcBfC2v4bsIxag4hO45wg0Y-facv_o/pub?w=1345&h=356)
 
 ## Architecture
-
-### Flux des données
-
-![data_flow](https://docs.google.com/drawings/d/13qPJ2f1Bn1BwYTsF3SR8ffvIodEDA8hSHTIiT7FvzJY/pub?w=1271&h=907)
-
-### Serialisation et parsing
-
-![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
 
 ### Authentification
 
 Nous voulions donner la possibilité à un utilisateur de créer un compte et de se connecter à l'application. Cela est d'autant plus nécessaire pour enregistrer des données d'utilisation et de personnaliser l'application selon l'utilisateur.
 
-Hélas nous n'avons pas eu le temps de complètement gérer cette fonctionnalité à 100% puisqu'elle est très reliée 
+Hélas nous n'avons pas eu le temps de complètement gérer cette fonctionnalité à 100% puisqu'elle est intimement reliée à l'application serveur qui n'était pas prête. Pour contourner le problème nous avons simulé une requête vers le serveur pour récupérer des données utilisateur en supposant qu'il était connecté.
+
+Nous avons néanmoins codé une grande partie de la partie visuelle du parcours utilisateur concernant l'authentification. Pour cette partie nous nous sommes donc surout concentré sur la partie visuelle.
 
 ![authentification](docs/gifs/authentification.gif)
 
 ### Page "Recherche"
 
-L'utilisateur est dirigé vers la page "Recherche" lorsqu'il se connecte sur l'application. 
-Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent.
-L'application mobile pour le projet wasty propose différents outils pour effectuer une recherche : recherche à partir de catégories, recherche cartographique.
+L'utilisateur se trouve sur la page "Recherche" lorsqu'il lance l'application.
 
-La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest".
-Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...).
-Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs. 
+Cette page a pour objectif de mettre en relation ceux qui proposent des objets et ceux qui en recherchent. On présente d'abord à l'utilisateur des annonces qui sont censées lui "correspondre"; le serveur se charge de cette partie si on lui donne un identifiant utilisateur. L'utilisateur peut aussi filtrer des annonces selon leurs catégories.
+
+La fonctionnalité de recherche de la page "Recherche" se distingue grâce à un système de catégorisation. Nous avons mis en place un moteur de recherche sur le modèle du réseau social "Pinterest". Les catégories sont représentées sous forme de blocs. Ces blocs caractérisent les différentes catégories (verre, chaise, habits...). Lorsque l'utilisateur clique sur un bloc, la page de recherche s'adapte en fonction des critères de l'utilisateurs. 
  
-Idéalement nous aimerions que 6 catégories soient affichées dans la barre de recherche et que celles-ci évoluent en fonction de l'utilisateur à partir d'un algorithme de Machine Learning. 
+Idéalement nous aimerions que les six premières catégories affichées évoluent en fonction de l'utilisateur à partir d'un algorithme d'apprentissage.
 
 Nous avons choisi de laisser une surface importante aux photos des objets pour que les utilisateurs puissent rapidement identifier les objets auxquels ils offriront une seconde vie.
 
-Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits. 
-Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
+Nous avons imaginé une solution pour que ceux qui cherchent des objets puissent distinguer rapidement les objets payants de ceux qui sont gratuits.  Les articles proposés à la vente sont notifiés avec un bandeau jaune. Les articles gratuits sont notifiés avec un bandeau vert. 
 
-Lorsque l'utilisateur trouve l'article qui lui correspond, celui-ci peut faire un mouvement de Scroll-Left pour ajouter l'objet à la page "Ma liste". 
-La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est dédiée au calcul de l'itinéraire optimisé pour récupérer un ensemble d'objets sélectionnés par l'utilisateur. 
+Lorsque l'utilisateur trouve un article qui lui correspond, celui-ci peut swiper vers la gauche pour ajouter l'objet à la page "Mes likes".
 
-La page "Recherche" rassemble les objets proposés par l'application "WASTY". Par défaut, l'application affiche 20 objets. 
-Avec un Scroll-Down l'utilisateur à accès à un bouton pour afficher les 20 résultats suivants.
+La page "Recherche" rassemble les objets proposés par l'application. Par défaut, l'application doit afficher 20 annonces. En scrollant vers le bas l'utilisateur a accès à un bouton pour afficher les 20 annonces suivantes.
 
-La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse ajouter une annonce. Cette fonctionnalité est matérialisée par un bouton en forme d'appareil photo en bas à droite de la page "Recherche".
-Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est redirigé vers la page "Ajouter un objet".
+La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse ajouter une annonce. Cette fonctionnalité est matérialisée par un bouton en forme d'appareil photo en bas à droite de la page "Recherche". Après avoir cliqué sur le bouton, l'utilisateur est redirigé vers la page "Ajouter une annonce" après avoir pris ou choisi une photo.
 
 
 #### Visuel
@@ -193,21 +191,14 @@ Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fo
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
 
-### Pourquoi avoir choisi React Native ?
 
-#### Multi-plateforme
+### Flux des données
 
-L'application fonctionne sous Android, IOS ainsi que WindowsPhone, c'est donc un langage 3 en 1. Une autre solution aurait été de développer en Android et en Swift, ici on se contente d'un seul langage : le React Native.
+![data_flow](https://docs.google.com/drawings/d/13qPJ2f1Bn1BwYTsF3SR8ffvIodEDA8hSHTIiT7FvzJY/pub?w=1271&h=907)
 
-#### Agile
+### Serialisation et parsing
 
-L'application peut être testée très facilement et simplement à l'aide d'un émulateur de téléphone et sans recompiler l'application à chaque modifs. Il nous suffit d'enregistrer le fichier contenant notre code puis de Reload l'émulateur pour voir apparaitre nos changements.
-
-#### Créée par Facebook
-
-Le react native est un langage jeune (moins de 2 ans), la communauté est donc peu nombreuse ce qui peut poser problème. Néanmoins, ce langage a été développé par une entreprise importante qu'est Facebook c'est donc un gage qualité qui compense sa jeunesse.
-
-
+![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
 
 
 ### Organisation du travail
@@ -258,7 +249,7 @@ Un logiciel de gestion de versions en ligne. Il nous a servit à travailler sur 
 
 ##### Sublime Text
 
-Nous avons trouvé qu'utiliser le même éditeur de texte nous a permis d'uniformiser notre style de codage. Des choses bêtes comme les espaces en trop ou bien un espace manquant en fin 
+Nous avons trouvé qu'utiliser le même éditeur de texte nous a permis d'uniformiser notre style de codage. Des choses bêtes comme les espaces en trop ou bien un espace manquant en fin de fichier peuvent être évités en faisant en sorte que chaque développeur utilise les mêmes réglages dans son éditeur de texte.
 
 Notre code suit strictement les recommandations faites dans le [Javascript Standard Style (JSS)](http://standardjs.com/). Des linters sont disponibles sous forme de plugins pour les éditeurs de texte populaires, ils sont indiqués sur la page [GitHub du JSS](https://github.com/feross/standard). 
 
