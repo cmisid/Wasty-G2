@@ -17,6 +17,7 @@ export const parseAddress = r => new Address({
 export const parseUser = r => new User({
   address: r.address ? parseAddress(r.address) : null,
   birthDate: r.birth_date,
+  carSize: r.carSize,
   email: r.email,
   firstName: r.first_name,
   gender: r.gender,
@@ -33,6 +34,7 @@ export const parseItem = r => new Item({
   availabilityUntil: r.availability_until,
   availabilitySince: r.availability_since,
   category: r.category,
+  cumbersomenesses: r.cumbersomenesses,
   description: r.description,
   id: r.id,
   imgUrl: r.img,
@@ -44,7 +46,8 @@ export const parseItem = r => new Item({
   price: r.price,
   status: r.status,
   picker: r.picker ? parseUser(r.picker) : null,
-  title: r.title
+  title: r.title,
+  weight: r.weight
 })
 
 export const parseEvent = r => new Event({

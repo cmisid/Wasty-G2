@@ -28,9 +28,10 @@ export class Address {
 }
 
 export class User {
-  constructor ({address, birthDate, email, firstName, gender, imgUrl, imgPlaceholderUrl, joinDate, lastName, phoneNumber, scp}) {
+  constructor ({address, birthDate, email, firstName, gender, imgUrl, imgPlaceholderUrl, joinDate, lastName, phoneNumber, scp, carSize}) {
     this.address = address // Instance of class Address
     this.birthDate = birthDate
+    this.carSize = carSize
     this.email = email
     this.firstName = firstName
     this.gender = gender
@@ -52,11 +53,12 @@ export class User {
 }
 
 export class Item {
-  constructor ({address, availabilityUntil, availabilitySince, category, description, id, imgUrl, imgPlaceholderUrl, nLikes, nViews, publishDate, publisher, price, status, picker, title}) {
+  constructor ({address, availabilityUntil, availabilitySince, category, cumbersomenesses, description, id, imgUrl, imgPlaceholderUrl, nLikes, nViews, publishDate, publisher, price, status, picker, title, weight}) {
     this.address = address // Instance of class Address
     this.availabilityUntil = availabilityUntil
     this.availabilitySince = availabilitySince
     this.category = category
+    this.cumbersomenesses = cumbersomenesses
     this.description = description
     this.id = id
     this.imgUrl = imgUrl
@@ -69,6 +71,7 @@ export class Item {
     this.status = status // One of "PENDING", "PICKEDUP", "FINISHED"
     this.picker = picker
     this.title = title
+    this.weight = weight
   }
 
   get readablePublishedSince () {

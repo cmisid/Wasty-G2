@@ -24,23 +24,28 @@ export default class ItemRow extends Component {
     }
   }
 
+/* Different displays depending of the status */
   render () {
     if (this.props.item.status === 'PICKEDUP') {
       return (
         <TouchableHighlight onPress={() => this.props.onSelectItem(this.props.item)}>
+        {/* PICKEDUP : White with no icon CLIKABLE TO CONFIRM */}
           <View>
             <ItemRowContent item={this.props.item} />
           </View>
         </TouchableHighlight>
       )
+
     } else if (this.props.item.status === 'FINISHED') {
       return (
         <TouchableHighlight onPress={() => Actions.postsItemScene({item: this.props.item})}>
+        {/* FINISHED : green with check icon */}
           <View>
             <ItemRowContent item={this.props.item} />
           </View>
         </TouchableHighlight>
       )
+
     } else if (this.props.item.status === 'PENDING') {
       return (
         <Swipeout
@@ -49,6 +54,7 @@ export default class ItemRow extends Component {
           sensitivity={0.9}
           style={{backgroundColor: colors.background}}
         >
+        {/* PENDING : orange with question mark icon SWIPABLE TO DELETE IT */}
           <TouchableHighlight onPress={() => Actions.postsItemScene({
             item: this.props.item
           })}>
@@ -58,6 +64,7 @@ export default class ItemRow extends Component {
           </TouchableHighlight>
         </Swipeout>
       )
+
     } else if (this.props.item.status === 'EXPIRED') {
       return (
         <Swipeout
@@ -66,6 +73,7 @@ export default class ItemRow extends Component {
           sensitivity={0.9}
           style={{backgroundColor: colors.background}}
         >
+        {/* EXPIRED : grey with cross icon SWIPABLE TO DELETE IT */}
           <TouchableHighlight onPress={() => Actions.postsItemScene({
             item: this.props.item
           })}>
