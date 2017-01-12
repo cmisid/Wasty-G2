@@ -163,6 +163,8 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
+![compte](docs/gifs/compte.gif)
+
 #### IO
 
 ![carte_io](https://docs.google.com/drawings/d/1i5ekxlFHwRzJxhmbda3KiXIpgT9U2r_is33S8imLNoc/pub?w=1231&h=730)
