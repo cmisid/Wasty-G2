@@ -93,17 +93,19 @@ export default class PostsScene extends Component {
       <Container style={{backgroundColor: colors.background}}>
 
         {/* A ScrollView is necessary to put a "Load more" button under the list of posted items */}
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this.refreshItems.bind(this)}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        >
 
           {/* List of posted items */}
           <ListView
             style={styles.list}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this.refreshItems.bind(this)}
-              />
-            }
             dataSource={ds.cloneWithRows(this.state.items)}
             renderRow={item => <ItemRow
               item={item}
