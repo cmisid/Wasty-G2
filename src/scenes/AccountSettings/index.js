@@ -9,11 +9,12 @@ import AppText from '../../components/AppText'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import { toast } from '../../util'
-import { scps } from '../../data/constants'
+import { carSizes, scps } from '../../data/constants'
 
 const Form = t.form.Form
 
 const AccountSettingsForm = t.struct({
+  carSize: t.maybe(t.enums(carSizes)),
   firstName: t.String,
   gender: t.maybe(t.enums({female: 'Femme', male: 'Homme'})),
   lastName: t.String,
@@ -36,9 +37,12 @@ const options = {
     },
     scp: {
       label: 'PCS'
+    },
+    carSize: {
+      label: 'Taille de la voiture'
     }
   },
-  order: [ 'firstName', 'lastName', 'gender', 'scp' ]
+  order: [ 'firstName', 'lastName', 'gender', 'scp', 'carSize' ]
 }
 
 export default class AccountSettingsScene extends Component {
