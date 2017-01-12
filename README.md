@@ -74,7 +74,11 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 #### Visuel
 
-![authentification](docs/gifs/recherche.gif)
+![authentification](docs/gifs/rechercheDescription.gif)
+![authentification](docs/gifs/rechercheLike.gif)
+![authentification](docs/gifs/rechercherefresh.gif)
+![authentification](docs/gifs/rechercheUtilisateur.gif)
+![authentification](docs/gifs/rechercheCarte.gif)
 
 #### IO
 
@@ -164,6 +168,10 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
  
 
 #### Visuel
+
+![authentification](docs/gifs/carteLike.gif)
+![authentification](docs/gifs/carteDislike.gif)
+
 
 #### IO
 
