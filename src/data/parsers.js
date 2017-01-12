@@ -41,12 +41,13 @@ export const parseItem = r => new Item({
   imgPlaceholderUrl: r.img_placeholder,
   nLikes: r.likes,
   nViews: r.views,
+  picker: r.picker ? parseUser(r.picker) : null,
   publishDate: r.publish_date,
   publisher: r.publisher ? parseUser(r.publisher) : null,
   price: r.price,
   status: r.status,
-  picker: r.picker ? parseUser(r.picker) : null,
   title: r.title,
+  volume: r.volume,
   weight: r.weight
 })
 

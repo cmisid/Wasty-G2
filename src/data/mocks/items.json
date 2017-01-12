@@ -37,7 +37,8 @@
         "picker":{},
         "title": "Chaise",
         "views": 42,
-        "weight": 23
+        "weight": 23,
+        "volume": 1
     },
     {
         "address": {
@@ -98,7 +99,8 @@
         },
         "title": "Chaise",
         "views": 42,
-        "weight": 6
+        "weight": 6,
+        "volume": 1
     },
     {
         "address": {
@@ -159,7 +161,8 @@
         },
         "title": "Chaise",
         "views": 42,
-        "weight": 45
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -198,7 +201,7 @@
         "status": "EXPIRED",
         "title": "Tabouret",
         "views": 42,
-        "weight": 45
-
+        "weight": 45,
+        "volume": 1
     }
 ]

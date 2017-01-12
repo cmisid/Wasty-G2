@@ -34,7 +34,9 @@
         },
         "status": "PENDING",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -71,7 +73,9 @@
         },
         "status": "PICKEDUP",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -108,7 +112,9 @@
         },
         "status": "FINISHED",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -145,7 +151,9 @@
         },
         "status": "PENDING",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -182,7 +190,9 @@
         },
         "status": "PICKEDUP",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -219,6 +229,8 @@
         },
         "status": "FINISHED",
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     }
 ]

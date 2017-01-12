@@ -33,9 +33,7 @@ export default class LikesScene extends Component {
     this.watchID = null
   }
 
-  // This function allow us to update the ListView.
-  // This function is called by a Swipe Up on the page "Likes".
-  _onRefresh () {
+  refreshItems () {
     this.setState({refreshing: true})
     getLikes()
       .then(items => { this.setState({items}) })
