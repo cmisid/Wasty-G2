@@ -35,7 +35,9 @@
         "status": "PENDING",
         "picker":{},
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -69,7 +71,7 @@
             "last_name": "Schwarzenegger",
             "phone_number": "0628251338",
             "scp": 1
-        }, 
+        },
         "status": "PICKEDUP",
         "picker":{
             "address": {
@@ -94,7 +96,9 @@
             "scp": 1
         },
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -153,7 +157,9 @@
             "scp": 1
         },
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     },
     {
         "address": {
@@ -190,6 +196,8 @@
         },
         "status": "EXPIRED",
         "title": "Tabouret",
-        "views": 42
+        "views": 42,
+        "weight": 45,
+        "volume": 1
     }
 ]
