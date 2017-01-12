@@ -10,11 +10,10 @@ import AppText from '../../../components/AppText'
 import ProgressiveImage from '../../../components/ProgressiveImage'
 import { colors } from '../../../style'
 
+{/* One line of the Hystoric */}
 export default class EventRow extends Component {
   render () {
     return (
-
-      {/* One line of the Hystoric */}
       <View style={styles.row}>
 
         {/* The picture of the object */}
