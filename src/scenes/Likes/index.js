@@ -115,6 +115,7 @@ export default class LikesScene extends Component {
             <ItemRow
               item={item}
               onDeleteItem={this.onDeleteItem.bind(this)}
+              onPickedUpItem={this.onPickedUpItem.bind(this)}
               onPressAction={() => Actions.likesItemScene({item: item,
                 userLat: this.state.location.lat,
                 userLon: this.state.location.lon})}
