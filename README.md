@@ -232,16 +232,19 @@ Il nous a servit à créer un premier visuel des différentes pages de l'applica
 
 ##### SourceTree
 
-<p style="text-align:justify";>
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
-Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
-</p>
+
 (ajouter une capture d'écran)
 
 
 ##### Android/IOS emulator
 
+Un outil qui nous permet de simuler un téléphone (type smartphone) sur notre ordinateur. Le seul inconvénient est lorsque qu'on ne dispose pas d'un écran tactile, on doit alors tester avec la souris. C'est ce qui ne nous a pas permis de vérifier que l'application est intuitive. Nous avons donc aussi exécuté l'application sur nos téléphones personnels.
 
+
+#### GitHub
+
+Un logiciel de gestion de versions en ligne. Il nous a servit à travailler sur différentes pages de la même application à plusieurs, sans avoir a constamment s'échanger des clés USB ou s'envoier du code par slack.
 
 
 
@@ -252,6 +255,6 @@ Il nous a servit à travailler sur différentes pages de la même application à
 - le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
 - Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
 
-#### Les Moins
+### Les Moins
 - Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
 
