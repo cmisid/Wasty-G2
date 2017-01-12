@@ -1,10 +1,4 @@
-/* <Text color={'blue'}>
-              {`${this.state.selectedItem.picker.firstName} ${this.state.selectedItem.picker.lastName} `}
-            </Text>
-            <Text>
-              dit avoir récupéré :
-            </Text>
-            There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
+/* There are three documents. ItemRowContent is the style of Post. ItemRow contains older logics.
 ItemRowContent and ItemRow are the childs of these Index.js. */
 
 import React, { Component } from 'react'
