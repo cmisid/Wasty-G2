@@ -23,7 +23,7 @@ export default class ItemRow extends Component {
           onPress: () => this.props.onDeleteItem(this.props.item.id)
         },
         {
-          text: 'Récupéré',
+          text: 'Récupérer',
           backgroundColor: 'limegreen',
           color: 'white',
           underlayColor: 'green',
