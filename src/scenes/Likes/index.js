@@ -113,7 +113,7 @@ export default class LikesScene extends Component {
           refreshControl={
             <RefreshControl
               refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh.bind(this)}
+              onRefresh={this.refreshItems.bind(this)}
             />
           }
           /* Here we define the data source of the component ListView */
