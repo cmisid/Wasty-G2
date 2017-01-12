@@ -140,6 +140,8 @@ A la fin de la page, l'utilisateur peut cliquer sur un bouton pour afficher plus
 
 #### Visuel
 
+![posts](docs/gifs/posts.gif)
+
 #### IO
 
 ![mes_posts_io](https://docs.google.com/drawings/d/1RwLdYVbrlV9Aph2yUS4km2A-7rpBn_weJtKunOhepHw/pub?w=1231&h=730)
