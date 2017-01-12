@@ -31,12 +31,18 @@ export default class AccountScene extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
+
+        {/* Timeline block which contains the user's activity log */}
         <UserScene user={this.state.user} />
+
+        {/* Button menu containing three other buttons */}
         <ActionButton
           buttonColor={colors.primary}
           icon={<Icon color='white' name='list' size={24} />}
           offsetY={80} // Hack because we're using the UserScene which is wrapped by a Container
         >
+
+          {/* Button to modify password */}
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mon mot de passe'
@@ -47,6 +53,8 @@ export default class AccountScene extends Component {
           >
             <Icon name='lock-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
+
+          {/* Button to modify e-mail */}
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mon adresse e-mail'
@@ -57,6 +65,8 @@ export default class AccountScene extends Component {
           >
             <Icon name='mail-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
+
+          {/* Button to modify first and last name */}
           <ActionButton.Item
             buttonColor={colors.accent}
             title='Modifier mes informations'
@@ -67,6 +77,7 @@ export default class AccountScene extends Component {
           >
             <Icon name='person-outline' style={styles.actionButtonIcon} />
           </ActionButton.Item>
+          
         </ActionButton>
       </View>
     )
