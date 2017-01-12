@@ -4,15 +4,13 @@ import { StyleSheet, View } from 'react-native'
 import { isNil, omitBy } from 'lodash'
 import t from 'tcomb-form-native'
 
+import { Email } from '../../formUtil'
 import AppText from '../../components/AppText'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import { toast } from '../../util'
 
 const Form = t.form.Form
-
-// Refinement for making sure a password is long enough
-const Email = t.refinement(t.String, str => /@/.test(str))
 
 const AccountEmailForm = t.struct({
   email: Email
@@ -21,7 +19,7 @@ const AccountEmailForm = t.struct({
 const options = {
   fields: {
     email: {
-      label: 'Address e-mail',
+      label: 'Addresse e-mail',
       error: 'Veuillez rentrer une addresse valide'
     }
   },

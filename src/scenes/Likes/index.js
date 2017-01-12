@@ -47,6 +47,14 @@ export default class LikesScene extends Component {
     this.setState({items: listWithoutItem})
   }
 
+  onPickedUpItem (id) {
+    const listWithoutItem = reject(this.state.items, {id: id})
+    console.log(id, listWithoutItem)
+    this.setState({items: listWithoutItem})
+
+    //TODO : implémenter la logique de l'API
+  }
+
   componentDidMount () {
     getLikes()
       .then(items => { this.setState({items}) })
@@ -107,6 +115,7 @@ export default class LikesScene extends Component {
             <ItemRow
               item={item}
               onDeleteItem={this.onDeleteItem.bind(this)}
+              onPickedUpItem={this.onPickedUpItem.bind(this)}
               onPressAction={() => Actions.likesItemScene({item: item,
                 userLat: this.state.location.lat,
                 userLon: this.state.location.lon})}

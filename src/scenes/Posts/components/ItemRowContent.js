@@ -10,14 +10,16 @@ import Card from '../../../components/card/Card'
 import { colors } from '../../../style'
 import ProgressiveImage from '../../../components/ProgressiveImage'
 
-export default class ItemRow extends Component {
 
+{/* One element of the list */}
+export default class ItemRow extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
         <Card>
           <View style={{height: 100, flex: 1, flexDirection: 'row', margin: 10, marginTop: 5}}>
 
+            {/* The picture */}
             <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
               <ProgressiveImage
                 thumbnailSource={{ uri: this.props.item.imgPlaceholderUrl }}
@@ -26,6 +28,7 @@ export default class ItemRow extends Component {
               />
             </View>
 
+            {/* Basics informations (title, category, time) */}
             <View style={{flex: 4, justifyContent: 'center', paddingLeft: 5}}>
               <View style={{flexDirection: 'row'}}>
                 <AppText style={{fontWeight: 'bold'}}>
@@ -40,7 +43,7 @@ export default class ItemRow extends Component {
                 {locale: frLocale, addSuffix: true}
               )}
               </AppText>
-
+              
             </View>
 
             {/* Icons */}

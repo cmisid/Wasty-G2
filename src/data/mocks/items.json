@@ -35,7 +35,8 @@
         "status": "PENDING",
         "picker":{},
         "title": "Chaise",
-        "views": 42
+        "views": 42,
+        "weight": 23
     },
     {
         "address": {
@@ -249,6 +250,8 @@
         },
         "status": "PENDING",
         "title": "Tabouret",
-        "views": 42
+        "views": 42,
+        "weight": 45
+
     }
 ]

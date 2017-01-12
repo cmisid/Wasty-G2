@@ -18,7 +18,8 @@
     "date_joined": "2016-12-26T00:34:00",
     "last_name": "Schwarzenegger",
     "phone_number": "0628251338",
-    "scp": 1
+    "scp": 1,
+    "carSize" : 2
 },
 {
     "address": {
@@ -40,7 +41,8 @@
     "date_joined": "2017-01-11T17:00:00",
     "last_name": "Johnson",
     "phone_number": "0638251338",
-    "scp": 1
+    "scp": 1,
+    "carSize" : 1
 },
 {
     "address": {
@@ -62,5 +64,6 @@
     "date_joined": "2017-01-11T17:00:00",
     "last_name": "Statham",
     "phone_number": "0638251338",
-    "scp": 1
+    "scp": 1,
+    "carSize" : 3
 }

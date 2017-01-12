@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, NetInfo, StyleSheet } from 'react-native'
+import { NetInfo, StyleSheet } from 'react-native'
 
 import { Actions, Router, Scene } from 'react-native-router-flux'
 
@@ -11,18 +11,23 @@ import AccountEmailScene from './scenes/AccountEmail'
 import AccountPasswordScene from './scenes/AccountPassword'
 import AccountScene from './scenes/Account'
 import AccountSettingsScene from './scenes/AccountSettings'
+import ConnectionScene from './scenes/Connection'
 import ItemScene from './scenes/Item'
 import ItemPostScene from './scenes/ItemPost'
 import LikesScene from './scenes/Likes'
 import MapScene from './scenes/Map'
 import PostsScene from './scenes/Posts'
+import RegistrationScene from './scenes/Registration'
 import SearchScene from './scenes/Search'
 import UserScene from './scenes/User'
+import { colors } from './style'
 
 import { isProd, appEnv } from './config'
 
 // Disable RCTAnimation warning
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
+// Disable Swipeout warning
+console.ignoredYellowBox = ['Warning: Failed prop type: Invalid prop `text` of type `object` supplied to `SwipeoutBtn`']
 
 const styles = StyleSheet.create({
   sceneStyle: {
@@ -30,30 +35,36 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     borderTopWidth: 0.5,
-    borderColor: '#b7b7b7',
+    borderColor: colors.background,
     backgroundColor: 'white',
     opacity: 1
   }
 })
 
+// Scene layout/structure
 const scenes = Actions.create(
   <Scene key='root' tabs hideNavBar tabBarStyle={styles.tabBar}>
+
     <Scene title='Mes posts' key='postsScene' icon={TabIcon} iconName='playlist-add'>
       <Scene title='Mes posts' key='postsViewScene' component={PostsScene} />
       <Scene title='Mes posts' key='postsItemScene' component={ItemScene} />
       <Scene title='Mes posts' key='postsUserScene' component={UserScene} />
     </Scene>
+
     <Scene title='Mes likes' key='likesScene' icon={TabIcon} iconName='playlist-add-check'>
       <Scene title='Mes likes' key='likesViewScene' component={LikesScene} />
       <Scene title='Mes likes' key='likesItemScene' component={ItemScene} />
     </Scene>
+
     <Scene title='Recherche' key='searchScene' icon={TabIcon} iconName='search' initial>
       <Scene title='Recherche' key='searchViewScene' component={SearchScene} />
       <Scene title='Recherche' key='searchItemScene' component={ItemScene} />
       <Scene title='Poster' key='searchItemPostScene' component={ItemPostScene} />
       <Scene title='Recherche' key='searchUserScene' component={UserScene} />
     </Scene>
+
     <Scene title='Carte' key='mapScene' component={MapScene} icon={TabIcon} iconName='map' />
+
     <Scene title='Compte' key='accountScene' icon={TabIcon} iconName='account-circle'>
       <Scene title='Compte' key='accountViewScene' component={AccountScene} />
       <Scene title='Compte' key='accountItemScene' component={ItemScene} />
@@ -69,13 +80,11 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      // Internet connection stuff
-      isConnected: true,
-      serverResponding: true,
-
-      // User location stuff
-      initialPosition: null,
-      lastPosition: null
+      isLoggedIn: true, // Indicates if the user is logged in
+      isConnected: true, // Indicates if the user is connected to the internet
+      serverResponding: true, // Indicates if the server is responsing
+      initialPosition: null, // User position at launchtime
+      lastPosition: null // Latest user position
     }
     this.watchID = null
   }
@@ -94,7 +103,7 @@ export default class App extends Component {
         const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => Alert.alert(
+      error => console.log(
         'Erreur de localisation',
         JSON.stringify(error)
       ),
@@ -115,6 +124,8 @@ export default class App extends Component {
       return (<Overlay iconLabel='bolt' message='Vous êtes hors-ligne' />)
     } else if (!this.state.serverResponding) {
       return (<Overlay iconLabel='server' message='Le serveur ne répond pas' />)
+    } else if (!this.state.isLoggedIn) {
+      return (<ConnectionScene />)
     } else {
       return (
         <Router

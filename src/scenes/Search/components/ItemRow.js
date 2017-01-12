@@ -21,9 +21,9 @@ export default class ItemRow extends Component {
     this.likeButton = [
       {
         text: <Icon name='favorite-border' iconStyle={{marginTop: 10}} size={30} color='white' />,
-        backgroundColor: 'orange',
+        backgroundColor: colors.like,
         color: 'white',
-        underlayColor: 'orange',
+        underlayColor: colors.like,
         onPress: () => this.onLeftSwipeoutPressed()
       }
     ]

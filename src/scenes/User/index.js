@@ -37,12 +37,8 @@ export default class UserScene extends Component {
     this.setState({refreshing: true})
     getEvents()
       .then(events => { this.setState({events}) })
-      .catch(() => {
-        this.setState(
-          {events: []},
-          this.setState({refreshing: false})
-        )
-      })
+      .catch(() => this.setState({events: []}))
+    this.setState({refreshing: false})
   }
 
   loadMoreEvents () {
@@ -78,7 +74,15 @@ export default class UserScene extends Component {
           {/* Timeline block which contains the user's activity log */}
           <View style={styles.bottom}>
             {/* A ScrollView is necessary to put a "Load more" button under the list of events */}
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.refreshEvents.bind(this)}
+                />
+              }
+              showsVerticalScrollIndicator={false}
+            >
 
               {/* List of events */}
               <ListView
@@ -87,12 +91,6 @@ export default class UserScene extends Component {
                 renderRow={event => <EventRow event={event} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                 style={styles.timeline}
-                refreshControl={
-                  <RefreshControl
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.refreshEvents.bind(this)}
-                  />
-                }
               />
 
               {/* Load more button */}
