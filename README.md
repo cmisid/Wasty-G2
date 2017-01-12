@@ -220,9 +220,9 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 
 
 
-#### Les Outils
+### Les Outils
 
-##### Balsamiq
+#### Balsamiq
 
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
@@ -230,14 +230,14 @@ Il nous a servit à créer un premier visuel des différentes pages de l'applica
 
 (ajouter des démos des mocks up)
 
-##### SourceTree
+#### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 
 (ajouter une capture d'écran)
 
 
-##### Android/IOS emulator
+#### Android/IOS emulator
 
 Un outil qui nous permet de simuler un téléphone (type smartphone) sur notre ordinateur. Le seul inconvénient est lorsque qu'on ne dispose pas d'un écran tactile, on doit alors tester avec la souris. C'est ce qui ne nous a pas permis de vérifier que l'application est intuitive. Nous avons donc aussi exécuté l'application sur nos téléphones personnels.
 
@@ -265,5 +265,6 @@ Le logiciel avec lequel nous avons créée les gifs présent dans ce rapport.
 - Nous avons appris a utiliser des logiciels puissants comme sourceTree et balsamiq
 
 ### Les Moins
+
 - Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
 - 
