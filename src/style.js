@@ -2,6 +2,7 @@ export const colors = {
   primary: '#2e8b57',
   secondary: '#69c69c',
   accent: 'steelblue',
+  like: 'orchid',
 
   lightBackground: 'lightgray',
   background: 'darkgray',
