@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
 ItemRow.propTypes = {
   item: React.PropTypes.object,
   onDeleteItem: React.PropTypes.func,
+  onPickedUpItem: React.PropTypes.func,
   onPressAction: React.PropTypes.func,
   userLat: React.PropTypes.number,
   userLon: React.PropTypes.number

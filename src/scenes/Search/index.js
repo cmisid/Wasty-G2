@@ -138,16 +138,18 @@ export default class SearchScene extends Component {
 
         <View style={styles.bottom}>
           {/* A ScrollView is necessary to put a "Load more" button under the list of items */}
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.refreshItems.bind(this)}
+              />
+            }
+            showsVerticalScrollIndicator={false}
+          >
 
             {/* List of items */}
             <ListView
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this.refreshItems.bind(this)}
-                />
-              }
               dataSource={ds.cloneWithRows(this.state.items)}
               enableEmptySections
               renderRow={item => (
