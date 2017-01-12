@@ -1,3 +1,6 @@
+/* This component is used to present items on the page carte.
+ When users click on a marker, the style is automatically updated.
+It split the screen in two parts and show this components at the bottom of the page "Carte". */
 import React, {Component} from 'react'
 import { StyleSheet, Dimensions } from 'react-native'
 

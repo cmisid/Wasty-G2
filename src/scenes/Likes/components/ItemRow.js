@@ -33,7 +33,6 @@ export default class ItemRow extends Component {
     }
   }
 
-
   render () {
     return (
       <Swipeout
@@ -42,6 +41,7 @@ export default class ItemRow extends Component {
         sensitivity={0.9}
         style={{backgroundColor: colors.background}}
       >
+        {/* The touchableHighligh is a button which is used to open the full description of an item when user click on an item of the page "Mes Likes" */}
         <TouchableHighlight onPress={this.props.onPressAction}>
           <View style={{flex: 1}}>
             <Card>
@@ -55,7 +55,7 @@ export default class ItemRow extends Component {
                     style={styles.image}
                   />
                 </View>
-
+                {/* View which contains : item title, item category and the localisation of the user.  */}
                 <View style={{flex: 4, justifyContent: 'center', paddingLeft: 5}}>
                   <AppText style={{fontWeight: 'bold'}}>
                     {this.props.item.title}
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
   }
 })
 
+// Here we defined the props of the 
 ItemRow.propTypes = {
   item: React.PropTypes.object,
   onDeleteItem: React.PropTypes.func,

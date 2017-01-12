@@ -33,7 +33,7 @@ export default class LikesScene extends Component {
     this.watchID = null
   }
 
-  _onRefresh () {
+  refreshItems () {
     this.setState({refreshing: true})
     getLikes()
       .then(items => { this.setState({items}) })
@@ -41,6 +41,8 @@ export default class LikesScene extends Component {
     this.setState({refreshing: false})
   }
 
+  // This function allow us to delete an object from the page "Likes".
+  // This function is called by the button "Supprimer" of the fonctionnality "Swipeout".
   onDeleteItem (id) {
     const listWithoutItem = reject(this.state.items, {id: id})
     console.log(id, listWithoutItem)
@@ -52,9 +54,13 @@ export default class LikesScene extends Component {
     console.log(id, listWithoutItem)
     this.setState({items: listWithoutItem})
 
-    //TODO : implémenter la logique de l'API
+    //  TODO : implémenter la logique de l'API
   }
 
+  // The function componentDidMount is automatically called when user is on the page "Mes Likes".
+  // When the dev mod is running : the function called the data that we created with the function getLikes().
+  // When the prod mod is running : the function called the data by the web service getLikes().
+  // dev mod and prod mod are defined in environement variable.
   componentDidMount () {
     getLikes()
       .then(items => { this.setState({items}) })
@@ -107,9 +113,10 @@ export default class LikesScene extends Component {
           refreshControl={
             <RefreshControl
               refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh.bind(this)}
+              onRefresh={this.refreshItems.bind(this)}
             />
           }
+          /* Here we define the data source of the component ListView */
           dataSource={ds.cloneWithRows(this.state.items)}
           renderRow={item => (
             <ItemRow
