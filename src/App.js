@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, NetInfo, StyleSheet } from 'react-native'
+import { NetInfo, StyleSheet } from 'react-native'
 
 import { Actions, Router, Scene } from 'react-native-router-flux'
 
@@ -23,6 +23,8 @@ import { isProd, appEnv } from './config'
 
 // Disable RCTAnimation warning
 console.ignoredYellowBox = ['Animated: `useNativeDriver` is not']
+// Disable Swipeout warning
+console.ignoredYellowBox = ['Warning: Failed prop type: Invalid prop `text` of type `object` supplied to `SwipeoutBtn`']
 
 const styles = StyleSheet.create({
   sceneStyle: {
@@ -94,7 +96,7 @@ export default class App extends Component {
         const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => Alert.alert(
+      error => console.log(
         'Erreur de localisation',
         JSON.stringify(error)
       ),

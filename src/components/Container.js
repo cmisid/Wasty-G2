@@ -8,7 +8,7 @@ the layout accross the app.
 */
 
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Platform } from 'react-native'
 
 export default class Container extends Component {
   render () {
@@ -23,7 +23,7 @@ export default class Container extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 62,
+    marginTop: Platform.OS === 'ios' ? 62 : 54,
     marginBottom: 50
   }
 })

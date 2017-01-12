@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, Linking, ListView, RefreshControl, StyleSheet, View } from 'react-native'
+import { Linking, ListView, RefreshControl, StyleSheet, View } from 'react-native'
 
 import { format } from 'date-fns'
 import { reject } from 'lodash'
@@ -58,7 +58,7 @@ export default class LikesScene extends Component {
         const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => Alert.alert('Erreur de localisation', JSON.stringify(error)),
+      error => console.log('Erreur de localisation', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )
 
