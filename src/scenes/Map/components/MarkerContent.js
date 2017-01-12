@@ -13,18 +13,7 @@ import Card from '../../../components/card/Card'
 import CardHeader from '../../../components/card/CardHeader'
 import ProgressiveImage from '../../../components/ProgressiveImage'
 import { colors, zIndexes } from '../../../style'
-
-const toast = text => Toast.show(text, {
-  duration: Toast.durations.LONG,
-  position: Toast.positions.BOTTOM,
-  shadow: true,
-  animation: true,
-  hideOnPress: true,
-  delay: 500,
-  backgroundColor: colors.primary,
-  shadowColor: colors.background,
-  textColor: 'white'
-})
+import { toast } from '../../../util'
 
 export default class MarkerContent extends Component {
 
