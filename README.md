@@ -74,6 +74,8 @@ Après avoir cliqué sur le bouton « Poster une annonce », l'utilisateur est r
 
 #### Visuel
 
+![authentification](docs/gifs/authentification.gif)
+
 #### IO
 
 ![recherche_io](https://docs.google.com/drawings/d/1BgCKhWAEdvcfh4jvmrewnz3txm5sF6JIpx3ttUdY-Kw/pub?w=1231&h=730)
