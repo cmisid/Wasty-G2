@@ -1,5 +1,20 @@
+/*
+Button is a custom button implementation that satisfies our needs. It's nothing
+more than a TouchableHighlight wrapped around a View.
+
+Button can take in an "onPress" func prop that can be called when the user taps
+the button.
+
+When a tap occurs then "onPress" is called and the button is "loading". In
+loading state the provided text prop is replaced with an ActivityIndicator
+(essentially a loading spinner).
+
+When "onPress" finishes then the state is reset to normal and the loading
+spinner dissapears.
+*/
+
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, TouchableHighlight, View, ActivityIndicator } from 'react-native'
+import { ActivityIndicator, StyleSheet, TouchableHighlight, View } from 'react-native'
 
 import { colors } from '../style'
 import AppText from './AppText'
@@ -28,6 +43,7 @@ export default class Button extends Component {
               animating
               style={styles.submitIcon}
               size='small'
+              color='white'
             />
           </View>
         </TouchableHighlight>

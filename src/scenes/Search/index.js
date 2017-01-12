@@ -15,6 +15,7 @@ import Tag from './components/Tag'
 import { getItems } from '../../data/api'
 import { types } from '../../data/constants'
 import { colors } from '../../style'
+import { colorLuminance } from '../../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
@@ -41,17 +42,21 @@ export default class SearchScene extends Component {
   }
 
   typeTags () {
-    const tags = []
+    const tags = [] // Store the markup for the tags in an array
+    const n = Object.keys(types).length
+    let i = 0 // Increment a counter to determine the luminance
     forEach(types, (value, key) => {
+      console.log(i, n)
       // Override the default tag style with a color
       const style = {
         borderRadius: 5,
         padding: 5,
         marginRight: 6,
         flex: 1,
-        backgroundColor: colors.pastels[key % colors.pastels.length]
+        backgroundColor: colorLuminance(colors.secondary, i / n)
       }
       tags.push(<Tag key={key} style={style} text={value} />)
+      i = i + 1
     })
     return tags
   }
@@ -68,6 +73,8 @@ export default class SearchScene extends Component {
       cancelButtonTitle: 'Annuler',
       takePhotoButtonTitle: 'Prendre une photo',
       chooseFromLibraryButtonTitle: 'Choisir une photo existante',
+      cameraType: 'back',
+      mediaType: 'photo',
       quality: 1.0,
       maxWidth: 500,
       maxHeight: 500,
@@ -124,14 +131,14 @@ export default class SearchScene extends Component {
 
         {/* List of categories the user can click on */}
         <View style={styles.top}>
-          <ScrollView style={styles.tagScroll} horizontal>
+          <ScrollView style={styles.tagScroll} horizontal showsHorizontalScrollIndicator={false}>
             {this.typeTags()}
           </ScrollView>
         </View>
 
         <View style={styles.bottom}>
           {/* A ScrollView is necessary to put a "Load more" button under the list of items */}
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
 
             {/* List of items */}
             <ListView
