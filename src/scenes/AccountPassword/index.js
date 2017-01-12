@@ -19,8 +19,8 @@ const samePasswords = form => form.password === form.confirmation
 
 const AccountPasswordForm = t.subtype(
   t.struct({
-    password: Password,
-    confirmation: Password
+    confirmation: Password,
+    password: Password
   }),
   samePasswords
 )
@@ -28,15 +28,15 @@ const AccountPasswordForm = t.subtype(
 const options = {
   error: 'Les mots de passe ne correspondent pas',
   fields: {
-    password: {
-      label: 'Nouveau mot de passe',
+    confirmation: {
+      label: 'Confirmation du nouveau mot de passe',
       password: true,
       secureTextEntry: true,
       help: 'Au moins 6 caractères',
       error: 'Le mot de passe doit faire au moins 6 caractères'
     },
-    confirmation: {
-      label: 'Confirmation du nouveau mot de passe',
+    password: {
+      label: 'Nouveau mot de passe',
       password: true,
       secureTextEntry: true,
       help: 'Au moins 6 caractères',
