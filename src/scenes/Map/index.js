@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Alert, Platform } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import MapView from 'react-native-maps'
 import _ from 'lodash'
@@ -87,7 +87,7 @@ export default class MapScene extends Component {
         const initialPosition = JSON.stringify(position)
         this.setState({initialPosition})
       },
-      error => Alert.alert('Erreur de localisation', JSON.stringify(error)),
+      error => console.log('Erreur de localisation', JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )
 
