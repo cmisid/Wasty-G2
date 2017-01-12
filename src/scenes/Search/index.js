@@ -5,6 +5,7 @@ import ActionButton from 'react-native-action-button'
 import ImagePicker from 'react-native-image-picker'
 import { Actions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import RNFetchBlob from 'react-native-fetch-blob'
 import { forEach, reject } from 'lodash'
 
 import Container from '../../components/Container'
@@ -15,6 +16,7 @@ import Tag from './components/Tag'
 import { getItems } from '../../data/api'
 import { types } from '../../data/constants'
 import { colors } from '../../style'
+import { WEB_SERVICES_URLS } from '../../config'
 import { colorLuminance } from '../../util'
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -46,7 +48,6 @@ export default class SearchScene extends Component {
     const n = Object.keys(types).length
     let i = 0 // Increment a counter to determine the luminance
     forEach(types, (value, key) => {
-      console.log(i, n)
       // Override the default tag style with a color
       const style = {
         borderRadius: 5,
@@ -96,11 +97,27 @@ export default class SearchScene extends Component {
           ? {uri: response.uri, isStatic: true}
           : {uri: response.uri.replace('file://', ''), isStatic: true}
 
+        // this.postImage(response)
         this.setState({
           itemImgSource: source
         })
         Actions.searchItemPostScene({itemImgSource: this.state.itemImgSource})
       }
+    })
+  }
+
+  postImage (imgPickerResponse) {
+    // FIXME: we are unable to connect to API server
+    const endpoint = `${WEB_SERVICES_URLS.IMG_CLASSIFIER_URL}/upload_image/`
+    console.log(endpoint)
+    RNFetchBlob.fetch('POST', endpoint, {
+      'Content-Type': 'application/octet-stream'
+    }, RNFetchBlob.wrap(`file://${imgPickerResponse.uri}`))
+    .then(res => {
+      console.log(res.text())
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
 

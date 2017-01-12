@@ -72,6 +72,7 @@ export default class ItemScene extends Component {
               {` ${this.props.item.readablePublishedSince}`}
             </AppText>
           </AppText>
+          {/* Those both tags allow us to make a double space  between the publish date and the item's description. */}
           <AppText />
           <AppText style={{textAlign: 'justify', marginBottom: 15, color: 'black'}}>
             {this.props.item.description}
