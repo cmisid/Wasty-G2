@@ -171,7 +171,8 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
-![carte](docs/gifs/carteLike.gif)
+![carte](docs/gifs/mapScene.gif)
+
 
 #### IO
 
