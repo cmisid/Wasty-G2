@@ -120,6 +120,8 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 #### Visuel
 
+![posts](docs/gifs/listLikes.gif)
+
 #### IO
 
 ![ma_liste_io](https://docs.google.com/drawings/d/1GPD75YXcqzY87XyAkCV9cKvnH_cYpnr9CNYWpk9r3wQ/pub?w=1231&h=730)
