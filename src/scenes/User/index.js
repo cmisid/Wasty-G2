@@ -1,3 +1,4 @@
+/* This is the user scene */
 import React, { Component } from 'react'
 import { ListView, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 

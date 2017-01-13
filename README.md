@@ -105,6 +105,8 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 #### Visuel
 
+![ajouterObjet](docs/gifs/ajouter_objet.gif)
+
 #### IO
 
 ![object_io](https://docs.google.com/drawings/d/12paEYAcop-IIRlovjBoLd5DwXzR7_oapUxM5KrYG7LU/pub?w=1231&h=730)
@@ -119,6 +121,8 @@ Cette page permet à l'utilisateur de stocker et consulter ses annonces préfér
 La dernière fonctionnalité, et la plus importante, présente sur cette page, c'est la possibilité pour l'utilisateur d'obtenir un trajet optimisé de récupération de ses objets en cliquant sur un bouton. Il sera ainsi amené à Google Maps et n'aura plus qu'à suivre le trajet proposé pour récupérer tous ses objets.
 
 #### Visuel
+
+![posts](docs/gifs/listLikes.gif)
 
 #### IO
 
@@ -169,7 +173,8 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
-![carte](docs/gifs/carteLike.gif)
+![carte](docs/gifs/mapScene.gif)
+
 
 #### IO
 
@@ -185,6 +190,8 @@ Mais la principale raison d'exister de cette page est de permettre à l'utilisat
 Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fois, et lorsqu'il renseigne son adresse e-mail le changement ne sera effectif que lorsqu'il l'aura confirmer en cliquant sur le lien dans le mail de confirmation que nous lui enverrons.
 
 #### Visuel
+
+![compte](docs/gifs/compte.gif)
 
 #### IO
 
@@ -231,13 +238,11 @@ Un outil de maquettage orienté production. Il permet de créer des démonstrati
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
 
-(ajouter des démos des mocks up)
 
 ##### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 
-(ajouter une capture d'écran)
 
 
 ##### Android/IOS emulator

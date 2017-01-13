@@ -1,3 +1,4 @@
+/* This component is dedicated to the historic on the user scene */
 import React, { Component } from 'react'
 import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
@@ -15,7 +16,7 @@ export default class EventRow extends Component {
     return (
       /* One line of the Hystoric */
       <View style={styles.row}>
-        {/* The picture of the object */}
+        {/* Description clikable of the object to access the detailled description */}
         <View style={{flex: 2, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
           <TouchableHighlight onPress={() => Actions.accountItemScene({item: this.props.event.item})}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -31,7 +32,7 @@ export default class EventRow extends Component {
           </TouchableHighlight>
         </View>
 
-        {/* Description clikable of the object to access the detailled description */}
+        {/* Symbol and description depending on the transaction state (posté, récupéré de, récupéré par) */}
         <View style={{flex: 5, alignItems: 'center'}}>
           <AppText >
             {` ${this.props.event.action === 'post' && this.props.event.item.status === 'FINISHED' ? 'récupéré par' : `${this.props.event.action === 'post' ? 'posté' : 'récupéré de'}`}`}
@@ -49,7 +50,7 @@ export default class EventRow extends Component {
           </AppText>
         </View>
 
-        {/* Arrow to indicate if you post or picked-up the object */}
+        {/* Image and description (clickable) of the user the transaction is with, depending of the transaction status */}
         {this.props.event.action === 'post' && this.props.event.item.status === 'FINISHED' &&
         <View style={{alignItems: 'center', flex: 2}}>
           <TouchableHighlight onPress={() => Actions.accountUserScene({user: this.props.event.item.picker})}>
