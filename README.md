@@ -103,6 +103,8 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 #### Visuel
 
+![compte](docs/gifs/compte.gif)
+
 #### IO
 
 ![object_io](https://docs.google.com/drawings/d/12paEYAcop-IIRlovjBoLd5DwXzR7_oapUxM5KrYG7LU/pub?w=1231&h=730)
