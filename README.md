@@ -120,7 +120,7 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 #### Visuel
 
-![posts](docs/gifs/listLikes.gif)
+![Liste](docs/gifs/listLikes.gif)
 
 #### IO
 
@@ -233,7 +233,7 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
-
+![Balsamiq](docs/Image/Balsamiq.png)
 
 ##### SourceTree
 
