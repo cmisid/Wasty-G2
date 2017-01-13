@@ -75,7 +75,7 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 #### Visuel
 
 ![recherche](docs/gifs/rechercheDescription.gif)
-![recherche](docs/gifs/recherchelike.gif)
+![recherche](docs/gifs/rechercheLike.gif)
 ![recherche](docs/gifs/rechercherefresh.gif)
 ![recherche](docs/gifs/rechercheUtilisateur.gif)
 ![recherche](docs/gifs/rechercheCarte.gif)
@@ -105,7 +105,7 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 #### Visuel
 
-![ajouterObjet](docs/gifs/ajouter_objet.gif)
+
 
 #### IO
 
@@ -122,7 +122,7 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 #### Visuel
 
-![posts](docs/gifs/listLikes.gif)
+![Liste](docs/gifs/listLikes.gif)
 
 #### IO
 
@@ -173,8 +173,11 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
-![carte](docs/gifs/mapScene.gif)
-
+![compte](docs/gifs/compte.gif)
+![authentification](docs/gifs/carteLike.gif)
+![authentification](docs/gifs/carteDislike.gif)
+![carte](docs/gifs/carteLike.gif)
+![carte](docs/gifs/carteDislike.gif)
 
 #### IO
 
@@ -237,12 +240,18 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
+<<<<<<< HEAD
 
+(ajouter des démos des mocks up)
+=======
+![Balsamiq](docs/Image/Balsamiq.png)
+>>>>>>> 2f73dd5238876bf3dd7868745816588da6523358
 
 ##### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 
+(ajouter une capture d'écran)
 
 
 ##### Android/IOS emulator
@@ -266,6 +275,7 @@ Notre code suit strictement les recommandations faites dans le [Javascript Stand
 
 - Le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
 - Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
+- Nous avons eu un aperçu global du projet au sens où nous n'avons pas seulement développé une application mobile, mais nous avons eu un aperçu de  comment communiquer avec la base de données à travers des web services.
 
 ### Les Moins
 - Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
