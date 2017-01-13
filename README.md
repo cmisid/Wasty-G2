@@ -189,6 +189,8 @@ Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fo
 
 #### Visuel
 
+![compte](docs/gifs/compte.gif)
+
 #### IO
 
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
