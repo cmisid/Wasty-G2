@@ -120,6 +120,8 @@ La dernière fonctionnalité, et la plus importante, présente sur cette page, c
 
 #### Visuel
 
+![Liste](docs/gifs/listLikes.gif)
+
 #### IO
 
 ![ma_liste_io](https://docs.google.com/drawings/d/1GPD75YXcqzY87XyAkCV9cKvnH_cYpnr9CNYWpk9r3wQ/pub?w=1231&h=730)
@@ -234,8 +236,12 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
+<<<<<<< HEAD
 
 (ajouter des démos des mocks up)
+=======
+![Balsamiq](docs/Image/Balsamiq.png)
+>>>>>>> 2f73dd5238876bf3dd7868745816588da6523358
 
 ##### SourceTree
 
