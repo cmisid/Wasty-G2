@@ -73,7 +73,7 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 #### Visuel
 
 ![recherche](docs/gifs/rechercheDescription.gif)
-![recherche](docs/gifs/rechercheLike.gif)
+![recherche](docs/gifs/recherchelike.gif)
 ![recherche](docs/gifs/rechercherefresh.gif)
 ![recherche](docs/gifs/rechercheUtilisateur.gif)
 ![recherche](docs/gifs/rechercheCarte.gif)
@@ -103,7 +103,7 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 #### Visuel
 
-
+![ajouterObjet](docs/gifs/ajouter_objet.gif)
 
 #### IO
 
@@ -171,11 +171,7 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
-![compte](docs/gifs/compte.gif)
-![authentification](docs/gifs/carteLike.gif)
-![authentification](docs/gifs/carteDislike.gif)
 ![carte](docs/gifs/carteLike.gif)
-![carte](docs/gifs/carteDislike.gif)
 
 #### IO
 
@@ -191,8 +187,6 @@ Mais la principale raison d'exister de cette page est de permettre à l'utilisat
 Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fois, et lorsqu'il renseigne son adresse e-mail le changement ne sera effectif que lorsqu'il l'aura confirmer en cliquant sur le lien dans le mail de confirmation que nous lui enverrons.
 
 #### Visuel
-
-![compte](docs/gifs/compte.gif)
 
 #### IO
 
@@ -237,13 +231,11 @@ Un outil de maquettage orienté production. Il permet de créer des démonstrati
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
 
-(ajouter des démos des mocks up)
 
 ##### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 
-(ajouter une capture d'écran)
 
 
 ##### Android/IOS emulator
