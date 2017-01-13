@@ -103,6 +103,8 @@ Nous avons mis en place un outil pratique sous forme d'horloge pour que l'utilis
 
 #### Visuel
 
+![ajouterObjet](docs/gifs/ajouter_objet.gif)
+
 #### IO
 
 ![object_io](https://docs.google.com/drawings/d/12paEYAcop-IIRlovjBoLd5DwXzR7_oapUxM5KrYG7LU/pub?w=1231&h=730)
@@ -227,13 +229,11 @@ Un outil de maquettage orienté production. Il permet de créer des démonstrati
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
 
-(ajouter des démos des mocks up)
 
 ##### SourceTree
 
 Un logiciel qui permet d'utiliser Github de manière plus intuitive sans passer par le site internet excepté pour la gestion des branches et les pull requests.
 
-(ajouter une capture d'écran)
 
 
 ##### Android/IOS emulator
