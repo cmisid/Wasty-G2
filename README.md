@@ -203,7 +203,11 @@ Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fo
 
 ### Serialisation et parsing
 
- Nous avons décidé de formaliser 
+Nous avons décidé de formaliser la façon dont les données sont transférées entre le portable et le serveur. Nous n'avons rien inventé mais nous avons mis en place une couche qui permet de faire abstraction des données entrantes et sortantes. L'idée est de faire passer toutes les données à travers un portail qui doit traduire les données entrantes dans le format voulu.
+ 
+Lorsque nous recevons les données du serveur nous les *parsons* en classes JavaScript avec un nommage qui est propre à notre application. Lorsque nous envoyons des données du portable vers le serveur nous les *sérialisons* en JSON avec un nommage qui correspond à celui du serveur.
+
+Cette façon de faire nous permet d'isoler le code de l'application des données transmises. Nous avons seulement à maintenir un fichier pour le parsage et un pour la sérialisation.
 
 ![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
 
@@ -222,7 +226,8 @@ Le chef de groupe n'affecte pas le travail aux différents membres mais il alime
 
 #### Planning Initial et Final
 
-Nous avons suivi un planning en ce qui concerne les grandes lignes du développement :
+Nous avons suivi un planning en ce qui concerne les grandes lignes du développement:
+
 - création des visuels
 - affichage de données factices
 - interaction avec la BD
@@ -240,12 +245,7 @@ Nous avons essayé le plus possible, concernant les explications concrètes, d'a
 Un outil de maquettage orienté production. Il permet de créer des démonstrations interactives.
 Il nous a servit à créer un premier visuel des différentes pages de l'application et les liens entre elles.
 
-<<<<<<< HEAD
-
-(ajouter des démos des mocks up)
-=======
 ![Balsamiq](docs/Image/Balsamiq.png)
->>>>>>> 2f73dd5238876bf3dd7868745816588da6523358
 
 ##### SourceTree
 
@@ -278,5 +278,6 @@ Notre code suit strictement les recommandations faites dans le [Javascript Stand
 - Nous avons eu un aperçu global du projet au sens où nous n'avons pas seulement développé une application mobile, mais nous avons eu un aperçu de  comment communiquer avec la base de données à travers des web services.
 
 ### Les Moins
+
 - Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
 
