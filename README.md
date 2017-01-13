@@ -23,6 +23,8 @@ Cette partie du projet a été développée par le groupe 2 dont les membres son
 - Antoine Plissonneau
 - Raphaël Sourty
 
+Le dossier [docs](docs/) contient le [planning prévisionnel](docs/Initial_planning.pdf) et le [planning réel](docs/Final_planning.pdf). Il contient aussi les [spécifications initiales](docs/Specifications.pdf) et quelques [ressources](docs/Resources.md) et [spécifications](docs/Specifications.pdf) que l'on a utilisé pour lancer le projet.
+
 ## Stack technologique
 
 Nous avons décidé une technologie assez récente et très en vogue qui s'appelle **React Native**. En bref React Native permet de développer des applications en JavaScript et de lancer sur un mobile qui dispose d'un interpréteur JavaScript.
@@ -189,14 +191,16 @@ Lorsqu'il renseigne son mot de passe il doit le confirmer en l'écrivant deux fo
 ![compte_io](https://docs.google.com/drawings/d/1QFZ84Wk0A3_0i7g456LY0b6fzSq_I7F8GdIDYVR5HnI/pub?w=1231&h=730)
 
 
+### Serialisation et parsing
+
+ Nous avons décidé de formaliser 
+
+![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
+
 
 ### Flux des données
 
 ![data_flow](https://docs.google.com/drawings/d/13qPJ2f1Bn1BwYTsF3SR8ffvIodEDA8hSHTIiT7FvzJY/pub?w=1271&h=907)
-
-### Serialisation et parsing
-
-![class_mirroring](https://docs.google.com/drawings/d/1DMArkuoIKWuJgL1icfkSGmVHM4m6uaHB0H-VmgDPLJY/pub?w=1026&h=482)
 
 
 ### Organisation du travail
@@ -255,7 +259,7 @@ Notre code suit strictement les recommandations faites dans le [Javascript Stand
 
 ### Les Plus
 
-- le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
+- Le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
 - Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
 
 ### Les Moins
