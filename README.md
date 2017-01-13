@@ -73,9 +73,7 @@ La page "Recherche" propose une fonctionnalité pour que l'utilisateur puisse aj
 #### Visuel
 
 ![recherche](docs/gifs/rechercheDescription.gif)
-
 ![recherche](docs/gifs/recherchelike.gif)
-
 ![recherche](docs/gifs/rechercherefresh.gif)
 ![recherche](docs/gifs/rechercheUtilisateur.gif)
 ![recherche](docs/gifs/rechercheCarte.gif)
@@ -169,9 +167,7 @@ La page "Ma liste" rassemble tous les articles likés par l'utilisateur et est d
 
 #### Visuel
 
-![compte](docs/gifs/compte.gif)
 ![carte](docs/gifs/carteLike.gif)
-![carte](docs/gifs/carteDislike.gif)
 
 #### IO
 
