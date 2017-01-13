@@ -214,6 +214,10 @@ Cette façon de faire nous permet d'isoler le code de l'application des données
 
 ### Flux des données
 
+Nous avons aussi décidé de formaliser la façon dont on stocke les données. Avec React l'interface grâce à un dictionaire en mémoire vive qui s'appelle le *state*; il faut mettre à jour le state pour que l'interface soit modifiée. C'est cela qui est representée dans la partie supérieure du diagramme suivant.
+
+En parallèle on veut pouvoir synchroniser le state avec une base de données persistante pour que l'utilisateur puisse retrouver son application tel quelle en relancant l'application. Cela devient compliqué lorsqu'on veut en plus synchroniser les données avec le serveur. En effet il se peut que des incohérences surgissent entre le state, la BD sur le portable et le serveur. C'est pour cela qu'il faut utiliser des transactions pour être que tout ou rien se mette à jour. Cette transaction est schématisée par les 3 flèches rouges qui partent de la boîte verte dans le diagramme suivant.
+
 ![data_flow](https://docs.google.com/drawings/d/13qPJ2f1Bn1BwYTsF3SR8ffvIodEDA8hSHTIiT7FvzJY/pub?w=1271&h=907)
 
 
@@ -273,11 +277,12 @@ Notre code suit strictement les recommandations faites dans le [Javascript Stand
 
 ### Les Plus
 
-- Le fait que certains membres du groupe codent sous Android et d'autres sous IOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation
-- Nous avons tous appris un nouveau langage informatique très pertinent pour ce qui est de développer une application mobile
+- Le fait que certains membres du groupe codent sous Android et d'autres sous iOS nous a permis de corriger les bugs des composants pour qu'ils fonctionnent correctement sous ces deux systèmes d'exploitation.
+- Nous avons tous appris un nouveau langage informatique très pertinent pour développer une application mobile.
 - Nous avons eu un aperçu global du projet au sens où nous n'avons pas seulement développé une application mobile, mais nous avons eu un aperçu de  comment communiquer avec la base de données à travers des web services.
+- Nous avons pu apprendre des concepts généraux tel que les tâches asynchrones, comment nommer des variables, comment organiser une journée de travail, comment bien configurer un éditeur de texte, etc.
 
 ### Les Moins
 
-- Nous n'avons pas testé l'application sous WindowsPhone durant le dévelopement par soucis de rapidité
+- Nous n'avons pas eu le temps de tester l'application sur Windows Phone par manque de temps.
 
